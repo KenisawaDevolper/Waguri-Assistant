@@ -7,7 +7,7 @@ const pluginConfig = {
     name: 'setversi',
     alias: ['setversion', 'gantiversi', 'updateversion'],
     category: 'owner',
-    description: 'Update versi bot di config.js',
+    description: 'Actualiza la versión del bot en config.js con la estética Waguri Assistant 🔖',
     usage: '.setversi <versi_baru>',
     example: '.setversi 2.5.1',
     isOwner: true,

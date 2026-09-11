@@ -6,7 +6,7 @@ const pluginConfig = {
     name: 'ganti-rimuru-levelup.jpg',
     alias: ['gantirimurulevelup', 'setrimurulevelup'],
     category: 'owner',
-    description: 'Ganti gambar rimuru-levelup.jpg',
+    description: 'Cambia la imagen de levelup rimuru con la estética Waguri Assistant ✨',
     usage: '.ganti-rimuru-levelup.jpg (reply/kirim gambar)',
     example: '.ganti-rimuru-levelup.jpg',
     isOwner: true,

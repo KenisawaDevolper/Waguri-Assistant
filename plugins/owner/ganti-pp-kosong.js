@@ -6,7 +6,7 @@ const pluginConfig = {
     name: 'ganti-pp-kosong.jpg',
     alias: ['gantippkosong', 'setppkosong'],
     category: 'owner',
-    description: 'Ganti gambar pp-kosong.jpg',
+    description: 'Cambia la imagen pp-kosong.jpg con la estética Waguri Assistant 🖼️',
     usage: '.ganti-pp-kosong.jpg (reply/kirim gambar)',
     example: '.ganti-pp-kosong.jpg',
     isOwner: true,

@@ -6,7 +6,7 @@ const pluginConfig = {
     name: 'ganti-rimuru-demote.jpg',
     alias: ['gantirimurudemote', 'setrimurudemote'],
     category: 'owner',
-    description: 'Ganti gambar rimuru-demote.jpg',
+    description: 'Cambia la imagen rimuru-demote con la estética Waguri Assistant 🖼️',
     usage: '.ganti-rimuru-demote.jpg (reply/kirim gambar)',
     example: '.ganti-rimuru-demote.jpg',
     isOwner: true,

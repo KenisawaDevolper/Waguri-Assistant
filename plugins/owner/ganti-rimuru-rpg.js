@@ -6,7 +6,7 @@ const pluginConfig = {
     name: 'ganti-rimuru-rpg.jpg',
     alias: ['gantirpg', 'setrimururpg'],
     category: 'owner',
-    description: 'Ganti gambar rimuru-rpg.jpg (thumbnail rpg)',
+    description: 'Cambia la imagen RPG rimuru con la estética Waguri Assistant 🗡️ (thumbnail rpg)',
     usage: '.ganti-rimuru-rpg.jpg (reply/kirim gambar)',
     example: '.ganti-rimuru-rpg.jpg',
     isOwner: true,

@@ -9,7 +9,7 @@ const pluginConfig = {
     name: 'exec',
     alias: ['>', 'run', 'execute'],
     category: 'owner',
-    description: 'Jalankan kode JS dari pesan yang di-reply (Owner Only)',
+    description: 'Ejecuta código JS del mensaje respondido (Solo Owner) con la estética Waguri Assistant ⚙️',
     usage: '.> (reply pesan berisi kode)',
     example: '.> (reply)',
     isOwner: true,

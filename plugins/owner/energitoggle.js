@@ -4,7 +4,7 @@ const pluginConfig = {
     name: ['disableenergi', 'enableenergi'],
     alias: ['offenergi', 'onenergi'],
     category: 'owner',
-    description: 'Enable/disable sistem energi',
+    description: 'Activa/desactiva el sistema de energía con la estética Waguri Assistant ⚡',
     usage: '.disableenergi atau .enableenergi',
     example: '.disableenergi',
     isOwner: true,

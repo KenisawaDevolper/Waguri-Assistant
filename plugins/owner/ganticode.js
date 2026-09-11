@@ -7,7 +7,7 @@ const pluginConfig = {
   name: "ganticode",
   alias: ["replaceplugin", "updateplugin", "gantiplugin"],
   category: "owner",
-  description: "Ganti code plugin yang sudah ada",
+  description: "Cambia code plugin yang sudah ada",
   usage: ".ganticode [namafile] [folder]",
   example: ".ganticode ping main",
   isOwner: true,

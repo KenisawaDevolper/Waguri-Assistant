@@ -6,7 +6,7 @@ const pluginConfig = {
     name: 'ganti-rimuru-rules.jpg',
     alias: ['gantirules', 'setrimururules'],
     category: 'owner',
-    description: 'Ganti gambar rimuru-rules.jpg (thumbnail rules)',
+    description: 'Cambia la imagen de reglas rimuru con la estética Waguri Assistant 📜 (thumbnail rules)',
     usage: '.ganti-rimuru-rules.jpg (reply/kirim gambar)',
     example: '.ganti-rimuru-rules.jpg',
     isOwner: true,

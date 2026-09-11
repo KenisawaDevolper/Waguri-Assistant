@@ -6,7 +6,7 @@ const pluginConfig = {
     name: 'ganti-rimuru-games.jpg',
     alias: ['gantigames', 'setrimurugames'],
     category: 'owner',
-    description: 'Ganti gambar rimuru-games.jpg (thumbnail games)',
+    description: 'Cambia la imagen rimuru-games (miniatura) con la estética Waguri Assistant 🎮',
     usage: '.ganti-rimuru-games.jpg (reply/kirim gambar)',
     example: '.ganti-rimuru-games.jpg',
     isOwner: true,

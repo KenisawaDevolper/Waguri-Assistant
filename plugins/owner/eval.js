@@ -9,7 +9,7 @@ const pluginConfig = {
     name: 'eval',
     alias: ['$', 'ev', 'evaluate', '=>'],
     category: 'owner',
-    description: 'Jalankan kode JavaScript (Owner Only)',
+    description: 'Ejecuta código JavaScript (Solo Owner) con la estética Waguri Assistant ⚙️',
     usage: '=> <code> atau .$ <code>',
     example: '=> m.chat',
     isOwner: true,

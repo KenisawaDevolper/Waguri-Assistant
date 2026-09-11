@@ -5,7 +5,7 @@ const pluginConfig = {
     name: 'rimuru-large',
     alias: ['setrimurularge', 'gantirimurularge'],
     category: 'owner',
-    description: 'Preset: Ganti gambar rimuru.jpg, serta rimuru-v7 hingga rimuru-v11.jpg una vezgus',
+    description: 'Preset: Cambia la imagen rimuru con la estética Waguri Assistant 🖼️, serta rimuru-v7 hingga rimuru-v11.jpg una vezgus',
     usage: '.rimuru-large (reply/kirim gambar)',
     example: '.rimuru-large',
     isOwner: true,

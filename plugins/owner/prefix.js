@@ -36,7 +36,7 @@ const pluginConfig = {
     name: ['addprefix', 'gantiprefix', 'setprefix', 'delprefix', 'listprefix', 'resetprefix'],
     alias: [],
     category: 'owner',
-    description: 'Manajemen prefix bot',
+    description: 'Gestión de prefijos del bot con la estética Waguri Assistant ⚙️',
     usage: '.addprefix <prefix1> <prefix2>...',
     example: '.addprefix ! # $',
     isOwner: true,

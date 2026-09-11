@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "checkban",
   alias: [],
   category: "owner",
-  description: "Check actual ban state",
+  description: "Verifica el estado actual de baneo con la estética Waguri Assistant 🔍",
   usage: ".checkban",
   isOwner: true,
 };

@@ -6,7 +6,7 @@ const pluginConfig = {
     name: 'ganti-rimuru-winner.jpg',
     alias: ['gantirimuruwinner', 'setrimuruwinner'],
     category: 'owner',
-    description: 'Ganti gambar rimuru-winner.jpg (thumbnail game winner)',
+    description: 'Cambia la imagen de ganador rimuru con la estética Waguri Assistant 🏆 (thumbnail game winner)',
     usage: '.ganti-rimuru-winner.jpg (reply/kirim gambar)',
     example: '.ganti-rimuru-winner.jpg',
     isOwner: true,

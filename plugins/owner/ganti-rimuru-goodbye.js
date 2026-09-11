@@ -6,7 +6,7 @@ const pluginConfig = {
     name: 'ganti-rimuru-goodbye.jpg',
     alias: ['gantigoodbye', 'setrimurugoodbye'],
     category: 'owner',
-    description: 'Ganti gambar rimuru-goodbye.jpg (thumbnail goodbye)',
+    description: 'Cambia la imagen de despedida rimuru con la estética Waguri Assistant 👋 (thumbnail goodbye)',
     usage: '.ganti-rimuru-goodbye.jpg (reply/kirim gambar)',
     example: '.ganti-rimuru-goodbye.jpg',
     isOwner: true,

@@ -6,7 +6,7 @@ const pluginConfig = {
     name: 'ganti-rimuru.mp3',
     alias: ['gantirimuruaudio', 'setrimuruaudio'],
     category: 'owner',
-    description: 'Ganti audio rimuru.mp3',
+    description: 'Cambia audio rimuru.mp3',
     usage: '.ganti-rimuru.mp3 (reply/kirim audio)',
     example: '.ganti-rimuru.mp3',
     isOwner: true,

@@ -6,7 +6,7 @@ const pluginConfig = {
     name: 'ganti-rimuru.mp4',
     alias: ['gantirimuruvideo', 'setrimuruvideo'],
     category: 'owner',
-    description: 'Ganti video rimuru.mp4',
+    description: 'Cambia video rimuru.mp4',
     usage: '.ganti-rimuru.mp4 (reply/kirim video)',
     example: '.ganti-rimuru.mp4',
     isOwner: true,

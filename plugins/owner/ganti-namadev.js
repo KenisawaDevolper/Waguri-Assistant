@@ -5,7 +5,7 @@ const pluginConfig = {
     name: 'ganti-namadev',
     alias: ['setnamadev', 'setnamedev', 'gantideveloper'],
     category: 'owner',
-    description: 'Ganti nama developer di config.js',
+    description: 'Cambia el nombre del developer en config.js con la estética Waguri Assistant 👨‍💻',
     usage: '.ganti-namadev <nama baru>',
     example: '.ganti-namadev Lucky Archz',
     isOwner: true,

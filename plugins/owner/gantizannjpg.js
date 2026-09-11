@@ -7,7 +7,7 @@ const pluginConfig = {
     name: 'ganti-zann.jpg',
     alias: ['ganzann', 'setzann'],
     category: 'owner',
-    description: 'Ganti gambar Zann.jpg (thumbnail menu)',
+    description: 'Cambia la imagen Zann.jpg (thumbnail menu)',
     usage: '.ganti-zann.jpg (reply/kirim gambar)',
     example: '.ganti-zann.jpg',
     isOwner: true,
@@ -23,7 +23,7 @@ async function handler(m, { sock }) {
     const isImage = m.isImage || (m.quoted && m.quoted.type === 'imageMessage')
     
     if (!isImage) {
-        return m.reply(`🖼️ *ɢᴀɴᴛɪ ZANN.JPG*\n\n> Kirim/reply gambar untuk mengganti\n> File: assets/images/Zann.jpg`)
+        return m.reply(`🖼️ *ɢᴀɴᴛɪ ZANN.JPG*\n\n> Kirim/reply la imagen untuk mengganti\n> File: assets/images/Zann.jpg`)
     }
     
     try {
