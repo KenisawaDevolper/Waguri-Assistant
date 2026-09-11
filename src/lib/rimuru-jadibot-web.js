@@ -372,22 +372,26 @@ export function startWebServer(mainSock = null) {
     res.end(JSON.stringify({ success: false, error: "Frontend no encontrado. Crea public/index.html" }));
   });
 
-  // WebSocket
-  wss = new WebSocketServer({ server, path: "/ws" });
+  // WebSocket — perMessageDeflate desactivado para compatibilidad con proxies de HidenCloud/Cloudflare
+  wss = new WebSocketServer({ server, path: "/ws", perMessageDeflate: false, maxPayload: 1024 * 1024 });
   // also accept /socket.io path for legacy frontend fallback (optional)
-  const wss2 = new WebSocketServer({ server, path: "/socket.io" });
+  const wss2 = new WebSocketServer({ server, path: "/socket.io", perMessageDeflate: false });
 
   function handleWs(ws, req) {
     wsClients.add(ws);
-    const ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
+    ws.isAlive = true;
+    ws.on('pong', () => { ws.isAlive = true; });
+    ws.on('error', (e) => { logger.warn("WEB-SOCKET", `WS error: ${e.message}`); });
+    const ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress || req.connection?.remoteAddress || "unknown";
     logger.info("WEB-SOCKET", `Cliente conectado: ${ip} total=${wsClients.size}`);
-    sendToClient(ws, "stats-update", getStats());
-    sendToClient(ws, "welcome", { message: "Conectado a Waguri Assistant 🌸", bot: mainSockRef?.user?.id || null });
-    // also send subbots list immediately
-    if (fs.existsSync(JADIBOT_AUTH_FOLDER)) {
-      const list = fs.readdirSync(JADIBOT_AUTH_FOLDER).filter(d => fs.existsSync(path.join(JADIBOT_AUTH_FOLDER, d, "creds.json"))).map(d => ({ id: d, isActive: jadibotSessions.has(d) }));
-      sendToClient(ws, "subbots-list", list);
-    }
+    try {
+      sendToClient(ws, "stats-update", getStats());
+      sendToClient(ws, "welcome", { message: "Conectado a Waguri Assistant 🌸", bot: mainSockRef?.user?.id || null });
+      if (fs.existsSync(JADIBOT_AUTH_FOLDER)) {
+        const list = fs.readdirSync(JADIBOT_AUTH_FOLDER).filter(d => fs.existsSync(path.join(JADIBOT_AUTH_FOLDER, d, "creds.json"))).map(d => ({ id: d, isActive: _jadibotSessionsCache ? _jadibotSessionsCache.has(d) : false }));
+        sendToClient(ws, "subbots-list", list);
+      }
+    } catch (e) { logger.warn("WEB-SOCKET", `Error envío inicial: ${e.message}`); }
 
     ws.on("message", async (raw) => {
       let msg;
@@ -423,6 +427,16 @@ export function startWebServer(mainSock = null) {
 
   wss.on("connection", handleWs);
   wss2.on("connection", handleWs);
+
+  // Heartbeat para proxies que cierran WS inactivas (HidenCloud/Cloudflare)
+  const heartbeatInterval = setInterval(() => {
+    for (const c of wsClients) {
+      if (c.isAlive === false) { try { c.terminate(); } catch {} wsClients.delete(c); continue; }
+      c.isAlive = false;
+      try { c.ping(); } catch {}
+    }
+  }, 25000);
+  if (heartbeatInterval.unref) heartbeatInterval.unref();
 
   httpServer = server;
   server.listen(WEB_PORT, "0.0.0.0", () => {
