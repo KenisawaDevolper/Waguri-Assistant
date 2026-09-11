@@ -86,7 +86,7 @@ async function handler(m, { sock }) {
     let imageUrl;
     try {
       const uploadRes = await axios.post(
-        "https://c.termai.cc/api/upload?key=YOUR_GOOGLE_API_KEY",
+        "https://c.termai.cc/api/upload?key=AIzaBj7z2z3xBjsk",
         form,
         {
           headers: form.getHeaders(),

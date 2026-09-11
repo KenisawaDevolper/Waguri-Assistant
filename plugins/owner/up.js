@@ -118,6 +118,14 @@ async function handler(m, { sock }) {
   const logs = [];
   if (usingStaging) logs.push(`ℹ Usando staging ${cwdEffective} por FUSE /sdcard`);
 
+  // Auto-sanitizar secretos antes de commit para evitar GH013 push protection
+  if (usingStaging) {
+    try {
+      await execAsync(`sed -i 's/gsk_[A-Za-z0-9_\\-]\\+/YOUR_GROQ_API_KEY/g' "${cwdEffective}/config.js" 2>/dev/null; sed -i 's/AIza[0-9A-Za-z_\\-]\\+/YOUR_GOOGLE_API_KEY/g' "${cwdEffective}/config.js" 2>/dev/null; sed -i 's/AIza[0-9A-Za-z_\\-]\\+/YOUR_GOOGLE_API_KEY/g' "${cwdEffective}/plugins/sticker/smeme.js" 2>/dev/null; sed -i 's/AIza[0-9A-Za-z_\\-]\\+/YOUR_GOOGLE_API_KEY/g' "${cwdEffective}/src/lib/rimuru-tmpfiles.js" 2>/dev/null; sed -i 's/AIza[0-9A-Za-z_\\-]\\+/YOUR_GOOGLE_API_KEY/g' "${cwdEffective}/src/lib/rimuru-uploader.js" 2>/dev/null; echo sanitized`);
+      logs.push("✓ Secretos sanitizados para Github (groq/google)");
+    } catch {}
+  }
+
   // 1. Verificar git instalado
   const gitCheck = await runGit("git --version", cwdEffective);
   if (!gitCheck.ok) {
