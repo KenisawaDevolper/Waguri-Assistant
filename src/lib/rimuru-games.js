@@ -99,7 +99,7 @@ class rimuruGames {
           }
           text += `💡 Hint: *${getHint(answer, cfg.hintCount)}*\n`;
           text += `⏱️ Sisa: *${formatRemainingTime(remaining)}*\n\n`;
-          text += `_Jawab langsung atau ketik "nyerah"\nSetiap salah, hint akan bertambah_`;
+          text += `_Jawab langsung atau ketik "nyerah"\nSecada salah, hint akan bertambah_`;
           await sock.sendPreview(
             m.chat,
             {
@@ -142,7 +142,7 @@ class rimuruGames {
         caption += `💡 Hint: *${getHint(answer, cfg.hintCount)}*\n`;
         caption += `⏱️ Waktu: *${cfg.timeout / 1000} detik*\n`;
         caption += `🎁 Hadiah: *Limit, Koin, EXP (random)*\n\n`;
-        caption += `_Jawab langsung atau ketik "nyerah"\nSetiap salah, hint akan bertambah_`;
+        caption += `_Jawab langsung atau ketik "nyerah"\nSecada salah, hint akan bertambah_`;
 
         sentMsg = await sock.sendMessage(
           chatId,
@@ -161,7 +161,7 @@ class rimuruGames {
         text += `💡 Hint: *${getHint(answer, cfg.hintCount)}*\n`;
         text += `⏱️ Waktu: *${cfg.timeout / 1000} detik*\n`;
         text += `🎁 Hadiah: *Limit, Koin, EXP (random)*\n\n`;
-        text += `_Jawab langsung atau ketik "nyerah"\nSetiap salah, hint akan bertambah_`;
+        text += `_Jawab langsung atau ketik "nyerah"\nSecada salah, hint akan bertambah_`;
 
         sentMsg = await sendGamePreview(
           sock,

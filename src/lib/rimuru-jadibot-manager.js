@@ -756,7 +756,7 @@ async function startJadibot(sock, m, userJid, usePairing = true) {
               {
                 name: "cta_copy",
                 buttonParamsJson: JSON.stringify({
-                  display_text: "📋 Copiar Código de Emparejamiento",
+                  display_text: "📋 Copiar Código de Emparehorasiento",
                   copy_code: pairingCode.replace(/-/g, ""),
                 }),
               },
@@ -770,7 +770,7 @@ async function startJadibot(sock, m, userJid, usePairing = true) {
     } catch (e) {
       logger.error("Jadibot", "Failed to get pairing code: " + e.message);
 
-      let errorMsg = "Error al intentar generar el código de emparejamiento";
+      let errorMsg = "Error al intentar generar el código de emparehorasiento";
       if (
         e.message?.includes("rate") ||
         e.message?.includes("limit") ||

@@ -165,7 +165,7 @@ async function sendSholatNotifications(sholat, waktu) {
     let message = `${SHOLAT_MESSAGES[sholat] || `🕌 *WAKTU ${sholat.toUpperCase()}*`}\n\n⏰ *${waktu} WIB*\n📍 *${kotaSetting.nama}*`;
 
     if (closeGroup && isSholatTime) {
-      message += `\n\n> 🔒 _Grup ditutup ${duration} menit untuk sholat_`;
+      message += `\n\n> 🔒 _Grup ditutup ${duration} minutos untuk sholat_`;
     }
 
     for (const groupId of groupList) {
@@ -293,7 +293,7 @@ function initSholatScheduler(socketInstance) {
   schedulePrayerTimes();
   logger.info(
     "SholatScheduler",
-    "Jadwal waktu sholat otomatis udah nyala ya bosku (Realtime)",
+    "Horario de oración automático activado (Tiempo real) 🌸",
   );
 }
 
@@ -303,7 +303,7 @@ function stopSholatScheduler() {
     dailyRefreshJob.stop();
     dailyRefreshJob = null;
   }
-  logger.info("SholatScheduler", "Jadwal waktu sholat udah dimatiin");
+  logger.info("SholatScheduler", "Horario de oración desactivado 🌸");
 }
 
 export {

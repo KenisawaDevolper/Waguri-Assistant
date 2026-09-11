@@ -515,7 +515,7 @@ function getTimeGreeting() {
 }
 
 /**
- * Capitalize setiap kata dalam string
+ * Capitalize secada kata dalam string
  * @param {string} str - String untuk di-capitalize
  * @returns {string} Capitalized string
  * @example

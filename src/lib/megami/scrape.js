@@ -115,7 +115,7 @@ async function trustpositif(url) {
     })
     let result = {}
     for (let i of data.values) {
-        result[i.Domain] = i.Status === "Ada"
+        result[i.Domain] = i.Status === "Hay"
     }
     return result
 }

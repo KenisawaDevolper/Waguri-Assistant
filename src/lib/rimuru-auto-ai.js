@@ -164,7 +164,7 @@ const fallbackResponses = [
   "Lo siento, mi mente está en blanco por un momento~",
   "Eh, espera un segundo, cargando...",
   "¡Vaya, mi cerebro tiene lag, inténtalo de nuevo!",
-  "Hmm, ¿qué será? Déjame pensar un momento~",
+  "Hmm, ¿qué será? Déhorase pensar un momento~",
 ];
 
 

@@ -182,7 +182,7 @@ const rodEnchants = {
   hasty: { name: "Hasty", rarity: "common", effect: { progressSpeed: 1.1 }, desc: "Meningkatkan kecepatan progres." },
   blessedsong: { name: "Blessed Song", rarity: "common", effect: { progressSpeed: 1.4 }, desc: "+40% Progress Speed" },
   patient: { name: "Patient", rarity: "common", effect: { luck: 1.05 }, desc: "Kesabaran menghasilkan hasil lebih baik." },
-  skilled: { name: "Skilled", rarity: "common", effect: { xpMultiplier: 1.25 }, desc: "Tambahan XP setiap tangkapan." },
+  skilled: { name: "Skilled", rarity: "common", effect: { xpMultiplier: 1.25 }, desc: "Tambahan XP secada tangkapan." },
   divine: { name: "Divine", rarity: "rare", effect: { luck: 1.45 }, desc: "Keberuntungan tinggi." },
   clever: { name: "Clever", rarity: "rare", effect: { xpMultiplier: 2.25 }, desc: "x2.25 XP" },
   frostbite: { name: "Frostbite", rarity: "rare", effect: { luck: 1.35 }, desc: "Dingin es menenangkan ikan." },

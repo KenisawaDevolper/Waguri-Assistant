@@ -163,8 +163,8 @@ function parseInterval(str) {
 function formatInterval(ms) {
   if (ms >= 24 * 60 * 60 * 1000)
     return `${Math.floor(ms / (24 * 60 * 60 * 1000))} hari`;
-  if (ms >= 60 * 60 * 1000) return `${Math.floor(ms / (60 * 60 * 1000))} jam`;
-  return `${Math.floor(ms / (60 * 1000))} menit`;
+  if (ms >= 60 * 60 * 1000) return `${Math.floor(ms / (60 * 60 * 1000))} horas`;
+  return `${Math.floor(ms / (60 * 1000))} minutos`;
 }
 
 function intervalToCron(ms) {
@@ -308,7 +308,7 @@ function startAutoBackup(sock) {
   const state = loadBackupState();
 
   if (!state.enabled) {
-    logger.info("AutoBackup", "Auto backup is disabled");
+    logger.info("AutoBackup", "Respaldo automático deshabilitado 🌸");
     return;
   }
 

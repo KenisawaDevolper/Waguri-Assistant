@@ -8,8 +8,8 @@ function formatTime(ms) {
     const minutes = Math.floor(seconds / 60)
     const hours = Math.floor(minutes / 60)
     
-    if (hours > 0) return `${hours} jam ${minutes % 60} menit`
-    if (minutes > 0) return `${minutes} menit ${seconds % 60} detik`
+    if (hours > 0) return `${hours} horas ${minutes % 60} minutos`
+    if (minutes > 0) return `${minutes} minutos ${seconds % 60} detik`
     return `${seconds} detik`
 }
 

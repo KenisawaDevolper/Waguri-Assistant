@@ -10,7 +10,7 @@ function cekfemboy(nama) {
             desc = 'Cowok banget! 😎';
             imgUrl = 'https://cek-seberapa-femboy.vercel.app/img/normal.gif';
         } else if (percent < 40) {
-            desc = 'Ada aura lembutnya dikit~ 🌸';
+            desc = 'Hay aura lembutnya dikit~ 🌸';
             imgUrl = 'https://cek-seberapa-femboy.vercel.app/img/dibwh40.gif';
         } else if (percent < 60) {
             desc = 'Lumayan femboy 😘';

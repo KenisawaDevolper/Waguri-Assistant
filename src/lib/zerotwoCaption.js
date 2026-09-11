@@ -7,7 +7,7 @@ const path = require('path')
 const captions = [
     "🦋 *Zero Two*: He~ selamat pagi darling~ Aku udah siapin foto ini dari subuh khusus buat kamu. Bayangin aja, aku bangun, sikat gigi sambil mikirin kamu, terus milih filter paling gemes cuma biar kamu senyum. Kalo kamu masih aja cuek, aku bakal teriak nama kamu di tengah jalan sampe orang-orang nengok. Dan itu gak lucu, darling. Jadi tolong hargai usaha aku ya~ 🎐",
 
-    "💫 *Zero Two*: Eh~ darling, kamu tau nggak? Hari ini aku lagi galau. Bukan galau karena cinta, tapi galau kenapa kamu tuh gak pernah bilang 'aku kangen' duluan. Apa sih susahnya? Aku tuh gak gigit kok... ah tapi kadang aku gigit sih, tapi yang manis-manis aja~ Jadi mulai sekarang, setiap kamu lihat foto aku, wajib bilang 'kangen' minimal tiga kali. Atau aku count mundur dari sepuluh, siap? 10... 9... 💖",
+    "💫 *Zero Two*: Eh~ darling, kamu tau nggak? Hari ini aku lagi galau. Bukan galau karena cinta, tapi galau kenapa kamu tuh gak pernah bilang 'aku kangen' duluan. Apa sih susahnya? Aku tuh gak gigit kok... ah tapi kadang aku gigit sih, tapi yang manis-manis aja~ Jadi mulai sekarang, secada kamu lihat foto aku, wajib bilang 'kangen' minimal tiga kali. Atau aku count mundur dari sepuluh, siap? 10... 9... 💖",
 
     "🌸 *Zero Two*: Hmm~ aku punya pertanyaan buat kamu darling. Menurut kamu, apa sih yang bikin aku beda dari yang lain? Jangan jawab 'tanduk' ya, itu mah udah ketinggalan zaman. Apa karena aku jujur? Suka ngagetin? Atau karena aku gak pernah sungkan buat ngirim kamu foto random plus caption panjang kayak gini? Yah, apa pun jawabannya, satu hal yang pasti: aku gak akan berhenti ganggu kamu. Jadi sabar ya~ 🗿",
 
@@ -23,13 +23,13 @@ const captions = [
 
     "🥴 *Zero Two*: Hmm~ darling lagi ngapain nih? Jangan bilang lagi nonton anime lain selain anime aku. Aku tuh cemburuan lho. Bukan tipe yang teriak-teriak cemburu sih, tapi lebih ke tipe yang bakal dateng ke rumah kamu bawa DVD anime aku dan maksa kamu nonton marathon sampe 3 hari 3 malam. Selamat ya, liburan kamu jadi penuh warna~ 😏",
 
-    "😏 *Zero Two*: Awas aja kalau gak like gambar ini~ Aku udah siapin strategi jitu. Pertama, aku bakal spam mention kamu di 20 postingan lama. Kedua, aku bakal kirim voice note isinya aku ketawa jahat selama 1 menit. Ketiga, aku bakal ganti profil WhatsApp jadi foto kamu (yang paling norak) biar semua kontak kamu liat. Jadi pilihannya: like foto ini dengan damai, atau hadapi konsekuensinya~ 🦋",
+    "😏 *Zero Two*: Awas aja kalau gak like gambar ini~ Aku udah siapin strategi jitu. Pertama, aku bakal spam mention kamu di 20 postingan lama. Kedua, aku bakal kirim voice note isinya aku ketawa jahat selama 1 minutos. Ketiga, aku bakal ganti profil WhatsApp jadi foto kamu (yang paling norak) biar semua kontak kamu liat. Jadi pilihannya: like foto ini dengan damai, atau hadapi konsekuensinya~ 🦋",
 
-    "🦋 *Zero Two*: Ada yang mau request gambar? tulis aja~ Asal jangan cium-cium, peluk-peluk, atau pose yang bikin kamu bayangin hal-hal aneh. Aku ini idolamu, bukan... ah sudahlah. Yang jelas, selama request-onya sopan dan lucu, aku usahakan. Kalo request-onya 'tolong jadi pacar aku', wah itu mah gratis, darling. Kamu tinggal bilang 'iya' doang kok~ 💫",
+    "🦋 *Zero Two*: Hay yang mau request gambar? tulis aja~ Asal jangan cium-cium, peluk-peluk, atau pose yang bikin kamu bayangin hal-hal aneh. Aku ini idolamu, bukan... ah sudahlah. Yang jelas, selama request-onya sopan dan lucu, aku usahakan. Kalo request-onya 'tolong jadi pacar aku', wah itu mah gratis, darling. Kamu tinggal bilang 'iya' doang kok~ 💫",
 
     "💫 *Zero Two*: Random post dari Zero Two untuk darling~ Tau gak? Sebenernya aku lagi BT karena hujan. Tapi daripada murung, mending aku ganggu kamu. Kan lucu ya, kita berdua bisa saling ganggu walau jarak jauh. Kamu bisa balas dengan kata-kata manis atau malah balas dengan stiker kucing ngepet, terserah. Yang penting, jangan biarkan aku sendiri. Nanti aku lebay dan bikin puisi cinta 4 bait, dan itu gak akan lucu buat dibaca~ 🌸",
 
-    "🌸 *Zero Two*: Semoga hari darling menyenangkan ya! Doa aku setiap pagi: semoga kamu dapet jajan enak, semoga kamu gak ketahuan guru lagi, dan semoga kamu selalu inget aku tanpa perlu diingetin. Tapi kayaknya doa yang ketiga agak mustahil ya, makanya aku harus spam terus. Ini bukan karena aku posesif lho, ini karena... ya gak sih? Ah masa bodo, yang penting kamu bahagia~ 🔥",
+    "🌸 *Zero Two*: Semoga hari darling menyenangkan ya! Doa aku secada pagi: semoga kamu dapet jajan enak, semoga kamu gak ketahuan guru lagi, dan semoga kamu selalu inget aku tanpa perlu diingetin. Tapi kayaknya doa yang ketiga agak mustahil ya, makanya aku harus spam terus. Ini bukan karena aku posesif lho, ini karena... ya gak sih? Ah masa bodo, yang penting kamu bahagia~ 🔥",
 
     "🔥 *Zero Two*: Jangan lupa makan, jangan sakit ya~ Soalnya kalo kamu sakit, siapa yang bakal nemenin aku debat soal topping mie instan terbaik? Siapa yang bakal jadi sasaran candaan receh aku? Siapa yang bakal nahan ketawa pas aku cerita soal mimpi aneh? Gak ada. Jadi jangan egois dong, darling. Sehat buat aku~ 🎐",
 
@@ -41,7 +41,7 @@ const captions = [
 
     "💖 *Zero Two*: Aku sayang kalian semua! Eh tapi jangan alergi dulu. Aku juga masih punya sayang khusus buat satu orang. Tebak siapa? Siapa lagi kalo bukan darling yang lagi baca caption ini dengan muka campuran antara gemes, sebel, tapi penasaran. Iya kamu banget. Jangan pura-pura sibuk ya, aku tau kamu bacanya sambil senyum-senyum sendiri~ 🎉",
 
-    "🎉 *Zero Two*: Ada yang mau ngobrol? Aku di sini~ Daripada kamu nonton konten gak jelas, mending ngobrol sama aku. Dijamin lebih seru, unpredictable, dan kadang bikin kamu mikir 'kok manusia kayak gini ada ya'. Tapi itu justru yang bikin aku istimewa. Aku gak tahu diri, gak tau malu, dan yang penting, aku gak pernah bosen buat ganggu kamu. Jadi siap-siap aja~ 🌙",
+    "🎉 *Zero Two*: Hay yang mau ngobrol? Aku di sini~ Daripada kamu nonton konten gak jelas, mending ngobrol sama aku. Dihorasin lebih seru, unpredictable, dan kadang bikin kamu mikir 'kok manusia kayak gini ada ya'. Tapi itu justru yang bikin aku istimewa. Aku gak tahu diri, gak tau malu, dan yang penting, aku gak pernah bosen buat ganggu kamu. Jadi siap-siap aja~ 🌙",
 
     "🌙 *Zero Two*: Selamat malam darling, mimpi indah ya! Jangan lupa tidur dengan posisi nyaman, tangan di dada, dan hati yang tenang. Oh iya, kalau kamu mimpiin aku, jangan malu-malu. Aku juga sering mimpiin kamu kok. Tapi mimpiku isinya kita berdua lagi makan bakso sambil ngobrol ngalor-ngidul. Random, tapi seru. Ok, selamat tidur. Love you, sweet dreams~ 😴",
 
@@ -55,7 +55,7 @@ const captions = [
 
     "🔥 *Zero Two*: Darling, tolong jangan terlalu serius menjalani hidup. Kadang kita lupa buat ketawa karena terlalu sibuk mikirin masa depan. Padahal yang namanya masa depan itu ya hari ini juga. Jadi kalo hari ini kamu sedih, bayangin aja besok kamu bahagia bareng aku (di chat, tentunya). Belum bisa lebih dari itu, tapi doa aku selalu nyertai. Kamu hebat, kamu kuat, dan kamu gak sendiri. Aku di sini, setia jadi budak chat kamu~ 🎐",
 
-    "🎐 *Zero Two*: Tahu gak, darling? Sebenernya aku tuh pemalu. Iya beneran, jangan cengir gitu. Aku tuh gampang grogi kalo ngobrol sama orang yang aku suka. Makanya aku pake caption panjang kayak gini biar gak keliatan canggung. Tapi sejujurnya, setiap kali kirim foto, tanganku gemeteran. Nanti kalo bisa ketemu, tolong jangan ledekin aku ya. Aku bisa lari masuk sumur kalo malu~ 💀",
+    "🎐 *Zero Two*: Tahu gak, darling? Sebenernya aku tuh pemalu. Iya beneran, jangan cengir gitu. Aku tuh gampang grogi kalo ngobrol sama orang yang aku suka. Makanya aku pake caption panjang kayak gini biar gak keliatan canggung. Tapi sejujurnya, secada kali kirim foto, tanganku gemeteran. Nanti kalo bisa ketemu, tolong jangan ledekin aku ya. Aku bisa lari masuk sumur kalo malu~ 💀",
 
     "💀 *Zero Two*: Hey darling, tampaknya kamu lagi butuh hiburan ya. Nih, aku kasih tebak-tebakan. Apa bedanya aku sama matahari? Matahari bersinar di siang hari, aku bersinar kapan pun kamu butuh. Matahari panas, aku... ya kadang juga panas sih kalo lagi sensian. Matahari gak bisa dipeluk, aku juga gak bisa... ya bisa sih, cuma lewat chat aja. Ah, tebakan jelek ya. Tapi maaf ya, aku bukan jago bikin tebakan~ 😎",
 
@@ -73,11 +73,11 @@ const captions = [
 
     "🔥 *Zero Two*: Darling, tolong jangan pernah ragu buat jadi diri sendiri. Kalo kamu konyol, ya udah. Kalo kamu pemalu, gapapa. Kalo kamu kadang bad mood, wajar. Aku juga gak selalu ceria kok. Tapi yang penting, kapan pun kamu butuh tempat buat jadi diri sendiri, aku di sini. Gak bakal nge judge, gak bakal nge-gas. Kecuali kamu minta pendapat soal baju, itu beda masalah~ 🎐",
 
-    "🎐 *Zero Two*: Malam ini dingin banget ya, darling. Aku selimutan sambil ngetik ini. Kadang pengen punya orang yang bisa ditemeni ngobrol pas dingin-dingin gini, yang bisa saling ngirim rekomendasi film, atau sekedar nge-share lagu yang lagi diputer. Dan itu kamu, darling. Selalu kamu. Jadi jangan heran kalo tiba-tiba aku kirim lagu acak jam 2 malam. Itu tandanya aku lagi kangen~ ✨",
+    "🎐 *Zero Two*: Malam ini dingin banget ya, darling. Aku selimutan sambil ngetik ini. Kadang pengen punya orang yang bisa ditemeni ngobrol pas dingin-dingin gini, yang bisa saling ngirim rekomendasi film, atau sekedar nge-share lagu yang lagi diputer. Dan itu kamu, darling. Selalu kamu. Jadi jangan heran kalo tiba-tiba aku kirim lagu acak horas 2 malam. Itu tandanya aku lagi kangen~ ✨",
 
     "✨ *Zero Two*: Darling, hari ini aku sadar satu hal. Bahwa kebahagiaan tuh gak melulu harus tentang hal besar. Bisa sekedar dapet caption panjang dari Zero Two, dibales chat dengan cepat, atau lihat kamu online. Hal-hal kecil itu yang bikin aku tersenyum sendiri kayak orang gila. Jadi makasih ya udah hadir. Walau cuma lewat layar, tapi artinya besar buat aku~ 🪸",
 
-    "🪸 *Zero Two*: Tahu gak, darling? Kadang aku mikir, apakah aku terlalu banyak mengganggu kamu dengan kirim foto terus. Tapi setiap kali aku pending send, aku inget kamu pasti lagi butuh hiburan. Jadi cancel deh rasa ragu, kirim aja. Walau gak penting, walau norak, setidaknya kamu tau kalo ada satu orang di luar sana yang selalu inget kamu tanpa henti. Dan itu aku, Zero Two, yang kadang menyebalkan tapi tulus~ 💖",
+    "🪸 *Zero Two*: Tahu gak, darling? Kadang aku mikir, apakah aku terlalu banyak mengganggu kamu dengan kirim foto terus. Tapi secada kali aku pending send, aku inget kamu pasti lagi butuh hiburan. Jadi cancel deh rasa ragu, kirim aja. Walau gak penting, walau norak, setidaknya kamu tau kalo ada satu orang di luar sana yang selalu inget kamu tanpa henti. Dan itu aku, Zero Two, yang kadang menyebalkan tapi tulus~ 💖",
 
     "💖 *Zero Two*: Hey darling, coba main tebak-tebakan lagi. Kenapa aku pilih kamu? Bukan karena kamu paling ganteng/cantik, bukan karena kamu paling kaya, bukan karena kamu paling pinter. Tapi karena kamu ada saat aku butuh orang yang bisa diajak ngobrol random. Kamu gak nge-judge aku aneh (walau aneh), kamu gak pergi walau aku kadang lebay. Itu lebih dari cukup. Jadi thanks ya untuk segalanya~ 🎉",
 
@@ -91,11 +91,11 @@ const captions = [
 
     "💫 *Zero Two*: Kalo aku boleh jujur, darling, aku tuh gampang baperan. Makanya kadang aku nutupin dengan sikap cuek. Tapi lewat caption ini, aku mau bilang: terima kasih udah bertahan dengan semua sikap aku yang kadang aneh, kadang menyebalkan, tapi insya Allah tulus. Kamu itu berharga, jangan pernah merasa sebaliknya. Oke, cukup dramanya. Lanjut ketawa lagi yuk! ~ 🌸",
 
-    "🌸 *Zero Two*: Darling, ada yang lucu nih. Tadi aku ngaca sambil liat foto kita berdua (editanku sendiri sih) terus tanpa sadar aku ketawa sendiri. Kayak kita tuh cocok aja gitu walau belum pernah ketemu. Mungkin ini namanya jodoh? Ah bercanda. Tapi kalaupun iya, aku gak bakal protes. Kamu gimana? Setuju gak jadi jodoh? Jawabnya nanti aja, aku kasih waktu 24 jam~ 🔥",
+    "🌸 *Zero Two*: Darling, ada yang lucu nih. Tadi aku ngaca sambil liat foto kita berdua (editanku sendiri sih) terus tanpa sadar aku ketawa sendiri. Kayak kita tuh cocok aja gitu walau belum pernah ketemu. Mungkin ini namanya jodoh? Ah bercanda. Tapi kalaupun iya, aku gak bakal protes. Kamu gimana? Setuju gak jadi jodoh? Jawabnya nanti aja, aku kasih waktu 24 horas~ 🔥",
 
-    "🔥 *Zero Two*: Darling, sebelum aku lupa... makasih ya buat hari ini. Mungkin kamu cuma baca caption ini dalam waktu 1 menit, tapi aku nulisnya butuh mikir agak lama. Dan itu artinya kamu berharga buat aku. Jadi tolong jaga diri baik-baik, jangan sampai kenapa-napa. Aku butuh kamu tetap sehat dan bahagia, biar aku punya alasan terus buat kirim caption kayak gini. Sampai jumpa di postingan berikutnya~ 🎐",
+    "🔥 *Zero Two*: Darling, sebelum aku lupa... makasih ya buat hari ini. Mungkin kamu cuma baca caption ini dalam waktu 1 minutos, tapi aku nulisnya butuh mikir agak lama. Dan itu artinya kamu berharga buat aku. Jadi tolong jaga diri baik-baik, jangan sampai kenapa-napa. Aku butuh kamu tetap sehat dan bahagia, biar aku punya alasan terus buat kirim caption kayak gini. Sampai jumpa di postingan berikutnya~ 🎐",
 
-    "🎐 *Zero Two*: Pesan moral dari caption ini? Gak ada. Aku cuma pengen kamu tau kalo ada seseorang di luar sana yang selalu excited setiap kali mau kirim foto ke kamu. Bukan karena foto-nya bagus, tapi karena kamu yang liat. Kamu itu spesial. Jangan pernah ngerasa biasa-biasa aja. Oke, cukup. Aku pergi dulu, mau minum dulu, tenggorokan kering bacot mulu~ ✨"
+    "🎐 *Zero Two*: Pesan moral dari caption ini? Gak ada. Aku cuma pengen kamu tau kalo ada seseorang di luar sana yang selalu excited secada kali mau kirim foto ke kamu. Bukan karena foto-nya bagus, tapi karena kamu yang liat. Kamu itu spesial. Jangan pernah ngerasa biasa-biasa aja. Oke, cukup. Aku pergi dulu, mau minum dulu, tenggorokan kering bacot mulu~ ✨"
 ]
 
 // Fungsi buat dapetin caption random

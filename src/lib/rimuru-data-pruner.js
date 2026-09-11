@@ -54,7 +54,7 @@ function startDailyPruner() {
     }, PRUNE_INTERVAL)
 
     if (prunerTimer.unref) prunerTimer.unref()
-    logger.success('pruner', `Pembersih data usang jalan (> ${INACTIVE_THRESHOLD / 86400000} hari nonaktif, tiap ${PRUNE_INTERVAL / 3600000} jam)`)
+    logger.success('pruner', `Limpieza de datos obsoletos activa (> ${INACTIVE_THRESHOLD / 86400000} días inactivo, cada ${PRUNE_INTERVAL / 3600000} horas)`)
 }
 
 function stopDailyPruner() {

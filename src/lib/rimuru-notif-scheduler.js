@@ -9,32 +9,32 @@ const notifCronJobs = new Map()
 let refreshJob = null
 
 const MAKAN_MESSAGES = [
-    '🍽️ *Waktunya makan {label}!*\n\n⏰ *{jam} WIB*\n\nJangan skip makan ya, tubuh butuh asupan energi biar tetap produktif 💪\n{menu}\n\n📌 _Diatur oleh @{sender}_',
-    '🥗 *Heyy @{sender}, udah jam {jam} nih!*\n\nSaatnya isi perut dulu 🍛\nMakan yang bergizi biar badan tetap fit!\n{menu}',
-    '🍜 *Reminder makan {label}*\n\n⏰ *{jam} WIB*\n\nPerut kosong bikin mood jelek lho 😤\nYuk makan dulu sebelum lanjut aktivitas\n{menu}\n\n📌 _Diatur oleh @{sender}_',
+    '🍽️ *Waktunya makan {label}!*\n\n⏰ *{horas} WIB*\n\nJangan skip makan ya, tubuh butuh asupan energi biar tetap produktif 💪\n{menu}\n\n📌 _Diatur oleh @{sender}_',
+    '🥗 *Heyy @{sender}, udah horas {horas} nih!*\n\nSaatnya isi perut dulu 🍛\nMakan yang bergizi biar badan tetap fit!\n{menu}',
+    '🍜 *Reminder makan {label}*\n\n⏰ *{horas} WIB*\n\nPerut kosong bikin mood jelek lho 😤\nYuk makan dulu sebelum lanjut aktivitas\n{menu}\n\n📌 _Diatur oleh @{sender}_',
     '🍜 *MAKAN DULU WOYY @{sender}*\n\nPakai ? {menu}',
 ]
 
 const TIDUR_MESSAGES = [
-    '🌙 *Waktunya istirahat!*\n\n⏰ *{jam} WIB*\n\nTaruh HP-nya, pejamkan mata 😴\nTidur cukup bikin otak fresh buat besok!\n_Selamat malam_ 🌟\n\n📌 _Diatur oleh @{sender}_',
-    '💤 *Udah jam {jam} nih @{sender}!*\n\nYuk istirahat, jangan begadang terus 🛏️\nKesehatan itu investasi paling berharga\n_Mimpi indah ya_ ✨',
-    '😴 *Reminder tidur malam*\n\n⏰ *{jam} WIB*\n\nLayar HP itu musuh tidur nyenyak 📵\nMatikan notifikasi dan rebahan sekarang!\n_Good night_ 🌜\n\n📌 _Diatur oleh @{sender}_',
-    '*TURU WOYY @{sender}*\n\n⏰ Udah jam *{jam}*',
+    '🌙 *Waktunya istirahat!*\n\n⏰ *{horas} WIB*\n\nTaruh HP-nya, pehoraskan mata 😴\nTidur cukup bikin otak fresh buat besok!\n_Selamat malam_ 🌟\n\n📌 _Diatur oleh @{sender}_',
+    '💤 *Udah horas {horas} nih @{sender}!*\n\nYuk istirahat, jangan begadang terus 🛏️\nKesehatan itu investasi paling berharga\n_Mimpi indah ya_ ✨',
+    '😴 *Reminder tidur malam*\n\n⏰ *{horas} WIB*\n\nLayar HP itu musuh tidur nyenyak 📵\nMatikan notifikasi dan rebahan sekarang!\n_Good night_ 🌜\n\n📌 _Diatur oleh @{sender}_',
+    '*TURU WOYY @{sender}*\n\n⏰ Udah horas *{horas}*',
 ]
 
-function getRandomMessage(templates, jam, menu, label, senderJid) {
+function getRandomMessage(templates, horas, menu, label, senderJid) {
     const idx = Math.floor(Math.random() * templates.length)
     const senderMention = senderJid ? senderJid.split('@')[0] : ''
     let msg = templates[idx]
-        .replace(/\{jam\}/g, jam)
+        .replace(/\{horas\}/g, horas)
         .replace(/\{label\}/g, label || '')
         .replace(/\{menu\}/g, menu ? `🍴 _${menu}_` : '')
         .replace(/\{sender\}/g, senderMention)
     return msg.trim()
 }
 
-function getMealLabel(jam) {
-    const hour = parseInt(jam.split(':')[0], 10)
+function getMealLabel(horas) {
+    const hour = parseInt(horas.split(':')[0], 10)
     if (hour >= 4 && hour < 10) return 'pagi'
     if (hour >= 10 && hour < 15) return 'siang'
     if (hour >= 15 && hour < 18) return 'sore'
@@ -57,13 +57,13 @@ function buildCronJobs() {
 
     for (const [key, entry] of Object.entries(makanData)) {
         if (!entry.enabled || !entry.jadwal) continue
-        for (const jam of entry.jadwal) {
-            const [h, m] = jam.split(':').map(Number)
-            const cronKey = `makan_${key}_${jam}`
+        for (const horas of entry.jadwal) {
+            const [h, m] = horas.split(':').map(Number)
+            const cronKey = `makan_${key}_${horas}`
             if (notifCronJobs.has(cronKey)) continue
 
             const job = new CronJob(`${m} ${h} * * *`, async () => {
-                await processEntry(entry, jam, 'makan', key, db, todayStr)
+                await processEntry(entry, horas, 'makan', key, db, todayStr)
             }, null, true, TZ)
 
             notifCronJobs.set(cronKey, job)
@@ -72,32 +72,32 @@ function buildCronJobs() {
 
     for (const [key, entry] of Object.entries(tidurData)) {
         if (!entry.enabled || !entry.jadwal) continue
-        for (const jam of entry.jadwal) {
-            const [h, m] = jam.split(':').map(Number)
-            const cronKey = `tidur_${key}_${jam}`
+        for (const horas of entry.jadwal) {
+            const [h, m] = horas.split(':').map(Number)
+            const cronKey = `tidur_${key}_${horas}`
             if (notifCronJobs.has(cronKey)) continue
 
             const job = new CronJob(`${m} ${h} * * *`, async () => {
-                await processEntry(entry, jam, 'tidur', key, db, todayStr)
+                await processEntry(entry, horas, 'tidur', key, db, todayStr)
             }, null, true, TZ)
 
             notifCronJobs.set(cronKey, job)
         }
     }
 
-    logger.info('NotifScheduler', `Ada ${notifCronJobs.size} alarm notifikasi yang lagi jalan nih (${TZ})`)
+    logger.info('NotifScheduler', `Hay ${notifCronJobs.size} alarmas de notificación activas (${TZ})`)
 }
 
-async function processEntry(entry, jam, type, key, db, dateStr) {
+async function processEntry(entry, horas, type, key, db, dateStr) {
     const lastSent = entry.lastSent || {}
-    const sentKey = `${jam}_${dateStr}`
+    const sentKey = `${horas}_${dateStr}`
     if (lastSent[sentKey]) return
 
     try {
         const templates = type === 'makan' ? MAKAN_MESSAGES : TIDUR_MESSAGES
-        const label = type === 'makan' ? getMealLabel(jam) : ''
+        const label = type === 'makan' ? getMealLabel(horas) : ''
         const menu = entry.menu || ''
-        const text = getRandomMessage(templates, jam, menu, label, entry.sender)
+        const text = getRandomMessage(templates, horas, menu, label, entry.sender)
 
         const isGroup = entry.chatJid.endsWith('@g.us')
         let mentions = [entry.sender]
@@ -121,7 +121,7 @@ async function processEntry(entry, jam, type, key, db, dateStr) {
         db.setting(settingKey, allData)
 
         cleanOldSentKeys(lastSent)
-        logger.info('NotifScheduler', `Sukses ngirim alarm ${type} ke ${entry.chatJid} (${jam})`)
+        logger.info('NotifScheduler', `Sukses ngirim alarm ${type} ke ${entry.chatJid} (${horas})`)
 
         await new Promise(r => setTimeout(r, 300))
     } catch (err) {
@@ -226,7 +226,7 @@ function initNotifScheduler(socketInstance) {
     }, null, true, TZ)
 
     buildCronJobs()
-    logger.info('NotifScheduler', 'Sistem alarm makan & tidur otomatis udah jalan mantap')
+    logger.info('NotifScheduler', 'Sistema de alarmas de comida y sueño activado con éxito 🌸')
 }
 
 function stopNotifScheduler() {

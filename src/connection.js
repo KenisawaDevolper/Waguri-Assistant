@@ -56,7 +56,7 @@ function startWatchdog(reconnectFn, options) {
   if (watchdogTimer.unref) watchdogTimer.unref();
   colors.logger.success(
     "watchdog",
-    `ya está activo, límite de espera ${WATCHDOG_TIMEOUT / 60000} menit`,
+    `ya está activo, límite de espera ${WATCHDOG_TIMEOUT / 60000} minutos`,
   );
 }
 

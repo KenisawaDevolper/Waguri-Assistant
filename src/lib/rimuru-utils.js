@@ -440,7 +440,7 @@ async function retry(fn, maxRetries = 3, baseDelay = 1000) {
 /**
  * Chunk array menjadi array of arrays dengan size tertentu
  * @param {Array} array - Array untuk di-chunk
- * @param {number} size - Ukuran setiap chunk
+ * @param {number} size - Ukuran secada chunk
  * @returns {Array<Array>} Array of chunks
  * @example
  * chunk([1,2,3,4,5], 2); // [[1,2], [3,4], [5]]

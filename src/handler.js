@@ -487,9 +487,9 @@ async function handleSmartTriggers(m, sock, db) {
 
     if (isMentioned) {
       await m.reply(
-        `Ada yang manggil ${botName}?
+        `Hay yang manggil ${botName}?
         
-Ada apa manggil aku @${m.sender.split("@")[0]}?`,
+Hay apa manggil aku @${m.sender.split("@")[0]}?`,
         { mentions: [m.sender] },
       );
       return true;

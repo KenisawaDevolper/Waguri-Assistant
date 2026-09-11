@@ -61,7 +61,7 @@ function startDailyLimitReset(options = {}) {
   activeCronJobs.set("dailyLimitReset", job);
   logger.info(
     "Scheduler",
-    `Reset limit harian nyala jam ${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")} (${TZ})`,
+    `Reinicio de límite diario activo a las ${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")} (${TZ})`,
   );
 }
 
@@ -183,7 +183,7 @@ function loadScheduledMessages(sock) {
         scheduleMessage(task, sock);
       }
     }
-    logger.info("Scheduler", `Sukses muat ${savedTasks.length} pesan terjadwal`);
+    logger.info("Scheduler", `Se cargaron con éxito ${savedTasks.length} mensajes programados 🌸`);
   } catch (error) {
     logger.error(
       "Scheduler",
@@ -219,7 +219,7 @@ const schedulerRegistry = {
   dailyLimitReset: {
     name: "Daily Limit Reset",
     key: "dailyLimitReset",
-    description: "Reset limit user jam 00:00",
+    description: "Reset limit user horas 00:00",
   },
   groupSchedule: {
     name: "Group Schedule",
@@ -229,7 +229,7 @@ const schedulerRegistry = {
   sewaChecker: {
     name: "Sewa Checker",
     key: "sewaChecker",
-    description: "Cek expired sewa setiap 10 menit",
+    description: "Cek expired sewa secada 10 minutos",
   },
   scheduledMessages: {
     name: "Schedule Planner",
@@ -259,7 +259,7 @@ function getFullSchedulerStatus() {
         name: "Daily Limit Reset",
         key: "limitreset",
         running: activeCronJobs.has("dailyLimitReset"),
-        description: "Reset limit user jam 00:00",
+        description: "Reset limit user horas 00:00",
         lastRun: db.setting("lastLimitReset") || "Never",
         stats: { totalResets: db.getStats("dailyResets") || 0 },
       },
@@ -275,7 +275,7 @@ function getFullSchedulerStatus() {
         name: "Sewa Checker",
         key: "sewa",
         running: activeCronJobs.has("sewaChecker"),
-        description: "Cek expired sewa setiap 10 menit",
+        description: "Cek expired sewa secada 10 minutos",
         lastRun: "-",
         stats: {},
       },
@@ -546,7 +546,7 @@ async function startGroupScheduleChecker(sock) {
   activeCronJobs.set("groupSchedule", job);
   logger.info(
     "Scheduler",
-    "Cek jadwal grup nyala (tiap menit)",
+    "Verificación de horarios de grupo activa (cada minuto) 🌸",
   );
 }
 
@@ -617,7 +617,7 @@ async function startSewaChecker(sock) {
             const minutes = Math.floor(remaining / 60000);
             await sewaSock.sendText(
               groupId,
-              `⚠️ *PERINGATAN SEWA*\n\nSisa waktu sewa tinggal *${minutes} menit*!\nSegera hubungi owner untuk perpanjang.\n\nJika tidak diperpanjang, bot akan otomatis keluar.`,
+              `⚠️ *PERINGATAN SEWA*\n\nTiempo restante de alquiler: *${minutes} minutos*!\nContacta pronto al owner para renovar.\n\nSi no se renueva, el bot saldrá automáticamente.`,
               null,
               {
                 contextInfo: saluranCtx(),
@@ -637,7 +637,7 @@ async function startSewaChecker(sock) {
             const hours = Math.floor((remaining % 86400000) / 3600000);
             await sewaSock.sendText(
               groupId,
-              `⚠️ *PERINGATAN SEWA*\n\nSisa sewa tinggal *${days}d ${hours}h*\nSegera hubungi owner untuk perpanjang.\n\nJika tidak diperpanjang, bot akan otomatis keluar.`,
+              `⚠️ *PERINGATAN SEWA*\n\nSisa sewa tinggal *${days}d ${hours}h*\nContacta pronto al owner para renovar.\n\nSi no se renueva, el bot saldrá automáticamente.`,
               null,
               {
                 contextInfo: saluranCtx(),
@@ -666,7 +666,7 @@ async function startSewaChecker(sock) {
 
   const job = new CronJob("*/10 * * * *", doCheck, null, true, TZ);
   activeCronJobs.set("sewaChecker", job);
-  logger.info("Scheduler",    "Sistem cek sewa jalan (tiap 10 menit)",);
+  logger.info("Scheduler",    "Sistema de verificación de alquiler en marcha (cada 10 minutos) 🌸",);
 }
 
 function startAutoBioChecker(sock) {
@@ -719,7 +719,7 @@ function startAutoBioChecker(sock) {
   activeCronJobs.set("autoBioChecker", {
     stop: () => clearInterval(timerId)
   });
-  logger.info("Scheduler", `AutoBio aktif (update tiap ${intervalMs / 1000}s)`);
+  logger.info("Scheduler", `AutoBio activo (actualización cada ${intervalMs / 1000}s)`);
 }
 
 export {

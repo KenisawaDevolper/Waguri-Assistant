@@ -25,9 +25,9 @@ function formatAfkDuration(ms) {
   const hours = Math.floor(minutes / 60);
   const days = Math.floor(hours / 24);
 
-  if (days > 0) return `${days} hari ${hours % 24} jam`;
-  if (hours > 0) return `${hours} jam ${minutes % 60} menit`;
-  if (minutes > 0) return `${minutes} menit`;
+  if (days > 0) return `${days} hari ${hours % 24} horas`;
+  if (hours > 0) return `${hours} horas ${minutes % 60} minutos`;
+  if (minutes > 0) return `${minutes} minutos`;
   return `${seconds} detik`;
 }
 

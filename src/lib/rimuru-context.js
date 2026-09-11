@@ -30,7 +30,7 @@ const FAST_ANSWER_PRAISES = [
   "⭐ Bintang! Refleks dewa!",
   "🏆 Legend! Kecepatan maximal!",
   "💎 Premium player! Gak ada lawan!",
-  "🦅 Tajam seperti elang!",
+  "🦅 Tahoras seperti elang!",
   "🧠 Big brain! IQ tinggi detected!",
 ];
 
