@@ -199,18 +199,15 @@ temp/
     }
   }
 
-  // 3. Configurar user git si no está configurado
-  const nameCheck = await runGit("git config user.name", cwdEffective);
-  if (!nameCheck.out.trim()) {
-    const botName = config.bot?.name || "Waguri";
-    await runGit(`git config user.name "${botName}"`, cwdEffective);
-    logs.push(`✓ git config user.name = ${botName}`);
-  }
-  const emailCheck = await runGit("git config user.email", cwdEffective);
-  if (!emailCheck.out.trim()) {
-    await runGit(`git config user.email "bot@waguri.local"`, cwdEffective);
-    logs.push(`✓ git config user.email = bot@waguri.local`);
-  }
+  // 3. Configurar user git (siempre, para evitar Author identity unknown en HidenCloud)
+  const botName = (config.bot?.name || "Waguri").replace(/"/g, "");
+  const botEmail = "bot@waguri.local";
+  // set local y global por si el repo está recién clonado
+  await runGit(`git config user.name "${botName}"`, cwdEffective);
+  await runGit(`git config user.email "${botEmail}"`, cwdEffective);
+  await runGit(`git config --global user.name "${botName}" 2>/dev/null || true`, cwdEffective);
+  await runGit(`git config --global user.email "${botEmail}" 2>/dev/null || true`, cwdEffective);
+  logs.push(`✓ git config user.name = ${botName} | user.email = ${botEmail}`);
 
   // 4. Verificar remote existe después de todo
   const remoteCheck = await runGit("git remote -v", cwdEffective);
@@ -254,12 +251,12 @@ temp/
     logs.push(`$ git status\n${sanitizeOutput(statusRes.out, 800)}`);
   }
 
-  // 7. git commit si hay cambios
+  // 7. git commit si hay cambios (con -c para forzar identidad y evitar Author unknown)
   let didCommit = false;
   if (hasChanges) {
     // escapar comillas en mensaje
     const safeMsg = commitMsg.replace(/"/g, '\\"').replace(/`/g, "'");
-    const commitRes = await runGit(`git commit -m "${safeMsg}"`, cwdEffective);
+    const commitRes = await runGit(`git -c user.name="${botName}" -c user.email="${botEmail}" commit -m "${safeMsg}"`, cwdEffective);
     logs.push(`$ git commit -m "${commitMsg}"\n${sanitizeOutput(commitRes.out, 800)}`);
     if (!commitRes.ok) {
       // si es "nothing to commit" no es error fatal
