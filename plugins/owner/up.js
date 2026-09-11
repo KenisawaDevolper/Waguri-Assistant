@@ -221,7 +221,24 @@ temp/
     );
   }
 
-  // 5. git add .
+  // 5. Asegurar .gitignore correcto antes de add (evita subir .npm, .cache, etc en HidenCloud)
+  try {
+    const giPath = path.join(cwdEffective, ".gitignore");
+    let gi = "";
+    try { gi = fs.readFileSync(giPath, "utf8"); } catch { gi = ""; }
+    const needed = ["node_modules/", ".npm/", ".cache/", ".gitconfig", "tmp/", "temp/", "sessions/", "session/", ".env"];
+    let changed = false;
+    for (const p of needed) {
+      if (!gi.includes(p)) { gi += (gi.endsWith("\n") || gi === "" ? "" : "\n") + p + "\n"; changed = true; }
+    }
+    if (changed) { fs.writeFileSync(giPath, gi); logs.push("✓ .gitignore actualizado (.npm/.cache)"); }
+  } catch {}
+
+  // Forzar rama a main (HidenCloud a veces inicia en master)
+  await runGit("git branch -M main 2>/dev/null || true", cwdEffective);
+  logs.push("✓ branch forzado a main");
+
+  // git add (respeta .gitignore)
   const addRes = await runGit("git add .", cwdEffective);
   logs.push(`$ git add .\n${sanitizeOutput(addRes.out || "ok", 300)}`);
   if (!addRes.ok) {
@@ -271,17 +288,10 @@ temp/
     }
   }
 
-  // 8. Detectar rama actual
+  // 8. Detectar rama actual (forzada a main)
   let branch = "main";
-  const branchRes = await runGit("git branch --show-current", cwdEffective);
-  if (branchRes.ok && branchRes.out.trim()) {
-    branch = branchRes.out.trim();
-  } else {
-    // intentar obtener de git rev-parse
-    const rev = await runGit("git rev-parse --abbrev-ref HEAD", cwdEffective);
-    if (rev.ok && rev.out.trim() && rev.out.trim() !== "HEAD") branch = rev.out.trim();
-  }
-  logs.push(`⎇ Branch: ${branch}`);
+  await runGit("git branch -M main 2>/dev/null || true", cwdEffective);
+  logs.push(`⎇ Branch: ${branch} (forzado)`);
 
   // Si es primera vez (no upstream), usar -u
   const upstreamCheck = await runGit(`git rev-parse --abbrev-ref --symbolic-full-name @{u}`, cwdEffective);
