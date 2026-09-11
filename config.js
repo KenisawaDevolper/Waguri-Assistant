@@ -179,6 +179,11 @@ const config = {
     rejectCall: "*( 𝜰 ˕ 𝜰 )* 𝖯𝗈𝗋 𝖿⍺𝗏𝗈𝗋, 𝗇𝗈 𝗋ᧉ⍺𝗅ı𝖼ᧉ𝗌 𝗅𝗅⍺𝗆⍺𝖽⍺𝗌 ⍺𝗅 𝖻𝗈ƚ.",
   },
 
+  web: {
+    port: parseInt(process.env.WEB_PORT || process.env.PORT || "3000", 10),
+    apiKey: process.env.WEB_API_KEY || "",
+  },
+
   database: { path: "./database/main" },
   backup: { enabled: false, intervalHours: 24, retainDays: 7 },
   scheduler: { resetHour: 0, resetMinute: 0 },

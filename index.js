@@ -286,6 +286,15 @@ async function main() {
 
   initScheduler(config);
 
+  // Panel Web SubBots (Express + Socket.IO) - Waguri Assistant
+  try {
+    const { startWebServer } = await import("./src/lib/rimuru-jadibot-web.js");
+    startWebServer(null);
+    logger.success("WEB", "Panel web inicializado antes de conectar WhatsApp 🌸");
+  } catch (e) {
+    logger.warn("WEB", `No se pudo iniciar panel web: ${e.message}`);
+  }
+
   const bootTime = Date.now() - startTime;
   logger.success("boot", `Waguri Assistant iniciada con éxito en ${bootTime}ms 🌸🚀`);
   divider();
@@ -354,6 +363,11 @@ async function main() {
 
     onConnectionUpdate: async (update, sock) => {
       if (update.connection === "open") {
+        // Actualizar referencia del bot principal en el panel web
+        try {
+          const { setMainSock } = await import("./src/lib/rimuru-jadibot-web.js");
+          setMainSock(sock);
+        } catch {}
         logConnection("connected", sock.user?.name || "Bot");
         loadScheduledMessages(sock);
         startGroupScheduleChecker(sock);
