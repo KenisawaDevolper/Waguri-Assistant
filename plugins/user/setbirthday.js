@@ -24,7 +24,7 @@ async function handler(m) {
     const cleanJid = userJid.replace(/@.+/g, '')
     
     if (!input) {
-        const user = db.getUser(userJid)
+        const user = db.getUsuario(userJid)
         const currentBday = user?.birthday
         
         let text = `ꕥ *sᧉƚ bıɾƚhᑯ⍺y* (*ᴗ͈ˬᴗ͈)ꕤ\n\n`
@@ -64,7 +64,7 @@ async function handler(m) {
     
     const formattedDate = `${day.toString().padStart(2, '0')}-${month.toString().padStart(2, '0')}`
     
-    db.setUser(m.sender, { 
+    db.setUsuario(m.sender, { 
         birthday: formattedDate 
     })
     

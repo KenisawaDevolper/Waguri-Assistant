@@ -22,7 +22,7 @@ async function handler(m, { sock }) {
         const user = db.data.users[target]
 
         if (!user) {
-            return m.reply(`❌ User no encontrado.`)
+            return m.reply(`❌ Usuario no encontrado.`)
         }
 
         delete db.data.users[target]
@@ -77,7 +77,7 @@ async function handler(m, { sock }) {
                     title: '💀 Pilih Target',
                     sections: [
                         {
-                            title: 'Daftar User',
+                            title: 'Daftar Usuario',
                             rows
                         }
                     ]

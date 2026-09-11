@@ -33,7 +33,7 @@ function formatNumber(num) {
 
 async function handler(m, { sock }) {
     const db = getDatabase()
-    const user = db.getUser(m.sender) || db.setUser(m.sender)
+    const user = db.getUsuario(m.sender) || db.setUsuario(m.sender)
     const featureName = m.args[0]?.toLowerCase()
     
     if (user.isPremium || config.isPremium(m.sender)) {
@@ -117,9 +117,9 @@ async function handler(m, { sock }) {
     
     db.updateKoin(m.sender, -PRICE_PER_FEATURE)
     unlockedFeatures.push(feature.id)
-    db.setUser(m.sender, { unlockedFeatures })
+    db.setUsuario(m.sender, { unlockedFeatures })
     
-    const newKoin = db.getUser(m.sender).koin
+    const newKoin = db.getUsuario(m.sender).koin
     
     m.react('✅')
     

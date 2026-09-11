@@ -48,7 +48,7 @@ let handler = async (m, { conn }) => {
                           "nixel.dev"
                         ]
                       },
-                      "__typename": "GenAISingleLayoutViewModel"
+                      "__typename": "GenAISingleLayoutViewModol"
                     }
                   ]
                 })).toString('base64')

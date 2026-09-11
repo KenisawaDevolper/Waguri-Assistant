@@ -37,7 +37,7 @@ async function handler(m) {
         await m.react('✅')
         return m.reply(
             `✅ *ᴀᴜᴛᴏ ʀᴇᴀᴅ sᴛᴏʀʏ ᴀᴋᴛɪꜰ*\n\n` +
-            `> Bot akan otomatis membaca semua story WA`
+            `> Bot akan otomatis membaca todos story WA`
         )
     }
 

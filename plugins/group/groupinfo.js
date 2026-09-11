@@ -75,8 +75,8 @@ async function handler(m, { sock, db }) {
                    `      • Participantes comunes :: *${participants.length - admins.length}*\n\n` +
 
                    `      𓈒 ◌ㅤ──    *🔧 𝖥𝖨𝖳𝖴𝖱𝖠𝖲 𝖠𝖢𝖳𝖨𝖵𝖠𝖲*\n` +
-                   `      • Welcome :: ${featureStatus(group.welcome)}\n` +
-                   `      • Goodbye :: ${featureStatus(group.goodbye)}\n` +
+                   `      • Bienvenida :: ${featureStatus(group.welcome)}\n` +
+                   `      • Despedida :: ${featureStatus(group.goodbye)}\n` +
                    `      • Autoreply :: ${featureStatus(group.autoreply)}\n` +
                    `      • AutoAI :: ${featureStatus(group.autoai)}\n` +
                    `      • AutoDL :: ${featureStatus(group.autodl)}\n` +

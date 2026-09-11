@@ -25,9 +25,9 @@ async function handler(m, { sock }) {
   if (!mode || (mode !== "on" && mode !== "off")) {
     return m.reply(
       `🎛️ *KONTROL SISTEM ENERGI*\n\n` +
-      `Fitur kendali utama untuk menghidupkan atau mematikan seluruh sistem potongan energi bot secara global.\n\n` +
+      `Función kendali utama untuk menghidupkan atau mematikan seluruh sistem potongan energi bot de forma global.\n\n` +
       `*STATUS SAAT INI:*\n` +
-      `- Mode: *${currentStatus ? "AKTIF 🔋" : "NONAKTIF (UNLIMITED) ♾️"}*\n\n` +
+      `- Modo: *${currentStatus ? "AKTIF 🔋" : "NONAKTIF (UNLIMITED) ♾️"}*\n\n` +
       `*PENGGUNAAN:*\n` +
       `- *${m.prefix}sistemenergi on* — Menghidupkan potongan energi\n` +
       `- *${m.prefix}sistemenergi off* — Mematikan potongan energi (Unlimited mode)\n\n` +
@@ -48,7 +48,7 @@ async function handler(m, { sock }) {
     `✅ *STATUS SISTEM ENERGI ÉXITO DIUBAH*\n\n` +
     `Sistem Energi kini telah berhasil di-*${isEnabled ? "HIDUPKAN" : "MATIKAN"}*.\n\n` +
     `*Status Terkini:*\n` +
-    `- Mode: *${isEnabled ? "AKTIF 🔋" : "NONAKTIF (UNLIMITED) ♾️"}*\n\n` +
+    `- Modo: *${isEnabled ? "AKTIF 🔋" : "NONAKTIF (UNLIMITED) ♾️"}*\n\n` +
     `_Semua perubahan sudah tersimpan dan akan segera diterapkan pada sistem bot._`
   );
 }

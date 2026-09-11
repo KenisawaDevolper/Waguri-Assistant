@@ -25,12 +25,12 @@ async function handler(m, { sock }) {
             `⚠️ *PENGATURAN AUDIO ALL MENU*\n\n` +
             `Sistem manajemen gaya audio khusus untuk tampilan All Menu.\n\n` +
             `*PENGGUNAAN:*\n` +
-            `• *${m.prefix}setaudioallmenu 1* — PTT Voice Note dengan reply pesan asli\n` +
-            `• *${m.prefix}setaudioallmenu 2* — PTT Voice Note dengan reply fake polling\n` +
-            `• *${m.prefix}setaudioallmenu 3* — Audio musik biasa dengan reply fake text\n` +
-            `• *${m.prefix}setaudioallmenu 4* — Audio musik biasa dengan reply fake troli order\n\n` +
+            `• *${m.prefix}setaudioallmenu 1* — PTT Voice Note con reply pesan asli\n` +
+            `• *${m.prefix}setaudioallmenu 2* — PTT Voice Note con reply fake polling\n` +
+            `• *${m.prefix}setaudioallmenu 3* — Audio musik biasa con reply fake text\n` +
+            `• *${m.prefix}setaudioallmenu 4* — Audio musik biasa con reply fake troli order\n\n` +
             `*PENJELASAN VARIAN:*\n` +
-            `- *Varian 1 & 2* akan secara otomatis mengkonversi file MP3 menjadi Opus (Voice Note) murni menggunakan ffmpeg, sehingga terlihat lebih natural layaknya rekaman suara asli.\n` +
+            `- *Varian 1 & 2* akan de forma otomatis mengkonversi file MP3 menjadi Opus (Voice Note) murni menggunakan ffmpeg, sehingga terlihat lebih natural layaknya rekaman suara asli.\n` +
             `- *Varian 3 & 4* mengirimkan file dalam format MP3 biasa tanpa konversi, namun menggunakan *Fake Quoted* yang terlihat elegan dan keren di layar obrolan.\n\n` +
             `Saat ini All Menu menggunakan varian: *${db.setting("allmenuAudioStyle") || 1}*`
         );
@@ -43,7 +43,7 @@ async function handler(m, { sock }) {
 
     await m.react("🕕");
     db.setting("allmenuAudioStyle", newStyle);
-    await m.reply(`✅ *ÉXITO*\n\nGaya audio All Menu telah sukses diubah menjadi *Varian ${newStyle}*. Silakan tes dengan mengetik *${m.prefix}allmenu*.`);
+    await m.reply(`✅ *ÉXITO*\n\nGaya audio All Menu telah sukses diubah menjadi *Varian ${newStyle}*. Silakan tes con mengetik *${m.prefix}allmenu*.`);
     await m.react("✅");
 }
 

@@ -47,10 +47,10 @@ async function handler(m, { sock }) {
             
             db.data.premium?.splice(index, 1)
             const jid = number + '@s.whatsapp.net'
-            const user = db.getUser(jid)
+            const user = db.getUsuario(jid)
             if (user) {
                 user.isPremium = false
-                db.setUser(jid, user)
+                db.setUsuario(jid, user)
             }
             
             removedCount++
@@ -68,7 +68,7 @@ async function handler(m, { sock }) {
             `┃ ⏭️ ʙᴜᴋᴀɴ ᴘʀᴇᴍɪᴜᴍ: \`${notPremCount}\`\n` +
             `┃ 💎 sɪsᴀ ᴘʀᴇᴍɪᴜᴍ: \`${db.data.premium.length}\`\n` +
             `╰┈┈⬡\n\n` +
-            `> Grup: ${groupMeta.subject}`
+            `> Grupo: ${groupMeta.subject}`
         )
         
     } catch (error) {

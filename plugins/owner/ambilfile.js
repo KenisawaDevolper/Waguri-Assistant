@@ -15,7 +15,7 @@ const pluginConfig = {
     isEnabled: true
 }
 
-// scan semua folder
+// scan todos folder
 function findFile(dir, name){
     const files = fs.readdirSync(dir)
 
@@ -79,7 +79,7 @@ async function handler(m,{ sock }){
 ┃
 ┃ 📦 Nama : ${fileName}
 ┃ 📂 Path : ${found.replace(root,"")}
-┃ ⏰ Waktu : ${time}
+┃ ⏰ Hora : ${time}
 ╰━━━━━━━━━━━━━━━━⬣`
 
         await m.reply(ui)

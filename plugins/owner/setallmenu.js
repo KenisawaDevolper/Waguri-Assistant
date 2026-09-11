@@ -32,7 +32,7 @@ const VARIANTS = {
   v5: {
     id: 5,
     name: "ALLMENU NATIVEFLOW",
-    desc: "Tampilan native flow premium dengan video & cuaca",
+    desc: "Tampilan native flow premium con video & cuaca",
     emoji: "✨",
   },
   v6: {
@@ -93,10 +93,10 @@ async function handler(m, { sock, db }) {
     `Variant aktif saat ini: *V${current} — ${VARIANTS[`v${current}`]?.name || "Unknown"}* 🎯\n\n` +
     `*PENJELASAN VARIANT:*\n\n` +
     `- *V1 Simple Text* 📝 — Daftar perintah ditampilkan sebagai text biasa tanpa gambar atau contextInfo, paling ringan dan cepat dimuat\n\n` +
-    `- *V2 Image + Context* 🖼️ — Gambar header allmenu + full contextInfo dengan label forwarded newsletter, tampilan standar yang informatif\n\n` +
-    `- *V3 Document* 📄 — Allmenu dikirim sebagai file document dengan thumbnail kecil dan verified quoted reply, terlihat seperti file resmi\n\n` +
-    `- *V4 Interactive Button* 🔘 — Pesan interaktif dengan tombol single_select untuk memilih kategori dan quick_reply untuk navigasi, tampilan modern\n\n` +
-    `- *V5 NativeFlow* ✨ — NativeFlow message dengan limited_time_offer badge dan interactive buttons, tampilan paling premium dan eye-catching\n\n` +
+    `- *V2 Image + Context* 🖼️ — Gambar header allmenu + full contextInfo con label forwarded newsletter, tampilan standar yang informatif\n\n` +
+    `- *V3 Document* 📄 — Allmenu dikirim sebagai file document con thumbnail kecil dan verified quoted reply, terlihat seperti file resmi\n\n` +
+    `- *V4 Interactive Button* 🔘 — Mensaje interaktif con tombol single_select untuk memilih kategori dan quick_reply untuk navigasi, tampilan modern\n\n` +
+    `- *V5 NativeFlow* ✨ — NativeFlow message con limited_time_offer badge dan interactive buttons, tampilan paling premium dan eye-catching\n\n` +
     `> Pilih variant allmenu dari tombol di bawah 👇`;
 
   await sock.sendButton(

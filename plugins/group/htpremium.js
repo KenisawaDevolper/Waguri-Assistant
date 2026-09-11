@@ -3,7 +3,7 @@ import te from '../../src/lib/rimuru-error.js'
 const pluginConfig = {
     name: ['htpremium', 'hidetagpremium', 'htprem'],
     category: 'group',
-    description: 'Hidetag dengan support reply pesan (teks/media)',
+    description: 'Hidetag con support reply pesan (teks/media)',
     usage: '.htprem [pesan] atau reply pesan',
     example: '.htprem atau reply pesan lalu .htprem',
     isOwner: false,
@@ -106,7 +106,7 @@ async function handler(m, { sock }) {
             const finalText = text || quotedText
 
             if (!finalText) {
-                return m.reply('❌ *Pesan kosong*')
+                return m.reply('❌ *Mensaje kosong*')
             }
 
             return sock.sendMessage(m.chat, {
@@ -119,7 +119,7 @@ async function handler(m, { sock }) {
                 `📢 *HIDETAG PREMIUM*\n\n` +
                 `• Reply pesan lalu ketik \`${m.prefix}ht\`\n` +
                 `• Atau ketik \`${m.prefix}ht <custom tag> | <pesan>\`\n\n` +
-                `• Contoh: \`${m.prefix}ht everyone | hai semua\`\n\n` +
+                `• Contoh: \`${m.prefix}ht everyone | hai todos\`\n\n` +
                 `Support: teks, gambar, video, sticker, audio, dokumen`
             )
         }

@@ -49,7 +49,7 @@ async function handler(m, { sock, db }) {
     const isEnabled = mode === 'on'
     
     // Simpan ke database (global setting)
-    db.setting('onlyOwnerMode', isEnabled)
+    db.setting('onlyOwnerModo', isEnabled)
     await db.save()
     
     const status = isEnabled ? '🟢 *AKTIF*' : '🔴 *NONAKTIF*'
@@ -60,7 +60,7 @@ async function handler(m, { sock, db }) {
     m.reply(
 `╭───〔 𝗭𝗘𝗥𝗢 𝗧𝗪𝗢 𝗢𝗡𝗟𝗬𝗢𝗪𝗡𝗘𝗥 〕───⬣
 │
-│ ✦ *Status Mode*
+│ ✦ *Status Modo*
 │
 │  ${status}
 │

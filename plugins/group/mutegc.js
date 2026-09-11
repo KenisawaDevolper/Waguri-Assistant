@@ -40,7 +40,7 @@ async function handler(m, { sock }) {
 
   return m.reply(
     `ꕥ 𝖬𝖴𝖳𝖤 𝖦𝖱𝖴𝖯𝖮 𝖠𝖢𝖳𝖨𝖵𝖠𝖣𝖮 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
-    `      • Grupo afectado :: *${groupName}*\n` +
+    `      • Grupoo afectado :: *${groupName}*\n` +
     `      • Restricción :: *Comandos bloqueados para miembros*\n` +
     `      • Excepciones :: *Solo administradores y el owner conservan acceso*\n\n` +
     `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « Escribe \`${m.prefix}unmutegc\` para deshabilitar esta restricción y permitir comandos a todos. »\n\n` +
@@ -49,9 +49,9 @@ async function handler(m, { sock }) {
   );
 }
 
-function isMutegc(groupJid, db) {
+function isSilenciagc(groupJid, db) {
   const group = db.getGroup(groupJid) || {};
   return !!group.mutegc;
 }
 
-export { pluginConfig as config, handler, isMutegc };
+export { pluginConfig as config, handler, isSilenciagc };

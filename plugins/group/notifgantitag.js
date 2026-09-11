@@ -55,7 +55,7 @@ async function handler(m, { sock }) {
       return m.reply(
         `ꕥ 𝖭𝖮𝖳𝖨𝖥 𝖫𝖠𝖡𝖤𝖫 𝖦𝖫𝖮𝖡𝖠𝖫 𝖮𝖭 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
         `      • Acción :: *Habilitación masiva*\n` +
-        `      • Grupos afectados :: *${count} chats grupales*\n\n` +
+        `      • Grupoos afectados :: *${count} chats grupales*\n\n` +
         `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « Las notificaciones de cambio de etiqueta se han activado globalmente. »\n\n` +
         `> 𝗐⍺𝗀𝗎ɾɩ ⍺𝗌𝗌ı𝗌ƚ⍺𝗇ƚ ツ`
       );
@@ -90,7 +90,7 @@ async function handler(m, { sock }) {
       return m.reply(
         `ꕥ 𝖭𝖮𝖳𝖨𝖥 𝖫𝖠𝖡𝖤𝖫 𝖦𝖫𝖮𝖡𝖠𝖫 𝖮𝖥𝖥 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
         `      • Acción :: *Deshabilitación masiva*\n` +
-        `      • Grupos afectados :: *${count} chats grupales*\n\n` +
+        `      • Grupoos afectados :: *${count} chats grupales*\n\n` +
         `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « Las notificaciones de cambio de etiqueta se han desactivado globalmente. »\n\n` +
         `> 𝗐⍺𝗀𝗎ɾɩ ⍺𝗌𝗌ı𝗌ƚ⍺𝗇ƚ ツ`
       );

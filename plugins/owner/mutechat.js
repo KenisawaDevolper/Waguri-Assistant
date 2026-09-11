@@ -2,7 +2,7 @@ const pluginConfig = {
     name: ['mutechat', 'mute'],
     alias: [],
     category: 'owner',
-    description: 'Mute/unmute chat',
+    description: 'Silencia/unmute chat',
     usage: '.mutechat <nomor/reply> atau .mutechat buka <nomor>',
     example: '.mutechat 628xxx',
     isOwner: true,
@@ -38,9 +38,9 @@ async function handler(m, { sock }) {
     if (!targetJid) {
         return m.reply(
             '🔇 *ᴍᴜᴛᴇ ᴄʜᴀᴛ*\n\n' +
-            '> `.mutechat 628xxx` — Mute chat\n' +
-            '> `.mutechat` (en chat privado) — Mute chat ini\n' +
-            '> `.mutechat buka 628xxx` — Unmute chat'
+            '> `.mutechat 628xxx` — Silencia chat\n' +
+            '> `.mutechat` (en chat privado) — Silencia chat ini\n' +
+            '> `.mutechat buka 628xxx` — Quita silencio chat'
         )
     }
 

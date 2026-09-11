@@ -131,11 +131,11 @@ const pluginConfig = {
 
 async function handler(m, { sock }) {
   const db = getDatabase();
-  const allUsers = db.getAllUsers();
+  const allUsuarios = db.getAllUsuarios();
   const options = parseListOptions(m.text);
-  let registeredUsers = Object.values(allUsers).filter((u) => u.isRegistered);
+  let registeredUsuarios = Object.values(allUsuarios).filter((u) => u.isRegistered);
 
-  if (registeredUsers.length === 0) {
+  if (registeredUsuarios.length === 0) {
     return m.reply(
       `*¡Hola, buenas tardes!* ฅ^·ﻌ·^ฅ\n` +
       `> _Consulta de usuarios registrados ≽^• ˕ • ྀི≼_\n\n` +
@@ -148,7 +148,7 @@ async function handler(m, { sock }) {
 
   if (options.search) {
     const keyword = options.search.toLowerCase();
-    registeredUsers = registeredUsers.filter((user) =>
+    registeredUsuarios = registeredUsuarios.filter((user) =>
       String(user.regName || "")
         .toLowerCase()
         .includes(keyword),
@@ -156,12 +156,12 @@ async function handler(m, { sock }) {
   }
 
   if (options.sort === "terbaru") {
-    registeredUsers.sort(
+    registeredUsuarios.sort(
       (a, b) => getRegistrationTime(b) - getRegistrationTime(a),
     );
   }
 
-  if (registeredUsers.length === 0) {
+  if (registeredUsuarios.length === 0) {
     return m.reply(
       `*¡Hola, buenas tardes!* ฅ^·ﻌ·^ฅ\n` +
       `> _Consulta de usuarios registrados ≽^• ˕ • ྀི≼_\n\n` +
@@ -172,10 +172,10 @@ async function handler(m, { sock }) {
     );
   }
 
-  const totalPages = Math.max(1, Math.ceil(registeredUsers.length / PAGE_SIZE));
+  const totalPages = Math.max(1, Math.ceil(registeredUsuarios.length / PAGE_SIZE));
   const page = Math.min(Math.max(options.page, 1), totalPages);
   const startIndex = (page - 1) * PAGE_SIZE;
-  const displayUsers = registeredUsers.slice(
+  const displayUsuarios = registeredUsuarios.slice(
     startIndex,
     startIndex + PAGE_SIZE,
   );
@@ -184,7 +184,7 @@ async function handler(m, { sock }) {
   text += `> _Listado general de usuarios en el sistema ≽^• ˕ • ྀི≼_\n\n`;
   text += `## ꕥ *W⍺gurı 𝖠ssı𝗌ƚ⍺nƚ* (*ᴗ͈ˬᴗ͈)ꕤ\n`;
   text += `> 𝖫𝖨𝖲𝖳𝖠𝖣𝖮 𝖣𝖤 𝖴𝖲𝖴𝖠𝖱𝖨𝖮𝖲 𝖱𝖤𝖦𝖨𝖲𝖳𝖱𝖠𝖣𝖮𝖲\n\n`;
-  text += `> Total de resultados: *${registeredUsers.length}* usuarios\n`;
+  text += `> Total de resultados: *${registeredUsuarios.length}* usuarios\n`;
   text += `> Página: *${page}/${totalPages}*\n`;
   text += `> Orden: *${options.sort === "terbaru" ? "Reciente" : "Predeterminado"}*\n`;
   if (options.search) {
@@ -192,8 +192,8 @@ async function handler(m, { sock }) {
   }
   text += `\n`;
 
-  displayUsers.forEach((user, i) => {
-    const genderTag =
+  displayUsuarios.forEach((user, i) => {
+    const genderMenciona =
       user.regGender === "Laki-laki" || user.regGender === "Masculino"
         ? "[M]"
         : user.regGender === "Perempuan" || user.regGender === "Femenino"
@@ -203,7 +203,7 @@ async function handler(m, { sock }) {
     const registeredAt = formatDateTime(
       user.lastRegisteredAt || user.registeredAt,
     );
-    text += `${listNumber}. ${genderTag} *${user.regName || "Desconocido"}*\n`;
+    text += `${listNumber}. ${genderMenciona} *${user.regName || "Desconocido"}*\n`;
     text += `   > @${user.jid} | ${user.regAge || "?"} años | ${registeredAt}\n`;
   });
 
@@ -213,7 +213,7 @@ async function handler(m, { sock }) {
 
   text += `\n> sɪᴍᴘʟᴇ ᴡʜᴀᴛsᴀᴘᴘ ʙᴏᴛ ツ`;
 
-  const mentions = displayUsers.map((u) => u.jid + "@s.whatsapp.net");
+  const mentions = displayUsuarios.map((u) => u.jid + "@s.whatsapp.net");
 
   await sock.sendMessage(
     m.chat,

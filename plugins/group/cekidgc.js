@@ -47,7 +47,7 @@ async function handler(m, { sock }) {
 
       if (!inviteCode) {
         m.react("✘");
-        return m.reply(`── .✦ ──\n\n> Link grup tidak valid .☘︎ ݁˖`);
+        return m.reply(`── .✦ ──\n\n> Link grup no valid .☘︎ ݁˖`);
       }
 
       try {
@@ -56,7 +56,7 @@ async function handler(m, { sock }) {
       } catch {
         m.react("✘");
         return m.reply(
-          `── .✦ ──\n\n> Link grup tidak valid atau sudah expired .☘︎ ݁˖`,
+          `── .✦ ──\n\n> Link grup no valid atau sudah expired .☘︎ ݁˖`,
         );
       }
     } else if (input && input.endsWith("@g.us")) {
@@ -101,7 +101,7 @@ async function handler(m, { sock }) {
     const isRestrict = groupMeta.restrict ? "Admin Only" : "Semua Member";
     const isAnnounce = groupMeta.announce ? "Aktif" : "Nonaktif";
     const isCommunity = groupMeta.isCommunity ? "✓ Ya" : "✘ Tidak";
-    const joinMode = groupMeta.joinApprovalMode ? "Perlu Approval" : "Bebas";
+    const joinModo = groupMeta.joinApprovalModo ? "Perlu Approval" : "Bebas";
 
     let ppBuffer = null;
     try {
@@ -133,7 +133,7 @@ async function handler(m, { sock }) {
       `│  ✦ ᴋᴏᴍᴜɴɪᴛᴀs : *${isCommunity}*\n` +
       `│  ✦ ᴇᴅɪᴛ ɪɴꜰᴏ   : *${isRestrict}*\n` +
       `│  ✦ ᴀɴɴᴏᴜɴᴄᴇ : *${isAnnounce}*\n` +
-      `│  ✦ ᴊᴏɪɴ ᴍᴏᴅᴇ  : *${joinMode}*\n` +
+      `│  ✦ ᴊᴏɪɴ ᴍᴏᴅᴇ  : *${joinModo}*\n` +
       `│  ✦ ᴅᴇsᴋʀɪᴘsɪ  : ${descPreview}\n` +
       `╰──────────────⬣\n\n` +
       `.☘︎ ݁˖ © ${config.bot?.name || "rimuru-AI"}`;
@@ -142,7 +142,7 @@ async function handler(m, { sock }) {
       {
         name: "cta_copy",
         buttonParamsJson: JSON.stringify({
-          display_text: "✦ Copy ID Grup",
+          display_text: "✦ Copy ID Grupo",
           copy_code: groupJid,
         }),
       },

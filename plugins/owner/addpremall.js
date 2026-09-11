@@ -47,12 +47,12 @@ async function handler(m, { sock }) {
             
             const jid = number + '@s.whatsapp.net'
             const premLimit = config.limits?.premium || 100
-            const user = db.getUser(jid) || db.setUser(jid)
+            const user = db.getUsuario(jid) || db.setUsuario(jid)
             
             user.energi = premLimit
             user.isPremium = true
             
-            db.setUser(jid, user)
+            db.setUsuario(jid, user)
             db.updateExp(jid, 200000)
             db.updateKoin(jid, 20000)
             addedCount++
@@ -69,7 +69,7 @@ async function handler(m, { sock }) {
             `┃ ⏭️ sᴜᴅᴀʜ ᴘʀᴇᴍɪᴜᴍ: \`${alreadyPremCount}\`\n` +
             `┃ 💎 ᴛᴏᴛᴀʟ ᴘʀᴇᴍɪᴜᴍ: \`${db.data.premium.length}\`\n` +
             `╰┈┈⬡\n\n` +
-            `> Grup: ${groupMeta.subject}`
+            `> Grupo: ${groupMeta.subject}`
         )
         
     } catch (error) {

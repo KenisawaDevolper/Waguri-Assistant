@@ -26,7 +26,7 @@ async function handler(m, { sock }) {
     } else if (!m.isGroup) {
       targetJid = m.chat;
     }
-  } else if (action === "semua") {
+  } else if (action === "todos") {
     try {
       await m.react("🕕");
       global.isFetchingGroups = true;
@@ -68,7 +68,7 @@ async function handler(m, { sock }) {
         "> `.arsip` (en chat privado) — Archivar chat ini\n" +
         "> `.arsip` (reply pesan) — Archivar chat pengirim\n" +
         "> `.arsip buka 628xxx` — Buka arsip chat\n" +
-        "> `.arsip semua` — Archivar todos los chats",
+        "> `.arsip todos` — Archivar todos los chats",
     );
   }
 

@@ -16,22 +16,22 @@ const pluginConfig = {
     isEnabled: true
 }
 
-function getAfkUser(jid) {
+function getAfkUsuario(jid) {
     return afkStorage.get(jid) || null
 }
 
-function setAfkUser(jid, reason) {
+function setAfkUsuario(jid, reason) {
     afkStorage.set(jid, {
         reason: reason || 'Sin motivo especificado',
         time: Date.now()
     })
 }
 
-function removeAfkUser(jid) {
+function removeAfkUsuario(jid) {
     afkStorage.delete(jid)
 }
 
-function isUserAfk(jid) {
+function isUsuarioAfk(jid) {
     return afkStorage.has(jid)
 }
 
@@ -50,7 +50,7 @@ function formatDuration(ms) {
 
 async function handler(m, { sock }) {
     const reason = (m.args?.join(" ") || m.text)?.trim() || 'Sin motivo especificado'
-    setAfkUser(m.sender, reason)
+    setAfkUsuario(m.sender, reason)
     
     await m.reply(
         `ꕥ 𝖲𝖳𝖠𝖳𝖴𝖲 𝖠𝖥𝖪 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
@@ -65,10 +65,10 @@ async function handler(m, { sock }) {
 }
 
 async function checkAfk(m, sock) {
-    const afkData = getAfkUser(m.sender)
+    const afkData = getAfkUsuario(m.sender)
     if (afkData) {
         if (m.isCommand && m.command?.toLowerCase() === 'afk') return
-        removeAfkUser(m.sender)
+        removeAfkUsuario(m.sender)
         const duration = formatDuration(Date.now() - afkData.time)
         
         await m.reply(
@@ -84,7 +84,7 @@ async function checkAfk(m, sock) {
     
     if (m.isGroup && m.mentionedJid && m.mentionedJid.length > 0) {
         for (const mentioned of m.mentionedJid) {
-            const mentionedAfk = getAfkUser(mentioned)
+            const mentionedAfk = getAfkUsuario(mentioned)
             if (mentionedAfk) {
                 const duration = formatDuration(Date.now() - mentionedAfk.time)
                 
@@ -103,4 +103,4 @@ async function checkAfk(m, sock) {
     }
 }
 
-export { pluginConfig as config, handler, checkAfk, getAfkUser, setAfkUser, removeAfkUser, isUserAfk }
+export { pluginConfig as config, handler, checkAfk, getAfkUsuario, setAfkUsuario, removeAfkUsuario, isUsuarioAfk }

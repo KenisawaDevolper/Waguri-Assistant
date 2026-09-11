@@ -49,7 +49,7 @@ async function handler(m, { sock }) {
     const db = getDatabase()
     const dbPath = db.dbPath
     const fileMap = [
-        { key: 'users', label: '👥 Users' },
+        { key: 'users', label: '👥 Usuarios' },
         { key: 'groups', label: '👥 Groups' },
         { key: 'settings', label: '⚙️ Settings' },
         { key: 'stats', label: '📊 Stats' },
@@ -94,7 +94,7 @@ async function handler(m, { sock }) {
             {
                 name: 'quick_reply',
                 buttonParamsJson: JSON.stringify({
-                    display_text: '✅ Ya, Hapus Semua',
+                    display_text: '✅ Ya, Elimina Semua',
                     id: `${m.prefix}hapusdata ya`
                 })
             },

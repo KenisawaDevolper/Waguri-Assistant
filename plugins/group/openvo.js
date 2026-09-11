@@ -21,7 +21,7 @@ async function handler(m, { sock }) {
     if (!quoted) {
         await m.reply(
             `❌ *ɢᴀɢᴀʟ*\n\n` +
-            `> Balas pesan 1x lihat dengan perintah ini!\n` +
+            `> Balas pesan 1x lihat con perintah ini!\n` +
             `> Gunakan: \`${m.prefix}openvo\` (reply pesan 1x lihat)`
         )
         return
@@ -42,7 +42,7 @@ async function handler(m, { sock }) {
     if (!content) {
         await m.reply(
             `❌ *ᴋᴏɴᴛᴇɴ ᴛɪᴅᴀᴋ ᴅɪᴛᴇᴍᴜᴋᴀɴ*\n\n` +
-            `> Konten pesan tidak dapat dibaca.`
+            `> Konten pesan no dapat dibaca.`
         )
         return
     }
@@ -50,8 +50,8 @@ async function handler(m, { sock }) {
     if (!content.viewOnce) {
         await m.reply(
             `❌ *ʙᴜᴋᴀɴ ᴠɪᴇᴡᴏɴᴄᴇ*\n\n` +
-            `> Pesan yang di-reply bukan pesan 1x lihat!\n` +
-            `> Balas pesan dengan ikon 1x lihat (👁️).`
+            `> Mensaje yang di-reply bukan pesan 1x lihat!\n` +
+            `> Balas pesan con ikon 1x lihat (👁️).`
         )
         return
     }
@@ -111,7 +111,7 @@ async function handler(m, { sock }) {
     } catch (error) {
         await m.reply(
             `❌ *ᴇʀʀᴏʀ*\n\n` +
-            `> Gagal membuka pesan 1x lihat.\n` +
+            `> Falló membuka pesan 1x lihat.\n` +
             `> _${error.message}_`
         )
     }

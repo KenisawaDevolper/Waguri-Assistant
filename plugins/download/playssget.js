@@ -33,7 +33,7 @@ async function ytmp3Fallback(url, format = "mp3") {
   const client = axios.create({
     timeout: 60000,
     headers: {
-      "User-Agent": "Mozilla/5.0 (Linux; Android 16) AppleWebKit/537.36 Chrome/141.0.0 Mobile",
+      "Usuario-Agent": "Mozilla/5.0 (Linux; Android 16) AppleWebKit/537.36 Chrome/141.0.0 Mobile",
       Referer: "https://id.ytmp3.mobi/",
     },
   });
@@ -58,7 +58,7 @@ async function downloadBuffer(url, isVideo = false) {
     maxContentLength: 150*1024*1024,
     maxBodyLength: 150*1024*1024,
     headers: {
-      "User-Agent": "Mozilla/5.0 (Linux; Android 16) AppleWebKit/537.36 Chrome/141.0.0 Mobile",
+      "Usuario-Agent": "Mozilla/5.0 (Linux; Android 16) AppleWebKit/537.36 Chrome/141.0.0 Mobile",
       Accept: "*/*",
       Referer: "https://ssyoutube.com/",
     },

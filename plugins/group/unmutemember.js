@@ -103,7 +103,7 @@ async function handler(m, { sock }) {
         `« ¿ 𝗊𝗎é 𝖽ᧉ𝗌ᧉ⍺𝗌 ᥎ᧉ𝗋 𝗑 ? »\n\n` +
         `✅ *𝖬𝖨𝖤𝖬𝖡𝖱𝖮 𝖣𝖤𝖲𝖲𝖨𝖫𝖤𝖭𝖢𝖨𝖠𝖣𝖮*\n\n` +
         `      👤   𓈒 ◌ㅤ──    *𝖴𝗌𝗎⍺𝗋ı𝗈* : @${targetNumber}\n` +
-        `      🔊   𓈒 ◌ㅤ──    *𝖤𝗌ƚ⍺𝖽𝗈* : \`Unmuted\`\n` +
+        `      🔊   𓈒 ◌ㅤ──    *𝖤𝗌ƚ⍺𝖽𝗈* : \`Quita silenciod\`\n` +
         `      📊   𓈒 ◌ㅤ──    *𝖱ᧉ𝗌ƚ⍺𝗇ƚᧉ𝗌* : \`${mutedMembers.length}\` 𝗆ıᧉ𝗆𝖻𝗋𝗈𝗌\n\n` +
         `( ᴗ͈ˬᴗ͈ ) 𝑊⍺ց𝗎𝗋ı 𝖠𝗌𝗌ı𝗌ƚ⍺𝗇ƚ`,
         { mentions: [targetJid] }

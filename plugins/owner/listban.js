@@ -18,21 +18,21 @@ const pluginConfig = {
 
 async function handler(m, { sock }) {
     const db = getDatabase()
-    const bannedUsers = config.bannedUsers && config.bannedUsers.length > 0 ? config.bannedUsers : (db.setting('bannedUsers') || [])
+    const bannedUsuarios = config.bannedUsuarios && config.bannedUsuarios.length > 0 ? config.bannedUsuarios : (db.setting('bannedUsuarios') || [])
     
-    if (bannedUsers.length === 0) {
+    if (bannedUsuarios.length === 0) {
         return m.reply(`🚫 *ʟɪsᴛᴀ ᴅᴇ ʙᴀɴᴇᴀᴅᴏs* 𓈒 ◌\n\nꕥ No hay usuarios baneados\n\n𓈒 ◌ Usa: \`${m.prefix}ban <número>\` ( ᴗ͈ˬᴗ͈ )`)
     }
     
     let caption = `🚫 *ʟɪsᴛᴀ ᴅᴇ ʙᴀɴᴇᴀᴅᴏs* 𓈒 ◌\n\n`
     caption += `╭┈┈⬡「 ⛔ *ᴜsᴜᴀʀɪᴏs* 」\n`
     
-    for (let i = 0; i < bannedUsers.length; i++) {
-        caption += `┃ ${i + 1}. \`${bannedUsers[i]}\`\n`
+    for (let i = 0; i < bannedUsuarios.length; i++) {
+        caption += `┃ ${i + 1}. \`${bannedUsuarios[i]}\`\n`
     }
     
     caption += `╰┈┈⬡\n\n`
-    caption += `ꕥ ᴛᴏᴛᴀʟ: \`${bannedUsers.length}\` ᴜsᴜᴀʀɪᴏs ʙᴀɴᴇᴀᴅᴏs 𓈒 ◌`
+    caption += `ꕥ ᴛᴏᴛᴀʟ: \`${bannedUsuarios.length}\` ᴜsᴜᴀʀɪᴏs ʙᴀɴᴇᴀᴅᴏs 𓈒 ◌`
     
     await m.reply(caption)
 }

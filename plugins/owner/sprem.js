@@ -4,7 +4,7 @@ const pluginConfig = {
   name: ["sprem", "stickerpremium", "premiumsticker"],
   alias: [],
   category: "owner",
-  description: "Kirim ulang sticker sebagai premium (Lottie/AI)",
+  description: "Envía ulang sticker sebagai premium (Lottie/AI)",
   usage: ".sprem (reply sticker)",
   example: ".sprem",
   isOwner: true,

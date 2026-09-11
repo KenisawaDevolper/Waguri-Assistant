@@ -99,7 +99,7 @@ async function handler(m, { sock, db }) {
 
   if (!categoryArg) {
     const groupData = m.isGroup ? db.getGroup(m.chat) || {} : {};
-    const botMode = groupData.botMode || "md";
+    const botModo = groupData.botModo || "md";
 
     let modeExcludeMap = {
       md: ["panel", "pushkontak", "store"],
@@ -119,7 +119,7 @@ async function handler(m, { sock, db }) {
       }
     } catch (e) { }
 
-    const excludeCategories = modeExcludeMap[botMode] || modeExcludeMap.md;
+    const excludeCategories = modeExcludeMap[botModo] || modeExcludeMap.md;
 
     const categoryOrder = [
       "owner", "main", "download", "search", "sticker", 

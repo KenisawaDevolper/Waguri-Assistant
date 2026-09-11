@@ -272,8 +272,8 @@ async function handler(m) {
         `> 𝗐⍺𝗀𝗎ɾɩ ⍺𝗌𝗌ı𝗌ƚ⍺𝗇ƚ ツ`
       );
     }
-    const globalMode = (args[1] || "").toLowerCase();
-    if (!["on", "off"].includes(globalMode)) {
+    const globalModo = (args[1] || "").toLowerCase();
+    if (!["on", "off"].includes(globalModo)) {
       return m.reply(
         `ꕥ 𝖥𝖮𝖱𝖬𝖠𝖳𝖮 𝖨𝖭𝖵𝖠𝖫𝖨𝖣𝖮 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
         `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « Uso: \`${m.prefix}autoai global on/off\`\n` +
@@ -281,7 +281,7 @@ async function handler(m) {
         `> 𝗐⍺𝗀𝗎ɾɩ ⍺𝗌𝗌ı𝗌ƚ⍺𝗇ƚ ツ`
       );
     }
-    if (globalMode === "on") {
+    if (globalModo === "on") {
       const modeMatch = fullArgs.match(/--rimurumode=(\w+)/i);
       const typeMatch = fullArgs.match(/--type=(text|voice)/i);
       const aimodeMatch = fullArgs.match(/--mode=(onlychat|assistant)/i);
@@ -290,7 +290,7 @@ async function handler(m) {
       );
       const charKey = modeMatch ? modeMatch[1].toLowerCase() : null;
       const responseType = typeMatch ? typeMatch[1].toLowerCase() : "text";
-      const aiMode = aimodeMatch ? aimodeMatch[1].toLowerCase() : "assistant";
+      const aiModo = aimodeMatch ? aimodeMatch[1].toLowerCase() : "assistant";
       const customLogic = logicMatch ? logicMatch[1].trim() : null;
 
       let instruction = "";
@@ -343,7 +343,7 @@ async function handler(m) {
         characterName,
         instruction,
         responseType,
-        mode: aiMode,
+        mode: aiModo,
       };
       db.save();
       try { await m.react('✅') } catch {}
@@ -377,7 +377,7 @@ async function handler(m) {
   );
   const charKey = modeMatch ? modeMatch[1].toLowerCase() : null;
   const responseType = typeMatch ? typeMatch[1].toLowerCase() : "text";
-  const aiMode = aimodeMatch ? aimodeMatch[1].toLowerCase() : "assistant";
+  const aiModo = aimodeMatch ? aimodeMatch[1].toLowerCase() : "assistant";
   const customLogic = logicMatch ? logicMatch[1].trim() : null;
 
   if (!mode || !["on", "off"].includes(mode)) {
@@ -450,7 +450,7 @@ async function handler(m) {
       characterName: "Custom",
       instruction: customLogic,
       responseType: responseType,
-      mode: aiMode,
+      mode: aiModo,
       enableCommands: false,
       sessions: {},
       activatedBy: m.sender,
@@ -479,7 +479,7 @@ async function handler(m) {
       characterName: customPersona.name,
       instruction: customPersona.instruction,
       responseType: responseType,
-      mode: aiMode,
+      mode: aiModo,
       enableCommands: false,
       sessions: {},
       activatedBy: m.sender,
@@ -519,7 +519,7 @@ async function handler(m) {
     characterName: characters[charKey].name,
     instruction: characters[charKey].instruction,
     responseType: responseType,
-    mode: aiMode,
+    mode: aiModo,
     enableCommands: false,
     sessions: {},
     activatedBy: m.sender,

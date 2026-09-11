@@ -32,7 +32,7 @@ async function handler(m, { sock }) {
         const isMedia = isImage || isVideo || isAudio || isDocument;
 
         if (!isMedia) {
-            return m.reply(`🖼️ *ɢᴀɴᴛɪ ᴀssᴇᴛ*\n\n> Silakan reply media (gambar/video/audio/document) dengan pesan \`${m.prefix}ganti-asset\``);
+            return m.reply(`🖼️ *ɢᴀɴᴛɪ ᴀssᴇᴛ*\n\n> Silakan reply media (gambar/video/audio/document) con pesan \`${m.prefix}ganti-asset\``);
         }
 
         m.react('🕕');
@@ -78,7 +78,7 @@ async function handler(m, { sock }) {
         const orderedKeys = [...imageKeys, ...videoKeys, ...audioKeys, ...fontKeys, ...otherKeys];
 
         let listText = `📂 *PILIH ASSET YANG INGIN DIGANTI*\n\n`;
-        listText += `_Silakan reply pesan ini dengan nomor (1-${orderedKeys.length})_\n\n`;
+        listText += `_Silakan reply pesan ini con nomor (1-${orderedKeys.length})_\n\n`;
 
         let idx = 1;
         if (imageKeys.length > 0) {
@@ -189,7 +189,7 @@ async function gantiAssetAnswerHandler(m, sock) {
 
     try {
         const newPath = await updateAssetUrl(selectedKey, session.buffer, filename);
-        await m.reply(`✅ *ÉXITO*\n\n> Asset *${selectedKey}* telah diganti ke:\n> ${newPath}\n> Config telah diupdate secara realtime!`);
+        await m.reply(`✅ *ÉXITO*\n\n> Asset *${selectedKey}* telah diganti ke:\n> ${newPath}\n> Config telah diupdate de forma realtime!`);
         delete global.gantiAssetSessions[m.chat];
         await m.react('✅');
     } catch (e) {

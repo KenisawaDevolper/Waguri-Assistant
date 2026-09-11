@@ -16,7 +16,7 @@ const handler = async (m, { conn, mess }) => {
     else countOther++;
   }
 
-  const msg = `Jumlah Anggota Grup Berdasarkan Negara:
+  const msg = `Jumlah Anggota Grupo Berdasarkan Negara:
 
 • Indonesia: ${countIndonesia} 🇮🇩
 • Malaysia: ${countMalaysia} 🇲🇾

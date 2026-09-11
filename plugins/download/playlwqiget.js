@@ -13,7 +13,7 @@ async function fetchLwqi(url, isVideo = false) {
   const apiUrlNew = `${API_BASE}/${endpoint}?url=${encodeURIComponent(url)}&apikey=${encodeURIComponent(API_KEY)}`
   const apiUrlOld = `${API_BASE}?url=${encodeURIComponent(url)}&apikey=${encodeURIComponent(API_KEY)}`
   const headers = {
-    "User-Agent": "Mozilla/5.0 (Linux; Android 16; NX729J) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.7271.123 Mobile Safari/537.36",
+    "Usuario-Agent": "Mozilla/5.0 (Linux; Android 16; NX729J) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.7271.123 Mobile Safari/537.36",
     "Accept": "application/json, text/plain, */*",
     "Accept-Language": "es-ES,es;q=0.9",
     "Referer": "https://rest-api-lwqi.onrender.com/",
@@ -79,7 +79,7 @@ async function downloadBuffer(url) {
     timeout: 120000,
     maxContentLength: 150 * 1024 * 1024,
     maxBodyLength: 150 * 1024 * 1024,
-    headers: { "User-Agent": "Mozilla/5.0 (Linux; Android 16)" }
+    headers: { "Usuario-Agent": "Mozilla/5.0 (Linux; Android 16)" }
   })
   const type = String(res.headers["content-type"] || "").toLowerCase()
   if (type.includes("text/html") || type.includes("application/json")) {

@@ -9,7 +9,7 @@ import moment from "moment-timezone";
 import config from "../../config.js";
 import { getDatabase } from "../../src/lib/rimuru-database.js";
 import { saluranCtx } from "../../src/lib/rimuru-context.js";
-import { createGoodbyeCard } from "../../src/lib/rimuru-welcome-card.js";
+import { createDespedidaCard } from "../../src/lib/rimuru-welcome-card.js";
 import { resolveAnyLidToJid } from "../../src/lib/rimuru-lid.js";
 import path from "path";
 import fs from "fs";
@@ -40,7 +40,7 @@ function resolvePlaceholders(
   return template
     .replace(/{user}/gi, `@${username}`)
     .replace(/{number}/gi, username)
-    .replace(/{group}/gi, groupName || "Grupo")
+    .replace(/{group}/gi, groupName || "Grupoo")
     .replace(/{desc}/gi, groupDesc || "")
     .replace(/{count}/gi, memberCount?.toString() || "0")
     .replace(/{owner}/gi, groupOwner || "Admin")
@@ -68,7 +68,7 @@ const pluginConfig = {
   isEnabled: true,
 };
 
-async function buildGoodbyeMessage(
+async function buildDespedidaMessage(
   participant,
   groupName,
   groupDesc,
@@ -105,7 +105,7 @@ async function buildGoodbyeMessage(
   const quote = quotes[Math.floor(Math.random() * quotes.length)];
   const emoji = emojis[Math.floor(Math.random() * emojis.length)];
   const header = headers[Math.floor(Math.random() * headers.length)];
-  const username = participant?.split("@")[0] || "User";
+  const username = participant?.split("@")[0] || "Usuario";
   const now = moment().tz("Asia/Jakarta");
   const dayNames = {
     Sunday: "Domingo",
@@ -142,7 +142,7 @@ async function buildGoodbyeMessage(
   return msg;
 }
 
-async function sendGoodbyeMessage(sock, groupJid, participant, groupMeta) {
+async function sendDespedidaMessage(sock, groupJid, participant, groupMeta) {
   try {
     const db = getDatabase();
     const groupData = db.getGroup(groupJid);
@@ -175,15 +175,15 @@ async function sendGoodbyeMessage(sock, groupJid, participant, groupMeta) {
     }
 
     const memberCount = groupMeta?.participants?.length || 0;
-    const groupName = groupMeta?.subject || "Grupo";
-    let userName = realParticipant?.split("@")[0] || "User";
+    const groupName = groupMeta?.subject || "Grupoo";
+    let userName = realParticipant?.split("@")[0] || "Usuario";
     let ppUrl = "https://cdn.gimita.id/download/pp%20kosong%20wa%20default%20(1)_1769506608569_52b57f5b.jpg";
     
     try {
       ppUrl = (await sock.profilePictureUrl(realParticipant, "image")) || ppUrl;
     } catch {}
 
-    const text = await buildGoodbyeMessage(
+    const text = await buildDespedidaMessage(
       realParticipant,
       groupMeta?.subject,
       groupMeta?.descOwner,
@@ -215,7 +215,7 @@ async function sendGoodbyeMessage(sock, groupJid, participant, groupMeta) {
             text: `👋 *Sayonara* *@${userName}*`,
           },
           footer: { text: config.bot?.name || "Waguri-Assistant" },
-          header: { title: "Goodbye", hasMediaAttachment: false },
+          header: { title: "Despedida", hasMediaAttachment: false },
           carouselMessage: {
             cards: [
               {
@@ -286,7 +286,7 @@ async function sendGoodbyeMessage(sock, groupJid, participant, groupMeta) {
         {
           caption: "https://goodbye.guys " + text,
           url: "https://goodbye.guys",
-          title: `Goodbye de ${groupName}`,
+          title: `Despedida de ${groupName}`,
           description: `👋 Sayonara @${userName}!`,
           image: ppUrl,
           previewType: 1,
@@ -370,20 +370,20 @@ async function sendGoodbyeMessage(sock, groupJid, participant, groupMeta) {
       });
     } else if (goodbyeType === 8) {
       await sock.sendMessage(groupJid, {
-        text: `Goodbye @${userName}, del grupo ${groupName}`,
+        text: `Despedida @${userName}, del grupo ${groupName}`,
         mentions: [realParticipant],
       });
     } else {
       let canvasBuffer = null;
       try {
-        canvasBuffer = await createGoodbyeCard(
+        canvasBuffer = await createDespedidaCard(
           userName,
           ppUrl,
           groupName,
           memberCount.toLocaleString(),
         );
       } catch (e) {
-        console.error("Goodbye Canvas Error:", e.message);
+        console.error("Despedida Canvas Error:", e.message);
       }
 
       await sock.sendMessage(groupJid, {
@@ -403,7 +403,7 @@ async function sendGoodbyeMessage(sock, groupJid, participant, groupMeta) {
     }
     return true;
   } catch (error) {
-    console.error("Goodbye Error:", error);
+    console.error("Despedida Error:", error);
     return false;
   }
 }
@@ -438,7 +438,7 @@ async function handler(m, { sock }) {
       return m.reply(
         `ꕥ 𝖦𝖮𝖮𝖣𝖡𝖸𝖤 𝖦𝖫𝖮𝖡𝖠𝖫 𝖮𝖭 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
         `      • Estado :: Activado masivamente\n` +
-        `      • Grupos afectados :: *${count}*\n\n` +
+        `      • Grupoos afectados :: *${count}*\n\n` +
         `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « El sistema de despedidas se ha activado en todos los chats registrados. »\n\n` +
         `> 𝗐⍺𝗀𝗎ɾɩ ⍺𝗌𝗌ı𝗌ƚ⍺𝗇ƚ ツ`
       );
@@ -470,7 +470,7 @@ async function handler(m, { sock }) {
       return m.reply(
         `ꕥ 𝖦𝖮𝖮𝖣𝖡𝖸𝖤 𝖦𝖫𝖮𝖡𝖠𝖫 𝖮𝖥𝖥 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
         `      • Estado :: Desactivado masivamente\n` +
-        `      • Grupos afectados :: *${count}*\n\n` +
+        `      • Grupoos afectados :: *${count}*\n\n` +
         `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « El sistema de despedidas se ha desactivado en todos los chats registrados. »\n\n` +
         `> 𝗐⍺𝗀𝗎ɾɩ ⍺𝗌𝗌ı𝗌ƚ⍺𝗇ƚ ツ`
       );
@@ -529,4 +529,4 @@ async function handler(m, { sock }) {
   );
 }
 
-export { pluginConfig as config, handler, sendGoodbyeMessage };
+export { pluginConfig as config, handler, sendDespedidaMessage };

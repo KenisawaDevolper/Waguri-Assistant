@@ -36,7 +36,7 @@ async function handler(m, { sock }) {
         }
 
         let txt = `🗑️ *sᴛᴏᴘ & ᴅᴇʟᴇᴛᴇ ᴊᴀᴅɪʙᴏᴛ*\n\n`
-        txt += `Pilih target dengan mention atau reply:\n\n`
+        txt += `Pilih target con mention atau reply:\n\n`
 
         sessions.forEach((s, i) => {
             const status = s.isActive ? '🟢' : '⚫'
@@ -70,8 +70,8 @@ async function handler(m, { sock }) {
             text: `🗑️ *ᴊᴀᴅɪʙᴏᴛ ᴅɪʜᴀᴘᴜs*\n\n` +
                 `> 📱 Nomor: *@${id}*\n` +
                 `> 🗑️ Status: *Deleted*\n\n` +
-                `Session telah eliminado secara permanen.\n` +
-                `User perlu \`.jadibot\` ulang untuk membuat session baru.`,
+                `Session telah eliminado de forma permanen.\n` +
+                `Usuario perlu \`.jadibot\` ulang untuk membuat session baru.`,
             mentions: [target]
         }, { quoted: m })
     } catch (error) {

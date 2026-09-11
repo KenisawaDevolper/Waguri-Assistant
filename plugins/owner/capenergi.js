@@ -21,12 +21,12 @@ async function handler(m, { sock }) {
   if (m.args.length < 2) {
     return m.reply(
       `⚙️ *SISTEM CAP ENERGI*\n\n` +
-      `Sistem untuk mengubah secara dinamis jumlah energi yang dipotong untuk banyak fitur una vezgus.\n\n` +
+      `Sistem untuk mengubah de forma dinamis jumlah energi yang dipotong untuk banyak fitur una vezgus.\n\n` +
       `*PENGGUNAAN:*\n` +
       `- *${m.prefix}capenergi <nama_fitur1> <nama_fitur2> ... <jumlah>*\n\n` +
       `*CONTOH PENGGUNAAN:*\n` +
-      `- *${m.prefix}capenergi hd jpm 5* (Fitur HD & JPM memotong 5 energi)\n` +
-      `- *${m.prefix}capenergi hd 0* (Fitur HD menjadi gratis energi)\n\n` +
+      `- *${m.prefix}capenergi hd jpm 5* (Función HD & JPM memotong 5 energi)\n` +
+      `- *${m.prefix}capenergi hd 0* (Función HD menjadi gratis energi)\n\n` +
       `*PENJELASAN:*\n` +
       `1. Ingresa satu atau banyak nama fitur yang ingin diubah.\n` +
       `2. Di akhiran (kata terakhir) harus berupa ANGKA (jumlah potongan energi).`

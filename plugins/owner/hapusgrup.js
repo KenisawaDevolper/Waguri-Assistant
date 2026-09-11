@@ -26,7 +26,7 @@ async function handler(m, { sock }) {
             '🗑️ *ʜᴀᴘᴜs ɢʀᴜᴘ*\n\n' +
             '> `.hapusgrup` (di dalam grup) — Keluar dari grup ini\n' +
             '> `.hapusgrup <id_grup>` — Keluar dari grup tertentu\n\n' +
-            '⚠️ Bot akan keluar dari grup, bukan menghapus grup secara permanen'
+            '⚠️ Bot akan keluar dari grup, bukan menghapus grup de forma permanen'
         )
     }
 
@@ -38,7 +38,7 @@ async function handler(m, { sock }) {
         await m.react('✅')
         return m.reply(
             `🗑️ *ʙᴏᴛ ᴋᴇʟᴜᴀʀ ᴅᴀʀɪ ɢʀᴜᴘ*\n\n` +
-            `> Grup: ${groupName}\n` +
+            `> Grupo: ${groupName}\n` +
             `> ID: ${targetJid}`
         )
     } catch (err) {

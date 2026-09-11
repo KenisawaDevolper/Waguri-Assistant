@@ -15,7 +15,7 @@ async function handler(m, { sock }) {
   try {
     await sock.readMessages([m.key]);
     await m.react("✅");
-    return m.reply("📖 *Pesan ditandai sudah dibaca*");
+    return m.reply("📖 *Mensaje ditandai como leído*");
   } catch (err) {
     return m.reply(`❌ Error: ${err.message}`);
   }

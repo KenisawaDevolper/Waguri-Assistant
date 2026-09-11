@@ -205,7 +205,7 @@ async function handler(m, { sock }) {
       validateStatus: () => true,
       responseType: "arraybuffer",
       headers: {
-        "User-Agent": "rimuru-Bot/2.0",
+        "Usuario-Agent": "rimuru-Bot/2.0",
         Accept: "*/*",
         ...(jsonBody ? { "Content-Type": "application/json" } : {}),
         ...customHeaders,

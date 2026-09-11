@@ -27,7 +27,7 @@ function toDateKey(value) {
 }
 
 function getRegistrationStats(db) {
-  const users = Object.values(db.getAllUsers() || {});
+  const users = Object.values(db.getAllUsuarios() || {});
   const todayKey = toDateKey(new Date());
 
   return {
@@ -121,7 +121,7 @@ async function handler(m, { sock }) {
       {
         text:
           `✅ *sɪsᴛᴇᴍ ᴅᴀꜰᴛᴀʀ ᴅɪᴀᴋᴛɪꜰᴋᴀɴ!*\n\n` +
-          `User sekarang wajib daftar sebelum menggunakan command!\n\n` +
+          `Usuario sekarang wajib daftar sebelum menggunakan command!\n\n` +
           `> Command: \`${m.prefix}daftar\``,
         contextInfo: getRegistrationContextInfo(),
       },
@@ -145,7 +145,7 @@ async function handler(m, { sock }) {
       {
         text:
           `❌ *sɪsᴛᴇᴍ ᴅᴀꜰᴛᴀʀ ᴅɪɴᴏɴᴀᴋᴛɪꜰᴋᴀɴ!*\n\n` +
-          `User no perlu daftar untuk menggunakan command.`,
+          `Usuario no perlu daftar untuk menggunakan command.`,
         contextInfo: getRegistrationContextInfo(),
       },
       { quoted: m },

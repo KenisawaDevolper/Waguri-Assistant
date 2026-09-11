@@ -29,13 +29,13 @@ let handler = async (m, { conn, text, prefix, command }) => {
     }
 
     const aiResponse = data.result.content;
-    const aiModel = data.result.model || "openai/gpt-4o-mini";
+    const aiModol = data.result.model || "openai/gpt-4o-mini";
 
     const caption = 
       `ꕥ 𝖶𝖠𝖦𝖴𝖱𝖨 𝖠𝖨 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
       `      𓈒 ◌ㅤ──    *𝖱𝖤𝖲𝖯𝖴𝖤𝖲𝖳𝖠*\n` +
       `> ${aiResponse}\n\n` +
-      `｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ) *Modelo: ${aiModel}*`;
+      `｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ) *Modolo: ${aiModol}*`;
 
     await conn.sendMessage(m.chat, { text: caption }, { quoted: m });
     await m.react("✅");

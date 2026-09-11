@@ -49,7 +49,7 @@ async function handler(m, { sock }) {
     );
   }
 
-  const user = db.getUser(targetJid) || db.setUser(targetJid);
+  const user = db.getUsuario(targetJid) || db.setUsuario(targetJid);
 
   const oldLevel = calculateLevel(user.exp || 0);
   const expToRemove = levels * EXP_PER_LEVEL;
@@ -62,7 +62,7 @@ async function handler(m, { sock }) {
   await m.reply(
     `✅ *ʟᴇᴠᴇʟ ᴅɪᴋᴜʀᴀɴɢɪ*\n\n` +
       `╭┈┈⬡「 📋 *ᴅᴇᴛᴀɪʟ* 」\n` +
-      `┃ 👤 User: @${targetJid.split("@")[0]}\n` +
+      `┃ 👤 Usuario: @${targetJid.split("@")[0]}\n` +
       `┃ ➖ Kurang: *-${levels} Level*\n` +
       `┃ 🚄 Exp Removed: *-${expToRemove.toLocaleString("id-ID")}*\n` +
       `┃ 📊 Level: *${oldLevel} → ${newLevel}*\n` +

@@ -27,7 +27,7 @@ function handler(m, { sock, db }) {
     const group = db.getGroup(m.chat) || {}
     
     if (!['on', 'off'].includes(args)) {
-        const status = group.notifDemote === true ? '✅ Activo (Encendido)' : '❌ Inactivo (Apagado)'
+        const status = group.notifDegrada === true ? '✅ Activo (Encendido)' : '❌ Inactivo (Apagado)'
         return m.reply(
             `ꕥ 𝖭𝖮𝖳𝖨𝖥𝖨𝖢𝖠𝖢𝖨𝖀́𝖭 𝖣𝖤 𝖣𝖤𝖬𝖮𝖳𝖤 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
             `      • Estado actual :: *${status}*\n\n` +
@@ -40,7 +40,7 @@ function handler(m, { sock, db }) {
     }
     
     if (args === 'on') {
-        group.notifDemote = true
+        group.notifDegrada = true
         db.setGroup(m.chat, group)
         
         try { m.react('✅'); } catch {}
@@ -54,7 +54,7 @@ function handler(m, { sock, db }) {
     }
     
     if (args === 'off') {
-        group.notifDemote = false
+        group.notifDegrada = false
         db.setGroup(m.chat, group)
         
         try { m.react('❌'); } catch {}

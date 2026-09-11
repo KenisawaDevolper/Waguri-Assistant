@@ -26,11 +26,11 @@ async function handler(m, { sock }) {
 
     return m.reply(
       `🛡️ *Anti Culik*\n\n` +
-        `Bot akan otomatis keluar dari grup jika ditambah oleh orang yang tidak dikenal tanpa izin.\n\n` +
+        `Bot akan otomatis keluar dari grup jika ditambah oleh orang yang no dikenal tanpa izin.\n\n` +
         `*STATUS:*\n` +
-        `> Mode: *${status === "on" ? "Aktif ✅" : "Nonaktif ❌"}*\n\n` +
+        `> Modo: *${status === "on" ? "Aktif ✅" : "Nonaktif ❌"}*\n\n` +
         `*PENGGUNAAN:*\n` +
-        `> *${m.prefix}anticulik on* — Aktifkan\n` +
+        `> *${m.prefix}anticulik on* — Activar\n` +
         `> *${m.prefix}anticulik off* — Nonaktifkan\n\n` +
         `_Jika aktif, bot hanya bisa join via *${m.prefix}join* atau ditambah oleh owner_`
     );
@@ -52,7 +52,7 @@ async function handler(m, { sock }) {
     db.setting("anticulik", "off");
     return m.reply(
       `🛡️ *Anti Culik Nonaktif*\n\n` +
-        `> Bot tidak akan keluar otomatis jika ditambah ke grup\n` +
+        `> Bot no akan keluar otomatis jika ditambah ke grup\n` +
         `> Siapapun bisa menambahkan bot ke grup`
     );
   }
@@ -108,7 +108,7 @@ async function handleAntiCulik(event, sock, db) {
       `Minimal izin dulu ya bang, jangan asal culik 🗿\n\n` +
       `> Bot ditambah oleh ${inviterMention} tanpa izin\n` +
       `> Bot akan keluar dari grup ini\n\n` +
-      `_Hubungi owner untuk menambahkan bot dengan cara yang benar_`,
+      `_Hubungi owner untuk menambahkan bot con cara yang benar_`,
     contextInfo: saluranCtx(),
     mentionedJid: inviter ? [inviter] : [],
   });

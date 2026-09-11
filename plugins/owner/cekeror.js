@@ -31,7 +31,7 @@ let handler = async (m) => {
  check error 
 
 ❏ status :
-semua fitur aman no ada error
+todos fitur aman no ada error
 `.trim())
     }
 

@@ -1,6 +1,6 @@
 let handler = async (m, { conn, args, usedPrefix, command, isAdmin }) => {
     if (!m.isGroup) return m.reply('Hanya bisa di grup!')
-    if (!isAdmin) return m.reply('Hanya admin yang bisa pakai!')
+    if (!isAdmin) return m.reply('Solo admins yang bisa pakai!')
 
     let chat = global.db.data.chats[m.chat]
     if (!chat) global.db.data.chats[m.chat] = {}

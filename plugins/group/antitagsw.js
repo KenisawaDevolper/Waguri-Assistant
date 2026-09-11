@@ -44,7 +44,7 @@ async function handler(m, { sock, db }) {
         try { await m.react('✅') } catch {}
         await m.reply(
             `ꕥ 𝖠𝖭𝖳𝖨𝖳𝖠𝖦𝖲𝖶 𝖠𝖢𝖳𝖨𝖵𝖠𝖣𝖮 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
-            `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « El sistema AntiTag Status se ha activado exitosamente. Las etiquetas de estados serán eliminadas automáticamente. »\n\n` +
+            `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « El sistema AntiMenciona Status se ha activado exitosamente. Las etiquetas de estados serán eliminadas automáticamente. »\n\n` +
             `> 𝗐⍺𝗀𝗎ɾɩ ⍺𝗌𝗌ı𝗌ƚ⍺𝗇ƚ ツ`
         )
         return
@@ -55,7 +55,7 @@ async function handler(m, { sock, db }) {
         try { await m.react('❌') } catch {}
         await m.reply(
             `ꕥ 𝖠𝖭𝖳𝖨𝖳𝖠𝖦𝖲𝖶 𝖣𝖤𝖲𝖠𝖢𝖳𝖨𝖵𝖠𝖣𝖮 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
-            `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « El sistema AntiTag Status se ha desactivado. »\n\n` +
+            `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « El sistema AntiMenciona Status se ha desactivado. »\n\n` +
             `> 𝗐⍺𝗀𝗎ɾɩ ⍺𝗌𝗌ı𝗌ƚ⍺𝗇ƚ ツ`
         )
         return

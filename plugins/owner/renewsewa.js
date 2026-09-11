@@ -110,7 +110,7 @@ async function handler(m, { sock }) {
     const result = await resolveGroupId(sock, input);
     if (!result) {
       await m.react("❌");
-      return m.reply(`❌ Grup no encontrado`);
+      return m.reply(`❌ Grupo no encontrado`);
     }
 
     const { id: groupId } = result;
@@ -119,7 +119,7 @@ async function handler(m, { sock }) {
     if (!existing) {
       await m.react("❌");
       return m.reply(
-        `❌ Grup no terdaftar\nGunakan *${m.prefix}addsewa* untuk menambahkan`,
+        `❌ Grupo no terdaftar\nGunakan *${m.prefix}addsewa* untuk menambahkan`,
       );
     }
 
@@ -129,7 +129,7 @@ async function handler(m, { sock }) {
     } else {
       if (existing.isLifetime) {
         await m.react("❌");
-        return m.reply(`❌ Grup ini sudah Permanent, no perlu diperpanjang`);
+        return m.reply(`❌ Este grupo sudah Permanent, no perlu diperpanjang`);
       }
       const baseTime =
         existing.expiredAt > Date.now() ? existing.expiredAt : Date.now();
@@ -150,7 +150,7 @@ async function handler(m, { sock }) {
     await m.react("✅");
 
     let text = `✅ *SEWA DIPERPANJANG*\n\n`;
-    text += `Grup: *${groupName}*\n`;
+    text += `Grupo: *${groupName}*\n`;
     text += `Añadiran: *${formatDuration(durationStr)}*\n`;
     text += `Expired baru: *${expiredStr}*`;
 

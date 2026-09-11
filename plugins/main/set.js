@@ -9,13 +9,13 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 
     if (!global.db.data.chats[who]) global.db.data.chats[who] = {}
 
-    var jumlahHari = 86400000 * Math.abs(parseInt(args[0]))
+    var jumlahDía = 86400000 * Math.abs(parseInt(args[0]))
     var now = Date.now()
     
     if (global.db.data.chats[who].expired && now < global.db.data.chats[who].expired) {
-        global.db.data.chats[who].expired += jumlahHari
+        global.db.data.chats[who].expired += jumlahDía
     } else {
-        global.db.data.chats[who].expired = now + jumlahHari
+        global.db.data.chats[who].expired = now + jumlahDía
     }
 
     const remaining = msToDate(global.db.data.chats[who].expired - now)

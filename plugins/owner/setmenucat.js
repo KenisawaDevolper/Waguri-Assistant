@@ -28,13 +28,13 @@ const VARIANTS = {
   v2: {
     id: 2,
     name: "Interactive + Image Header",
-    desc: "Tampilan premium dengan gambar header, limited time offer, dan tombol navigasi interaktif",
+    desc: "Tampilan premium con gambar header, limited time offer, dan tombol navigasi interaktif",
     emoji: "🖼️",
   },
   v5: {
     id: 5,
     name: "MENUCAT NATIVEFLOW",
-    desc: "Tampilan native flow premium dengan video & cuaca",
+    desc: "Tampilan native flow premium con video & cuaca",
     emoji: "✨",
   },
   v6: {

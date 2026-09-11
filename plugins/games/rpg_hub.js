@@ -28,7 +28,7 @@ function loadRpgCommands() {
   }
 }
 
-function ensureRpgUser(userId) {
+function ensureRpgUsuario(userId) {
   if (!global.db) global.db = {}
   if (!global.db.data) global.db.data = {}
   if (!global.db.data.users) global.db.data.users = {}
@@ -148,7 +148,7 @@ async function sendRpgHub(m, sock, user) {
 
 async function handler(m, { sock }) {
   const args = (m.args || [])[0]?.toLowerCase()
-  const user = ensureRpgUser(m.sender)
+  const user = ensureRpgUsuario(m.sender)
 
   // Sub-comando directo: delega al rpg_system existente
   if (args) {

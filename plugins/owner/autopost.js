@@ -177,7 +177,7 @@ async function handler(m, { sock }) {
                 `❌ *FOLDER TIDAK DITEMUKAN*\n\n` +
                 `📁 Folder: \`${IMAGES_FOLDER}\`\n\n` +
                 `💡 *Solusi:*\n` +
-                `> 1. Buat folder: \`assets/zerotwo-random/\`\n` +
+                `> 1. Crea folder: \`assets/zerotwo-random/\`\n` +
                 `> 2. Ingresa gambar ke dalamnya\n` +
                 `> 3. Coba lagi\n\n` +
                 `🦋 *Zero Two:* "¡Crea primero la carpeta, cariño~ 🎐"`

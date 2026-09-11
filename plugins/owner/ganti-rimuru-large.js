@@ -21,7 +21,7 @@ async function handler(m, { sock }) {
     const isImage = m.isImage || (m.quoted && m.quoted.type === 'imageMessage')
     
     if (!isImage) {
-        return m.reply(`🖼️ *ᴏᴜʀɪɴ ʟᴀʀɢᴇ ᴘʀᴇsᴇᴛ*\n\n> Kirim/reply gambar untuk mengganti kumpulan foto besar (rimuru.jpg, rimuru-v8.jpg, rimuru-v10.jpg) una vezgus.\n> Pastikan rasio gambar sesuai dengan yang diinginkan.`)
+        return m.reply(`🖼️ *ᴏᴜʀɪɴ ʟᴀʀɢᴇ ᴘʀᴇsᴇᴛ*\n\n> Envía/reply gambar untuk mengganti kumpulan foto besar (rimuru.jpg, rimuru-v8.jpg, rimuru-v10.jpg) una vezgus.\n> Pastikan rasio gambar sesuai con yang diinginkan.`)
     }
     
     await m.react('🕕')

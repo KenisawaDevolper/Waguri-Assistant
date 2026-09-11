@@ -3,7 +3,7 @@ const pluginConfig = {
     name: 'modesewa',
     alias: ['ms', 'sewamode', 'modesewa'],
     category: 'owner',
-    description: 'Mode sewa bot - aktifkan/nonaktifkan sistem sewa',
+    description: 'Modo sewa bot - aktifkan/nonaktifkan sistem sewa',
     usage: '.modesewa <on/off/check>',
     example: '.modesewa on',
     isOwner: true,

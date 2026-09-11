@@ -55,7 +55,7 @@ async function handler(m, { args, isAdmin, isOwner, sock }) {
         if (global.db.data.chats[m.chat].antilinkch) {
             await m.reply(
                 `ꕥ 𝖸𝖠 𝘈𝘊𝘛𝘐𝘝𝘈𝘋𝘖 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
-                `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « El sistema Antilink de canales ya se encuentra activo. »\n\n` +
+                `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « El sistema Antienlace de canales ya se encuentra activo. »\n\n` +
                 `> 𝗐⍺𝗀𝗎ɾɩ ⍺𝗌𝗌ı𝗌ƚ⍺𝗇ƚ ツ`
             )
             return
@@ -64,7 +64,7 @@ async function handler(m, { args, isAdmin, isOwner, sock }) {
         try { await m.react('✅') } catch {}
         await m.reply(
             `ꕥ 𝘈𝘕𝘛𝘐𝘓𝘐𝘕𝘒 𝘊𝘏𝘈𝘕𝘕𝘌𝘓 𝘈𝘊𝘛𝘐𝘝𝘈𝘋𝘖 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
-            `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « Antilink channel se ha activado exitosamente. »\n\n` +
+            `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « Antienlace channel se ha activado exitosamente. »\n\n` +
             `> 𝗐⍺𝗀𝗎ɾɩ ⍺𝗌𝗌ı𝗌ƚ⍺𝗇ƚ ツ`
         )
         return
@@ -74,7 +74,7 @@ async function handler(m, { args, isAdmin, isOwner, sock }) {
         if (!global.db.data.chats[m.chat].antilinkch) {
             await m.reply(
                 `ꕥ 𝖸𝖠 𝘋𝘌𝘚𝘈𝘊𝘛𝘐𝘝𝘈𝘋𝘖 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
-                `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « El sistema Antilink de canales ya está desactivado. »\n\n` +
+                `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « El sistema Antienlace de canales ya está desactivado. »\n\n` +
                 `> 𝗐⍺𝗀𝗎ɾɩ ⍺𝗌𝗌ı𝗌ƚ⍺𝗇ƚ ツ`
             )
             return
@@ -83,7 +83,7 @@ async function handler(m, { args, isAdmin, isOwner, sock }) {
         try { await m.react('❌') } catch {}
         await m.reply(
             `ꕥ 𝘈𝘕𝘛𝘐𝘓𝘐𝘕𝘒 𝘊𝘏𝘈𝘕𝘕𝘌𝘓 𝘋𝘌𝘚𝘈𝘊𝘛𝘐𝘝𝘈𝘋𝘖 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
-            `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « Antilink channel se ha desactivado correctamente. »\n\n` +
+            `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « Antienlace channel se ha desactivado correctamente. »\n\n` +
             `> 𝗐⍺𝗀𝗎ɾɩ ⍺𝗌𝗌ı𝗌ƚ⍺𝗇ƚ ツ`
         )
         return

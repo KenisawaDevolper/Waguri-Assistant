@@ -26,7 +26,7 @@ async function sendLink(email) {
   const res = await axios.post(
     "https://am.neonode.my.id/api/send-link",
     { email },
-    { timeout: 15000, headers: { "Content-Type": "application/json", "User-Agent": "WaguriAssistant/1.0" } }
+    { timeout: 15000, headers: { "Content-Type": "application/json", "Usuario-Agent": "WaguriAssistant/1.0" } }
   );
   return res.data;
 }
@@ -35,7 +35,7 @@ async function verifyLink(email, magicLink) {
   const res = await axios.post(
     "https://am.neonode.my.id/api/verify-link",
     { email, magicLink },
-    { timeout: 15000, headers: { "Content-Type": "application/json", "User-Agent": "WaguriAssistant/1.0" } }
+    { timeout: 15000, headers: { "Content-Type": "application/json", "Usuario-Agent": "WaguriAssistant/1.0" } }
   );
   return res.data;
 }
@@ -76,9 +76,9 @@ async function handler(m, { sock, text, args }) {
 
   // Normalizar args quitando palabra "verify" si está
   let cleanArgs = [...args];
-  let isVerifyMode = false;
+  let isVerifyModo = false;
   if (cleanArgs[0]?.toLowerCase() === "verify") {
-    isVerifyMode = true;
+    isVerifyModo = true;
     cleanArgs.shift();
   }
 
@@ -95,7 +95,7 @@ async function handler(m, { sock, text, args }) {
   }
 
   // Caso 1: Solo email -> enviar link
-  if (!magicLink && !isVerifyMode) {
+  if (!magicLink && !isVerifyModo) {
     // Si el usuario puso link junto al email sin separar bien, ya lo cubre el caso 2
     await m.react("📧");
     try {

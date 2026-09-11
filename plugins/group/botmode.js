@@ -19,37 +19,37 @@ const pluginConfig = {
 const MODES = {
     md: {
         name: 'Multi-Device',
-        desc: 'Mode default dengan semua fitur standar',
+        desc: 'Modo default con todos fitur standar',
         allowedCategories: null,
         excludeCategories: ['cpanel', 'pushkontak', 'store']
     },
     all: {
         name: 'All Features',
-        desc: 'Semua fitur dari semua mode bisa diakses',
+        desc: 'Semua fitur dari todos mode bisa diakses',
         allowedCategories: null,
         excludeCategories: null
     },
     cpanel: {
         name: 'CPanel Pterodactyl',
-        desc: 'Mode khusus untuk panel server',
+        desc: 'Modo khusus untuk panel server',
         allowedCategories: ['main', 'group', 'sticker', 'owner', 'tools', 'panel'],
         excludeCategories: null
     },
     pushkontak: {
         name: 'Push Kontak',
-        desc: 'Mode khusus untuk push kontak ke member',
+        desc: 'Modo khusus untuk push kontak ke member',
         allowedCategories: ['owner', 'main', 'group', 'sticker', 'pushkontak'],
         excludeCategories: null
     },
     store: {
         name: 'Store/Toko',
-        desc: 'Mode khusus untuk toko manual',
+        desc: 'Modo khusus untuk toko manual',
         allowedCategories: ['main', 'group', 'sticker', 'owner', 'store'],
         excludeCategories: null
     },
     otp: {
         name: 'OTP Service',
-        desc: 'Mode layanan OTP otomatis',
+        desc: 'Modo layanan OTP otomatis',
         allowedCategories: ['main', 'group', 'sticker', 'owner', 'otp'],
         excludeCategories: null
     }
@@ -62,19 +62,19 @@ function handler(m, { sock }) {
     const flags = args.slice(1).map(f => f.toLowerCase())
 
     const groupData = db.getGroup(m.chat) || {}
-    const currentMode = groupData.botMode || 'all'
+    const currentModo = groupData.botModo || 'all'
 
     if (!mode) {
         let modeList = ''
         for (const [key, val] of Object.entries(MODES)) {
-            const isCurrent = key === currentMode ? ' ⬅️' : ''
+            const isCurrent = key === currentModo ? ' ⬅️' : ''
             modeList += `┃ \`${m.prefix}botmode ${key}\`${isCurrent}\n`
             modeList += `┃ └ ${val.desc}\n`
         }
 
         return m.reply(
             `🔧 *ʙᴏᴛ ᴍᴏᴅᴇ*\n\n` +
-            `> Mode saat ini: *${currentMode.toUpperCase()}* (${MODES[currentMode]?.name || 'Unknown'})\n` +
+            `> Modo saat ini: *${currentModo.toUpperCase()}* (${MODES[currentModo]?.name || 'Unknown'})\n` +
             `\n╭─「 📋 *ᴘɪʟɪʜᴀɴ* 」\n` +
             `${modeList}` +
             `╰───────────────\n\n` +
@@ -85,14 +85,14 @@ function handler(m, { sock }) {
     }
 
     if (!Object.keys(MODES).includes(mode)) {
-        return m.reply(`❌ Mode tidak valid. Pilihan: \`${Object.keys(MODES).join(', ')}\``)
+        return m.reply(`❌ Modo no valid. Pilihan: \`${Object.keys(MODES).join(', ')}\``)
     }
 
 
 
     const newGroupData = {
         ...groupData,
-        botMode: mode
+        botModo: mode
     }
 
     if (mode === 'store') {
@@ -120,21 +120,21 @@ function handler(m, { sock }) {
 
     return m.reply(
         `✅ *ᴍᴏᴅᴇ ᴅɪᴜʙᴀʜ*\n\n` +
-        `> Mode: *${mode.toUpperCase()}* (${MODES[mode].name})\n` +
-        `> Grup: *${m.chat.split('@')[0]}*\n` +
+        `> Modo: *${mode.toUpperCase()}* (${MODES[mode].name})\n` +
+        `> Grupo: *${m.chat.split('@')[0]}*\n` +
         extraInfo +
         `\n\n> Ketik \`${m.prefix}menu\` untuk melihat menu.`
     )
 }
 
-function getGroupMode(chatJid, db) {
-    const globalMode = db.setting('botMode') || 'all'
-    if (!chatJid?.endsWith('@g.us')) return globalMode
+function getGroupModo(chatJid, db) {
+    const globalModo = db.setting('botModo') || 'all'
+    if (!chatJid?.endsWith('@g.us')) return globalModo
     const groupData = db.getGroup(chatJid) || {}
-    return groupData.botMode || globalMode
+    return groupData.botModo || globalModo
 }
 
-function getModeCategories(mode) {
+function getModoCategories(mode) {
     const modeConfig = MODES[mode] || MODES.md
     return {
         allowed: modeConfig.allowedCategories,
@@ -142,7 +142,7 @@ function getModeCategories(mode) {
     }
 }
 
-function filterCategoriesByMode(categories, mode) {
+function filterCategoriesByModo(categories, mode) {
     const modeConfig = MODES[mode] || MODES.md
 
     if (modeConfig.allowedCategories) {
@@ -156,4 +156,4 @@ function filterCategoriesByMode(categories, mode) {
     return categories
 }
 
-export { pluginConfig as config, handler, getGroupMode, getModeCategories, filterCategoriesByMode, MODES }
+export { pluginConfig as config, handler, getGroupModo, getModoCategories, filterCategoriesByModo, MODES }

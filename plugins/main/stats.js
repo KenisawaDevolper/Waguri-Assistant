@@ -51,9 +51,9 @@ async function handler(m, { sock, db, uptime, config: botConfig }) {
     const freeMem = os.freemem();
     const usedMem = totalMem - freeMem;
 
-    const totalUsers = Object.keys(users).length;
+    const totalUsuarios = Object.keys(users).length;
     const totalGroups = Object.keys(groups).length;
-    const premiumUsers = Object.values(users).filter((u) => u.premium || u.isPremium).length;
+    const premiumUsuarios = Object.values(users).filter((u) => u.premium || u.isPremium).length;
 
     const botName = botConfig?.bot?.name || "Waguri Bot";
     const botVersion = `v${botConfig?.bot?.version || "1.0.0"}`;
@@ -67,8 +67,8 @@ async function handler(m, { sock, db, uptime, config: botConfig }) {
       `        𓈒 ◌ㅤ──    ᥎ᧉ𝗋𝗌ɩó𝗇 :: *${botVersion}*\n` +
       `        𓈒 ◌ㅤ──    ƚɩᧉ𝗆𝗉𝗈 ⍺𝖼ƚɩ᥎𝗈 :: *${uptimeStr}*\n\n` +
       `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « 𝖻⍺𝗌ᧉ ᑯᧉ ᑯ⍺ƚ𝗈𝗌 »\n\n` +
-      `        𓈒 ◌ㅤ──    𝗎𝗌𝗎⍺𝗋ɩ𝗈𝗌 :: *${totalUsers}*\n` +
-      `        𓈒 ◌ㅤ──    𝗉𝗋ᧉ𝗆ɩ𝗎𝗆 :: *${premiumUsers}*\n` +
+      `        𓈒 ◌ㅤ──    𝗎𝗌𝗎⍺𝗋ɩ𝗈𝗌 :: *${totalUsuarios}*\n` +
+      `        𓈒 ◌ㅤ──    𝗉𝗋ᧉ𝗆ɩ𝗎𝗆 :: *${premiumUsuarios}*\n` +
       `        𓈒 ◌ㅤ──    𝗀𝗋𝗎𝗉𝗈𝗌 :: *${totalGroups}*\n\n` +
       `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « 𝗋ᧉ𝗇ᑯɩ𝗆ɩᧉ𝗇ƚ𝗈 ᑯᧉ𝗅 𝗌ɩ𝗌ƚᧉ𝗆⍺ »\n\n` +
       `        𓈒 ◌ㅤ──    𝗉𝗅⍺ƚ⍺𝖿𝗈𝗋𝗆⍺ :: *${os.platform()} ${os.arch()}*\n` +

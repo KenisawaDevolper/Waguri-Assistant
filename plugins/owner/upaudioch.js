@@ -5,7 +5,7 @@ const pluginConfig = {
     category: 'owner',
     description: 'Upload audio ke saluran (channel) WhatsApp',
     usage: '.upaudioch (reply audio) <teks>',
-    example: '.upaudioch Pesan dari owner',
+    example: '.upaudioch Mensaje dari owner',
     isOwner: true,
     isPremium: false,
     isGroup: false,
@@ -24,7 +24,7 @@ async function handler(m, { sock }) {
             `╭━━━━━━━━━━━━━━━━━━━━━⬣\n` +
             `┃ ✦ *Cara Pakai*\n` +
             `┃\n` +
-            `┃   Reply audio dengan caption\n` +
+            `┃   Reply audio con caption\n` +
             `┃   ${m.prefix}upaudioch <teks>\n` +
             `┃\n` +
             `┃ ✦ *Ejemplo*\n` +

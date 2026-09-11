@@ -14,7 +14,7 @@ let handler = async (m, { conn, participants, groupMetadata }) => {
 
   const ppBuffer = await axios.get(ppUrl, { responseType: 'arraybuffer' }).then(res => res.data).catch(_ => null);
 
-  const { isBanned, welcome, detect, sWelcome, sBye, sPromote, sDemote, antiLink, delete: del } = global.db.data.chats[m.chat] || {};
+  const { isBanned, welcome, detect, sBienvenida, sBye, sPromociona, sDegrada, antiLink, delete: del } = global.db.data.chats[m.chat] || {};
   const groupAdmins = participants.filter(p => p.admin);
   const listAdmin = groupAdmins.map((v, i) => `      • ${i + 1}. @${v.id.split('@')[0]}`).join('\n');
   const owner = groupMetadata.owner || groupAdmins.find(p => p.admin === 'superadmin')?.id || m.chat.split`-`[0] + '@s.whatsapp.net';
@@ -32,16 +32,16 @@ let handler = async (m, { conn, participants, groupMetadata }) => {
 
              `      𓈒 ◌ㅤ──    *⚙️ 𝖢𝖮𝖭𝖥𝖨𝖦𝖴𝖱𝖠𝖢𝖨O𝖭 𝖣𝖤𝖫 𝖦𝖱𝖴𝖯O*\n` +
              `      • Banned :: ${isBanned ? '✅' : '❌'}\n` +
-             `      • Welcome :: ${welcome ? '✅' : '❌'}\n` +
+             `      • Bienvenida :: ${welcome ? '✅' : '❌'}\n` +
              `      • Detect :: ${detect ? '✅' : '❌'}\n` +
              `      • Anti Delete :: ${del ? '❌' : '✅'}\n` +
              `      • Anti Link :: ${antiLink ? '✅' : '❌'}\n\n` +
 
              `      𓈒 ◌ㅤ──    *💬 𝖬𝖤𝖲𝖠𝖩𝖤𝖲 𝖢𝖮𝖭𝖥𝖨𝖦𝖴𝖱𝖠𝖣𝖮𝖲*\n` +
-             `      • Welcome :: \`${sWelcome || 'Por defecto'}\`\n` +
+             `      • Bienvenida :: \`${sBienvenida || 'Por defecto'}\`\n` +
              `      • Bye :: \`${sBye || 'Por defecto'}\`\n` +
-             `      • Promote :: \`${sPromote || 'Por defecto'}\`\n` +
-             `      • Demote :: \`${sDemote || 'Por defecto'}\`\n\n` +
+             `      • Promociona :: \`${sPromociona || 'Por defecto'}\`\n` +
+             `      • Degrada :: \`${sDegrada || 'Por defecto'}\`\n\n` +
              `> 𝗐⍺𝗀𝗎ɾɩ ⍺𝗌𝗌ı𝗌ƚ⍺𝗇ƚ ツ`;
 
   const mentionsList = [...groupAdmins.map(v => v.id), owner];

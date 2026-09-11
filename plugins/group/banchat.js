@@ -41,7 +41,7 @@ async function handler(m, { sock }) {
             return sock.sendMessage(m.chat, {
                 text: `ꕥ 𝖦𝖱𝖴𝖯𝖮 𝖣𝖤𝖲𝖡𝖠𝖭𝖤𝖠𝖣𝖮 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
                     `      𓈒 ◌ㅤ──    *𝖣𝖤𝖳𝖠𝖫𝖫𝖤𝖲*\n` +
-                    `      • Grupo :: ${groupName}\n` +
+                    `      • Grupoo :: ${groupName}\n` +
                     `      • Estado :: ACTIVO ✅\n` +
                     `      • Desbaneado por :: @${m.sender.split('@')[0]}\n\n` +
                     `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « Todos los miembros pueden volver a utilizar el bot en este grupo. »\n\n` +
@@ -64,7 +64,7 @@ async function handler(m, { sock }) {
         await sock.sendMessage(m.chat, {
             text: `ꕥ 𝖦𝖱𝖴𝖯𝖮 𝖡𝖠𝖭𝖤𝖠𝖣𝖮 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
                 `      𓈒 ◌ㅤ──    *𝖣𝖤𝖳𝖠𝖫𝖫𝖤𝖲*\n` +
-                `      • Grupo :: ${groupName}\n` +
+                `      • Grupoo :: ${groupName}\n` +
                 `      • Estado :: BANEADO 🔴\n` +
                 `      • Baneado por :: @${m.sender.split('@')[0]}\n\n` +
                 `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « Los miembros comunes no podrán usar el bot aquí.\n` +

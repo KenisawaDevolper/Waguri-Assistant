@@ -38,13 +38,13 @@ function handler(m) {
     }
 
     if (!db.db.data.sewa.enabled) {
-        return m.reply(`ℹ️ Sistem sewa tidak aktif\n\nBot ini bisa digunakan di semua grup.`)
+        return m.reply(`ℹ️ Sistem sewa no aktif\n\nBot ini bisa digunakan di todos grup.`)
     }
 
     const sewaData = db.db.data.sewa.groups[m.chat]
 
     if (!sewaData) {
-        return m.reply(`❌ Grup ini tidak terdaftar dalam sistem sewa\n\nHubungi owner bot untuk info sewa.`)
+        return m.reply(`❌ Este grupo no terdaftar dalam sistem sewa\n\nHubungi owner bot untuk info sewa.`)
     }
 
     const groupName = sewaData.name || m.chat.split('@')[0]
@@ -54,7 +54,7 @@ function handler(m) {
         m.react('♾️')
         return m.reply(
             `♾️ *STATUS SEWA*\n\n` +
-            `Grup: *${groupName}*\n` +
+            `Grupo: *${groupName}*\n` +
             `Status: *Permanent* ♾️\n` +
             `Terdaftar sejak: *${addedDate}*\n\n` +
             `Bot akan aktif selamanya di grup ini.`
@@ -67,7 +67,7 @@ function handler(m) {
     if (countdown.expired) {
         return m.reply(
             `❌ *SEWA EXPIRED*\n\n` +
-            `Grup: *${groupName}*\n` +
+            `Grupo: *${groupName}*\n` +
             `Berakhir: *${expiredStr}*\n\n` +
             `Hubungi owner bot untuk perpanjang sewa.`
         )
@@ -78,7 +78,7 @@ function handler(m) {
 
     m.react(isAlmostExpired ? '⚠️' : '⏱️')
     let text = `⏱️ *STATUS SEWA*\n\n`
-    text += `Grup: *${groupName}*\n`
+    text += `Grupo: *${groupName}*\n`
     text += `Sisa waktu: *${countdown.text}*\n`
     text += `Berakhir: *${expiredStr}*\n`
     text += `Terdaftar sejak: *${addedDate}*`

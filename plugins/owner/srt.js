@@ -4,7 +4,7 @@ import crypto from 'crypto';
 import config from '../../config.js';
 import { getDatabase } from '../../src/lib/rimuru-database.js';
 import te from '../../src/lib/rimuru-error.js';
-import { prepareWAMessageMedia, generateWAMessageFromContent, generateWAMessage, jidNormalizedUser } from 'ourin';
+import { prepareWAMessageMedia, generateWAMessageFromContent, generateWAMessage, jidNormalizedUsuario } from 'ourin';
 
 const pluginConfig = {
     name: 'srt',
@@ -40,12 +40,12 @@ async function handler(m, { sock, args }) {
         const action = args[0]?.toLowerCase();
 
         if (!action) {
-            return m.reply(`🛠️ *SISTEM SHUFFLE REPLY THUMB (SRT)*\n\nSelamat datang di menu pengelolaan gambar balasan otomatis. Sistem ini memungkinkan bot untuk membalas dengan gambar *thumbnail* yang diacak secara otomatis dari koleksi yang kamu simpan.\n\nBerikut adalah daftar perintah yang tersedia:\n- *.srt on* : Mengaktifkan fitur shuffle secara global.\n- *.srt off* : Menonaktifkan fitur shuffle dan kembali ke pengaturan awal.\n- *.srt c* : Membuka sesi tangkapan gambar untuk menambahkan koleksi baru ke dalam database.\n- *.srt d* : Menutup sesi tangkapan gambar.\n- *.srt list* : Menampilkan seluruh koleksi gambar yang telah tersimpan di dalam database bot.\n- *.srt del* : Menghapus gambar dari database (Gunakan *.srt list* terlebih dahulu untuk memunculkan gambarnya, lalu *reply* salah satu gambar tersebut dengan perintah ini).`);
+            return m.reply(`🛠️ *SISTEM SHUFFLE REPLY THUMB (SRT)*\n\nSelamat datang di menu pengelolaan gambar balasan otomatis. Sistem ini memungkinkan bot untuk membalas con gambar *thumbnail* yang diacak de forma otomatis dari koleksi yang kamu simpan.\n\nBerikut adalah daftar perintah yang tersedia:\n- *.srt on* : Mengaktifkan fitur shuffle de forma global.\n- *.srt off* : Menonaktifkan fitur shuffle dan kembali ke pengaturan awal.\n- *.srt c* : Membuka sesi tangkapan gambar untuk menambahkan koleksi baru ke dalam database.\n- *.srt d* : Menutup sesi tangkapan gambar.\n- *.srt list* : Menampilkan seluruh koleksi gambar yang telah tersimpan di dalam database bot.\n- *.srt del* : Menghapus gambar dari database (Gunakan *.srt list* terlebih dahulu untuk memunculkan gambarnya, lalu *reply* salah satu gambar tersebut con perintah ini).`);
         }
 
         if (action === 'on') {
             db.setting('srtEnabled', true);
-            await m.reply('✅ *FITUR SRT ÉXITO DIAKTIFKAN*\n\nFitur ini telah menyala secara global. Setiap balasan bot yang mendukung *thumbnail* sekarang akan menampilkan gambar secara acak dari dalam folder shuffle yang telah dikumpulkan.');
+            await m.reply('✅ *FITUR SRT ÉXITO DIAKTIFKAN*\n\nFunción ini telah menyala de forma global. Setiap balasan bot yang mendukung *thumbnail* sekarang akan menampilkan gambar de forma acak dari dalam folder shuffle yang telah dikumpulkan.');
         } 
         else if (action === 'off') {
             db.setting('srtEnabled', false);
@@ -54,7 +54,7 @@ async function handler(m, { sock, args }) {
         else if (action === 'c' || action === 'capture') {
             global.srtSession[m.chat] = { sender: m.sender, count: 0 };
             const totalImages = countShuffleImages();
-            await m.reply(`📸 *SESI TANGKAPAN GAMBAR DIMULAI*\n\nSilakan kirimkan gambar satu per satu secara terus menerus ke dalam obrolan ini. Bot akan membaca setiap gambar tersebut dan langsung menyimpannya secara otomatis ke dalam sistem *database shuffle*.\n\n- Total gambar tersimpan saat ini: *${totalImages}*\n- Jika semua gambar sudah selesai dikirimkan, hentikan sesi dengan perintah \`${m.prefix}srt d\`.`);
+            await m.reply(`📸 *SESI TANGKAPAN GAMBAR DIMULAI*\n\nSilakan kirimkan gambar satu per satu de forma terus menerus ke dalam obrolan ini. Bot akan membaca setiap gambar tersebut dan langsung menyimpannya de forma otomatis ke dalam sistem *database shuffle*.\n\n- Total gambar tersimpan saat ini: *${totalImages}*\n- Jika todos gambar sudah selesai dikirimkan, hentikan sesi con perintah \`${m.prefix}srt d\`.`);
         } 
         else if (action === 'd' || action === 'done') {
             if (!global.srtSession[m.chat] || global.srtSession[m.chat].sender !== m.sender) {
@@ -83,7 +83,7 @@ async function handler(m, { sock, args }) {
                         },
                     },
                     {
-                        userJid: jidNormalizedUser(sock.user.id),
+                        userJid: jidNormalizedUsuario(sock.user.id),
                         quoted: m,
                         upload: sock.waUploadToServer,
                     }
@@ -121,7 +121,7 @@ async function handler(m, { sock, args }) {
         else if (action === 'del' || action === 'delete') {
             const isImage = m.isImage || (m.quoted && m.quoted.isImage);
             if (!isImage) {
-                return m.reply('❌ *CARA MENGHAPUS GAMBAR:*\n\n1. Ketik `.srt list` untuk menampilkan seluruh koleksi gambar.\n2. Balas (*reply*) salah satu gambar yang muncul dari album tersebut dengan perintah `.srt del`.');
+                return m.reply('❌ *CARA MENGHAPUS GAMBAR:*\n\n1. Ketik `.srt list` untuk menampilkan seluruh koleksi gambar.\n2. Balas (*reply*) salah satu gambar yang muncul dari album tersebut con perintah `.srt del`.');
             }
             
             await m.react('🕕');
@@ -145,7 +145,7 @@ async function handler(m, { sock, args }) {
                     fs.unlinkSync(filepath);
                     await m.reply(`✅ *GAMBAR ÉXITO DIHAPUS*\n\nGambar berhasil eliminado dari database shuffle.`);
                 } else {
-                    await m.reply('❌ *GAMBAR TIDAK DITEMUKAN*\n\nGambar ini no cocok dengan yang ada di dalam database shuffle (atau sudah eliminado sebelumnya).');
+                    await m.reply('❌ *GAMBAR TIDAK DITEMUKAN*\n\nGambar ini no cocok con yang ada di dalam database shuffle (atau sudah eliminado sebelumnya).');
                 }
             }
             await m.react('✅');

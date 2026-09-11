@@ -18,7 +18,7 @@ const pluginConfig = {
 
 function handler(m, { sock }) {
     const db = getDatabase()
-    const user = db.getUser(m.sender)
+    const user = db.getUsuario(m.sender)
     const args = m.args || []
     const sub = args[0]?.toLowerCase()
     

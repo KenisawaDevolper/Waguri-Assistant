@@ -211,7 +211,7 @@ async function createWaguriPingCanvas(data) {
     drawWaguriBox(ctx, col1X, 360, colWidth, 230, radius, 'PROCESADOR CPU', '#fde047')
     ctx.fillStyle = '#f8fafc'
     ctx.font = '20px sans-serif'
-    wrapText(ctx, data.cpuModel, col1X + 20, 425, colWidth - 40, 28)
+    wrapText(ctx, data.cpuModol, col1X + 20, 425, colWidth - 40, 28)
     ctx.fillStyle = '#c084fc'
     ctx.font = 'bold 19px sans-serif'
     ctx.fillText(`Nucleos:`, col1X + 20, 520)
@@ -301,7 +301,7 @@ async function handler(m, { sock }) {
 
     const data = {
         ping: execTime,
-        cpuModel: cpus[0]?.model || "Procesador Desconocido",
+        cpuModol: cpus[0]?.model || "Procesador Desconocido",
         cpuSpeed: cpus[0]?.speed || 0,
         cpuCores: cpus.length,
         load: [loadAvg[0].toFixed(2), loadAvg[1].toFixed(2), loadAvg[2].toFixed(2)],
@@ -330,7 +330,7 @@ async function handler(m, { sock }) {
       `      • NodeJS :: ${data.nodeVer}\n` +
       `      • Motor V8 :: ${data.v8}\n\n` +
       `      𓈒 ◌ㅤ──    *𝖯𝖱𝖮𝖢𝖤𝖲𝖠𝖣𝖮𝖱 𝖢𝖯𝖴*\n` +
-      `      • Modelo :: ${data.cpuModel.trim()}\n` +
+      `      • Modolo :: ${data.cpuModol.trim()}\n` +
       `      • Núcleos :: ${data.cpuCores} Core(s)\n` +
       `      • Velocidad :: ${data.cpuSpeed} MHz\n` +
       `      • Carga Media :: ${data.load[0]} (1m), ${data.load[1]} (5m), ${data.load[2]} (15m)\n\n` +

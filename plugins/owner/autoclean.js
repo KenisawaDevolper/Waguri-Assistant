@@ -11,7 +11,7 @@ const pluginConfig = {
     description: 'Elimina automáticamente el archivo baileys_store.json si supera 50MB (activable/desactivable) con la estética Waguri Assistant 🧹',
     usage: '.autoclean [on/off/status]',
     example: '.autoclean on\n.autoclean off\n.autoclean status',
-    isOwner: true,      // Hanya owner
+    isOwner: true,      // Solo owner
     isPremium: false,
     isGroup: false,
     isPrivate: true,
@@ -51,7 +51,7 @@ function deleteStoreFile() {
         const oldSize = getFileSizeMB(storePath)
         fs.unlinkSync(storePath)
         
-        // Buat file baru kosong
+        // Crea file baru kosong
         fs.writeFileSync(storePath, JSON.stringify({ credentials: {}, state: {} }, null, 2))
         
         return { 
@@ -102,7 +102,7 @@ function getStatus() {
 async function handler(m, { sock }) {
     const args = m.text?.trim().toLowerCase() || ''
     
-    // Buat folder store kalo belum ada
+    // Crea folder store kalo belum ada
     if (!fs.existsSync(storeDir)) {
         fs.mkdirSync(storeDir, { recursive: true })
     }
@@ -141,7 +141,7 @@ async function handler(m, { sock }) {
         return m.reply(`❌ *AUTO CLEAN DESACTIVADO*\n\nLa función de auto-eliminación está desactivada.\n\nGunakan \`.autoclean on\` untuk mengaktifkan lagi.\n\n🦋 *Zero Two:* ¡Listo, cariño~ ✨`)
     }
     
-    // Tampilkan status (default)
+    // Muestra status (default)
     const status = getStatus()
     
     let statusText = `📂 *AUTO CLEAN STATUS*\n\n`
@@ -158,7 +158,7 @@ async function handler(m, { sock }) {
     statusText += `📌 *Perintah:*\n`
     statusText += `• \`.autoclean on\` - Activar auto hapus\n`
     statusText += `• \`.autoclean off\` - Nonaktifkan\n`
-    statusText += `• \`.autoclean clean\` - Hapus manual sekarang\n`
+    statusText += `• \`.autoclean clean\` - Elimina manual sekarang\n`
     statusText += `• \`.autoclean status\` - Lihat status ini\n\n`
     statusText += `🦋 *Zero Two:* ¿Cómo quieres configurarlo, cariño~? 💫`
     

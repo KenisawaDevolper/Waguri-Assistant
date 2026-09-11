@@ -55,10 +55,10 @@ async function handler(m, { sock }) {
         return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> La cantidad debe ser mayor que 0 💫`)
     }
     
-    const user = db.getUser(targetJid)
+    const user = db.getUsuario(targetJid)
     
     if (!user) {
-        return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> User no encontrado di database`)
+        return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Usuario no encontrado di database`)
     }
     
     const newKoin = db.updateKoin(targetJid, -amount)

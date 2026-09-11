@@ -66,7 +66,7 @@ async function handler(m, { sock }) {
   const sewaData = db.db.data.sewa.groups[groupId];
   if (!sewaData)
     return m.reply(
-      `❌ Grup no terdaftar dalam sistem sewa\n\nLihat daftar: *${m.prefix}listsewa*`,
+      `❌ Grupo no terdaftar dalam sistem sewa\n\nLihat daftar: *${m.prefix}listsewa*`,
     );
 
   groupName = groupName || sewaData.name || groupId.split("@")[0];
@@ -76,14 +76,14 @@ async function handler(m, { sock }) {
 
   await m.react("✅");
   await m.reply(
-    `✅ *SEWA DIHAPUS*\n\nGrup: *${groupName}*\nID: ${groupId.split("@")[0]}`,
+    `✅ *SEWA DIHAPUS*\n\nGrupo: *${groupName}*\nID: ${groupId.split("@")[0]}`,
   );
 
   if (db.db.data.sewa.enabled) {
     try {
       await sock.sendText(
         groupId,
-        `⛔ Grup ini telah eliminado dari whitelist sewa.\nBot akan meninggalkan grup.\n\nHubungi owner untuk sewa ulang.`,
+        `⛔ Este grupo telah eliminado dari whitelist sewa.\nBot akan meninggalkan grup.\n\nHubungi owner untuk sewa ulang.`,
         null,
         {
           contextInfo: saluranCtx(),

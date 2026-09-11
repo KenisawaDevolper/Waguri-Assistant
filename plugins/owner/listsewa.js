@@ -53,7 +53,7 @@ function handler(m) {
             `📋 *DAFTAR SEWA*\n\n` +
             `Status: *${db.db.data.sewa.enabled ? '✅ AKTIF' : '❌ NONAKTIF'}*\n` +
             `Aún no ada grup terdaftar\n\n` +
-            `Añadir dengan: *${m.prefix}addsewa <link> <durasi>*`
+            `Añadir con: *${m.prefix}addsewa <link> <durasi>*`
         )
     }
 
@@ -87,7 +87,7 @@ function handler(m) {
 
     text += `*AKSI:*\n`
     text += `• *${m.prefix}renewsewa <id> <durasi>* — Perpanjang\n`
-    text += `• *${m.prefix}delsewa <id>* — Hapus dari whitelist`
+    text += `• *${m.prefix}delsewa <id>* — Elimina dari whitelist`
 
     return m.reply(text)
 }

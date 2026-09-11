@@ -20,24 +20,24 @@ const pluginConfig = {
 const VARIANTS = {
   1: {
     name: "Canvas Image",
-    desc: "Gambar canvas dengan foto profil",
+    desc: "Gambar canvas con foto profil",
     emoji: "🎨",
   },
   2: {
     name: "Carousel Cards",
-    desc: "Kartu carousel interaktif dengan tombol",
+    desc: "Kartu carousel interaktif con tombol",
     emoji: "🃏",
   },
   3: {
     name: "Text Only",
-    desc: "Pesan teks minimalis tanpa gambar",
+    desc: "Mensaje teks minimalis tanpa gambar",
     emoji: "📝",
   },
   4: { name: "Group", desc: "ContextInfo group style", emoji: "👥" },
-  5: { name: "Simple", desc: "Pesan teks simple + foto profile", emoji: "✨" },
-  6: { name: "Video", desc: "Kirim video perkenalan", emoji: "🎥" },
-  7: { name: "Interactive Quoted", desc: "Interactive message dengan fake quoted", emoji: "💬" },
-  8: { name: "Super Simple", desc: "Pesan teks sangat singkat tanpa hiasan", emoji: "👋" },
+  5: { name: "Simple", desc: "Mensaje teks simple + foto profile", emoji: "✨" },
+  6: { name: "Video", desc: "Envía video perkenalan", emoji: "🎥" },
+  7: { name: "Interactive Quoted", desc: "Interactive message con fake quoted", emoji: "💬" },
+  8: { name: "Super Simple", desc: "Mensaje teks sangat singkat tanpa hiasan", emoji: "👋" },
 };
 async function handler(m, { sock, db }) {
   const args = m.args || [];
@@ -67,8 +67,8 @@ async function handler(m, { sock, db }) {
     {
       name: "single_select",
       buttonParamsJson: JSON.stringify({
-        title: "👋 Pilih Tipe Welcome",
-        sections: [{ title: "Daftar Tipe Welcome", rows }],
+        title: "👋 Pilih Tipe Bienvenida",
+        sections: [{ title: "Daftar Tipe Bienvenida", rows }],
       }),
     },
   ];
@@ -78,13 +78,13 @@ async function handler(m, { sock, db }) {
     `Tipe aktif saat ini: *V${current} — ${VARIANTS[current].name}* 🎯\n\n` +
     `*PENJELASAN TIPE:*\n\n` +
     `- *V1 Canvas Image* 🎨 — Bot membuat gambar canvas otomatis berisi foto profil dan nama member yang baru join, lalu dikirim sebagai gambar\n\n` +
-    `- *V2 Carousel Cards* 🃏 — Menampilkan kartu carousel interaktif yang bisa di-swipe lengkap dengan tombol action, cocok untuk grup yang ingin tampilan modern\n\n` +
-    `- *V3 Text Only* 📝 — Pesan teks biasa tanpa gambar sama una vez, ringan dan minimalis\n\n` +
-    `- *V4 Group* 👥 — Menggunakan contextInfo bergaya group forward, tampilan rapi dengan label newsletter\n\n` +
-    `- *V5 Simple* ✨ — Pesan teks sederhana disertai foto profile member yang join, no terlalu mencolok namun informatif\n\n` +
+    `- *V2 Carousel Cards* 🃏 — Menampilkan kartu carousel interaktif yang bisa di-swipe lengkap con tombol action, cocok untuk grup yang ingin tampilan modern\n\n` +
+    `- *V3 Text Only* 📝 — Mensaje teks biasa tanpa gambar sama una vez, ringan dan minimalis\n\n` +
+    `- *V4 Group* 👥 — Menggunakan contextInfo bergaya group forward, tampilan rapi con label newsletter\n\n` +
+    `- *V5 Simple* ✨ — Mensaje teks sederhana disertai foto profile member yang join, no terlalu mencolok namun informatif\n\n` +
     `- *V6 Video* 🎥 — Mengirimkan video sambutan menarik dilengkapi caption selamat datang untuk member\n\n` +
     `- *V7 Interactive Quoted* 💬 — Mengirimkan pesan interaktif dan fake quoted dari orang yang join\n\n` +
-    `- *V8 Super Simple* 👋 — Pesan teks sangat singkat tanpa hiasan (Ejemplo: Hai @user, welcome to grup...)\n\n` +
+    `- *V8 Super Simple* 👋 — Mensaje teks sangat singkat tanpa hiasan (Ejemplo: Hai @user, welcome to grup...)\n\n` +
     `> Pilih tipe welcome dari tombol di bawah 👇`;
   await sock.sendButton(
     m.chat,

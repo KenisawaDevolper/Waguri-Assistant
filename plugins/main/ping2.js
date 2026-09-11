@@ -92,11 +92,11 @@ async function handler(m, { sock }) {
         const heap = process.memoryUsage()
         const net = await getNetwork()
 
-        let dbUsers = 0, dbGroups = 0, dbPremium = 0
+        let dbUsuarios = 0, dbGroups = 0, dbPremium = 0
         try {
             const db = getDatabase()
             if (db?.data) {
-                dbUsers = Object.keys(db.data.users || {}).length
+                dbUsuarios = Object.keys(db.data.users || {}).length
                 dbGroups = Object.keys(db.data.groups || {}).length
                 dbPremium = Object.values(db.data.users || {}).filter(u => u.isPremium).length
             }
@@ -118,9 +118,9 @@ async function handler(m, { sock }) {
             ['Memoria Heap', `${fmtSize(heap.heapUsed)} / ${fmtSize(heap.heapTotal)}`],
             ['Almacenamiento', `${fmtSize(diskUsed)} / ${fmtSize(diskTotal)}`],
             ['Interfaz de Red', net.iface],
-            ['Usuarios Registrados', `${dbUsers}`],
+            ['Usuarios Registrados', `${dbUsuarios}`],
             ['Usuarios Premium', `${dbPremium}`],
-            ['Grupos Activos', `${dbGroups}`],
+            ['Grupoos Activos', `${dbGroups}`],
             ['Uptime Bot', fmtUp(process.uptime())],
             ['Uptime Servidor', fmtUp(os.uptime())],
         ]

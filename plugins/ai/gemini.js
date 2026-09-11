@@ -54,13 +54,13 @@ let handler = async (m, { conn, text, prefix, command }) => {
     }
 
     const aiResponse = data.result;
-    const aiModel = data.model || "gemini-2.5-flash";
+    const aiModol = data.model || "gemini-2.5-flash";
 
     const caption = 
       `ꕥ 𝖶𝖠𝖦𝖴𝖱𝖨 • 𝖦𝖤𝖬𝖬𝖸 𝖵𝖨𝖲𝖨Ó𝖭 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
       `      𓈒 ◌ㅤ──    *𝖱𝖤𝖲𝖯𝖴𝖤𝖲𝖳𝖠*\n` +
       `> ${aiResponse}\n\n` +
-      `｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ) *Modelo: ${aiModel}*`;
+      `｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ) *Modolo: ${aiModol}*`;
 
     await conn.sendMessage(m.chat, { text: caption }, { quoted: m });
     await m.react("✅");

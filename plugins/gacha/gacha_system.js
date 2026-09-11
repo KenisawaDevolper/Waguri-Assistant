@@ -196,7 +196,7 @@ let handler = async (m, { conn, command, args, text, isPrems, prefix }) => {
         }
       } else {
         try {
-          const result = await gacha.getUserHarem(sender);
+          const result = await gacha.getUsuarioHarem(sender);
           if (!result.status) return await sendGachaMsg(conn, m, `ꕥ 𝖧𝖠𝖱𝖤𝖬 𝖵𝖠𝖢𝖨𝖮 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\nଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « ${result.message} »`, [{ id: `#waifu`, text: "🎰 Tirar Gacha" }]);
 
           const collection = result.data;
@@ -259,7 +259,7 @@ let handler = async (m, { conn, command, args, text, isPrems, prefix }) => {
 
     case "tradeno": {
       const trades = global.db.data.trades || {};
-      const tradeEntry = Object.entries(trades).find(([_, t]) => t.toUser === sender || t.fromUser === sender);
+      const tradeEntry = Object.entries(trades).find(([_, t]) => t.toUsuario === sender || t.fromUsuario === sender);
       
       if (!tradeEntry) {
         return await sendGachaMsg(conn, m, `ꕥ 𝖳𝖱𝖠𝖣𝖤 𝖢𝖠𝖭𝖢𝖤𝖫 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\nଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « No tienes intercambios pendientes para cancelar. »`);

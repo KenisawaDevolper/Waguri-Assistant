@@ -151,7 +151,7 @@ async function handler(m, { sock }) {
     const result = await resolveGroupId(sock, input);
     if (!result) {
       await m.react("❌");
-      return m.reply(`❌ ꕥ Grupo no encontrado o enlace no válido`);
+      return m.reply(`❌ ꕥ Grupoo no encontrado o enlace no válido`);
     }
 
     const { id: groupId, name: groupName, inviteCode } = result;
@@ -171,7 +171,7 @@ async function handler(m, { sock }) {
       : timeHelper.fromTimestamp(expiredAt, "D MMMM YYYY HH:mm");
 
     let text = `✅ *ᴀʟǫᴜɪʟᴇʀ ᴀñᴀᴅɪᴅᴏ ᴄᴏɴ éxɪᴛᴏ* 𓈒 ◌\n\n`;
-    text += `ꕥ Grupo: *${groupName}*\n`;
+    text += `ꕥ Grupoo: *${groupName}*\n`;
     text += `ꕥ ID: ${groupId.split("@")[0]}\n`;
     text += `ꕥ Duración: *${formatDuration(durationStr)}*\n`;
     text += `ꕥ Expira: *${expiredStr}*\n\n`;

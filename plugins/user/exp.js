@@ -38,7 +38,7 @@ async function handler(m, { sock }) {
         targetName = targetJid.split('@')[0]
     }
     
-    const user = db.getUser(targetJid) || db.setUser(targetJid)
+    const user = db.getUsuario(targetJid) || db.setUsuario(targetJid)
     const expDisplay = formatNumber(user.exp || 0)
     const level = calculateLevel(user.exp || 0)
     const title = getRole(level)

@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'antivirtex',
     alias: ['antivirtexgc', 'antivtxt', 'antitxtv'],
     category: 'group',
-    description: 'Hapus otomatis pesan yang mengandung karakter aneh/virtex di grup',
+    description: 'Elimina otomatis pesan yang mengandung karakter aneh/virtex di grup',
     usage: '.antivirtex on/off',
     example: '.antivirtex on',
     isAdmin: true,
@@ -63,7 +63,7 @@ async function handler(m, { sock, db }) {
         m.react('✅')
         return m.reply(
             `✅ *ᴀɴᴛɪᴠɪʀᴛᴇx ᴀᴋᴛɪꜰ*\n\n` +
-            `> Pesan yang mengandung karakter aneh/virtex akan otomatis dihapus.\n` +
+            `> Mensaje yang mengandung karakter aneh/virtex akan otomatis dihapus.\n` +
             `> Gunakan \`.antivirtex off\` untuk menonaktifkan.`
         )
     }
@@ -80,7 +80,7 @@ async function handler(m, { sock, db }) {
         m.react('❌')
         return m.reply(
             `❌ *ᴀɴᴛɪᴠɪʀᴛᴇx ɴᴏɴᴀᴋᴛɪꜰ*\n\n` +
-            `> Pesan virtex tidak akan dihapus lagi.`
+            `> Mensaje virtex no akan dihapus lagi.`
         )
     }
     
@@ -92,7 +92,7 @@ async function handler(m, { sock, db }) {
         `┃ 🔔 sᴛᴀᴛᴜs: ${status}\n` +
         `╰┈┈⬡\n\n` +
         `> *Penggunaan:*\n` +
-        `> \`${m.prefix}antivirtex on\` - Aktifkan\n` +
+        `> \`${m.prefix}antivirtex on\` - Activar\n` +
         `> \`${m.prefix}antivirtex off\` - Nonaktifkan`
     )
 }
@@ -125,11 +125,11 @@ async function antivirtexListener(sock) {
                     
                     const sender = msg.key.participant || msg.participant || msg.key.remoteJid
                     await sock.sendMessage(jid, {
-                        text: `🚫 *ᴠɪʀᴛᴇx ᴅᴇᴛᴇᴄᴛᴇᴅ*\n\n> Pesan dari @${sender?.split('@')[0]} telah dihapus karena mengandung karakter aneh/virtex!`,
+                        text: `🚫 *ᴠɪʀᴛᴇx ᴅᴇᴛᴇᴄᴛᴇᴅ*\n\n> Mensaje dari @${sender?.split('@')[0]} telah dihapus karena mengandung karakter aneh/virtex!`,
                         mentions: [sender]
                     })
                     
-                    console.log(`[AntiVirtex] Pesan virtex dihapus di ${jid} dari ${sender}`)
+                    console.log(`[AntiVirtex] Mensaje virtex dihapus di ${jid} dari ${sender}`)
                 }
             } catch (err) {
                 console.error('[AntiVirtex] Error:', err.message)

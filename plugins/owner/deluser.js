@@ -6,10 +6,10 @@ let handler = async (m, { conn, text }) => {
     let numbers = text.split(/\s+/).map(no);
 
     if (!numbers.length && !m.quoted) {
-        return conn.reply(m.chat, `*❏ DELETE USER*\n\nTag user, tulis nomor, atau balas member yang ingin di RESET`, m);
+        return conn.reply(m.chat, `*❏ DELETE USER*\n\nMenciona user, tulis nomor, atau balas member yang ingin di RESET`, m);
     }
 
-    let deletedUsers = [];
+    let deletedUsuarios = [];
 
     for (let i = 0; i < numbers.length; i++) {
         let number = numbers[i];
@@ -26,16 +26,16 @@ let handler = async (m, { conn, text }) => {
 
         if (users) {
             delete global.db.data.users[user];
-            deletedUsers.push(`@${number}`);
+            deletedUsuarios.push(`@${number}`);
         } else {
-            conn.reply(m.chat, `*❏ DELETE USER*\n\nUser dengan nomor @${number} no encontrado di grup ini!`, m);
+            conn.reply(m.chat, `*❏ DELETE USER*\n\nUsuario con nomor @${number} no encontrado di grup ini!`, m);
         }
     }
 
-    if (deletedUsers.length > 0) {
-        conn.reply(m.chat, `*❏ DELETE USER*\n\nÉxito menghapus ${deletedUsers.join(', ')} dari *DATABASE*`, null, {
+    if (deletedUsuarios.length > 0) {
+        conn.reply(m.chat, `*❏ DELETE USER*\n\nÉxito menghapus ${deletedUsuarios.join(', ')} dari *DATABASE*`, null, {
             contextInfo: {
-                mentionedJid: deletedUsers.map(u => u + '@s.whatsapp.net')
+                mentionedJid: deletedUsuarios.map(u => u + '@s.whatsapp.net')
             }
         });
     }

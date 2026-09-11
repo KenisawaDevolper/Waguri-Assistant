@@ -25,7 +25,7 @@ async function handler(m, { sock }) {
         if (current && (current === m.chat || current.jid === m.chat)) {
             db.setting('onlyThisGroup', null)
             db.save()
-            return m.reply(`🔓 *UNLOCKED*\n\nBot kembali aktif di semua grup secara publik.`)
+            return m.reply(`🔓 *UNLOCKED*\n\nBot kembali aktif di todos grup de forma publik.`)
         }
 
         const botNumber = sock.user.id.split(':')[0] + '@s.whatsapp.net'
@@ -60,7 +60,7 @@ async function handler(m, { sock }) {
 
         await m.reply(
             `🔒 *LOCKED ÉXITO*\n\n` +
-            `Mulai sekarang, bot hanya bisa digunakan secara eksklusif di grup:\n` +
+            `Mulai sekarang, bot hanya bisa digunakan de forma eksklusif di grup:\n` +
             `*${groupName}*\n\n` +
             `Pengguna di grup lain akan diarahkan untuk bergabung melalui tautan:\n` +
             `${inviteLink}\n\n` +

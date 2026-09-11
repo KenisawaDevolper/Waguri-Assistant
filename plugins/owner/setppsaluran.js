@@ -21,7 +21,7 @@ async function handler(m,{ sock }){
     const quoted = m.quoted
     if(!quoted) return m.reply(
 `╭━━〔 *❤️ ZERO TWO SET PP CHANNEL* 〕━━⬣
-┃ Reply gambar dengan command ini
+┃ Reply gambar con command ini
 ┃ lalu kirim *.setppsaluran*
 ╰━━━━━━━━━━━━━━━━⬣`
     )
@@ -35,7 +35,7 @@ async function handler(m,{ sock }){
 
     if(!imageBuffer) return m.reply(
 `╭━━〔 *❌ ZERO TWO SET PP CHANNEL* 〕━━⬣
-┃ ❌ Pesan yang direply bukan gambar
+┃ ❌ Mensaje yang direply bukan gambar
 ╰━━━━━━━━━━━━━━━━⬣`
     )
 
@@ -50,7 +50,7 @@ async function handler(m,{ sock }){
         // Update PP channel
         await sock.updateProfilePicture(CHANNEL_ID, finalBuffer)
 
-        // Kirim info ke channel (UI Zero Two)
+        // Envía info ke channel (UI Zero Two)
         const time = new Date().toLocaleTimeString()
         const infoMsg =
 `╭─〔 💖 ZERO TWO CHANNEL UPDATE 💖 〕
@@ -58,7 +58,7 @@ async function handler(m,{ sock }){
 │ Cariño, ada PP baru nih 😋
 │
 │ 👑 Dari : ${m.pushName}
-│ ⏰ Waktu : ${time}
+│ ⏰ Hora : ${time}
 │
 │ 🎨 PP Channel berhasil diupdate!
 │

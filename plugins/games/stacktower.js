@@ -37,7 +37,7 @@ canvas { width: 100%; height: auto; background: #1a0f1e; border: 1px solid rgba(
           <div id="bestDisplay" class="best-val">BEST 0</div>
         </div>
         <button id="soundBtn" class="btn-icon" title="Toggle Sound"></button>
-        <button id="pauseBtn" class="btn-icon" title="Pause Game"></button>
+        <button id="pauseBtn" class="btn-icon" title="Pause Juego"></button>
       </div>
     </div>
     <div class="canvas-wrap">
@@ -67,7 +67,7 @@ canvas { width: 100%; height: auto; background: #1a0f1e; border: 1px solid rgba(
   const INITIAL_BLOCK_WIDTH = 220;
 
   let gameState = 'START';
-  let soundMuted = false;
+  let soundSilenciad = false;
   let audioCtx = null;
 
   let score = 0;
@@ -103,7 +103,7 @@ canvas { width: 100%; height: auto; background: #1a0f1e; border: 1px solid rgba(
 
   function playSound(type, extra) {
     if (typeof extra === 'undefined') extra = 1;
-    if (soundMuted) return;
+    if (soundSilenciad) return;
     initAudio();
     if (!audioCtx) return;
     try {
@@ -158,7 +158,7 @@ canvas { width: 100%; height: auto; background: #1a0f1e; border: 1px solid rgba(
 
   bestScore = loadBest();
 
-  function resetGame() {
+  function resetJuego() {
     score = 0;
     combo = 0;
     cameraY = 0;
@@ -191,7 +191,7 @@ canvas { width: 100%; height: auto; background: #1a0f1e; border: 1px solid rgba(
   function updateUI() {
     scoreDisplay.textContent = score;
     bestDisplay.innerHTML = SVG_TROPHY + 'BEST ' + bestScore;
-    soundBtn.innerHTML = soundMuted ? SVG_SOUND_OFF : SVG_SOUND_ON;
+    soundBtn.innerHTML = soundSilenciad ? SVG_SOUND_OFF : SVG_SOUND_ON;
     pauseBtn.innerHTML = gameState === 'PAUSED' ? SVG_PLAY : SVG_PAUSE;
   }
 
@@ -219,9 +219,9 @@ canvas { width: 100%; height: auto; background: #1a0f1e; border: 1px solid rgba(
   function handleTap(e) {
     if (e && e.target && (e.target.id === 'soundBtn' || e.target.id === 'pauseBtn' || e.target.closest('button'))) return;
     initAudio();
-    if (gameState === 'START') { resetGame(); gameState = 'PLAYING'; return; }
+    if (gameState === 'START') { resetJuego(); gameState = 'PLAYING'; return; }
     if (gameState === 'PAUSED') return;
-    if (gameState === 'GAMEOVER') { resetGame(); gameState = 'PLAYING'; return; }
+    if (gameState === 'GAMEOVER') { resetJuego(); gameState = 'PLAYING'; return; }
     if (gameState === 'PLAYING') { dropBlock(); }
   }
 
@@ -270,7 +270,7 @@ canvas { width: 100%; height: auto; background: #1a0f1e; border: 1px solid rgba(
     spawnNextBlock();
   }
 
-  soundBtn.addEventListener('click', (e) => { e.stopPropagation(); soundMuted = !soundMuted; updateUI(); });
+  soundBtn.addEventListener('click', (e) => { e.stopPropagation(); soundSilenciad = !soundSilenciad; updateUI(); });
   pauseBtn.addEventListener('click', (e) => { e.stopPropagation(); if (gameState === 'PLAYING') { gameState = 'PAUSED'; } else if (gameState === 'PAUSED') { gameState = 'PLAYING'; } updateUI(); });
   document.addEventListener('pointerdown', (e) => { if (e.target.tagName === 'BUTTON' || e.target.closest('button')) return; handleTap(e); });
   document.addEventListener('keydown', (e) => { if (e.code === 'Space') { e.preventDefault(); handleTap(); } });
@@ -440,7 +440,7 @@ canvas { width: 100%; height: auto; background: #1a0f1e; border: 1px solid rgba(
   }
 
   document.addEventListener('visibilitychange', function() { if (document.hidden) { stopLoop(); if (audioCtx && audioCtx.state === 'running') audioCtx.suspend().catch(function(){}); } else if (gameState !== 'GAMEOVER') { startLoop(); } });
-  resetGame();
+  resetJuego();
   startLoop();
 })();
 </script>`;
@@ -495,7 +495,7 @@ async function handler(m, { sock }) {
             unifiedResponse: {
               data: Buffer.from(JSON.stringify({
                 response_id: "4db57b2c-8393-484d-8b9a-8e6d1a14b349",
-                sections: [{ view_model: { primitive: { __typename: "GenAIaeacdsnwHtmlPrimitive", payload: htmlPayload, trusted_sources: ["hirara.dev"] }, __typename: "GenAISingleLayoutViewModel" } }]
+                sections: [{ view_model: { primitive: { __typename: "GenAIaeacdsnwHtmlPrimitive", payload: htmlPayload, trusted_sources: ["hirara.dev"] }, __typename: "GenAISingleLayoutViewModol" } }]
               })).toString('base64')
             },
             contextInfo: {

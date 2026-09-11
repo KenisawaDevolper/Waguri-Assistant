@@ -35,7 +35,7 @@ async function spotifyGetDl(url) {
 async function ytmp3GetDl(url, format = "mp3") {
   const id = url.match(YT_REGEX)?.[1];
   if (!id) throw new Error("URL inválida " + url);
-  const client = axios.create({ timeout: 60000, headers: { "User-Agent": "Mozilla/5.0", Referer: "https://id.ytmp3.mobi/" } });
+  const client = axios.create({ timeout: 60000, headers: { "Usuario-Agent": "Mozilla/5.0", Referer: "https://id.ytmp3.mobi/" } });
   const { data: init } = await client.get("https://d.ymcdn.org/api/v1/init", { params: { p: "y", 23: "1llum1n471", _: Math.random() } });
   if (!init?.convertURL) throw new Error("Init falló");
   const { data: conv } = await client.get(init.convertURL, { params: { v: id, f: format, _: Math.random() } });

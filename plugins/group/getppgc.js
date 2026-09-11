@@ -53,7 +53,7 @@ async function handler(m, { sock, config }) {
 
     const caption = 
         `ꕥ 𝖥𝖮𝖳𝖮 𝖣𝖤 𝖯𝖱𝖮𝖥𝖨𝖫 𝖣𝖤𝖫 𝖦𝖱𝖴𝖯 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
-        `      • Grupo :: *${group.subject}*\n\n` +
+        `      • Grupoo :: *${group.subject}*\n\n` +
         `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « Aquí tienes la imagen actual registrada en el grupo. »\n\n` +
         `> 𝗐⍺𝗀𝗎ɾɩ ⍺𝗌𝗌ı𝗌ƚ⍺𝗇ƚ ツ`;
 

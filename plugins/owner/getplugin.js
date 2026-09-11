@@ -137,7 +137,7 @@ async function handler(m, { sock }) {
 
   if (!pluginInfo) {
     const similar = getSimilarPlugins(pluginName, pluginsDir);
-    let text = `Maaf ya *${m.pushName}*, plugin dengan nama *${pluginName}* no dapat ditemukan.\n\n`;
+    let text = `Maaf ya *${m.pushName}*, plugin con nama *${pluginName}* no dapat ditemukan.\n\n`;
 
     if (similar.length > 0) {
       text += `Quizás te refieres a uno de estos plugins: ✨\n`;

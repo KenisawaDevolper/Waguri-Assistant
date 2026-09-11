@@ -21,8 +21,8 @@ async function handler(m, { sock }) {
   if (!global.absensi[chatId]) {
     return m.reply(
       `❌ *ᴛɪᴅᴀᴋ ᴀᴅᴀ ᴀʙsᴇɴ*\n\n` +
-        `> Belum ada sesi absen di grup ini!\n\n` +
-        `> Admin dapat memulai dengan\n` +
+        `> Aún no ada sesi absen di grup ini!\n\n` +
+        `> Admin dapat memulai con\n` +
         `> *.mulaiabsen [keterangan]*`,
     );
   }
@@ -31,7 +31,7 @@ async function handler(m, { sock }) {
   const dateStr = now.format("D MMMM YYYY");
   const createdDate = moment(absen.createdAt).tz("Asia/Jakarta");
   const timeStr = createdDate.format("HH:mm");
-  let list = "┃ _Belum ada yang absen_";
+  let list = "┃ _Aún no ada yang absen_";
   if (absen.peserta.length > 0) {
     list = absen.peserta
       .map((jid, i) => `┃ ${i + 1}. @${jid.split("@")[0]}`)

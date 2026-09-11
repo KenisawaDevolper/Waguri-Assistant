@@ -70,7 +70,7 @@ async function joinGroup(sock, inviteCode) {
   } catch (error) {
     let errorMsg = error.message || "Link no valid";
     if (errorMsg.includes("not-authorized")) errorMsg = "Link sudah no valid atau expired";
-    else if (errorMsg.includes("gone") || errorMsg.includes("item-not-found") || errorMsg.includes("404")) errorMsg = "Grup no encontrado (link ngasal/sudah direvoke)";
+    else if (errorMsg.includes("gone") || errorMsg.includes("item-not-found") || errorMsg.includes("404")) errorMsg = "Grupo no encontrado (link ngasal/sudah direvoke)";
     else if (errorMsg.includes("conflict")) errorMsg = "Bot sudah menjadi member";
     else errorMsg = "Link no valid atau bot dilarang join";
     return { success: false, error: errorMsg };
@@ -87,7 +87,7 @@ async function handler(m, { sock }) {
 
   if (!sourceText) {
     return m.reply(
-      `🔗 *Join Grup*\n\n` +
+      `🔗 *Join Grupo*\n\n` +
         `El bot se unirá al grupo según el enlace de invitación que proporciones. ✨\n\n` +
         `*PENGGUNAAN:*\n` +
         `> *${m.prefix}join <link>* — Join via link langsung\n` +
@@ -95,7 +95,7 @@ async function handler(m, { sock }) {
         `*CONTOH:*\n` +
         `> *${m.prefix}join https://chat.whatsapp.com/xxx*\n` +
         `> Reply pesan berisi link lalu ketik *${m.prefix}join*\n\n` +
-        `_Bot akan mendeteksi semua link grup di pesan dan join satu per satu_`
+        `_Bot akan mendeteksi todos link grup di pesan dan join satu per satu_`
     );
   }
 
@@ -103,7 +103,7 @@ async function handler(m, { sock }) {
 
   if (inviteCodes.length === 0) {
     return m.reply(
-      `❌ *No Ada Link Grup*\n\n` +
+      `❌ *No Ada Link Grupo*\n\n` +
         `> Bot no menemukan link invite grup di pesan tersebut.\n\n` +
         `*Format link yang didukung:*\n` +
         `> *https://chat.whatsapp.com/xxx*\n` +
@@ -141,7 +141,7 @@ async function handler(m, { sock }) {
 
   let resultText =
     `🔗 *Multi Join — ${inviteCodes.length} Link Terdeteksi*\n\n` +
-    `Bot akan join ke semua grup satu per satu.\n\n`;
+    `Bot akan join ke todos grup satu per satu.\n\n`;
 
   let successCount = 0;
   let alreadyCount = 0;

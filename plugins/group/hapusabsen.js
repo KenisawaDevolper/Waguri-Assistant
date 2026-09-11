@@ -2,7 +2,7 @@ const pluginConfig = {
     name: 'hapusabsen',
     alias: ['deleteabsen', 'tutupabsen', 'closeabsen', 'resetabsen'],
     category: 'group',
-    description: 'Hapus/tutup sesi absen (admin only)',
+    description: 'Elimina/tutup sesi absen (admin only)',
     usage: '.hapusabsen',
     example: '.hapusabsen',
     isOwner: false,
@@ -23,7 +23,7 @@ async function handler(m) {
     if (!global.absensi[chatId]) {
         return m.reply(
             `❌ *ᴛɪᴅᴀᴋ ᴀᴅᴀ ᴀʙsᴇɴ*\n\n` +
-            `> Tidak ada sesi absen di grup ini!`
+            `> No hay sesi absen di grup ini!`
         )
     }
     

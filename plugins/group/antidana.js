@@ -1,5 +1,5 @@
 let handler = async (m, { args, isAdmin, isOwner }) => {
-  if (!m.isGroup) return m.reply("Fitur ini hanya dapat digunakan dalam grup.")
+  if (!m.isGroup) return m.reply("Función ini hanya dapat digunakan dalam grup.")
   if (!(isAdmin || isOwner)) return m.reply("Maaf, fitur ini hanya dapat digunakan oleh admin grup.")
 
   global.db.data.chats = global.db.data.chats || {}
@@ -27,7 +27,7 @@ let handler = async (m, { args, isAdmin, isOwner }) => {
     return m.reply("❌ Antidana berhasil dinonaktifkan.")
   }
 
-  return m.reply("Opsi tidak valid.\nGunakan:\n.antidana on / off")
+  return m.reply("Opsi no valid.\nGunakan:\n.antidana on / off")
 }
 
 handler.before = async (m, { conn, isBotAdmin, usedPrefix }) => {

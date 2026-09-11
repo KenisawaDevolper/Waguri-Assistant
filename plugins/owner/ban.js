@@ -55,7 +55,7 @@ async function handler(m, { sock }) {
     }
 
     const db = getDatabase()
-    const bannedList = db.setting('bannedUsers') || []
+    const bannedList = db.setting('bannedUsuarios') || []
 
     const alreadyBanned = bannedList.some(b => {
         const c = String(b).replace(/[^0-9]/g, '')
@@ -67,8 +67,8 @@ async function handler(m, { sock }) {
     }
 
     bannedList.push(targetNumber)
-    db.setting('bannedUsers', bannedList)
-    config.bannedUsers = bannedList
+    db.setting('bannedUsuarios', bannedList)
+    config.bannedUsuarios = bannedList
 
     await m.react('🚫')
 

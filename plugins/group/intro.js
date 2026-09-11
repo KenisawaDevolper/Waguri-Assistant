@@ -5,7 +5,7 @@ const pluginConfig = {
     name: 'intro',
     alias: ['perkenalan', 'selamatdatang'],
     category: 'group',
-    description: 'Tampilkan pesan intro grup',
+    description: 'Muestra pesan intro grup',
     usage: '.intro',
     example: '.intro',
     isOwner: false,
@@ -28,8 +28,8 @@ Kenalan dulu yukk
 
 Semoga betah yahh, di grup @group
 
-> Untuk Owner:
-ganti intro bawaan dengan .setintro <text>`
+> Para Owner:
+ganti intro bawaan con .setintro <text>`
  function parsePlaceholders(text, m, groupMeta) {
     const now = moment().tz('Asia/Jakarta')
     const dateStr = now.format('D MMMM YYYY')
@@ -37,11 +37,11 @@ ganti intro bawaan dengan .setintro <text>`
     
     return text
         .replace(/@user/gi, `@${m.sender.split('@')[0]}`)
-        .replace(/@group/gi, groupMeta?.subject || 'Grup')
+        .replace(/@group/gi, groupMeta?.subject || 'Grupo')
         .replace(/@count/gi, groupMeta?.participants?.length || '0')
         .replace(/@date/gi, dateStr)
         .replace(/@time/gi, timeStr)
-        .replace(/@desc/gi, groupMeta?.desc || 'Tidak ada deskripsi')
+        .replace(/@desc/gi, groupMeta?.desc || 'No hay deskripsi')
         .replace(/@botname/gi, config.bot?.name || 'rimuru-AI')
 }
 

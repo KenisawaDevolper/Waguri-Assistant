@@ -44,7 +44,7 @@ async function handler(m, { sock }) {
     await m.reply(
         `✅ *ʙᴇʀʜᴀsɪʟ*\n\n` +
         `> Default limit diubah menjadi: \`${newLimit}\`\n` +
-        `> User baru akan mendapat limit ini`
+        `> Usuario baru akan mendapat limit ini`
     )
 }
 

@@ -51,8 +51,8 @@ async function handler(m, { sock }) {
             return m.reply(
                 `✅ *ᴡᴇʟᴄᴏᴍᴇ ɢʟᴏʙᴀʟ ᴏɴ*\n\n` +
                 `╭┈┈⬡「 📊 *ʀᴇsᴜʟᴛ* 」\n` +
-                `┃ 🌐 Total Grup: *${count}*\n` +
-                `┃ ✅ Welcome: *AKTIF*\n` +
+                `┃ 🌐 Total Grupo: *${count}*\n` +
+                `┃ ✅ Bienvenida: *AKTIF*\n` +
                 `╰┈┈┈┈┈┈┈┈⬡\n\n` +
                 `> Semua member baru akan disambut otomatis!`
             )
@@ -60,14 +60,14 @@ async function handler(m, { sock }) {
             return m.reply(
                 `❌ *ᴡᴇʟᴄᴏᴍᴇ ɢʟᴏʙᴀʟ ᴏꜰꜰ*\n\n` +
                 `╭┈┈⬡「 📊 *ʀᴇsᴜʟᴛ* 」\n` +
-                `┃ 🌐 Total Grup: *${count}*\n` +
-                `┃ ❌ Welcome: *NONAKTIF*\n` +
+                `┃ 🌐 Total Grupo: *${count}*\n` +
+                `┃ ❌ Bienvenida: *NONAKTIF*\n` +
                 `╰┈┈┈┈┈┈┈┈⬡\n\n` +
-                `> Welcome dinonaktifkan di semua grup.`
+                `> Bienvenida dinonaktifkan di todos grup.`
             )
         }
     } catch (error) {
-        console.error('[WelcomeAll] Error:', error.message)
+        console.error('[BienvenidaAll] Error:', error.message)
         await m.react('☢')
         await m.reply(te(m.prefix, m.command, m.pushName))
     }

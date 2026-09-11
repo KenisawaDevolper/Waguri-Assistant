@@ -28,11 +28,11 @@ async function handler(m, { sock }) {
     if (mode === 'on') {
         db.setting('similarity', true)
         await m.react('✅')
-        await m.reply(`✅ *sᴜᴋsᴇs*\n\n> Fitur similarity command *DIAKTIFKAN*`)
+        await m.reply(`✅ *sᴜᴋsᴇs*\n\n> Función similarity command *DIAKTIFKAN*`)
     } else if (mode === 'off') {
         db.setting('similarity', false)
         await m.react('✅')
-        await m.reply(`✅ *sᴜᴋsᴇs*\n\n> Fitur similarity command *DIMATIKAN*`)
+        await m.reply(`✅ *sᴜᴋsᴇs*\n\n> Función similarity command *DIMATIKAN*`)
     } else {
         return m.reply(`⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n> \`.similarity on\` - Activar\n> \`.similarity off\` - Desactivar`)
     }

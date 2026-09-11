@@ -20,12 +20,12 @@ const pluginConfig = {
 const VALID_MODES = ['md', 'cpanel', 'store', 'pushkontak', 'otp', 'all']
 
 const MODE_DESCRIPTIONS = {
-    md: 'Mode default, semua fitur kecuali panel/store/pushkontak',
-    cpanel: 'Mode panel, main + group + sticker + owner + tools + panel',
-    store: 'Mode store manual, main + group + sticker + owner + store',
-    pushkontak: 'Mode pushkontak, main + group + sticker + owner + pushkontak',
-    otp: 'Mode OTP service, main + group + sticker + owner + otp',
-    all: 'Mode full, SEMUA fitur dari semua mode bisa diakses'
+    md: 'Modo default, todos fitur kecuali panel/store/pushkontak',
+    cpanel: 'Modo panel, main + group + sticker + owner + tools + panel',
+    store: 'Modo store manual, main + group + sticker + owner + store',
+    pushkontak: 'Modo pushkontak, main + group + sticker + owner + pushkontak',
+    otp: 'Modo OTP service, main + group + sticker + owner + otp',
+    all: 'Modo full, SEMUA fitur dari todos mode bisa diakses'
 }
 
 async function handler(m, { sock }) {
@@ -34,25 +34,25 @@ async function handler(m, { sock }) {
     
     let mode = (args[0] || '').toLowerCase()
     const flags = args.slice(1).map(f => f.toLowerCase())
-    const globalMode = db.setting('botMode') || 'all'
+    const globalModo = db.setting('botModo') || 'all'
     const groupData = m.isGroup ? (db.getGroup(m.chat) || {}) : {}
-    const groupMode = groupData.botMode || null
+    const groupModo = groupData.botModo || null
     
     if (!mode) {
         let txt = `╭┈┈⬡「 🤖 *ʙᴏᴛ ᴍᴏᴅᴇ* 」\n`
-        txt += `┃ ㊗ ɢʟᴏʙᴀʟ: *${globalMode.toUpperCase()}*\n`
+        txt += `┃ ㊗ ɢʟᴏʙᴀʟ: *${globalModo.toUpperCase()}*\n`
         
         if (m.isGroup) {
-            txt += `┃ ㊗ ɢʀᴜᴘ: *${(groupMode || 'INHERIT').toUpperCase()}*\n`
+            txt += `┃ ㊗ ɢʀᴜᴘ: *${(groupModo || 'INHERIT').toUpperCase()}*\n`
         }
         txt += `╰┈┈⬡\n\n`
         
         txt += `╭┈┈⬡「 📋 *ᴀᴠᴀɪʟᴀʙʟᴇ ᴍᴏᴅᴇs* 」\n`
         
-        const currentMode = m.isGroup ? (groupMode || globalMode) : globalMode
+        const currentModo = m.isGroup ? (groupModo || globalModo) : globalModo
         
         for (const [key, desc] of Object.entries(MODE_DESCRIPTIONS)) {
-            const isActive = key === currentMode ? ' ✅' : ''
+            const isActive = key === currentModo ? ' ✅' : ''
             txt += `┃ ㊗ *${key.toUpperCase()}*${isActive}\n`
             txt += `┃   ${desc}\n`
         }
@@ -60,7 +60,7 @@ async function handler(m, { sock }) {
         
         txt += `*ꜰʟᴀɢ sᴛᴏʀᴇ:*\n`
         txt += `> \`${m.prefix}botmode store\` - Manual order\n`
-        txt += `> \`${m.prefix}botmode md\` → Mode default\n`
+        txt += `> \`${m.prefix}botmode md\` → Modo default\n`
         txt += `> \`${m.prefix}botmode all\` → Semua fitur`
         
         await m.reply(txt)
@@ -70,14 +70,14 @@ async function handler(m, { sock }) {
     if (!VALID_MODES.includes(mode)) {
         return m.reply(
             `❌ *ᴍᴏᴅᴇ ᴛɪᴅᴀᴋ ᴠᴀʟɪᴅ*\n\n` +
-            `> Mode tersedia: \`${VALID_MODES.join(', ')}\``
+            `> Modo tersedia: \`${VALID_MODES.join(', ')}\``
         )
     }
 
     if (m.isGroup) {
         const newGroupData = {
             ...groupData,
-            botMode: mode
+            botModo: mode
         }
 
         if (mode === 'store') {
@@ -89,7 +89,7 @@ async function handler(m, { sock }) {
 
         db.setGroup(m.chat, newGroupData)
     } else {
-        db.setting('botMode', mode)
+        db.setting('botModo', mode)
     }
 
     db.save()
@@ -102,14 +102,14 @@ async function handler(m, { sock }) {
 
     await m.reply(
         `✅ *ᴍᴏᴅᴇ ᴅɪᴜʙᴀʜ*\n\n` +
-        `> Mode: *${mode.toUpperCase()}*\n` +
+        `> Modo: *${mode.toUpperCase()}*\n` +
         `> ${MODE_DESCRIPTIONS[mode]}\n` +
         extraInfo +
         `\n\n` +
-        (m.isGroup ? `> _Mode grup ini juga diubah._` : `> _Mode global diubah._`)
+        (m.isGroup ? `> _Modo grup ini juga diubah._` : `> _Modo global diubah._`)
     )
 
-    console.log(`[BotMode] Changed to ${mode.toUpperCase()} by ${m.pushName} (${m.sender})`)
+    console.log(`[BotModo] Changed to ${mode.toUpperCase()} by ${m.pushName} (${m.sender})`)
 }
 
 export { pluginConfig as config, handler, VALID_MODES, MODE_DESCRIPTIONS }

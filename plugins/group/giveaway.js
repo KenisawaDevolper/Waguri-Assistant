@@ -98,7 +98,7 @@ async function handleSession(m, sock) {
       if (otherGroups.length > 0) {
         const sections = [
           {
-            title: "Pilih Grup",
+            title: "Pilih Grupo",
             rows: otherGroups.slice(0, 10).map((g) => ({
               title: g.subject || g.id,
               id: `.giveaway selectgroup ${g.id}`,
@@ -108,7 +108,7 @@ async function handleSession(m, sock) {
         buttons.push({
           name: "single_select",
           buttonParamsJson: JSON.stringify({
-            title: "Pilih Grup Lain",
+            title: "Pilih Grupo Lain",
             sections,
           }),
         });
@@ -124,7 +124,7 @@ async function handleSession(m, sock) {
     } catch (e) {
       session.groupId = currentGroup;
       session.step = "q3";
-      await m.reply("⚠️ Gagal mengambil daftar grup. Menggunakan grup ini.");
+      await m.reply("⚠️ Falló mengambil daftar grup. Menggunakan grup ini.");
       await askPrizeDetails(m, sock, session);
     }
     return true;
@@ -156,7 +156,7 @@ async function askPrizeDetails(m, sock, session) {
       {
         text:
           "🎁 *GIVEAWAY CREATOR*\n\n" +
-          "Pertanyaan 3/3:\nBerikan detail hadiah dengan format:\n" +
+          "Pertanyaan 3/3:\nBerikan detail hadiah con format:\n" +
           "nama hadiah | detail hadiah\n\n" +
           "Contoh: Premium Account | Email: xxx@gmail.com | Password: xxx",
         contextInfo: getCtx(),
@@ -164,7 +164,7 @@ async function askPrizeDetails(m, sock, session) {
       { quoted: m },
     );
   } catch (e) {
-    await m.reply("⚠️ Gagal mengirim PM. Silakan chat bot dulu lalu ulangi.");
+    await m.reply("⚠️ Falló mengirim PM. Silakan chat bot dulu lalu ulangi.");
     createSessions.delete(session.adminJid);
   }
 }
@@ -393,7 +393,7 @@ const plugin = {
   name: ["giveaway", ...createCmds, ...listCmds, ...deleteCmds, ...rerollCmds],
   alias: "ga",
   category: "group",
-  description: "Sistem giveaway dengan interactive buttons",
+  description: "Sistem giveaway con interactive buttons",
   admin: false,
 };
 
@@ -405,7 +405,7 @@ async function handler(m, { sock }) {
 
   if (createCmds.includes(cmd)) {
     if (!m.isAdmin && !m.isOwner)
-      return m.reply("⚠️ Hanya admin yang bisa membuat giveaway!");
+      return m.reply("⚠️ Solo admins yang bisa membuat giveaway!");
     if (!m.isGroup) return m.reply("⚠️ Gunakan di grup!");
     if (createSessions.has(m.sender))
       return m.reply("⚠️ Kamu masih punya sesi pembuatan aktif!");
@@ -424,7 +424,7 @@ async function handler(m, { sock }) {
 
     await m.reply(
       "🎁 *GIVEAWAY CREATOR*\n\n" +
-        "Pertanyaan 1/3:\nBerikan detail giveaway dengan format:\n" +
+        "Pertanyaan 1/3:\nBerikan detail giveaway con format:\n" +
         "nama | durasi | jumlah pemenang\n\n" +
         "Contoh: Premium Account | 5m | 1\n" +
         "Durasi: 30s, 5m, 1h, 1d\n\n" +
@@ -444,7 +444,7 @@ async function handler(m, { sock }) {
     session.step = "q3";
 
     await m.reply(
-      "✅ Grup dipilih! Cek private chat untuk pertanyaan selanjutnya.",
+      "✅ Grupo dipilih! Cek private chat untuk pertanyaan selanjutnya.",
     );
     await askPrizeDetails(m, sock, session);
     return;
@@ -456,7 +456,7 @@ async function handler(m, { sock }) {
 
     const giveaways = db.setting("giveaways") || {};
     const giveaway = giveaways[giveawayId];
-    if (!giveaway) return m.reply("⚠️ Giveaway tidak ditemukan!");
+    if (!giveaway) return m.reply("⚠️ Giveaway no ditemukan!");
     if (giveaway.ended) return m.reply("⚠️ Giveaway sudah berakhir!");
     if (giveaway.participants.includes(m.sender))
       return m.reply("⚠️ Kamu sudah join!");
@@ -472,10 +472,10 @@ async function handler(m, { sock }) {
   }
 
   if (listCmds.includes(cmd)) {
-    if (!m.isAdmin && !m.isOwner) return m.reply("⚠️ Hanya admin!");
+    if (!m.isAdmin && !m.isOwner) return m.reply("⚠️ Solo admins!");
     const giveaways = db.setting("giveaways") || {};
     const entries = Object.values(giveaways);
-    if (entries.length === 0) return m.reply("📋 Tidak ada giveaway.");
+    if (entries.length === 0) return m.reply("📋 No hay giveaway.");
 
     const active = entries.filter((g) => !g.ended);
     const ended = entries.filter((g) => g.ended);
@@ -501,12 +501,12 @@ async function handler(m, { sock }) {
   }
 
   if (deleteCmds.includes(cmd)) {
-    if (!m.isAdmin && !m.isOwner) return m.reply("⚠️ Hanya admin!");
+    if (!m.isAdmin && !m.isOwner) return m.reply("⚠️ Solo admins!");
     const giveawayId = args[0];
     if (!giveawayId) return m.reply(`⚠️ Format: ${prefix}${cmd} GA-XXXXXX`);
 
     const giveaways = db.setting("giveaways") || {};
-    if (!giveaways[giveawayId]) return m.reply("⚠️ Giveaway tidak ditemukan!");
+    if (!giveaways[giveawayId]) return m.reply("⚠️ Giveaway no ditemukan!");
 
     delete giveaways[giveawayId];
     db.setting("giveaways", giveaways);
@@ -515,16 +515,16 @@ async function handler(m, { sock }) {
   }
 
   if (rerollCmds.includes(cmd)) {
-    if (!m.isAdmin && !m.isOwner) return m.reply("⚠️ Hanya admin!");
+    if (!m.isAdmin && !m.isOwner) return m.reply("⚠️ Solo admins!");
     const giveawayId = args[0];
     if (!giveawayId) return m.reply(`⚠️ Format: ${prefix}${cmd} GA-XXXXXX`);
 
     const giveaways = db.setting("giveaways") || {};
     const giveaway = giveaways[giveawayId];
-    if (!giveaway) return m.reply("⚠️ Giveaway tidak ditemukan!");
+    if (!giveaway) return m.reply("⚠️ Giveaway no ditemukan!");
     if (!giveaway.ended) return m.reply("⚠️ Giveaway belum berakhir!");
     if (giveaway.participants.length === 0)
-      return m.reply("⚠️ Tidak ada peserta!");
+      return m.reply("⚠️ No hay peserta!");
 
     const winnerCount = Math.min(
       giveaway.winners,
@@ -579,9 +579,9 @@ async function handler(m, { sock }) {
   if (cmd === "giveaway") {
     await m.reply(
       "🎁 *GIVEAWAY MENU*\n\n" +
-        `┃ ${prefix}giveawaycreate — Buat giveaway\n` +
+        `┃ ${prefix}giveawaycreate — Crea giveaway\n` +
         `┃ ${prefix}giveawaylist — Lihat daftar\n` +
-        `┃ ${prefix}giveawaydelete — Hapus giveaway\n` +
+        `┃ ${prefix}giveawaydelete — Elimina giveaway\n` +
         `┃ ${prefix}giveawayreroll — Reroll pemenang\n\n` +
         `> Alias: ga, gacreate, galist, gadelete, gareroll`,
     );

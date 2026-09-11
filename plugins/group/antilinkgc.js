@@ -26,7 +26,7 @@ async function handler(m, { sock }) {
     if (!option) {
         const groupData = db.getGroup(m.chat) || {}
         const status = groupData.antilinkgc || 'off'
-        const mode = groupData.antilinkgcMode || 'remove'
+        const mode = groupData.antilinkgcModo || 'remove'
         
         return m.reply(
             `ꕥ 𝖠𝖭𝖳𝖨𝖫𝖨𝖭𝖪 𝖶𝖧𝖠𝖳𝖲𝖠𝖯𝖯 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
@@ -51,7 +51,7 @@ async function handler(m, { sock }) {
         try { await m.react('✅') } catch {}
         return m.reply(
             `ꕥ 𝖠𝖭𝖳𝖨𝖫𝖨𝖭𝖪 𝖶𝖠 𝖠𝖢𝖳𝖨𝖵𝖠𝖣𝖮 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
-            `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « El sistema Antilink WhatsApp se ha activado exitosamente. »\n\n` +
+            `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « El sistema Antienlace WhatsApp se ha activado exitosamente. »\n\n` +
             `> 𝗐⍺𝗀𝗎ɾɩ ⍺𝗌𝗌ı𝗌ƚ⍺𝗇ƚ ツ`
         )
     }
@@ -61,7 +61,7 @@ async function handler(m, { sock }) {
         try { await m.react('❌') } catch {}
         return m.reply(
             `ꕥ 𝖠𝖭𝖳𝖨𝖫𝖨𝖭𝖪 𝖶𝖠 𝖣𝖤𝖲𝖠𝖢𝖳𝖨𝖵𝖠𝖣𝖮 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
-            `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « El sistema Antilink WhatsApp se ha desactivado. »\n\n` +
+            `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « El sistema Antienlace WhatsApp se ha desactivado. »\n\n` +
             `> 𝗐⍺𝗀𝗎ɾɩ ⍺𝗌𝗌ı𝗌ƚ⍺𝗇ƚ ツ`
         )
     }
@@ -69,17 +69,17 @@ async function handler(m, { sock }) {
     if (option === 'metode') {
         const method = m.args?.[1]?.toLowerCase()
         if (method === 'kick') {
-            db.setGroup(m.chat, { antilinkgc: 'on', antilinkgcMode: 'kick' })
+            db.setGroup(m.chat, { antilinkgc: 'on', antilinkgcModo: 'kick' })
             return m.reply(
                 `ꕥ 𝖬𝖮𝖣𝖮 𝖪𝖨𝖢𝖪 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
-                `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « Antilink WhatsApp configurado en modo *KICK*. Los usuarios serán expulsados al enviar enlaces de WA. »\n\n` +
+                `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « Antienlace WhatsApp configurado en modo *KICK*. Los usuarios serán expulsados al enviar enlaces de WA. »\n\n` +
                 `> 𝗐⍺𝗀𝗎ɾɩ ⍺𝗌𝗌ı𝗌ƚ⍺𝗇ƚ ツ`
             )
         } else if (method === 'remove' || method === 'delete') {
-            db.setGroup(m.chat, { antilinkgc: 'on', antilinkgcMode: 'remove' })
+            db.setGroup(m.chat, { antilinkgc: 'on', antilinkgcModo: 'remove' })
             return m.reply(
                 `ꕥ 𝖬𝖮𝖣𝖮 𝖱𝖤𝖬𝖮𝖵𝖤 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
-                `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « Antilink WhatsApp configurado en modo *REMOVE*. Los mensajes con enlaces de WA serán eliminados. »\n\n` +
+                `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « Antienlace WhatsApp configurado en modo *REMOVE*. Los mensajes con enlaces de WA serán eliminados. »\n\n` +
                 `> 𝗐⍺𝗀𝗎ɾɩ ⍺𝗌𝗌ı𝗌ƚ⍺𝗇ƚ ツ`
             )
         } else {
@@ -92,19 +92,19 @@ async function handler(m, { sock }) {
     }
     
     if (option === 'kick') {
-        db.setGroup(m.chat, { antilinkgc: 'on', antilinkgcMode: 'kick' })
+        db.setGroup(m.chat, { antilinkgc: 'on', antilinkgcModo: 'kick' })
         return m.reply(
             `ꕥ 𝖬𝖮𝖣𝖮 𝖪𝖨𝖢𝖪 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
-            `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « Antilink WhatsApp configurado en modo *KICK* exitosamente. »\n\n` +
+            `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « Antienlace WhatsApp configurado en modo *KICK* exitosamente. »\n\n` +
             `> 𝗐⍺𝗀𝗎ɾɩ ⍺𝗌𝗌ı𝗌ƚ⍺𝗇ƚ ツ`
         )
     }
     
     if (option === 'remove' || option === 'delete') {
-        db.setGroup(m.chat, { antilinkgc: 'on', antilinkgcMode: 'remove' })
+        db.setGroup(m.chat, { antilinkgc: 'on', antilinkgcModo: 'remove' })
         return m.reply(
             `ꕥ 𝖬𝖮𝖣𝖮 𝖱𝖤𝖬𝖮𝖵𝖤 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
-            `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « Antilink WhatsApp configurado en modo *REMOVE* exitosamente. »\n\n` +
+            `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « Antienlace WhatsApp configurado en modo *REMOVE* exitosamente. »\n\n` +
             `> 𝗐⍺𝗀𝗎ɾɩ ⍺𝗌𝗌ı𝗌ƚ⍺𝗇ƚ ツ`
         )
     }

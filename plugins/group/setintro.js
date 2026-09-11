@@ -23,13 +23,13 @@ async function handler(m) {
     if (!introText) {
         return m.reply(
             `📝 *sᴇᴛ ɪɴᴛʀᴏ*\n\n` +
-            `> Masukkan pesan intro!\n\n` +
+            `> Ingresa pesan intro!\n\n` +
             `*Placeholder yang tersedia:*\n` +
             `> @user - Nama pengguna\n` +
             `> @group - Nama grup\n` +
             `> @count - Jumlah member\n` +
-            `> @date - Tanggal hari ini\n` +
-            `> @time - Waktu sekarang\n` +
+            `> @date - Fecha hari ini\n` +
+            `> @time - Hora sekarang\n` +
             `> @desc - Deskripsi grup\n` +
             `> @botname - Nama bot\n\n` +
             `*Contoh:*\n` +
@@ -44,7 +44,7 @@ async function handler(m) {
     
     await m.reply(
         `✅ *ɪɴᴛʀᴏ ᴅɪsᴀᴠᴇ!*\n` +
-        `Pesan intro grup berhasil diubah.\n` +
+        `Mensaje intro grup berhasil diubah.\n` +
         `Ketik *${m.prefix}intro* untuk melihat hasilnya.`
     )
 }

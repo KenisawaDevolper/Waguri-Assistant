@@ -28,7 +28,7 @@ const VARIANTS = {
   v2: {
     id: 2,
     name: "EXECUTIVE",
-    desc: "Menu Executive dengan daftar kategori dan tombol Pilih Menu",
+    desc: "Menu Executive con daftar kategori dan tombol Pilih Menu",
     emoji: "◈",
   },
 };

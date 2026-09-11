@@ -193,7 +193,7 @@ async function handler(m, { sock }) {
   const sub = args[0]?.toLowerCase();
   const groupData = db.getGroup(m.chat) || {};
   const rules = normalizeRules(groupData.anticustomRules);
-  const mode = groupData.anticustomMode || "remove";
+  const mode = groupData.anticustomModo || "remove";
   const status = groupData.anticustom || "off";
   const sessionKey = getSessionKey(m);
 
@@ -260,7 +260,7 @@ async function handler(m, { sock }) {
       );
       return;
     }
-    db.setGroup(m.chat, { anticustom: "on", anticustomMode: action });
+    db.setGroup(m.chat, { anticustom: "on", anticustomModo: action });
     await m.reply(
       `ꕥ 𝖬𝖤𝖳𝖮𝖣𝖮 𝖠𝖢𝖳𝖴𝖠𝖫𝖨𝖹𝖠𝖣𝖮 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
       `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « El método por defecto de AntiCustom ahora es *${action.toUpperCase()}*. »\n\n` +
@@ -432,7 +432,7 @@ async function replyHandler(m, { sock }) {
   }
 
   if (session.step === "confirm") {
-    if (/^(batal|cancel|tidak|nggak|ga|gak|no)$/i.test(text)) {
+    if (/^(batal|cancel|no|nggak|ga|gak|no)$/i.test(text)) {
       clearSession(sessionKey);
       await m.reply(
         `ꕥ 𝖲𝖤𝖲𝖨𝖮𝖭 𝖢𝖠𝖭𝖢𝖤𝖫𝖠𝖣𝖠 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
@@ -481,7 +481,7 @@ async function replyHandler(m, { sock }) {
 
     db.setGroup(m.chat, {
       anticustom: "on",
-      anticustomMode: session.action,
+      anticustomModo: session.action,
       anticustomRules: [...filteredRules, ...generatedRules],
     });
 

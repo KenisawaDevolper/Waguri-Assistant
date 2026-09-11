@@ -24,7 +24,7 @@ async function handler(m, { sock }) {
   const db = getDatabase();
   const limit = Math.min(Math.max(parseInt(m.text) || 10, 1), 20);
   const group = db.getGroup(m.chat) || {};
-  const chatName = group.name || "Grupo";
+  const chatName = group.name || "Grupoo";
   const chatStats = group.chatStats || {};
 
   const sorted = Object.entries(chatStats)
@@ -42,7 +42,7 @@ async function handler(m, { sock }) {
 
   const pollVotes = sorted.map((u, i) => {
     const rank = i + 1;
-    const user = db.getUser(u.jid);
+    const user = db.getUsuario(u.jid);
     const name = u.name || user?.name || u.jid.split("@")[0];
     return {
       optionName: `${rank}. ${name}${i === 0 ? " 🏆" : ""}`,

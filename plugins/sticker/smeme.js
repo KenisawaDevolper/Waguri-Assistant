@@ -146,7 +146,7 @@ async function handler(m, { sock }) {
       responseType: "arraybuffer",
       timeout: 30000,
       headers: {
-        "User-Agent":
+        "Usuario-Agent":
           "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
       },
     });

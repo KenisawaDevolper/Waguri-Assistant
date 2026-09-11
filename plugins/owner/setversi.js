@@ -59,7 +59,7 @@ async function handler(m) {
         const oldVersionMatch = configContent.match(/version:\s*['"`]([^'"`]+)['"`]/)
         const oldVersion = oldVersionMatch ? oldVersionMatch[1] : 'no diketahui'
         
-        // Ganti versi dengan regex
+        // Ganti versi con regex
         const newConfigContent = configContent.replace(
             /(version:\s*['"`])[^'"`]+(['"`])/,
             `$1${newVersion}$2`

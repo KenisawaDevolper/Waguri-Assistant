@@ -135,7 +135,7 @@ const toMonoUpperBold = (text) => {
     .map((c) => chars[c] || c)
     .join("");
 };
-function getSortedCategories(m, botMode) {
+function getSortedCategories(m, botModo) {
   const categories = getCategories();
   const commandsByCategory = getCommandsByCategory();
   const categoryOrder = [
@@ -160,8 +160,8 @@ function getSortedCategories(m, botMode) {
     store: null,
     pushkontak: null,
   };
-  const allowedCats = modeAllowedMap[botMode];
-  const excludeCats = modeExcludeMap[botMode] || [];
+  const allowedCats = modeAllowedMap[botModo];
+  const excludeCats = modeExcludeMap[botModo] || [];
   const sortedCats = [...categories].sort((a, b) => {
     const indexA = categoryOrder.indexOf(a);
     const indexB = categoryOrder.indexOf(b);
@@ -196,11 +196,11 @@ async function buildMenuText(
   botConfig,
   db,
   uptime,
-  botMode = "md",
+  botModo = "md",
   useBracketBoxStyle = false,
 ) {
   const prefix = botConfig.command?.prefix || ".";
-  const user = db.getUser(m.sender);
+  const user = db.getUsuario(m.sender);
   const timeHelper = await import("../../src/lib/rimuru-time.js");
   const timeStr = timeHelper.formatTime("HH:mm");
   const dateStr = timeHelper.formatFull("dddd, DD MMMM YYYY");
@@ -224,7 +224,7 @@ async function buildMenuText(
   }
   const greeting = getTimeGreeting();
   const uptimeFormatted = formatUptime(uptime);
-  const totalUsers = db.getUserCount();
+  const totalUsuarios = db.getUsuarioCount();
   const pushName = m.pushName || "Usuario";
   const botName = botConfig.bot?.name || "𝑊⍺ց𝗎𝗋ı 𝖠𝗌𝗌ı𝗌ƚ⍺𝗇ƚ";
   const devName = botConfig.bot?.developer || "Mauro";
@@ -292,8 +292,8 @@ async function buildMenuText(
       }
     }
   } catch (e) { }
-  const allowedCategories = modeAllowedMap[botMode];
-  const excludeCategories = modeExcludeMap[botMode] || [];
+  const allowedCategories = modeAllowedMap[botModo];
+  const excludeCategories = modeExcludeMap[botModo] || [];
   const categoryLines = [];
   for (const category of sortedCategories) {
     if (category === "owner" && !m.isOwner) continue;
@@ -396,13 +396,13 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
     ? Number(savedVariant)
     : ([1, 2].includes(Number(botConfig.ui?.menuVariant)) ? Number(botConfig.ui.menuVariant) : 2);
   const groupData = m.isGroup ? db.getGroup(m.chat) || {} : {};
-  const botMode = groupData.botMode || "md";
+  const botModo = groupData.botModo || "md";
   const text = await buildMenuText(
     m,
     botConfig,
     db,
     uptime,
-    botMode,
+    botModo,
     menuVariant === 9,
   );
 
@@ -427,14 +427,14 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
     sorted: menuSorted,
     totalCmds,
     commandsByCategory,
-  } = getSortedCategories(m, botMode);
+  } = getSortedCategories(m, botModo);
   const totalCases = getCaseCount();
   const totalFeatures = totalCmds + totalCases;
   const greeting = getTimeGreeting();
   const uptimeFormatted = formatUptime(uptime);
-  const user = await db.getUser(m.sender) || {}
+  const user = await db.getUsuario(m.sender) || {}
   try {
-    const categories = getSortedCategories(m, botMode);
+    const categories = getSortedCategories(m, botModo);
     const zann_pengin_rehat = categories.sorted.map(({ cat, cmds, emoji }) => {
       const caseCount = (getCasesByCategory()[cat] || []).length;
       const total = cmds.length + caseCount;
@@ -510,7 +510,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
         const categoryLines = [];
         const commandsMap = getCommandsByCategory();
         const casesMap = getCasesByCategory();
-        const allowed = getSortedCategories(m, botMode).sorted;
+        const allowed = getSortedCategories(m, botModo).sorted;
         const available = new Map(
           allowed.map(item => [item.cat.toLowerCase(), item])
         );
@@ -536,7 +536,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
 
         const botName = config.bot?.name || "𝑊⍺ց𝗎𝗋ı 𝖠𝗌𝗌ı𝗌ƚ⍺𝗇ƚ";
         const botVersion = config.bot?.version || "1.0";
-        const botModeName = String(config.mode || "público").toUpperCase();
+        const botModoName = String(config.mode || "público").toUpperCase();
         const userName = m.pushName || "Usuario";
         const featureCount = totalFeatures;
 
@@ -549,7 +549,7 @@ async function handler(m, { sock, config: botConfig, db, uptime }) {
           ``,
           `        𓈒 ◌ㅤ──    *𝗇𝗈𝗆𝖻𝗋ᧉ* : ${botName}`,
           `        𓈒 ◌ㅤ──    *𝗎𝗌𝗎⍺𝗋ı𝗈* : ${userName}`,
-          `        𓈒 ◌ㅤ──    *𝗆𝗈𝖽𝗈* : ${botModeName}`,
+          `        𓈒 ◌ㅤ──    *𝗆𝗈𝖽𝗈* : ${botModoName}`,
           `        𓈒 ◌ㅤ──    *᥎ᧉ𝗋𝗌ıó𝗇* : v${botVersion}`,
           `        𓈒 ◌ㅤ──    *𝖿𝗎𝗇𝼫𝗂𝗈𝗇ᧉ𝗌* : ${featureCount} 𝖼𝗈𝗆⍺𝗇𝖽𝗈𝗌`,
           ``,

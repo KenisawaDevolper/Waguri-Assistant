@@ -5,7 +5,7 @@ import sharp from "sharp";
 // ==========================================
 // GESTIÓN LOCAL RPG (AHORA CON ESTADÍSTICAS)
 // ==========================================
-function ensureRpgUser(userId) {
+function ensureRpgUsuario(userId) {
   if (!global.db) global.db = {};
   if (!global.db.data) global.db.data = {};
   if (!global.db.data.users) global.db.data.users = {};
@@ -81,7 +81,7 @@ async function sendRpgMsg(conn, m, text, buttons = [], imageUrl = null, title = 
 // ==========================================
 let handler = async (m, { conn, command, args }) => {
   const sender = m.sender;
-  const user = ensureRpgUser(sender);
+  const user = ensureRpgUsuario(sender);
   
   // Lógica de subida de nivel dinámica
   const checkLevelUp = (u) => {
@@ -246,7 +246,7 @@ let handler = async (m, { conn, command, args }) => {
         ]);
       }
 
-      const target = ensureRpgUser(targetJid);
+      const target = ensureRpgUsuario(targetJid);
       
       if (target.hp <= 10) {
         return await sendRpgMsg(conn, m, `ꕥ 𝖡𝖠𝖳𝖠𝖫𝖫𝖠 𝖱𝖯𝖦 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\nଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « ¡Ten piedad! Tu oponente está demasiado débil para luchar en este momento. »`);
@@ -287,11 +287,11 @@ let handler = async (m, { conn, command, args }) => {
         }, { quoted: m });
       } else {
         // Pierdes la batalla
-        const damageToUser = Math.max(5, targetPower - user.defense);
-        user.hp = Math.max(0, user.hp - damageToUser);
+        const damageToUsuario = Math.max(5, targetPower - user.defense);
+        user.hp = Math.max(0, user.hp - damageToUsuario);
         
         await conn.sendMessage(m.chat, { 
-          text: `ꕥ 𝖣𝖤𝖱𝖱𝖮𝖳𝖠 𝖱𝖯𝖦 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\nଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « Perdiste miserablemente contra ${targetName}. Te faltó fuerza y sufriste heridas graves en el escape. »\n\n      • Daño recibido :: *-${damageToUser} HP* 💔 (Salud actual: ${user.hp})`, 
+          text: `ꕥ 𝖣𝖤𝖱𝖱𝖮𝖳𝖠 𝖱𝖯𝖦 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\nଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « Perdiste miserablemente contra ${targetName}. Te faltó fuerza y sufriste heridas graves en el escape. »\n\n      • Daño recibido :: *-${damageToUsuario} HP* 💔 (Salud actual: ${user.hp})`, 
           mentions: [targetJid] 
         }, { quoted: m });
       }

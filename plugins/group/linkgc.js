@@ -23,8 +23,8 @@ async function handler(m, { sock }) {
     
     try {
         const code = await sock.groupInviteCode(m.chat)
-        const urlGrup = `https://chat.whatsapp.com/${code}`
-        await m.reply(`Link grup grup ini\n${urlGrup}`)
+        const urlGrupo = `https://chat.whatsapp.com/${code}`
+        await m.reply(`Link grup grup ini\n${urlGrupo}`)
         
         m.react('✅')
         

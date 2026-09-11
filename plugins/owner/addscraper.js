@@ -32,13 +32,13 @@ async function handler(m, { sock }) {
     let code = null
     let name = null
     
-    // Ambil nama dari command
+    // Obtiene nama dari command
     const args = m.text?.split(/\s+/) || []
     if (args.length > 1) {
         name = args[1].toLowerCase()
     }
     
-    // 🔥 PERBAIKAN: Deteksi reply dengan lebih baik
+    // 🔥 PERBAIKAN: Deteksi reply con lebih baik
     let quotedMsg = m.quoted || (m.message?.extendedTextMessage?.contextInfo?.quotedMessage)
     
     if (quotedMsg) {
@@ -101,7 +101,7 @@ async function handler(m, { sock }) {
         }
     }
     
-    // Tampilkan menu kalo kurang
+    // Muestra menu kalo kurang
     if (!code || !name) {
         const scraperDir = path.join(process.cwd(), 'src', 'scraper')
         const existingScrapers = getExistingScrapers(scraperDir)

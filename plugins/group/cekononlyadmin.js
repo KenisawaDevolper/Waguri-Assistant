@@ -20,20 +20,20 @@ async function handler(m, { db }) {
     
     const status = isEnabled ? '🟢 *AKTIF*' : '🔴 *NONAKTIF*'
     const deskripsi = isEnabled 
-        ? 'Hanya admin grup yang bisa menggunakan bot'
+        ? 'Solo admins grup yang bisa menggunakan bot'
         : 'Semua member grup bisa menggunakan bot'
     
     m.reply(
 `╭───〔 𝗭𝗘𝗥𝗢 𝗧𝗪𝗢 𝗦𝗧𝗔𝗧𝗨𝗦 〕───⬣
 │
-│ ✦ *Mode OnlyAdmin*
+│ ✦ *Modo OnlyAdmin*
 │
 │  ${status}
 │
 │ ${deskripsi}
 │
 │ ✦ *Diubah oleh*
-│  Hanya owner bot
+│  Solo owner bot
 │
 ╰──────────────────⬣`
     )

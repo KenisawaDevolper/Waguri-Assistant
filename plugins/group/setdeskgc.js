@@ -4,7 +4,7 @@ const pluginConfig = {
     category: 'group',
     description: 'Actualiza, cambia o elimina la descripción oficial del grupo.',
     usage: '.setdeskgc <nueva descripción>',
-    example: '.setdeskgc Grupo exclusivo para discusiones sanas',
+    example: '.setdeskgc Grupoo exclusivo para discusiones sanas',
     isOwner: false,
     isPremium: false,
     isGroup: true,

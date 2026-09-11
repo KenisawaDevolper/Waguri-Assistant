@@ -69,7 +69,7 @@ async function handler(m, { sock }) {
         text += `╰┈┈⬡\n\n`
         
         if (onlineMembers.length === 0) {
-            text += `> _Tidak ada member yang terdeteksi online_\n`
+            text += `> _No hay member yang terdeteksi online_\n`
             text += `> _Pastikan member telah membuka WA_`
         } else {
             text += `╭┈┈⬡「 🟢 *ᴍᴇᴍʙᴇʀ ᴏɴʟɪɴᴇ* 」\n`

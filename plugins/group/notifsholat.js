@@ -17,7 +17,7 @@ const pluginConfig = {
 
 function handler(m, { sock, db }) {
     if (!m.isAdmin && !m.isOwner) {
-        return m.reply(`❌ Hanya admin grup yang bisa menggunakan fitur ini`);
+        return m.reply(`❌ Solo admins grup yang bisa menggunakan fitur ini`);
     }
 
     const args = m.args[0]?.toLowerCase();
@@ -28,20 +28,20 @@ function handler(m, { sock, db }) {
     if (!['on', 'off'].includes(args)) {
         const isGlobalActive = globalDb.setting('autoSholat') || false;
         const statusGlobal = isGlobalActive ? '✅ AKTIF' : '❌ NONAKTIF';
-        const statusGrup = group.notifSholat !== false ? '✅ AKTIF' : '❌ NONAKTIF';
+        const statusGrupo = group.notifSholat !== false ? '✅ AKTIF' : '❌ NONAKTIF';
         
         return m.reply(
             `🕌 *PENGINGAT WAKTU SHOLAT*\n\n` +
             `Status Global: *${statusGlobal}* (Dari Owner)\n` +
-            `Status Grup: *${statusGrup}*\n` +
+            `Status Grupo: *${statusGrupo}*\n` +
             `Lokasi: *${kotaSetting.nama}*\n\n` +
             `*PENGATURAN GRUP:*\n` +
-            `• *${m.prefix}notifsholat on* — Aktifkan notif di grup ini\n` +
+            `• *${m.prefix}notifsholat on* — Activar notif di grup ini\n` +
             `• *${m.prefix}notifsholat off* — Nonaktifkan notif di grup ini\n\n` +
             `*CARA KERJA:*\n` +
             `1. Mengirimkan mp3 adzan & gambar jadwal saat masuk waktu sholat\n` +
             `2. Mengikuti jadwal real-time dari myquran.com\n` +
-            `3. Jika Status Global NONAKTIF, grup tidak akan dikirim adzan meskipun Status Grup AKTIF.\n` +
+            `3. Jika Status Global NONAKTIF, grup no akan dikirim adzan meskipun Status Grupo AKTIF.\n` +
             `4. Jika grup merasa terganggu, admin dapat mematikan khusus untuk grup ini.`
         );
     }
@@ -49,7 +49,7 @@ function handler(m, { sock, db }) {
     if (args === 'on') {
         group.notifSholat = true;
         db.setGroup(m.chat, group);
-        return m.reply(`✅ *ɴᴏᴛɪꜰ sʜᴏʟᴀᴛ ᴅɪᴀᴋᴛɪꜰᴋᴀɴ*\n\n> Grup ini akan menerima pengingat waktu sholat\n> Lokasi: ${kotaSetting.nama}`);
+        return m.reply(`✅ *ɴᴏᴛɪꜰ sʜᴏʟᴀᴛ ᴅɪᴀᴋᴛɪꜰᴋᴀɴ*\n\n> Este grupo akan menerima pengingat waktu sholat\n> Lokasi: ${kotaSetting.nama}`);
     }
 
     if (args === 'off') {

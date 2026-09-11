@@ -1,7 +1,7 @@
 import { generateWAMessageFromContent, proto } from 'ourin'
 
 const handler = async (m, { conn }) => {
-  if (!m.isGroup) return m.reply('❌ Fitur ini hanya bisa dipakai di grup.')
+  if (!m.isGroup) return m.reply('❌ Función ini hanya bisa dipakai di grup.')
 
   try {
     await m.react('🆔')
@@ -10,7 +10,7 @@ const handler = async (m, { conn }) => {
     const teks = `
 📌 *CEK ID GRUP*
 
-🆔 ID Grup:
+🆔 ID Grupo:
 ${id}
 `
 
@@ -29,7 +29,7 @@ ${id}
                 {
                   name: "cta_copy",
                   buttonParamsJson: JSON.stringify({
-                    display_text: "📋 Copy ID Grup",
+                    display_text: "📋 Copy ID Grupo",
                     copy_code: id
                   })
                 }

@@ -134,7 +134,7 @@ async function handler(m, { sock }) {
     m.react('🕕')
     
     try {
-        const username = m.pushName || 'User'
+        const username = m.pushName || 'Usuario'
         const avatar = await getProfilePicture(sock, m.sender)
         
         const json = {

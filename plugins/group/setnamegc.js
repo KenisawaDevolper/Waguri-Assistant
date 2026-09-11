@@ -4,7 +4,7 @@ const pluginConfig = {
     category: 'group',
     description: 'Cambia y actualiza el nombre oficial del grupo.',
     usage: '.setnamegc <nuevo nombre>',
-    example: '.setnamegc Grupo Genial',
+    example: '.setnamegc Grupoo Genial',
     isOwner: false,
     isPremium: false,
     isGroup: true,
@@ -23,7 +23,7 @@ async function handler(m, { sock }) {
         return m.reply(
             `ꕥ 𝖢𝖮𝖭𝖥𝖨𝖦𝖴𝖱𝖠𝖱 𝖭𝖮𝖬𝖡𝖱𝖤 𝖣𝖤𝖫 𝖦𝖱𝖴𝖯 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
             `      • Uso correcto :: \`${m.prefix}setnamegc <nuevo nombre>\`\n` +
-            `      • Ejemplo :: \`${m.prefix}setnamegc Mi Grupo Increíble\`\n\n` +
+            `      • Ejemplo :: \`${m.prefix}setnamegc Mi Grupoo Increíble\`\n\n` +
             `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « Debes proporcionar el nuevo nombre que deseas asignarle al grupo. »\n\n` +
             `> 𝗐⍺𝗀𝗎ɾɩ ⍺𝗌𝗌ı𝗌ƚ⍺𝗇ƚ ツ`
         );

@@ -226,7 +226,7 @@ async function handler(m, { sock, jadibotId, isJadibot }) {
     }
 
     const jid = targetNumber + "@s.whatsapp.net";
-    const user = db.getUser(jid) || db.setUser(jid);
+    const user = db.getUsuario(jid) || db.setUsuario(jid);
     if (!user) {
       return m.reply(`❌ ꕥ No se pudo crear al usuario *${targetNumber}* en la base de datos ( ᴗ͈ˬᴗ͈ )`);
     }
@@ -236,7 +236,7 @@ async function handler(m, { sock, jadibotId, isJadibot }) {
     }
     user.isPremium = true;
 
-    db.setUser(jid, user);
+    db.setUsuario(jid, user);
     db.updateExp(jid, 200000);
     db.updateKoin(jid, 20000);
 
@@ -258,10 +258,10 @@ async function handler(m, { sock, jadibotId, isJadibot }) {
     db.data.premium.splice(index, 1);
 
     const jid = targetNumber + "@s.whatsapp.net";
-    const user = db.getUser(jid);
+    const user = db.getUsuario(jid);
     if (user) {
       user.isPremium = false;
-      db.setUser(jid, user);
+      db.setUsuario(jid, user);
     }
 
     await db.save();

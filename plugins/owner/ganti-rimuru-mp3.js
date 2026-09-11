@@ -22,7 +22,7 @@ async function handler(m, { sock }) {
     const isAudio = m.type === 'audioMessage' || (m.quoted && m.quoted.type === 'audioMessage')
     
     if (!isAudio) {
-        return m.reply(`🎵 *ɢᴀɴᴛɪ ᴏᴜʀɪɴ.ᴍᴘ3*\n\n> Kirim/reply audio untuk mengganti\n> File: assets/audio/rimuru.mp3`)
+        return m.reply(`🎵 *ɢᴀɴᴛɪ ᴏᴜʀɪɴ.ᴍᴘ3*\n\n> Envía/reply audio untuk mengganti\n> File: assets/audio/rimuru.mp3`)
     }
     
     try {
@@ -40,7 +40,7 @@ async function handler(m, { sock }) {
         await m.reply(`⏳ Sedang mengupload gambar...`)
         try {
             const newUrl = await updateAssetUrl('rimuru-mp3', buffer, 'rimuru.mp3')
-            m.reply(`✅ *ʙᴇʀʜᴀsɪʟ*\n\n> File rimuru.mp3 telah diganti ke URL baru:\n> ${newUrl}\n> Config telah diupdate secara realtime!`)
+            m.reply(`✅ *ʙᴇʀʜᴀsɪʟ*\n\n> File rimuru.mp3 telah diganti ke URL baru:\n> ${newUrl}\n> Config telah diupdate de forma realtime!`)
         } catch (e) {
             m.reply(`❌ Error mengupload file: ${e.message}`)
         }

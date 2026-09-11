@@ -27,7 +27,7 @@ async function handler(m, { sock }) {
     const amount = parseInt(m.args[0]) || 0
     
     if (amount <= 0) {
-        const user = db.getUser(m.sender) || db.setUser(m.sender)
+        const user = db.getUsuario(m.sender) || db.setUsuario(m.sender)
         
         return m.reply(
             `*¡Hola, buenas tardes!* ฅ^·ﻌ·^ฅ\n` +
@@ -45,7 +45,7 @@ async function handler(m, { sock }) {
     }
     
     const totalPrice = amount * PRICE_PER_ENERGI
-    const user = db.getUser(m.sender) || db.setUser(m.sender)
+    const user = db.getUsuario(m.sender) || db.setUsuario(m.sender)
     
     if ((user.koin || 0) < totalPrice) {
         return m.reply(
@@ -76,7 +76,7 @@ async function handler(m, { sock }) {
     }
     
     const newEnergi = db.updateEnergi(m.sender, amount)
-    const newKoin = db.getUser(m.sender).koin
+    const newKoin = db.getUsuario(m.sender).koin
     
     m.react('✅')
     

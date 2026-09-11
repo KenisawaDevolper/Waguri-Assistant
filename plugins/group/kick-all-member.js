@@ -1,8 +1,8 @@
 const pluginConfig = {
     name: 'kickall',
-    alias: ['kicksemua','cleargrup'],
+    alias: ['kicktodos','cleargrup'],
     category: 'group',
-    description: 'Kick semua member (non-admin)',
+    description: 'Expulsa todos member (non-admin)',
     usage: '.kickall member',
     example: '.kickall member',
     isGroup: true,
@@ -25,7 +25,7 @@ async function handler(m, { sock }) {
 ┃ Gunakan:
 ┃ • .kickall member
 ┃
-┃ ⚠️ Akan menghapus semua
+┃ ⚠️ Akan menghapus todos
 ┃ member non-admin
 ┃
 ╰━━━━━━━━━━━━━━━━⬣`
@@ -45,7 +45,7 @@ async function handler(m, { sock }) {
         )
 
         if (members.length === 0) {
-            return m.reply("❌ Tidak ada member untuk di kick")
+            return m.reply("❌ No hay member untuk di kick")
         }
 
         for (let user of members) {
@@ -62,7 +62,7 @@ async function handler(m, { sock }) {
 ┃ 👥 Member dihapus:
 ┃ ${members.length} orang
 ┃
-┃ ⚡ Grup sekarang lebih bersih
+┃ ⚡ Grupo sekarang lebih bersih
 ┃
 ╰━━━━━━━━━━━━━━━━⬣`
         )

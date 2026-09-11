@@ -25,7 +25,7 @@ async function handler(m, { sock }) {
     await m.reply(
         `✅ *ʙᴇʀʜᴀsɪʟ*\n\n` +
         `> Default limit direset ke config: \`${configDefault}\`\n` +
-        `> User baru akan mendapat limit dari config`
+        `> Usuario baru akan mendapat limit dari config`
     )
 }
 

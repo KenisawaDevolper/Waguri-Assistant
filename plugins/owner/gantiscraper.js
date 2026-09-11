@@ -121,7 +121,7 @@ async function handler(m, { sock }) {
     text +=
       `╰───────⬡\n\n` +
       `Total: ${scrapers.length} scraper\n\n` +
-      `> Gunakan \`${m.prefix}gantiscraper <nama>\` dengan reply code`;
+      `> Gunakan \`${m.prefix}gantiscraper <nama>\` con reply code`;
 
     return m.reply(text);
   }
@@ -129,7 +129,7 @@ async function handler(m, { sock }) {
   if (!quoted) {
     return m.reply(
       `🔄 *GANTI SCRAPER*\n\n` +
-        `Reply code scraper baru dengan caption:\n` +
+        `Reply code scraper baru con caption:\n` +
         `\`${m.prefix}gantiscraper\` - Auto detect dari export\n` +
         `\`${m.prefix}gantiscraper namafile\` - Custom nama file\n\n` +
         `📋 *Lihat daftar scraper:*\n` +

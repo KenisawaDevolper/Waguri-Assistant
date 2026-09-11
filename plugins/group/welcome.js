@@ -63,7 +63,7 @@ const pluginConfig = {
 };
 
 // eslint-disable-next-line require-await
-async function buildWelcomeMessage(
+async function buildBienvenidaMessage(
   participant,
   groupName,
   groupDesc,
@@ -99,7 +99,7 @@ async function buildWelcomeMessage(
   const quote = quotes[Math.floor(Math.random() * quotes.length)];
   const emoji = emojis[Math.floor(Math.random() * emojis.length)];
   const header = headers[Math.floor(Math.random() * headers.length)];
-  const username = participant?.split("@")[0] || "User";
+  const username = participant?.split("@")[0] || "Usuario";
   const now = moment().tz("America/Argentina/Tucuman");
   
   if (customMsg) {
@@ -132,7 +132,7 @@ async function buildWelcomeMessage(
   return msg;
 }
 
-async function sendWelcomeMessage(sock, groupJid, participant, groupMeta) {
+async function sendBienvenidaMessage(sock, groupJid, participant, groupMeta) {
   try {
     const db = getDatabase();
     const groupData = db.getGroup(groupJid);
@@ -145,14 +145,14 @@ async function sendWelcomeMessage(sock, groupJid, participant, groupMeta) {
     );
     const memberCount = groupMeta?.participants?.length || 0;
     const groupName = groupMeta?.subject || "𝖦𝗋𝗎𝗉𝗈";
-    let userName = realParticipant?.split("@")[0] || "User";
+    let userName = realParticipant?.split("@")[0] || "Usuario";
     let ppUrl =
       "https://cdn.gimita.id/download/pp%20kosong%20wa%20default%20(1)_1769506608569_52b57f5b.jpg";
     try {
       ppUrl = await sock.profilePictureUrl(realParticipant, "image");
     } catch { }
     
-    const text = await buildWelcomeMessage(
+    const text = await buildBienvenidaMessage(
       realParticipant,
       groupMeta?.subject,
       groupMeta?.descOwner,
@@ -183,7 +183,7 @@ async function sendWelcomeMessage(sock, groupJid, participant, groupMeta) {
             text: `👋 ¡𝖧𝗈𝗅⍺ *@${userName}*!`,
           },
           footer: { text: config.bot?.name || "𝑊⍺ց𝗎𝗋ı 𝖠𝗌𝗌ı𝗌ƚ⍺𝗇ƚ" },
-          header: { title: "Welcome", hasMediaAttachment: false },
+          header: { title: "Bienvenida", hasMediaAttachment: false },
           carouselMessage: {
             cards: [
               {
@@ -253,7 +253,7 @@ async function sendWelcomeMessage(sock, groupJid, participant, groupMeta) {
         {
           caption: "https://welcome.guys " + text,
           url: "https://welcome.guys",
-          title: `Welcome to ${groupName}`,
+          title: `Bienvenida to ${groupName}`,
           description: `👋 ¡𝖧𝗈𝗅⍺ ${userName}!`,
           image: ppUrl,
           previewType: 0,
@@ -348,7 +348,7 @@ async function sendWelcomeMessage(sock, groupJid, participant, groupMeta) {
     }
     return true;
   } catch (error) {
-    console.error("Welcome Error:", error);
+    console.error("Bienvenida Error:", error);
     return false;
   }
 }
@@ -471,4 +471,4 @@ async function handler(m, { sock }) {
   );
 }
 
-export { pluginConfig as config, handler, sendWelcomeMessage };
+export { pluginConfig as config, handler, sendBienvenidaMessage };

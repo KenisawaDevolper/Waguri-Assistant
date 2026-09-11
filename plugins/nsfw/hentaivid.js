@@ -21,7 +21,7 @@ async function getRandomAnita() {
   const page = Math.floor(Math.random() * 1153)
   const response = await axios.get(`https://sfmcompile.club/page/${page}`, {
     headers: {
-      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+      'Usuario-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
     }
   })
   

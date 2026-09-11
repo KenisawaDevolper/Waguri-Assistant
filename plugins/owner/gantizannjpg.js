@@ -23,7 +23,7 @@ async function handler(m, { sock }) {
     const isImage = m.isImage || (m.quoted && m.quoted.type === 'imageMessage')
     
     if (!isImage) {
-        return m.reply(`🖼️ *ɢᴀɴᴛɪ ZANN.JPG*\n\n> Kirim/reply la imagen untuk mengganti\n> File: assets/images/Zann.jpg`)
+        return m.reply(`🖼️ *ɢᴀɴᴛɪ ZANN.JPG*\n\n> Envía/reply la imagen untuk mengganti\n> File: assets/images/Zann.jpg`)
     }
     
     try {

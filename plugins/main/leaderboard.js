@@ -54,7 +54,7 @@ async function handler(m, { sock }) {
         else if (['energi', 'energy'].includes(argType)) type = 'energi'
     }
     
-    const dbData = db.data?.users || db.getAllUsers?.() || {}
+    const dbData = db.data?.users || db.getAllUsuarios?.() || {}
     const users = []
     
     for (const [jid, userData] of Object.entries(dbData)) {
@@ -82,14 +82,14 @@ async function handler(m, { sock }) {
     const senderJid = m.sender.replace('@s.whatsapp.net', '')
     
     if (type === 'overview') {
-        const maxBalUser = users.reduce((a, b) => a.koin > b.koin ? a : b, users[0])
-        const maxExpUser = users.reduce((a, b) => a.exp > b.exp ? a : b, users[0])
-        const maxEnergiUser = users.reduce((a, b) => a.energi > b.energi ? a : b, users[0])
+        const maxBalUsuario = users.reduce((a, b) => a.koin > b.koin ? a : b, users[0])
+        const maxExpUsuario = users.reduce((a, b) => a.exp > b.exp ? a : b, users[0])
+        const maxEnergiUsuario = users.reduce((a, b) => a.energi > b.energi ? a : b, users[0])
         
         const mentions = [
-            maxBalUser.jid.includes('@') ? maxBalUser.jid : maxBalUser.jid + "@s.whatsapp.net",
-            maxExpUser.jid.includes('@') ? maxExpUser.jid : maxExpUser.jid + "@s.whatsapp.net",
-            maxEnergiUser.jid.includes('@') ? maxEnergiUser.jid : maxEnergiUser.jid + "@s.whatsapp.net"
+            maxBalUsuario.jid.includes('@') ? maxBalUsuario.jid : maxBalUsuario.jid + "@s.whatsapp.net",
+            maxExpUsuario.jid.includes('@') ? maxExpUsuario.jid : maxExpUsuario.jid + "@s.whatsapp.net",
+            maxEnergiUsuario.jid.includes('@') ? maxEnergiUsuario.jid : maxEnergiUsuario.jid + "@s.whatsapp.net"
         ]
         
         const overviewText = 

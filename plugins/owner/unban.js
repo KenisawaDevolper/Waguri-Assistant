@@ -51,7 +51,7 @@ async function handler(m, { sock }) {
     }
 
     const db = getDatabase()
-    const bannedList = db.setting('bannedUsers') || []
+    const bannedList = db.setting('bannedUsuarios') || []
 
     const index = bannedList.findIndex(b => {
         const c = String(b).replace(/[^0-9]/g, '')
@@ -63,8 +63,8 @@ async function handler(m, { sock }) {
     }
 
     bannedList.splice(index, 1)
-    db.setting('bannedUsers', bannedList)
-    config.bannedUsers = bannedList
+    db.setting('bannedUsuarios', bannedList)
+    config.bannedUsuarios = bannedList
 
     await m.react('✅')
 

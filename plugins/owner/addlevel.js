@@ -51,7 +51,7 @@ async function handler(m, { sock }) {
     
     await m.react('🕕')
     
-    const user = db.getUser(targetJid) || db.setUser(targetJid, {})
+    const user = db.getUsuario(targetJid) || db.setUsuario(targetJid, {})
     if (!user.rpg) user.rpg = {}
     
     const expToAdd = levels * 10000
@@ -63,7 +63,7 @@ async function handler(m, { sock }) {
     const mockM = { ...m, sender: targetJid, pushName: m.pushName }
     const addResult = await checkAndNotifyLevelUp(sock, mockM, db, user, oldExp, newExp)
     
-    db.setUser(targetJid, user)
+    db.setUsuario(targetJid, user)
     
     await m.react('✅')
     

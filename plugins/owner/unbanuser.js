@@ -15,7 +15,7 @@ let handler = async (m, { conn, text }) => {
         users[who].banReason = ''
         conn.reply(m.chat, 'Done!', m)
     } else {
-        throw 'User not found.'
+        throw 'Usuario not found.'
     }
 }
 handler.help = ['unban']

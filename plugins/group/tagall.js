@@ -7,9 +7,9 @@ const pluginConfig = {
   name: "tagall",
   alias: ["all", "everyone"],
   category: "group",
-  description: "Tag semua member grup",
+  description: "Menciona todos member grup",
   usage: ".tagall <pesan>",
-  example: ".tagall Halo semua!",
+  example: ".tagall Halo todos!",
   isOwner: false,
   isPremium: false,
   isGroup: true,
@@ -22,14 +22,14 @@ const pluginConfig = {
 };
 
 async function handler(m, { sock }) {
-  const text = m.text || "Tag All Members";
+  const text = m.text || "Menciona All Members";
 
   try {
     const groupMeta = m.groupMetadata;
     const participants = groupMeta.participants || [];
 
     if (participants.length === 0) {
-      await m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Tidak ada member di grup ini.`);
+      await m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> No hay member di grup ini.`);
       return;
     }
 
@@ -38,7 +38,7 @@ async function handler(m, { sock }) {
     });
 
     if (targetParticipants.length === 0) {
-      await m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Tidak ada member lain yang bisa di-tag.`);
+      await m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> No hay member lain yang bisa di-tag.`);
       return;
     }
 
@@ -49,7 +49,7 @@ async function handler(m, { sock }) {
       .trim();
 
     await m.reply(
-      `*Pesan:* ${text}\n\n` +
+      `*Mensaje:* ${text}\n\n` +
         `\`\`\`━━━ ${targetParticipants.length} MEMBER TOTAL ━━━\`\`\`\n` +
         memberList,
       { mentions: mentions },

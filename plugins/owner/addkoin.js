@@ -55,7 +55,7 @@ async function handler(m, { sock }) {
 
     if (amount > MAX_KOIN) amount = MAX_KOIN
 
-    const user = db.getUser(targetJid) || db.setUser(targetJid)
+    const user = db.getUsuario(targetJid) || db.setUsuario(targetJid)
 
     if (user.koin === -1) {
         return m.reply(

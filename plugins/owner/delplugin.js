@@ -61,7 +61,7 @@ async function handler(m, { sock }) {
 
     if (!found) {
       await m.react("❌");
-      return m.reply(`Lo siento *${m.pushName}*, plugin dengan nama ${name} no dapat ditemukan.`);
+      return m.reply(`Lo siento *${m.pushName}*, plugin con nama ${name} no dapat ditemukan.`);
     }
 
     let unloadResult = { success: false };

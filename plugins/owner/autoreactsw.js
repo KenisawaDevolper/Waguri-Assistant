@@ -31,7 +31,7 @@ async function handler(m) {
             `> Emoji: *${current.emoji}*\n\n` +
             `*ᴄᴀʀᴀ ᴘᴀᴋᴀɪ:*\n` +
             `> \`${m.prefix}autoreactsw on\` — Activar (emoji default 🔥)\n` +
-            `> \`${m.prefix}autoreactsw on 😍\` — Activar dengan emoji\n` +
+            `> \`${m.prefix}autoreactsw on 😍\` — Activar con emoji\n` +
             `> \`${m.prefix}autoreactsw off\` — Desactivar`
         )
     }
@@ -43,7 +43,7 @@ async function handler(m) {
         return m.reply(
             `✅ *ᴀᴜᴛᴏ ʀᴇᴀᴄᴛ sᴛᴏʀʏ ᴀᴋᴛɪꜰ*\n\n` +
             `> Emoji: *${emoji}*\n` +
-            `> Bot akan otomatis react semua story WA`
+            `> Bot akan otomatis react todos story WA`
         )
     }
 

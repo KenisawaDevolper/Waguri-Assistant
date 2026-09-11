@@ -37,7 +37,7 @@ async function handler(m, { sock, store }) {
             `*Ejemplo:*\n` +
             `> .$ 1 + 1\n` +
             `> .$ m.chat\n` +
-            `> .$ db.getUser(m.sender)`
+            `> .$ db.getUsuario(m.sender)`
         )
     }
 

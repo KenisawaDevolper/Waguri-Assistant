@@ -39,7 +39,7 @@ async function handler(m, { sock }) {
     return m.reply(
       `🏘️ *Only Group Aktif*\n\n` +
         `> Bot hanya bisa diakses di grup\n` +
-        `> Mode Only Private dinonaktifkan`
+        `> Modo Only Private dinonaktifkan`
     );
   }
 

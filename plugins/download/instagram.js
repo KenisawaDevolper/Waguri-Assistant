@@ -14,7 +14,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 
     const res = data.result
     const medias = res.medias || []
-    const caption = `📸 *Instagram Download*\n\n✧ ‹ ⍺𝗎ƚ𝗈𝗋 › ${res.author || 'Instagram User'}`
+    const caption = `📸 *Instagram Download*\n\n✧ ‹ ⍺𝗎ƚ𝗈𝗋 › ${res.author || 'Instagram Usuario'}`
 
     // Si hay varias imágenes/videos, enviar como álbum nativo de Baileys (no spam)
     if (medias.length >= 2) {

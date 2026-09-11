@@ -22,7 +22,7 @@ async function handler(m, { sock }) {
     const isImage = m.isImage || (m.quoted && m.quoted.type === 'imageMessage')
     
     if (!isImage) {
-        return m.reply(`🖼️ *ɢᴀɴᴛɪ ᴏᴜʀɪɴ3.ᴊᴘɢ*\n\n> Kirim/reply gambar untuk mengganti\n> File: assets/images/rimuru3.jpg`)
+        return m.reply(`🖼️ *ɢᴀɴᴛɪ ᴏᴜʀɪɴ3.ᴊᴘɢ*\n\n> Envía/reply gambar untuk mengganti\n> File: assets/images/rimuru3.jpg`)
     }
     
     try {
@@ -40,7 +40,7 @@ async function handler(m, { sock }) {
         await m.reply(`⏳ Sedang mengupload gambar...`)
         try {
             const newUrl = await updateAssetUrl('rimuru3', buffer, 'rimuru3.jpg')
-            m.reply(`✅ *ʙᴇʀʜᴀsɪʟ*\n\n> Gambar rimuru3.jpg telah diganti ke URL baru:\n> ${newUrl}\n> Config telah diupdate secara realtime!`)
+            m.reply(`✅ *ʙᴇʀʜᴀsɪʟ*\n\n> Gambar rimuru3.jpg telah diganti ke URL baru:\n> ${newUrl}\n> Config telah diupdate de forma realtime!`)
         } catch (e) {
             m.reply(`❌ Error mengupload gambar: ${e.message}`)
         }

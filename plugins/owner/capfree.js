@@ -21,13 +21,13 @@ async function handler(m, { sock }) {
   if (m.args.length === 0) {
     return m.reply(
       `🆓 *SISTEM CAP FREE*\n\n` +
-      `Sistem untuk mengembalikan status akses banyak fitur una vezgus menjadi gratis secara publik.\n\n` +
+      `Sistem untuk mengembalikan status akses banyak fitur una vezgus menjadi gratis de forma publik.\n\n` +
       `*PENGGUNAAN:*\n` +
       `- *${m.prefix}capfree <nama_fitur1> <nama_fitur2> ...* — Bisa banyak una vezgus\n\n` +
       `*CONTOH PENGGUNAAN:*\n` +
       `- *${m.prefix}capfree hd jpm warn*\n\n` +
       `*PENJELASAN:*\n` +
-      `Ingresa satu atau lebih nama fitur yang ingin digratiskan. Pisahkan dengan spasi.`
+      `Ingresa satu atau lebih nama fitur yang ingin digratiskan. Pisahkan con spasi.`
     );
   }
 
@@ -63,7 +63,7 @@ async function handler(m, { sock }) {
     msg += `*Error (No ditemukan):*\n${failedList.map(f => `- ${f}`).join("\n")}\n\n`;
   }
   
-  msg += `_Fitur di atas (yang berhasil) sekarang sudah bebas diakses semua member._`;
+  msg += `_Función di atas (yang berhasil) sekarang sudah bebas diakses todos member._`;
   
   return m.reply(msg.trim());
 }

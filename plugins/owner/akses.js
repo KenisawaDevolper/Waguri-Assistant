@@ -47,7 +47,7 @@ async function handler(m, { sock, plugins }) {
   if (isAdd) {
     if (!target)
       return m.reply(
-        `❌ *Target Invalid*\n\nTag user / Reply chat / Tulis nomor target`,
+        `❌ *Target Invalid*\n\nMenciona user / Reply chat / Tulis nomor target`,
       );
     const cleanArgs = m.args.filter(
       (a) => !a.includes("@") && !/^\d{10,}$/.test(a),
@@ -57,7 +57,7 @@ async function handler(m, { sock, plugins }) {
         `⚠️ *Format Salah*\n\n` +
           `Format: \`${m.prefix}addakses <command> <durasi> <target>\`\n\n` +
           `*Ejemplo:*\n` +
-          `> \`${m.prefix}addakses addowner 30d @user\` (30 Hari)\n` +
+          `> \`${m.prefix}addakses addowner 30d @user\` (30 Día)\n` +
           `> \`${m.prefix}addakses unban permanent @user\` (Selamanya)\n\n` +
           `*Durasi Support:* 1h, 1d, 30d, 1y`,
       );
@@ -66,11 +66,11 @@ async function handler(m, { sock, plugins }) {
     durationTarget = cleanArgs[1].toLowerCase();
   }
 
-  const user = db.getUser(target) || {};
+  const user = db.getUsuario(target) || {};
   if (!user.access) user.access = [];
   if (isList) {
     if (!target) target = m.sender;
-    const targetData = db.getUser(target) || {};
+    const targetData = db.getUsuario(target) || {};
     const accessList = targetData.access || [];
     const now = Date.now();
     const activeAccess = accessList.filter(
@@ -78,7 +78,7 @@ async function handler(m, { sock, plugins }) {
     );
     if (activeAccess.length !== accessList.length) {
       targetData.access = activeAccess;
-      db.setUser(target, targetData);
+      db.setUsuario(target, targetData);
     }
 
     if (activeAccess.length === 0) {
@@ -128,7 +128,7 @@ async function handler(m, { sock, plugins }) {
     const existingIdx = user.access.findIndex((a) => a.cmd === commandTarget);
     if (existingIdx !== -1) {
       user.access[existingIdx].expired = expiredTime;
-      db.setUser(target, user);
+      db.setUsuario(target, user);
       return m.reply(
         `✅ *ᴀᴋsᴇs ᴅɪᴘᴇʀʙᴀʀᴜɪ*\n\n` +
           `Command: \`${commandTarget}\`\n` +
@@ -142,8 +142,8 @@ async function handler(m, { sock, plugins }) {
     });
 
     // console.log('[DEBUG AddAccess] Saving user with access:', JSON.stringify(user.access))
-    db.setUser(target, user);
-    // console.log('[DEBUG AddAccess] After save:', JSON.stringify(db.getUser(target)?.access))
+    db.setUsuario(target, user);
+    // console.log('[DEBUG AddAccess] After save:', JSON.stringify(db.getUsuario(target)?.access))
 
     await m.reply(
       `✅ *ᴀᴋsᴇs ᴅɪʙᴇʀɪᴋᴀɴ*\n\n` +
@@ -164,22 +164,22 @@ async function handler(m, { sock, plugins }) {
       specificCmd = specificCmd.toLowerCase();
       const idx = user.access.findIndex((a) => a.cmd === specificCmd);
       if (idx === -1)
-        return m.reply(`❌ User no punya akses command \`${specificCmd}\``);
+        return m.reply(`❌ Usuario no punya akses command \`${specificCmd}\``);
 
       user.access.splice(idx, 1);
-      db.setUser(target, user);
+      db.setUsuario(target, user);
       return m.reply(
         `✅ Akses \`${specificCmd}\` berhasil dicabut dari @${target.split("@")[0]}`,
       );
     }
 
     if (activeAccess.length === 0) {
-      return m.reply(`⚠️ User ini no memiliki akses command apapun.`);
+      return m.reply(`⚠️ Usuario ini no memiliki akses command apapun.`);
     }
     const rows = activeAccess.map((acc) => {
       const exp = acc.expired ? ms(acc.expired - now) : "Permanent";
       return {
-        title: `Hapus: ${acc.cmd}`,
+        title: `Elimina: ${acc.cmd}`,
         description: `Tiempo restante: ${exp}`,
         id: `${m.prefix}delakses ${acc.cmd} ${target}`,
       };

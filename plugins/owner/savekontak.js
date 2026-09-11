@@ -17,7 +17,7 @@ const pluginConfig = {
 async function handler(m, { sock, args }) {
     if (args[0] === "get") {
         const target = args[1];
-        const baseName = args.slice(2).join(" ") || "User";
+        const baseName = args.slice(2).join(" ") || "Usuario";
 
         const chats = await sock.groupFetchAllParticipating();
         let groups = [];
@@ -27,7 +27,7 @@ async function handler(m, { sock, args }) {
             if (chats[target]) {
                 groups.push(chats[target]);
             } else {
-                return m.reply("❌ Grup no encontrado.");
+                return m.reply("❌ Grupo no encontrado.");
             }
         }
 
@@ -79,7 +79,7 @@ async function handler(m, { sock, args }) {
         return;
     }
 
-    const baseName = args.join(" ") || "User";
+    const baseName = args.join(" ") || "Usuario";
     const chats = await sock.groupFetchAllParticipating();
     const groupList = Object.values(chats);
 
@@ -89,7 +89,7 @@ async function handler(m, { sock, args }) {
 
     const sections = [
         {
-            title: "Daftar Grup",
+            title: "Daftar Grupo",
             rows: groupList.map(g => ({
                 header: "",
                 title: g.subject,
@@ -104,10 +104,10 @@ async function handler(m, { sock, args }) {
             `Sistem ekstraksi kontak otomatis dari grup yang diikuti bot.\n` +
             `Nama Base: *${baseName}*\n\n` +
             `*PENGGUNAAN:*\n` +
-            `• *${m.prefix || "."}savekontak <nama>* — Menyimpan dengan nama kustom\n` +
-            `• *${m.prefix || "."}savekontak* — Menyimpan dengan nama default "User"\n\n` +
+            `• *${m.prefix || "."}savekontak <nama>* — Menyimpan con nama kustom\n` +
+            `• *${m.prefix || "."}savekontak* — Menyimpan con nama default "Usuario"\n\n` +
             `*PENJELASAN ALUR PENGGUNAAN:*\n` +
-            `1. Pilih grup spesifik dari tombol *Pilih Grup* di bawah, atau klik *Semua Grup* untuk mengekstrak kontak secara global.\n` +
+            `1. Pilih grup spesifik dari tombol *Pilih Grupo* di bawah, atau klik *Semua Grupo* untuk mengekstrak kontak de forma global.\n` +
             `2. Bot akan mengumpulkan nomor peserta dan mengabaikan nomor bot sendiri.\n` +
             `3. Hasil akan dikirim berupa file dokumen (*.vcf*) beserta list kontak WhatsApp agar bisa langsung disave.`,
         footer: "Powered by ReviewBot",
@@ -115,14 +115,14 @@ async function handler(m, { sock, args }) {
             {
                 name: "single_select",
                 buttonParamsJson: JSON.stringify({
-                    title: "Pilih Grup",
+                    title: "Pilih Grupo",
                     sections
                 })
             },
             {
                 name: "quick_reply",
                 buttonParamsJson: JSON.stringify({
-                    display_text: "Semua Grup",
+                    display_text: "Semua Grupo",
                     id: `${m.prefix}savekontak get all ${baseName}`
                 })
             }

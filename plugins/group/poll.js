@@ -2,7 +2,7 @@ const pluginConfig = {
     name: 'poll',
     alias: ['voting', 'vote', 'survei'],
     category: 'group',
-    description: 'Buat polling/voting di grup',
+    description: 'Crea polling/voting di grup',
     usage: '.poll <pertanyaan> | <opsi1>, <opsi2>, ...',
     example: '.poll Makan apa? | Nasi Goreng, Mie Ayam, Bakso',
     isOwner: false,
@@ -20,7 +20,7 @@ async function handler(m, { sock }) {
     if (!text || text.trim() === '') {
         await m.reply(
             `⚠️ *ᴠᴀʟɪᴅᴀsɪ ɢᴀɢᴀʟ*\n\n` +
-            `> Format tidak valid!\n\n` +
+            `> Format no valid!\n\n` +
             `*Format:*\n` +
             `> \`.poll pertanyaan | opsi1, opsi2\`\n\n` +
             `*Contoh:*\n` +
@@ -92,7 +92,7 @@ async function handler(m, { sock }) {
     } catch (error) {
         await m.reply(
             `❌ *ᴇʀʀᴏʀ*\n\n` +
-            `> Gagal membuat poll.\n` +
+            `> Falló membuat poll.\n` +
             `> _${error.message}_`
         );
     }

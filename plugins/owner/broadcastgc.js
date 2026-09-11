@@ -33,7 +33,7 @@ const handler = async (m, { conn, text, quoted, mime, prefix, command }) => {
     }
   }
 
-  m.reply('✅ Éxito broadcast ke semua grup!');
+  m.reply('✅ Éxito broadcast ke todos grup!');
 };
 
 handler.help = ['bcgc <teks>'];

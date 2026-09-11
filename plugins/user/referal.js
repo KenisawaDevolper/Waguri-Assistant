@@ -39,13 +39,13 @@ function getBotNumber(sock) {
 
 async function handler(m, { sock }) {
   const db = getDatabase();
-  const user = db.getUser(m.sender) || db.setUser(m.sender);
+  const user = db.getUsuario(m.sender) || db.setUsuario(m.sender);
   if (!user) return m.reply("ꕥ *𝖶⍺𝗀uɾı 𝖭oƚıɔᧉ* (*ᴗ͈ˬᴗ͈)ꕤ\n\n> No se pudieron crear los datos del usuario.");
 
   user.refCode ??= makeCode();
   user.refCount ??= 0;
   user.refUsed ??= false;
-  db.setUser(m.sender, user);
+  db.setUsuario(m.sender, user);
 
   const code = String(m.args?.[0] || "").trim();
 
@@ -70,24 +70,24 @@ async function handler(m, { sock }) {
       return m.reply("ꕥ *𝖶⍺𝗀uɾı 𝖭oƚıɔᧉ* (*ᴗ͈ˬᴗ͈)ꕤ\n\n> No puedes utilizar tu propio código de referido.");
     }
 
-    const ownerUser = db.getUser(ownerJid) || db.setUser(ownerJid);
-    if (!ownerUser) return m.reply("ꕥ *𝖶⍺𝗀uɾı 𝖭oƚıɔᧉ* (*ᴗ͈ˬᴗ͈)ꕤ\n\n> No se encontraron los datos del propietario del referido.");
+    const ownerUsuario = db.getUsuario(ownerJid) || db.setUsuario(ownerJid);
+    if (!ownerUsuario) return m.reply("ꕥ *𝖶⍺𝗀uɾı 𝖭oƚıɔᧉ* (*ᴗ͈ˬᴗ͈)ꕤ\n\n> No se encontraron los datos del propietario del referido.");
 
-    ownerUser.refCount = Number(ownerUser.refCount || 0) + 1;
-    const bonus = BONUS[ownerUser.refCount] || 0;
+    ownerUsuario.refCount = Number(ownerUsuario.refCount || 0) + 1;
+    const bonus = BONUS[ownerUsuario.refCount] || 0;
 
     db.updateExp(ownerJid, XP_OWNER + bonus);
     db.updateExp(m.sender, XP_FIRST);
 
     user.refUsed = true;
-    db.setUser(m.sender, user);
+    db.setUsuario(m.sender, user);
     db.save();
 
     return m.reply(
       `ꕥ *rᧉfᧉrr⍺l ᧉxıƚoʂo* (*ᴗ͈ˬᴗ͈)ꕤ\n\n` +
       `> Tú: +${XP_FIRST.toLocaleString("es-ES")} EXP\n` +
       `> Propietario del código: +${(XP_OWNER + bonus).toLocaleString("es-ES")} EXP\n\n` +
-      `> Total de referidos del propietario: *${ownerUser.refCount}*`,
+      `> Total de referidos del propietario: *${ownerUsuario.refCount}*`,
     );
   }
 

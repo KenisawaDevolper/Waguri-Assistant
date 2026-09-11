@@ -25,11 +25,11 @@ function handler(m) {
 
     if (!option) {
         const status = groupData.antiphising || 'off'
-        const mode = groupData.antiphisingMode || 'remove'
+        const mode = groupData.antiphisingModo || 'remove'
         return m.reply(
             `🎣 *ᴀɴᴛɪᴘʜɪsɪɴɢ*\n\n` +
             `> Status: *${status.toUpperCase()}*\n` +
-            `> Mode: *${mode.toUpperCase()}*\n\n` +
+            `> Modo: *${mode.toUpperCase()}*\n\n` +
             `> Deteksi pesan phising seperti klik link, verifikasi akun, login palsu, shortener mencurigakan, URL IP, punycode, dan pola sejenis.\n\n` +
             `> \`${m.prefix}antiphising on\`\n` +
             `> \`${m.prefix}antiphising off\`\n` +
@@ -51,27 +51,27 @@ function handler(m) {
     if (option.startsWith('metode')) {
         const method = m.args?.[1]?.toLowerCase()
         if (method === 'kick') {
-            db.setGroup(m.chat, { antiphising: 'on', antiphisingMode: 'kick' })
+            db.setGroup(m.chat, { antiphising: 'on', antiphisingModo: 'kick' })
             return m.reply('✅ *AntiPhising mode KICK diaktifkan*')
         }
         if (method === 'remove' || method === 'delete') {
-            db.setGroup(m.chat, { antiphising: 'on', antiphisingMode: 'remove' })
+            db.setGroup(m.chat, { antiphising: 'on', antiphisingModo: 'remove' })
             return m.reply('✅ *AntiPhising mode DELETE diaktifkan*')
         }
-        return m.reply('❌ Metode tidak valid! Gunakan: `kick` atau `remove`')
+        return m.reply('❌ Metode no valid! Gunakan: `kick` atau `remove`')
     }
 
     if (option === 'kick') {
-        db.setGroup(m.chat, { antiphising: 'on', antiphisingMode: 'kick' })
+        db.setGroup(m.chat, { antiphising: 'on', antiphisingModo: 'kick' })
         return m.reply('✅ *AntiPhising mode KICK diaktifkan*')
     }
 
     if (option === 'remove' || option === 'delete') {
-        db.setGroup(m.chat, { antiphising: 'on', antiphisingMode: 'remove' })
+        db.setGroup(m.chat, { antiphising: 'on', antiphisingModo: 'remove' })
         return m.reply('✅ *AntiPhising mode DELETE diaktifkan*')
     }
 
-    return m.reply('❌ Opsi tidak valid! Gunakan: `on`, `off`, `metode kick`, `metode remove`')
+    return m.reply('❌ Opsi no valid! Gunakan: `on`, `off`, `metode kick`, `metode remove`')
 }
 
 export { pluginConfig as config, handler }

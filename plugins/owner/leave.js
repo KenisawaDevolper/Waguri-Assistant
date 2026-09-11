@@ -40,9 +40,9 @@ async function handler(m, { sock }) {
     targetGroupJid = m.chat;
     try {
       const meta = m.groupMetadata;
-      groupName = meta.subject || "Grup ini";
+      groupName = meta.subject || "Este grupo";
     } catch {
-      groupName = "Grup ini";
+      groupName = "Este grupo";
     }
   } else if (input) {
     const inviteCode = await extractInviteCode(input);
@@ -72,7 +72,7 @@ async function handler(m, { sock }) {
   }
 
   if (!targetGroupJid) {
-    return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Grup no encontrado`);
+    return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Grupo no encontrado`);
   }
 
   await m.react("🕕");

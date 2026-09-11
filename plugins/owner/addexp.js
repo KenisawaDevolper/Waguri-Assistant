@@ -62,7 +62,7 @@ async function handler(m, { sock }) {
         amount = MAX_EXP
     }
     
-    const user = db.getUser(targetJid) || db.setUser(targetJid)
+    const user = db.getUsuario(targetJid) || db.setUsuario(targetJid)
  
     await levelHelper.addExpWithLevelCheck(sock, m, db, user, amount)
     

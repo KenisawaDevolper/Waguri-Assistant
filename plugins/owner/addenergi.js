@@ -64,7 +64,7 @@ async function handler(m, { sock }) {
         )
     }
 
-    const user = db.getUser(targetJid) || db.setUser(targetJid)
+    const user = db.getUsuario(targetJid) || db.setUsuario(targetJid)
 
     const effectiveUnlimited = user.energi === -1 ||
         (config.isOwner(targetJid) && (config.energi?.owner ?? -1) === -1) ||
@@ -80,7 +80,7 @@ async function handler(m, { sock }) {
     }
 
     if (isUnlimited) {
-        db.setUser(targetJid, { energi: -1 })
+        db.setUsuario(targetJid, { energi: -1 })
 
         await m.react('✅')
         await m.reply(

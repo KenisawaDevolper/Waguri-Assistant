@@ -46,7 +46,7 @@ const VARIANTS = {
   v5: {
     id: 5,
     name: "FAKE ORDER",
-    desc: "Teks dengan fake quoted order message",
+    desc: "Teks con fake quoted order message",
     emoji: "🛒",
   },
   v6: {
@@ -58,19 +58,19 @@ const VARIANTS = {
   v7: {
     id: 7,
     name: "FAKE LOCATION",
-    desc: "Teks dengan fake quoted location message",
+    desc: "Teks con fake quoted location message",
     emoji: "📍",
   },
   v8: {
     id: 8,
     name: "FAKE SIGNUP",
-    desc: "Teks dengan fake quoted signup message",
+    desc: "Teks con fake quoted signup message",
     emoji: "🥠",
   },
   v9: {
     id: 9,
     name: "FAKE ORDER",
-    desc: "Teks dengan fake quoted order message ( gak direkomendasikan )",
+    desc: "Teks con fake quoted order message ( gak direkomendasikan )",
     emoji: "🍙",
   },
   v10: {

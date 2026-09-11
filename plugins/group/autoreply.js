@@ -234,7 +234,7 @@ async function handler(m, { sock }) {
         let text = `ꕥ 𝖠𝖴𝖳𝖮𝖱𝖤𝖯𝖫𝖸 𝖦𝖱𝖴𝖯𝖮 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
                    `      𓈒 ◌ㅤ──    *𝖤𝖲𝖳𝖠𝖣𝖮*\n` +
                    `      • Global :: ${globalSmartTriggers ? 'ACTIVO ✅' : 'INACTIVO ❌'}\n` +
-                   `      • Grupo :: ${groupStatus === undefined ? 'DEFAULT' : (groupStatus ? 'ACTIVO ✅' : 'INACTIVO ❌')}\n` +
+                   `      • Grupoo :: ${groupStatus === undefined ? 'DEFAULT' : (groupStatus ? 'ACTIVO ✅' : 'INACTIVO ❌')}\n` +
                    `      • Efectivo :: ${effectiveStatus ? 'ACTIVO ✅' : 'INACTIVO ❌'}\n` +
                    `      • Custom Replies :: ${customReplies.length}\n\n` +
                    `      𓈒 ◌ㅤ──    *𝖢𝖮𝖬𝖠𝖭𝖣𝖮𝖲*\n` +

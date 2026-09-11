@@ -124,10 +124,10 @@ async function handler(m, { sock, command }) {
       )
     }
     if (opponent === m.sender) return m.reply(`ꕥ No puedes jugar contra ti mismo`)
-    const newGame = { board: Array(9).fill(null), players: [m.sender, opponent], turn: 0, over: false }
-    games.set(chat, newGame)
+    const newJuego = { board: Array(9).fill(null), players: [m.sender, opponent], turn: 0, over: false }
+    games.set(chat, newJuego)
     await m.reply(`ꕥ Desafío enviado a @${opponent.split("@")[0]} 🌸\n> Empieza ❌ (@${m.sender.split("@")[0]})`, { mentions: [m.sender, opponent] })
-    return sendBoard(m, sock, newGame)
+    return sendBoard(m, sock, newJuego)
   }
 }
 

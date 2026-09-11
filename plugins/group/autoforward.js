@@ -30,7 +30,7 @@ function handler(m, { sock }) {
             `┃ ◦ Status: *${status}*\n` +
             `╰┈┈⬡\n\n` +
             `> Gunakan: \`${m.prefix}autoforward on/off\`\n\n` +
-            `_Fitur ini akan meneruskan semua pesan ke grup ini_`
+            `_Función ini akan meneruskan todos pesan ke grup ini_`
         )
     }
     

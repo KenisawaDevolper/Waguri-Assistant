@@ -38,7 +38,7 @@ async function handler(m, { sock }) {
 
     return m.reply(
         `ꕥ 𝖦𝖱𝖴𝖯𝖮 𝖲𝖨𝖫𝖤𝖭𝖢𝖨𝖠𝖣𝖮 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
-        `      • Grupo :: *${groupName}*\n` +
+        `      • Grupoo :: *${groupName}*\n` +
         `      • Ejecutado por :: *@${senderNumber}*\n` +
         `      • Restricción :: *Solo administradores pueden enviar mensajes*\n\n` +
         `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « Escribe \`${m.prefix}unmute\` para restablecer la comunicación libre de todos los miembros. »\n\n` +
@@ -47,9 +47,9 @@ async function handler(m, { sock }) {
     )
 }
 
-function isMuted(groupJid, db) {
+function isSilenciad(groupJid, db) {
     const group = db.getGroup(groupJid) || {}
     return !!group.mute
 }
 
-export { pluginConfig as config, handler, isMuted }
+export { pluginConfig as config, handler, isSilenciad }

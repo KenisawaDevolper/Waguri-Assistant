@@ -245,7 +245,7 @@ async function handler(m, { args = [], prefix = '.' }) {
         text += `╰━━━━━━━━━━━━━━━━━⬣
 
 💡 *Ketik* \`${prefix}liat-gacha --detail\` *untuk lihat detail lengkap*
-💡 *Hapus karakter:* \`${prefix}del-gacha Nama\``
+💡 *Elimina karakter:* \`${prefix}del-gacha Nama\``
     }
 
     return m.reply(text)

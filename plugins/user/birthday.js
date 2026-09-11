@@ -21,7 +21,7 @@ async function handler(m, { sock }) {
     const target = m.mentionedJid?.[0] || m.quoted?.sender || m.sender
     const cleanJid = target.replace(/@.+/g, '')
     const db = getDatabase()
-    const user = db.getUser(target)
+    const user = db.getUsuario(target)
     
     if (!user?.birthday) {
         if (target === m.sender) {

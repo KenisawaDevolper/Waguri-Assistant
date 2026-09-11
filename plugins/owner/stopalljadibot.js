@@ -2,7 +2,7 @@ import { stopAllJadibots, getActiveJadibots } from '../../src/lib/rimuru-jadibot
 import te from '../../src/lib/rimuru-error.js'
 const pluginConfig = {
     name: 'stopalljadibot',
-    alias: ['stopsemuajadibot', 'killalljadibots'],
+    alias: ['stoptodosjadibot', 'killalljadibots'],
     category: 'owner',
     description: 'Gestiona la función stopalljadibot con la estética Waguri Assistant ⚙️',
     usage: '.stopalljadibot',

@@ -24,7 +24,7 @@ let handler = async (m, { conn, text }) => {
         let info = await conn.groupGetInviteInfo(code);
         id = info.id;
       } catch {
-        return m.reply('⚠️ Link grup tidak valid / bot belum join');
+        return m.reply('⚠️ Link grup no valid / bot belum join');
       }
     } else {
       if (/^\d+$/.test(target)) target += '@g.us';
@@ -51,28 +51,28 @@ let handler = async (m, { conn, text }) => {
   const bgColor = warnaMap[warna?.toLowerCase()];
 
   if (!caption && !m.quoted) {
-    return m.reply(`✨ *SW Grup*
+    return m.reply(`✨ *SW Grupo*
 
-Kirim teks:
+Envía teks:
 .swgc halo
 
 Teks warna:
 .swgc halo|merah
 
-Kirim ke GC lain:
+Envía ke GC lain:
 .swgc halo|IDGC
 .swgc halo|LINKGC
 
 Reply media:
 .swgc
 
-Warna:
+Adviertea:
 biru hijau kuning merah ungu hitam putih cyan`);
   }
 
   if (/image|video|audio/.test(mime)) {
     const buffer = await quoted.download().catch(() => null);
-    if (!buffer) return m.reply('⚠️ Gagal ambil media');
+    if (!buffer) return m.reply('⚠️ Falló ambil media');
 
     let content = {};
 

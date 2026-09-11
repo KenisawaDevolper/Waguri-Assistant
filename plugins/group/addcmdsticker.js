@@ -52,7 +52,7 @@ async function handler(m, { sock }) {
     
     const stickerHash = getQuotedStickerHash(m)
     if (!stickerHash) {
-        return m.reply('⚠️ Pesan yang di-reply bukan *sticker*!')
+        return m.reply('⚠️ Mensaje yang di-reply bukan *sticker*!')
     }
     
     // Validasi command exists
@@ -61,7 +61,7 @@ async function handler(m, { sock }) {
     
     if (!plugin) {
         return m.reply(
-            `❌ Command \`${cleanCmd}\` tidak ditemukan!\n\n` +
+            `❌ Command \`${cleanCmd}\` no ditemukan!\n\n` +
             `> Pastikan command yang ingin dijadikan shortcut valid.`
         )
     }
@@ -74,10 +74,10 @@ async function handler(m, { sock }) {
         await m.reply(
             `✅ *sᴛɪᴄᴋᴇʀ ᴄᴏᴍᴍᴀɴᴅ ᴅɪᴛᴀᴍʙᴀʜᴋᴀɴ*\n\n` +
             `> 🖼️ Sticker → \`.${cleanCmd}\`\n\n` +
-            `_Kirim sticker tersebut untuk menjalankan command!_`
+            `_Envía sticker tersebut untuk menjalankan command!_`
         )
     } else {
-        await m.reply('❌ Gagal menyimpan sticker command!')
+        await m.reply('❌ Falló menyimpan sticker command!')
     }
 }
 

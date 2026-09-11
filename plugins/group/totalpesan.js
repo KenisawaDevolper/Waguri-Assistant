@@ -58,7 +58,7 @@ let handler = async (m, { conn }) => {
         participantCounts[sender] = (participantCounts[sender] || 0) + 1;
     });
 
-    // Pastikan semua peserta grup ada dalam daftar, meskipun tidak mengirim pesan
+    // Pastikan todos peserta grup ada dalam daftar, meskipun no mengirim pesan
     participants.forEach(({ id }) => {
         if (!participantCounts[id]) {
             participantCounts[id] = 0;
@@ -82,10 +82,10 @@ let handler = async (m, { conn }) => {
     const dayName = getDayName(currentDate);
     const formattedDate = getFormattedDate(currentDate);
 
-    // Kirim hasilnya
+    // Envía hasilnya
     await m.reply(
-        `*Total Pesan*: *${totalMessages}* pesan dari *${participants.length}* anggota\n` +
-        `*Tanggal*: ${dayName}, ${formattedDate}\n\n${pesan}`,
+        `*Total Mensaje*: *${totalMessages}* pesan dari *${participants.length}* anggota\n` +
+        `*Fecha*: ${dayName}, ${formattedDate}\n\n${pesan}`,
         null,
         {
             contextInfo: {

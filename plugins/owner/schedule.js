@@ -595,7 +595,7 @@ function buildPresetListText() {
   for (const [name, preset] of Object.entries(presetTemplates)) {
     text += `• *${name}*\n`;
     text += `  📝 ${preset.title}\n`;
-    text += `  🔄 ${preset.repeat ? "Harian" : "Sekali"}\n`;
+    text += `  🔄 ${preset.repeat ? "Díaan" : "Sekali"}\n`;
     text += `  📍 Default target: ${preset.target}\n`;
     text += `  💬 ${truncateText(preset.customText, 100)}\n\n`;
   }
@@ -620,7 +620,7 @@ function buildListText(tasks, header = null) {
     text += `  🏷️ ${getTaskCategory(task)}\n`;
     text += `  ⏰ ${formatClock(task.hour, task.minute)} WIB\n`;
     text += `  📍 ${getTaskTargetLabel(task)}\n`;
-    text += `  🔄 ${task.repeat ? "Harian" : "Sekali"}\n`;
+    text += `  🔄 ${task.repeat ? "Díaan" : "Sekali"}\n`;
     text += `  🕕 ${formatTimeRemaining(msUntil)} lagi\n`;
     text += `  📝 ${truncateText(getTaskText(task))}\n\n`;
   }
@@ -635,13 +635,13 @@ function buildDetailText(task) {
 🆔 ID: \`${task.id}\`
 🏷️ Kategori: ${getTaskCategory(task)}
 📝 Judul: ${getTaskTitle(task)}
-⏰ Waktu: ${formatClock(task.hour, task.minute)} WIB
+⏰ Hora: ${formatClock(task.hour, task.minute)} WIB
 📍 Target: ${getTaskTargetLabel(task)}
-🔄 Mode: ${task.repeat ? "Harian" : "Sekali"}
+🔄 Modo: ${task.repeat ? "Díaan" : "Sekali"}
 🕕 Próxima ejecución: ${formatTimeRemaining(msUntil)} lagi
 🗓️ Creado: ${task.createdAt || "-"}
 
-Pesan custom:
+Mensaje custom:
 ${getTaskText(task)}`;
 }
 
@@ -671,9 +671,9 @@ async function handler(m, { sock, args }) {
 🆔 ID: \`${id}\`
 🏷️ Kategori: ${parsed.category}
 📝 Judul: ${parsed.title}
-⏰ Waktu: ${parsed.label} WIB
+⏰ Hora: ${parsed.label} WIB
 📍 Target: ${parsed.target.label}
-🔄 Mode: ${parsed.repeat ? "Harian" : "Sekali"}
+🔄 Modo: ${parsed.repeat ? "Díaan" : "Sekali"}
 🕕 Próxima ejecución: ${formatTimeRemaining(msUntil)} lagi
 
 Text custom:
@@ -713,9 +713,9 @@ ${truncateText(parsed.customText, 180)}`);
 ⚡ Preset: ${parsed.presetKey}
 🏷️ Kategori: ${parsed.category}
 📝 Judul: ${parsed.title}
-⏰ Waktu: ${parsed.label} WIB
+⏰ Hora: ${parsed.label} WIB
 📍 Target: ${parsed.target.label}
-🔄 Mode: ${parsed.repeat ? "Harian" : "Sekali"}
+🔄 Modo: ${parsed.repeat ? "Díaan" : "Sekali"}
 🕕 Próxima ejecución: ${formatTimeRemaining(msUntil)} lagi
 
 Text custom:
@@ -763,9 +763,9 @@ ${truncateText(parsed.customText, 180)}`);
 🆔 ID: \`${task.id}\`
 🏷️ Kategori: ${parsed.category}
 📝 Judul: ${parsed.title}
-⏰ Waktu: ${parsed.label} WIB
+⏰ Hora: ${parsed.label} WIB
 📍 Target: ${parsed.target.label}
-🔄 Mode: ${parsed.repeat ? "Harian" : "Sekali"}
+🔄 Modo: ${parsed.repeat ? "Díaan" : "Sekali"}
 🕕 Próxima ejecución: ${formatTimeRemaining(msUntil)} lagi
 
 Text custom:
@@ -891,7 +891,7 @@ ${truncateText(parsed.customText, 180)}`);
 🔄 Daily limit reset: ${status.dailyResetEnabled ? "✅ Active" : "❌ Inactive"}
 📅 Last reset: ${status.lastLimitReset}
 
-Gunakan \`.schedule list\` untuk lihat semua jadwal aktif.`;
+Gunakan \`.schedule list\` untuk lihat todos jadwal aktif.`;
 
       await m.reply(text);
       break;

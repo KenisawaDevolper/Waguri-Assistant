@@ -46,7 +46,7 @@ async function handler(m, { sock }) {
 
   return m.reply(
     `ꕥ 𝖫𝖨𝖲𝖳𝖠 𝖣𝖤 𝖬𝖨𝖤𝖬𝖡𝖱𝖮𝖲 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
-    `      • Grupo :: *${meta.subject || "Desconocido"}*\n` +
+    `      • Grupoo :: *${meta.subject || "Desconocido"}*\n` +
     `      • Total de integrantes :: *${participants.length} usuarios*\n\n` +
     `      𓈒 ◌ㅤ──    *📋 𝖭𝖮𝖬𝖁𝖱𝖤𝖲 𝖸 𝖱𝖮𝖫𝖤𝖲*\n` +
     `${lines.join("\n")}\n\n` +

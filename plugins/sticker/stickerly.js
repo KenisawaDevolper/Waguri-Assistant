@@ -32,7 +32,7 @@ async function handler(m, { sock, text }) {
 
         if (!data || !data.status || !data.result || data.result.length === 0) {
             await m.react("❌");
-            return m.reply(`Maaf, sticker pack untuk "${text}" tidak ditemukan. Coba kata kunci lain.`);
+            return m.reply(`Maaf, sticker pack untuk "${text}" no ditemukan. Coba kata kunci lain.`);
         }
 
         const maxResults = Math.min(data.result.length, 10);
@@ -51,10 +51,10 @@ async function handler(m, { sock, text }) {
             listTxt += `*${i + 1}.* ${item.name} by ${item.authorName}\n`;
         }
 
-        listTxt += `\n> 💡 *Kirim angka (contoh: 1)* untuk mendownload pack, atau ketik \`batal\` untuk membatalkan pencarian.`;
+        listTxt += `\n> 💡 *Envía angka (contoh: 1)* untuk mendownload pack, atau ketik \`batal\` untuk membatalkan pencarian.`;
         
         const db = getDatabase();
-        const user = db.getUser(m.sender);
+        const user = db.getUsuario(m.sender);
 
         user.stickerly_session = {
             results: searchResults,
@@ -75,7 +75,7 @@ async function stickerlyAnswerHandler(m, sock) {
     if (!m.body || m.isCommand) return false;
     
     const db = getDatabase();
-    const user = db.getUser(m.sender);
+    const user = db.getUsuario(m.sender);
     
     if (!user || !user.stickerly_session) return false;
 
@@ -122,7 +122,7 @@ async function downloadStickerlyPack(sock, m, packUrl) {
 
         if (!data || !data.status || !data.result || !data.result.stickers || data.result.stickers.length === 0) {
             await m.react("❌");
-            return m.reply(`❌ Gagal mengambil detail pack.`);
+            return m.reply(`❌ Falló mengambil detail pack.`);
         }
 
         const stickersData = data.result.stickers;
@@ -136,7 +136,7 @@ async function downloadStickerlyPack(sock, m, packUrl) {
 
         if (stickerUrls.length === 0) {
             await m.react("❌");
-            return m.reply(`❌ Tidak ada sticker dalam pack ini.`);
+            return m.reply(`❌ No hay sticker dalam pack ini.`);
         }
 
         const packname = packInfo.name || "Sticker.ly Pack";
@@ -155,7 +155,7 @@ async function downloadStickerlyPack(sock, m, packUrl) {
             await m.react("✅");
         } catch (packErr) {
             console.error("[Stickerly Pack Send Error]", packErr.message);
-            await m.reply(`❌ Gagal mengirim pack sekaligus, mencoba mengirim satu per satu...`);
+            await m.reply(`❌ Falló mengirim pack una vezgus, mencoba mengirim satu per satu...`);
             
             let sent = 0;
             for (const sUrl of urlsToProcess) {
@@ -172,10 +172,10 @@ async function downloadStickerlyPack(sock, m, packUrl) {
             }
             if (sent > 0) {
                 await m.react("✅");
-                await m.reply(`✅ Berhasil mengirim ${sent} sticker.`);
+                await m.reply(`✅ Éxito mengirim ${sent} sticker.`);
             } else {
                 await m.react("❌");
-                await m.reply(`❌ Gagal mengirim seluruh sticker.`);
+                await m.reply(`❌ Falló mengirim seluruh sticker.`);
             }
         }
     } catch (error) {

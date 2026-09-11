@@ -39,7 +39,7 @@ async function handler(m) {
             } else if (file.endsWith(".js")){
                 let data = fs.readFileSync(full, "utf8")
 
-                // regex ganti semua link channel WA
+                // regex ganti todos link channel WA
                 let replaced = data.replace(/https:\/\/whatsapp\.com\/channel\/[a-zA-Z0-9]+/g, newLink)
 
                 fs.writeFileSync(full, replaced)

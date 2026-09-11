@@ -30,7 +30,7 @@ async function handler(m, { sock }) {
     );
   }
 
-  const keterangan = m.text?.trim() || "Absen Harian";
+  const keterangan = m.text?.trim() || "Absen Díaan";
 
   global.absensi[chatId] = {
     keterangan: keterangan,
@@ -48,9 +48,9 @@ async function handler(m, { sock }) {
       `📝 ${keterangan}\n` +
       `👑 Dibuat oleh: @${m.sender.split("@")[0]}\n` +
       `👥 Peserta: 0\n\n` +
-      `Untuk kamu yang mau ikutan absen, silahkan ketik *${m.prefix}absen*` +
-      `Untuk admin yang mau cek absen, silahkan ketik *${m.prefix}cekabsen*` +
-      `Untuk admin yang mau hapus absen, silahkan ketik *${m.prefix}hapusabsen*`,
+      `Para kamu yang mau ikutan absen, silahkan ketik *${m.prefix}absen*` +
+      `Para admin yang mau cek absen, silahkan ketik *${m.prefix}cekabsen*` +
+      `Para admin yang mau hapus absen, silahkan ketik *${m.prefix}hapusabsen*`,
     { mentions: [m.sender] },
   );
 }

@@ -20,7 +20,7 @@ const pluginConfig = {
 
 const VARIANTS = {
     1: { name: 'Current Design', desc: 'Tampilan default saat ini' },
-    2: { name: 'Multiple Contact', desc: 'Kirim contact card semua owner' }
+    2: { name: 'Multiple Contact', desc: 'Envía contact card todos owner' }
 }
 
 async function handler(m, { sock, db }) {

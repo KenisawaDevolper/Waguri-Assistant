@@ -30,13 +30,13 @@ async function handler(m, { sock }) {
         if (!isRealOwner) {
             return await m.reply('🚫 *ᴀᴄᴄᴇsᴏ ᴅᴇɴᴇɢᴀᴅᴏ*\n\n> ¡Solo el owner puede cambiar el modo del bot!');
         }
-        const currentMode = config.mode;
-        if (currentMode === 'self') {
+        const currentModo = config.mode;
+        if (currentModo === 'self') {
             return await m.reply('ℹ️ El bot ya está en modo *self*');
         }
         config.mode = 'self';
         const db = getDatabase();
-        db.setting('botMode', 'self');
+        db.setting('botModo', 'self');
         
         const responseText = `🔒 *ᴍᴏᴅᴏ sᴇʟꜰ ᴀᴄᴛɪᴠᴏ*\n\n` +
             `> El bot ahora solo responderá a:\n` +
@@ -44,7 +44,7 @@ async function handler(m, { sock }) {
             `> • El bot mismo (fromMe)\n\n` +
             `_Usa .public para abrir el acceso_`;
         await m.reply(responseText);
-        console.log(`[Mode] Changed to SELF by ${m.pushName} (${m.sender})`);
+        console.log(`[Modo] Changed to SELF by ${m.pushName} (${m.sender})`);
     } catch (error) {
         console.error('[Self Command Error]', error);
         await m.reply(te(m.prefix, m.command, m.pushName));

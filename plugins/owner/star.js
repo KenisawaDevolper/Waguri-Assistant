@@ -16,7 +16,7 @@ async function handler(m, { sock }) {
         return m.reply(
             '⭐ *sᴛᴀʀ ᴍᴇssᴀɢᴇ*\n\n' +
             '> `.star` (reply pesan) — Beri bintang\n' +
-            '> `.star hapus` (reply pesan) — Hapus bintang'
+            '> `.star hapus` (reply pesan) — Elimina bintang'
         )
     }
 
@@ -35,7 +35,7 @@ async function handler(m, { sock }) {
         return m.reply(
             unstar
                 ? '❌ *Bintang eliminado dari pesan*'
-                : '⭐ *Pesan ditandai bintang*'
+                : '⭐ *Mensaje ditandai bintang*'
         )
     } catch (err) {
         return m.reply(`❌ Error: ${err.message}`)

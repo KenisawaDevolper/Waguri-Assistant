@@ -8,7 +8,7 @@ let handler = async (m, { conn, isOwner }) => {
     if (!groups.length) return m.reply('❌ Bot belum gabung di grup manapun.')
 
     let teks = `⬣ *LIST GROUP*\n`
-    teks += `📊 Total Grup: ${groups.length}\n\n`
+    teks += `📊 Total Grupo: ${groups.length}\n\n`
 
     const buttons = []
 

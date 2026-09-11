@@ -40,7 +40,7 @@ async function handler(m, { sock }) {
   const db = getDatabase();
   const target = m.mentionedJid?.[0] || m.quoted?.sender || m.sender;
 
-  const user = db.getUser(target) || db.setUser(target);
+  const user = db.getUsuario(target) || db.setUsuario(target);
 
   const isLid = target.endsWith('@lid');
   const isGroup = target.endsWith('@g.us');
@@ -109,8 +109,8 @@ async function handler(m, { sock }) {
   const expInLevel = userExp - currentLevelExp;
   const expNeeded = levelUpExp - currentLevelExp;
   const role = getRole(userLevel);
-  const isOwnerUser = config.isOwner(target);
-  const isPremiumUser = config.isPremium(target);
+  const isOwnerUsuario = config.isOwner(target);
+  const isPremiumUsuario = config.isPremium(target);
 
   let ppMedia = null;
   try {
@@ -141,7 +141,7 @@ async function handler(m, { sock }) {
       caption += `> Nombre de registro: ${user.regName} (${user.regAge} años, ${user.regGender})\n`;
   }
   caption += `> Mención: @${target.split("@")[0]}\n`;
-  caption += `> Estado de cuenta: ${isOwnerUser ? "Propietario" : isPremiumUser ? "Premium" : "Usuario Libre"}\n`;
+  caption += `> Estado de cuenta: ${isOwnerUsuario ? "Propietario" : isPremiumUsuario ? "Premium" : "Usuario Libre"}\n`;
   if (user.isBanned) caption += `> Baneado: Sí (Sin acceso a las funciones del bot)\n`;
   if (user.registeredAt) {
       caption += `> Fecha de registro: ${new Date(user.registeredAt).toLocaleDateString("es-ES")}\n`;
@@ -163,14 +163,14 @@ async function handler(m, { sock }) {
   caption += `\n*〔 𝖠𝖲𝖤𝖳𝖲 & 𝖥𝖨𝖭𝖠𝖭𝖹𝖠𝖲 〕*\n`;
   caption += `> Monedas en efectivo: ${user.koin?.toLocaleString("es-ES") || 0} monedas _(Uso en RPG)_\n`;
   caption += `> Dinero en banco: ${user.rpg?.bank?.toLocaleString("es-ES") || 0} monedas _(Seguro contra robos)_\n`;
-  caption += `> Energía restante: ${isOwnerUser || isPremiumUser ? "Ilimitada" : user.energi} _(Gastada por comando)_\n`;
+  caption += `> Energía restante: ${isOwnerUsuario || isPremiumUsuario ? "Ilimitada" : user.energi} _(Gastada por comando)_\n`;
 
   caption += `\n*〔 𝖶𝖧𝖠𝖳𝖲𝖠𝖯𝖯 𝖨𝖭𝖥𝖮 〕*\n`;
   caption += `> Número: +${phone}\n`;
   caption += `> En WhatsApp: ${exists ? 'Sí' : 'No'}\n`;
   caption += `> JID: ${canonicalJid}\n`;
   caption += `> LID: ${lid || '-'}\n`;
-  caption += `> Tipo: ${isGroup ? 'Grupo' : (isLid ? 'LID' : 'S.WhatsApp.Net')}\n`;
+  caption += `> Tipo: ${isGroup ? 'Grupoo' : (isLid ? 'LID' : 'S.WhatsApp.Net')}\n`;
   caption += `> Es Bot: ${isBot ? 'Sí' : 'No'}\n`;
   caption += `> Device ID: ${deviceId || '-'}\n`;
 

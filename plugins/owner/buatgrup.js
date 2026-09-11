@@ -4,7 +4,7 @@ const pluginConfig = {
     category: 'owner',
     description: 'Crear nuevo grupo con la estética Waguri Assistant 👥',
     usage: '.buatgrup <nama>|<nomor1,nomor2,...>|<durasi_menit>',
-    example: '.buatgrup Grup Baru|628xxx,628yyy|60',
+    example: '.buatgrup Grupo Baru|628xxx,628yyy|60',
     isOwner: true,
     cooldown: 5,
     energi: 0,
@@ -17,13 +17,13 @@ async function handler(m, { sock }) {
 
     if (args.length < 2) {
         let txt = `👥 *BUAT GRUP BARU* 👥\n\n`
-        txt += `Halo kak Owner! Mau bikin grup baru secara instan?\n\n`
+        txt += `Halo kak Owner! Mau bikin grup baru de forma instan?\n\n`
         txt += `*Cara Usa:*\n`
-        txt += `👉 \`${m.prefix}buatgrup Nama Grup | 628xxx,628yyy | Durasi(menit)\`\n\n`
+        txt += `👉 \`${m.prefix}buatgrup Nama Grupo | 628xxx,628yyy | Durasi(menit)\`\n\n`
         txt += `*Detail:*\n`
         txt += `• Gunakan \`|\` untuk memisahkan nama, peserta, dan durasi\n`
-        txt += `• Pisahkan nomor peserta dengan koma\n`
-        txt += `• Jika durasi diisi, bot akan menendang semua member dan menghapus grup saat waktu habis!\n`
+        txt += `• Pisahkan nomor peserta con koma\n`
+        txt += `• Jika durasi diisi, bot akan menendang todos member dan menghapus grup saat waktu habis!\n`
         txt += `• Bot otomatis menjadi admin\n\n`
         txt += `*Ejemplo Tanpa Durasi:*\n`
         txt += `\`${m.prefix}buatgrup Tim Alpha | 628123,628456\`\n\n`
@@ -70,7 +70,7 @@ async function handler(m, { sock }) {
         
         if (durationMs > 0) {
             successTxt += `⏳ *Masa Aktif:* ${durationMins} Menit\n`
-            successTxt += `\n⚠️ _Grup ini akan otomatis eliminado dan semua member akan dikeluarkan saat masa aktif habis!_\n`
+            successTxt += `\n⚠️ _Este grupo akan otomatis eliminado dan todos member akan dikeluarkan saat masa aktif habis!_\n`
         }
 
         successTxt += `\n_Bot otomatis menjadi admin grup ini ya kak!_`
@@ -82,13 +82,13 @@ async function handler(m, { sock }) {
                     const groupMeta = await sock.groupMetadata(group.id)
                     const botJid = sock.user.id.split(':')[0] + '@s.whatsapp.net'
                     
-                    const membersToKick = groupMeta.participants
+                    const membersToExpulsa = groupMeta.participants
                         .map(p => p.id)
                         .filter(id => id !== botJid)
 
-                    if (membersToKick.length > 0) {
-                        await sock.sendMessage(group.id, { text: `⏳ *MASA AKTIF GRUP HABIS* ⏳\n\nSesuai perintah Owner, waktu grup ini telah habis. Sayonara semuanya! 👋` })
-                        await sock.groupParticipantsUpdate(group.id, membersToKick, 'remove')
+                    if (membersToExpulsa.length > 0) {
+                        await sock.sendMessage(group.id, { text: `⏳ *MASA AKTIF GRUP HABIS* ⏳\n\nSesuai perintah Owner, waktu grup ini telah habis. Sayonara todosnya! 👋` })
+                        await sock.groupParticipantsUpdate(group.id, membersToExpulsa, 'remove')
                     }
                     
                     await sock.groupLeave(group.id)

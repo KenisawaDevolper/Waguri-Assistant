@@ -55,7 +55,7 @@ async function handler(m, { sock }) {
   if (!quoted) {
     return m.reply(
       `Halo *${m.pushName}*, parece que aún no has respondido con el código del nuevo plugin. 💫\n\n` +
-      `Silakan reply kode plugin yang baru dengan perintah:\n` +
+      `Silakan reply kode plugin yang baru con perintah:\n` +
       `- .ganticode (untuk deteksi otomatis)\n` +
       `- .ganticode <nama file> (untuk nama kustom)\n` +
       `- .ganticode <nama file> <folder> (untuk kustom nama dan folder)\n\n` +
@@ -173,7 +173,7 @@ async function handler(m, { sock }) {
 
     if (backupPath) {
       const relBackup = path.relative(process.cwd(), backupPath);
-      replyText += `File lama sudah dibackup dengan aman di lokasi berikut:\n${relBackup}\n\n`;
+      replyText += `File lama sudah dibackup con aman di lokasi berikut:\n${relBackup}\n\n`;
     }
 
     replyText += `Plugin sudah aktif dan siap digunakan, silakan dicoba ya!`;

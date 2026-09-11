@@ -19,7 +19,7 @@ const pluginConfig = {
 
 async function handler(m, { sock }) {
   const db = getDatabase();
-  const user = db.getUser(m.sender);
+  const user = db.getUsuario(m.sender);
 
   if (!user?.isRegistered) {
     return m.reply(
@@ -33,7 +33,7 @@ async function handler(m, { sock }) {
   const saluranName = config.saluran?.name || config.bot?.name || "Waguri AI";
   const unregisteredAt = new Date().toISOString();
 
-  db.setUser(m.sender, {
+  db.setUsuario(m.sender, {
     isRegistered: false,
     regName: null,
     regAge: null,

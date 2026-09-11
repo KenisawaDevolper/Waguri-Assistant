@@ -20,7 +20,7 @@ const text = m.text.split("|").map(v => v.trim())
 
 const link5mb = text[0]
 const linkxml = text[1]
-const captionUser = text[2] || "Preset baru"
+const captionUsuario = text[2] || "Preset baru"
 
 if(!link5mb || !linkxml){
 return m.reply(
@@ -46,7 +46,7 @@ const time = new Date().toLocaleTimeString()
 const caption =
 `╭━━〔 *❤️ ZERO TWO PRESET STORE* 〕━━⬣
 ┃
-┃ ✨ *${captionUser}*
+┃ ✨ *${captionUsuario}*
 ┃
 ┃ 📦 *Link 5MB*
 ┃ ${link5mb}
@@ -57,7 +57,7 @@ const caption =
 ┃ 👑 *Uploader*
 ┃ ${m.pushName}
 ┃
-┃ ⏰ *Waktu*
+┃ ⏰ *Hora*
 ┃ ${time}
 ┃
 ┃ 💌 *Ara Ara Cariño~*

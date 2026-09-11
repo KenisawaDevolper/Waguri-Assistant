@@ -24,7 +24,7 @@ async function uploadToCatbox(buffer, filename) {
   form.append("fileToUpload", buffer, filename)
   try {
     const { data } = await axios.post("https://catbox.moe/user/api.php", form, {
-      headers: { ...form.getHeaders(), "User-Agent": "Mozilla/5.0 (Linux; Android) Waguri/1.0" },
+      headers: { ...form.getHeaders(), "Usuario-Agent": "Mozilla/5.0 (Linux; Android) Waguri/1.0" },
       timeout: 60000, maxContentLength: Infinity, maxBodyLength: Infinity, validateStatus: s => s < 500
     })
     const url = String(data || "").trim()
@@ -42,7 +42,7 @@ async function uploadToTmpFiles(buffer, filename) {
   const form = new FormData()
   form.append("file", buffer, { filename, contentType: "application/octet-stream" })
   const { data } = await axios.post("https://tmpfiles.org/api/v1/upload", form, {
-    headers: { ...form.getHeaders(), "User-Agent": "Mozilla/5.0 Waguri/1.0" },
+    headers: { ...form.getHeaders(), "Usuario-Agent": "Mozilla/5.0 Waguri/1.0" },
     timeout: 60000, maxContentLength: Infinity, maxBodyLength: Infinity, validateStatus: s => s < 500
   })
   // tmpfiles: { status:"success", data:{url:"https://tmpfiles.org/dl/xxx"} }
@@ -56,7 +56,7 @@ async function uploadToFileIO(buffer, filename) {
   const form = new FormData()
   form.append("file", buffer, { filename })
   const { data } = await axios.post("https://file.io", form, {
-    headers: { ...form.getHeaders(), "User-Agent": "Mozilla/5.0 Waguri/1.0" },
+    headers: { ...form.getHeaders(), "Usuario-Agent": "Mozilla/5.0 Waguri/1.0" },
     timeout: 60000, maxContentLength: Infinity, maxBodyLength: Infinity
   })
   const url = data?.link || data?.url

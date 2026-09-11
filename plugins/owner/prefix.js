@@ -109,7 +109,7 @@ function handler(m, { sock }) {
             if (args.length === 0) {
                 return m.reply(
                     `🔄 *ɢᴀɴᴛɪ/sᴇᴛ ᴘʀᴇғɪx*\n\n` +
-                    `> Ganti semua prefix dengan yang baru\n\n` +
+                    `> Ganti todos prefix con yang baru\n\n` +
                     `*Format:*\n` +
                     `> \`${m.prefix}${cmd} <prefix1> <prefix2> ...\`\n\n` +
                     `*Ejemplo:*\n` +
@@ -117,7 +117,7 @@ function handler(m, { sock }) {
                     `*Special:*\n` +
                     `> \`${m.prefix}${cmd} <noprefix>\` - Tanpa prefix saja\n` +
                     `> \`${m.prefix}${cmd} . <noprefix>\` - Prefix . + noprefix\n\n` +
-                    `⚠️ Ini akan menghapus semua prefix lama di database!`
+                    `⚠️ Ini akan menghapus todos prefix lama di database!`
                 )
             }
             
@@ -154,7 +154,7 @@ function handler(m, { sock }) {
             if (args.length === 0) {
                 return m.reply(
                     `🗑️ *ᴅᴇʟᴇᴛᴇ ᴘʀᴇғɪx*\n\n` +
-                    `> Hapus prefix dari database\n\n` +
+                    `> Elimina prefix dari database\n\n` +
                     `*Format:*\n` +
                     `> \`${m.prefix}delprefix <prefix1> <prefix2> ...\`\n\n` +
                     `*Ejemplo:*\n` +

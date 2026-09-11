@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'absen',
     alias: ['hadir', 'present'],
     category: 'group',
-    description: 'Tandai kehadiran di sesi absen',
+    description: 'Marcar kehadiran di sesi absen',
     usage: '.absen',
     example: '.absen',
     isOwner: false,
@@ -21,8 +21,8 @@ async function handler(m, { sock }) {
     if (!global.absensi[chatId]) {
         return m.reply(
             `❌ *ᴛɪᴅᴀᴋ ᴀᴅᴀ ᴀʙsᴇɴ*\n\n` +
-            `> Belum ada sesi absen di grup ini!\n\n` +
-            `> Admin dapat memulai dengan\n` +
+            `> Aún no ada sesi absen di grup ini!\n\n` +
+            `> Admin dapat memulai con\n` +
             `> *.mulaiabsen [keterangan]*`
         )
     }

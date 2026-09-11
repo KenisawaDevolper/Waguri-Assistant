@@ -17,10 +17,10 @@ const pluginConfig = {
     isEnabled: true
 }
 
-// Buat nyimpen pelanggar dan counter
+// Crea nyimpen pelanggar dan counter
 let pmViolations = new Map()
 
-// Ambil nomor yang boleh chat dari config
+// Obtiene nomor yang boleh chat dari config
 function getAllowedNumbers() {
     const allowed = []
     
@@ -43,7 +43,7 @@ function getAllowedNumbers() {
         }
     }
     
-    // Hapus duplikat
+    // Elimina duplikat
     return [...new Set(allowed)]
 }
 
@@ -55,7 +55,7 @@ async function handler(m, { sock }) {
     if (!db.data.antipm) {
         db.data.antipm = {
             enabled: false,
-            blockedUsers: []
+            blockedUsuarios: []
         }
     }
     
@@ -91,7 +91,7 @@ async function handler(m, { sock }) {
     }
     
     if (sub === 'status') {
-        const blockedCount = db.data.antipm.blockedUsers?.length || 0
+        const blockedCount = db.data.antipm.blockedUsuarios?.length || 0
         
         let daftarAllowed = ''
         for (const num of allowedNumbers) {
@@ -102,7 +102,7 @@ async function handler(m, { sock }) {
             `🛡️ *STATUS ANTI PM* 🛡️\n\n` +
             `📊 Status: ${db.data.antipm.enabled ? '✅ AKTIF' : '❌ NONAKTIF'}\n` +
             `👑 Yang boleh chat: ${allowedNumbers.length} orang\n` +
-            `🚫 User diblokir (ASLI): ${blockedCount} orang\n\n` +
+            `🚫 Usuario diblokir (ASLI): ${blockedCount} orang\n\n` +
             `📋 *Daftar yang boleh chat:*\n${daftarAllowed}\n` +
             `> ${m.prefix}antipm on → aktifkan\n` +
             `> ${m.prefix}antipm off → nonaktifkan\n` +
@@ -112,7 +112,7 @@ async function handler(m, { sock }) {
     }
     
     if (sub === 'blocklist') {
-        const blockedList = db.data.antipm.blockedUsers || []
+        const blockedList = db.data.antipm.blockedUsuarios || []
         
         if (blockedList.length === 0) {
             return m.reply(`📋 *DAFTAR BLOKIR*\n\n> Aún no hay números bloqueados cariño~ 🦋`)
@@ -138,22 +138,22 @@ async function handler(m, { sock }) {
             return m.reply(`⚠️ ¡Menciona al usuario que deseas desbloquear: ${m.prefix}antipm unblock @user\nAtau: ${m.prefix}antipm unblock 628xxxxxx`)
         }
         
-        const blockedList = db.data.antipm.blockedUsers || []
+        const blockedList = db.data.antipm.blockedUsuarios || []
         const index = blockedList.indexOf(target)
         
         if (index === -1) {
-            return m.reply(`❌ User @${target.split('@')[0]} gak ada di daftar blokiran~`, { mentions: [target] })
+            return m.reply(`❌ Usuario @${target.split('@')[0]} gak ada di daftar blokiran~`, { mentions: [target] })
         }
         
         blockedList.splice(index, 1)
-        db.data.antipm.blockedUsers = blockedList
+        db.data.antipm.blockedUsuarios = blockedList
         db.save()
         
         try {
             await sock.updateBlockStatus(target, 'unblock')
             console.log(`✅ AntiPM: ${target} berhasil diunblock`)
             
-            return m.reply(`✅ *UNBLOCK ÉXITO*\n\n> @${target.split('@')[0]} sekarang bisa chat lagi~\n> Blokir WhatsApp telah dibuka! 🦋`, { mentions: [target] })
+            return m.reply(`✅ *UNBLOCK ÉXITO*\n\n> @${target.split('@')[0]} sekarang bisa chat lagi~\n> Bloquea WhatsApp telah dibuka! 🦋`, { mentions: [target] })
         } catch (err) {
             console.error('Unblock error:', err)
             return m.reply(`⚠️ *UNBLOCK ERROR*\n\n> Error: ${err.message}\n> Inténtalo manualmente en WhatsApp, cariño~ 🦋`)
@@ -216,7 +216,7 @@ async function setupAntiPMListener(sock) {
                 return
             }
             
-            const isAlreadyBlocked = db.data.antipm.blockedUsers?.includes(sender)
+            const isAlreadyBlocked = db.data.antipm.blockedUsuarios?.includes(sender)
             
             if (isAlreadyBlocked) {
                 await sock.sendMessage(sender, {
@@ -294,9 +294,9 @@ async function setupAntiPMListener(sock) {
                           `¡Bye bye~ No vuelvas, cariño~ 🦋`
                 })
                 
-                if (!db.data.antipm.blockedUsers) db.data.antipm.blockedUsers = []
-                if (!db.data.antipm.blockedUsers.includes(sender)) {
-                    db.data.antipm.blockedUsers.push(sender)
+                if (!db.data.antipm.blockedUsuarios) db.data.antipm.blockedUsuarios = []
+                if (!db.data.antipm.blockedUsuarios.includes(sender)) {
+                    db.data.antipm.blockedUsuarios.push(sender)
                     db.save()
                 }
                 
@@ -309,12 +309,12 @@ async function setupAntiPMListener(sock) {
                             const allowedJid = `${allowedNum}@s.whatsapp.net`
                             await sock.sendMessage(allowedJid, {
                                 text: `💀 *ANTI PM - BLOKIR ASLI* 💀\n\n` +
-                                      `✅ *User diblokir:* ${senderNumber}\n` +
+                                      `✅ *Usuario diblokir:* ${senderNumber}\n` +
                                       `📊 *Total chat:* ${violation.count} kali\n` +
-                                      `📝 *Pesan terakhir:* ${text.slice(0, 100)}\n` +
-                                      `⏰ *Waktu:* ${new Date().toLocaleString()}\n\n` +
+                                      `📝 *Mensaje terakhir:* ${text.slice(0, 100)}\n` +
+                                      `⏰ *Hora:* ${new Date().toLocaleString()}\n\n` +
                                       `🔒 *Status:* BLOKIR ASLI WhatsApp!\n` +
-                                      `💀 *User no bisa chat ke bot lagi!*\n\n` +
+                                      `💀 *Usuario no bisa chat ke bot lagi!*\n\n` +
                                       `🦋 *Zero Two:* "¡Listo, cariño! Ya no molestará más~ 🗿🔥"`
                             })
                         } catch (err) {}
@@ -328,7 +328,7 @@ async function setupAntiPMListener(sock) {
                             const allowedJid = `${allowedNum}@s.whatsapp.net`
                             await sock.sendMessage(allowedJid, {
                                 text: `⚠️ *ERROR BLOKIR ASLI* ⚠️\n\n` +
-                                      `> User: ${senderNumber}\n` +
+                                      `> Usuario: ${senderNumber}\n` +
                                       `> Error: ${err.message}\n\n` +
                                       `> Quizás necesites bloquear manualmente, cariño~ 🦋`
                             })

@@ -28,7 +28,7 @@ function handler(m, { sock, db }) {
     const group = db.getGroup(m.chat) || {}
     
     if (!['on', 'off'].includes(args)) {
-        const status = group.notifPromote === true ? '✅ Activo (Encendido)' : '❌ Inactivo (Apagado)'
+        const status = group.notifPromociona === true ? '✅ Activo (Encendido)' : '❌ Inactivo (Apagado)'
         return m.reply(
             `ꕥ 𝖭𝖮𝖳𝖨𝖥𝖨𝖢𝖠𝖢𝖨𝖀́𝖭 𝖣𝖤 𝖯𝖱𝖮𝖬𝖮𝖳𝖤 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
             `      • Estado actual :: *${status}*\n\n` +
@@ -41,7 +41,7 @@ function handler(m, { sock, db }) {
     }
     
     if (args === 'on') {
-        group.notifPromote = true
+        group.notifPromociona = true
         db.setGroup(m.chat, group)
         
         try { m.react('✅'); } catch {}
@@ -55,7 +55,7 @@ function handler(m, { sock, db }) {
     }
     
     if (args === 'off') {
-        group.notifPromote = false
+        group.notifPromociona = false
         db.setGroup(m.chat, group)
         
         try { m.react('❌'); } catch {}

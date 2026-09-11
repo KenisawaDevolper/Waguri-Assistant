@@ -103,9 +103,9 @@ function getContextInfo(botConfig, m, thumbBuffer) {
 
 async function handler(m, { sock, config: botConfig, db, uptime }) {
 const prefix = botConfig.command?.prefix || ".";
-const user = db.getUser(m.sender);
+const user = db.getUsuario(m.sender);
 const groupData = m.isGroup ? db.getGroup(m.chat) || {} : {};
-const botMode = groupData.botMode || "md";
+const botModo = groupData.botModo || "md";
 const categories = getCategories();
 const commandsByCategory = getCommandsByCategory();
 const casesByCategory = getCasesByCategory();
@@ -236,8 +236,8 @@ txt += `> _${botName} - 𝗌ı𝗆𝗉𝗅ᧉ 𝗐𝗁⍺ƚ𝗌⍺𝗉𝗉 𝖻�
       }
     }
   } catch (e) { }
-  const allowedCategories = modeAllowedMap[botMode];
-  const excludeCategories = modeExcludeMap[botMode] || [];
+  const allowedCategories = modeAllowedMap[botModo];
+  const excludeCategories = modeExcludeMap[botModo] || [];
   for (const category of sortedCategories) {
     if (category === "owner" && !m.isOwner) continue;
     if (

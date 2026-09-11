@@ -12,7 +12,7 @@ const pluginConfig = {
 
 async function handler(m, { sock }) {
     const backupContents = [
-        '📁 database/*.json (semua file JSON)',
+        '📁 database/*.json (todos file JSON)',
         '📁 database/cpanel/* (data cPanel)',
         '📄 storage/database.json (main database)',
         '📄 db.json (root database)',
@@ -35,7 +35,7 @@ async function handler(m, { sock }) {
             `📦 Size: ${result.size}\n` +
             `📁 Files: ${result.files}\n` +
             `🔖 Schema: v${SCHEMA_VERSION}\n\n` +
-            `> Type-safe backup, kompatibel dengan update mendatang.\n` +
+            `> Type-safe backup, kompatibel con update mendatang.\n` +
             `> Backup telah dikirim ke owner utama.`
         )
     } else {

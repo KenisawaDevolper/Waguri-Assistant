@@ -10,7 +10,7 @@ const botConfig = config;
 
 const pluginConfig = {
   name: "swgcall",
-  alias: ["swgcsemua", "swgcbroadcast", "swgcbc", "groupstoryall"],
+  alias: ["swgctodos", "swgcbroadcast", "swgcbc", "groupstoryall"],
   category: "owner",
   description: "Post Group Status/Story ke SEMUA grup una vezgus (border hijau)",
   usage: ".swgcall <teks> atau reply media",
@@ -36,7 +36,7 @@ async function handler(m, { sock, db }) {
     const pending = global._swgcallPending?.get(m.sender);
     if (!pending) {
       return m.reply(
-        `⚠️ *No ada data pending. Kirim ulang media + .swgcall*`,
+        `⚠️ *No ada data pending. Envía ulang media + .swgcall*`,
       );
     }
 
@@ -95,7 +95,7 @@ async function handler(m, { sock, db }) {
 
     if (failedGroups.length > 0) {
       report +=
-        `\n\n*Grup gagal:*\n` + failedGroups.map((g) => `> • ${g}`).join("\n");
+        `\n\n*Grupo gagal:*\n` + failedGroups.map((g) => `> • ${g}`).join("\n");
     }
 
     await m.reply(report);
@@ -157,10 +157,10 @@ async function handler(m, { sock, db }) {
   } else {
     return m.reply(
       `⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n` +
-        `> \`${m.prefix}swgcall teks\` - Story teks ke semua grup\n` +
+        `> \`${m.prefix}swgcall teks\` - Story teks ke todos grup\n` +
         `> Reply gambar/video/audio + \`${m.prefix}swgcall\`\n` +
-        `> Kirim gambar/video + caption \`${m.prefix}swgcall\`\n\n` +
-        `⚠️ _Fitur ini akan mengirim story ke SEMUA grup!_`,
+        `> Envía gambar/video + caption \`${m.prefix}swgcall\`\n\n` +
+        `⚠️ _Función ini akan mengirim story ke SEMUA grup!_`,
     );
   }
 
@@ -205,7 +205,7 @@ async function handler(m, { sock, db }) {
       text:
         `📢 *ᴋᴏɴꜰɪʀᴍᴀsɪ ʙʀᴏᴀᴅᴄᴀsᴛ sᴡɢᴄ*\n\n` +
         `> Media: *${mediaType}*\n` +
-        `> Total Grup: *${groupList.length}*\n` +
+        `> Total Grupo: *${groupList.length}*\n` +
         `> Estimasi: *~${estimatedTime} detik*\n\n` +
         `⚠️ _Story akan dipost ke SEMUA grup!_\n` +
         `_Tekan konfirmasi untuk melanjutkan._`,
@@ -221,7 +221,7 @@ async function handler(m, { sock, db }) {
         {
           name: "quick_reply",
           buttonParamsJson: JSON.stringify({
-            display_text: `✅ Kirim ke ${groupList.length} Grup`,
+            display_text: `✅ Envía ke ${groupList.length} Grupo`,
             id: `${m.prefix}swgcall --yes`,
           }),
         },

@@ -3,7 +3,7 @@ import { getTimeGreeting } from "../../src/lib/rimuru-formatter.js";
 
 const pluginConfig = {
   name: "daily",
-  alias: ["claim", "harian", "bonus"],
+  alias: ["claim", "diario", "bonus"],
   category: "user",
   description: "Reclama tu recompensa diaria (Exp, Monedas, Poción)",
   usage: ".daily",
@@ -21,7 +21,7 @@ const DAILY_COOLDOWN = 24 * 60 * 60 * 1000;
 
 async function handler(m, { sock }) {
   const db = getDatabase();
-  const user = db.getUser(m.sender);
+  const user = db.getUsuario(m.sender);
 
   if (!user.cooldowns) user.cooldowns = {};
   const lastDaily = user.cooldowns.daily || 0;

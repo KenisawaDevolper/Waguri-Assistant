@@ -27,7 +27,7 @@ async function handler(m, { sock }) {
       `*CONTOH PENGGUNAAN:*\n` +
       `- *${m.prefix}capprem hd jpm warn*\n\n` +
       `*PENJELASAN:*\n` +
-      `Ingresa satu atau lebih nama fitur yang ingin dijadikan Premium. Pisahkan dengan spasi.`
+      `Ingresa satu atau lebih nama fitur yang ingin dijadikan Premium. Pisahkan con spasi.`
     );
   }
 
@@ -63,7 +63,7 @@ async function handler(m, { sock }) {
     msg += `*Error (No ditemukan):*\n${failedList.map(f => `- ${f}`).join("\n")}\n\n`;
   }
   
-  msg += `_Fitur di atas (yang berhasil) sekarang hanya bisa diakses oleh member Premium._`;
+  msg += `_Función di atas (yang berhasil) sekarang hanya bisa diakses oleh member Premium._`;
   
   return m.reply(msg.trim());
 }

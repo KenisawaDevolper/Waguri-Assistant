@@ -30,19 +30,19 @@ async function handler(m, { sock }) {
         if (!isRealOwner) {
             return await m.reply('🚫 *ᴀᴄᴄᴇsᴏ ᴅᴇɴᴇɢᴀᴅᴏ*\n\n> ¡Solo el owner puede cambiar el modo del bot!');
         }
-        const currentMode = config.mode;
-        if (currentMode === 'public') {
+        const currentModo = config.mode;
+        if (currentModo === 'public') {
             return await m.reply('ℹ️ El bot ya está en modo *public*');
         }
         config.mode = 'public';
         const db = getDatabase();
-        db.setting('botMode', 'public');
+        db.setting('botModo', 'public');
         
         const responseText = `🌐 *ᴍᴏᴅᴏ ᴘᴜʙʟɪᴄ ᴀᴄᴛɪᴠᴏ*\n\n` +
             `> ¡El bot ahora responde a todos los usuarios!\n\n` +
             `_Usa .self para cerrar el acceso_`;
         await m.reply(responseText);
-        console.log(`[Mode] Changed to PUBLIC by ${m.pushName} (${m.sender})`);
+        console.log(`[Modo] Changed to PUBLIC by ${m.pushName} (${m.sender})`);
     } catch (error) {
         console.error('[Public Command Error]', error);
         await m.reply(te(m.prefix, m.command, m.pushName));

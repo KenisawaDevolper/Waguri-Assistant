@@ -22,7 +22,7 @@ function targetJid(m) {
 
 async function handler(m, { sock, db }) {
   const jid = targetJid(m);
-  const user = db.getUser?.(jid) || db.setUser?.(jid) || {};
+  const user = db.getUsuario?.(jid) || db.setUsuario?.(jid) || {};
   
   let name = (jid === m.sender ? m.pushName : null) || jid.split("@")[0];
 

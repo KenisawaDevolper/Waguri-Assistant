@@ -50,7 +50,7 @@ function isToxic(text, toxicList) {
 
 function gpMsg(key, replacements = {}) {
     const defaults = {
-        antitoxicWarn: '⚠ @%user% ha utilizado un término prohibido.\nAviso %warn% de %max%, la siguiente infracción aplicará %method%.',
+        antitoxicAdvierte: '⚠ @%user% ha utilizado un término prohibido.\nAviso %warn% de %max%, la siguiente infracción aplicará %method%.',
         antitoxicAction: '🚫 @%user% ha sido sancionado mediante %method% por lenguaje tóxico. (%warn%/%max%)',
     }
     let text = config.groupProtection?.[key] || defaults[key] || ''
@@ -62,45 +62,45 @@ function gpMsg(key, replacements = {}) {
 
 async function handleToxicMessage(m, sock, db, toxicWord) {
     const groupData = db.getGroup(m.chat) || {}
-    const maxWarn = groupData.toxicMaxWarn || 3
+    const maxAdvierte = groupData.toxicMaxAdvierte || 3
     const method = groupData.toxicMethod || 'kick'
-    const warnCount = (groupData.toxicWarns?.[m.sender] || 0) + 1
+    const warnCount = (groupData.toxicAdviertes?.[m.sender] || 0) + 1
 
-    if (!groupData.toxicWarns) groupData.toxicWarns = {}
-    groupData.toxicWarns[m.sender] = warnCount
+    if (!groupData.toxicAdviertes) groupData.toxicAdviertes = {}
+    groupData.toxicAdviertes[m.sender] = warnCount
     db.setGroup(m.chat, groupData)
 
     try {
         await sock.sendMessage(m.chat, { delete: m.key })
     } catch {}
 
-    const senderTag = m.sender.split('@')[0]
+    const senderMenciona = m.sender.split('@')[0]
 
-    if (warnCount >= maxWarn) {
+    if (warnCount >= maxAdvierte) {
         if (method === 'kick') {
             try {
                 await sock.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
             } catch {}
         }
 
-        groupData.toxicWarns[m.sender] = 0
+        groupData.toxicAdviertes[m.sender] = 0
         db.setGroup(m.chat, groupData)
 
         await sock.sendMessage(m.chat, {
             text: gpMsg('antitoxicAction', {
-                user: senderTag,
+                user: senderMenciona,
                 warn: String(warnCount),
-                max: String(maxWarn),
+                max: String(maxAdvierte),
                 method
             }),
             mentions: [m.sender],
         })
     } else {
         await sock.sendMessage(m.chat, {
-            text: gpMsg('antitoxicWarn', {
-                user: senderTag,
+            text: gpMsg('antitoxicAdvierte', {
+                user: senderMenciona,
                 warn: String(warnCount),
-                max: String(maxWarn),
+                max: String(maxAdvierte),
                 method
             }),
             mentions: [m.sender],
@@ -120,7 +120,7 @@ async function handler(m, { sock }) {
     if (!subCommand) {
         const status = groupData.antitoxic ? 'ACTIVO ✅' : 'INACTIVO ❌'
         const toxicCount = groupData.toxicWords?.length || DEFAULT_TOXIC_WORDS.length
-        const maxWarn = groupData.toxicMaxWarn || 3
+        const maxAdvierte = groupData.toxicMaxAdvierte || 3
         const method = groupData.toxicMethod || 'kick'
 
         await m.reply(
@@ -128,7 +128,7 @@ async function handler(m, { sock }) {
             `      𓈒 ◌ㅤ──    *𝖤𝖲𝖳𝖠𝖡𝖫𝖤𝖢𝖨𝖬𝖨𝖤𝖭𝖳𝖮𝖲*\n` +
             `      • Estado :: ${status}\n` +
             `      • Palabras clave :: ${toxicCount}\n` +
-            `      • Máx. Advertencias :: ${maxWarn}\n` +
+            `      • Máx. Advertencias :: ${maxAdvierte}\n` +
             `      • Método :: *${method.toUpperCase()}*\n\n` +
             `      𓈒 ◌ㅤ──    *𝖢𝖮𝖬𝖠𝖭𝖣𝖮𝖲*\n` +
             `      • \`${m.prefix}antitoxic on/off\`\n` +
@@ -173,7 +173,7 @@ async function handler(m, { sock }) {
                 `> 𝗐⍺𝗀𝗎ɾɩ ⍺𝗌𝗌ı𝗌ƚ⍺𝗇ƚ ツ`
             )
         }
-        db.setGroup(m.chat, { toxicMaxWarn: count })
+        db.setGroup(m.chat, { toxicMaxAdvierte: count })
         try { await m.react('✅') } catch {}
         await m.reply(
             `ꕥ 𝖶𝖠𝖱𝖭 𝖠𝖢𝖳𝖴𝖠𝖫𝖨𝖹𝖠𝖣𝖮 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +

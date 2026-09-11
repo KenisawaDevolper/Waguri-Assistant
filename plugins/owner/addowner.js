@@ -13,7 +13,7 @@ import {
   resolveAnyLidToJid,
   isLidConverted,
 } from "../../src/lib/rimuru-lid.js";
-import { getGroupMode } from "../group/botmode.js";
+import { getGroupModo } from "../group/botmode.js";
 const pluginConfig = {
   name: "addowner",
   alias: ["addown", "setowner", "delowner", "dedown", "ownerlist", "listowner"],
@@ -123,8 +123,8 @@ function toMentionJid(value) {
 async function handler(m, { sock, jadibotId, isJadibot }) {
   const db = getDatabase();
   const cmd = m.command.toLowerCase();
-  const groupMode = m.isGroup ? getGroupMode(m.chat, db) : "private";
-  const isCpanelMode = m.isGroup && groupMode === "cpanel";
+  const groupModo = m.isGroup ? getGroupModo(m.chat, db) : "private";
+  const isCpanelModo = m.isGroup && groupModo === "cpanel";
 
   const isAdd = ["addowner", "addown", "setowner"].includes(cmd);
   const isDel = ["delowner", "dedown"].includes(cmd);
@@ -152,7 +152,7 @@ async function handler(m, { sock, jadibotId, isJadibot }) {
       });
       txt += `\nTotal: *${jbOwners.length}* owner`;
       return m.reply(txt, { mentions });
-    } else if (isCpanelMode) {
+    } else if (isCpanelModo) {
       const panelOwners = config.pterodactyl.ownerPanels || [];
       const fullOwners = db.data.owner || [];
       const allOwners = [...new Set([...panelOwners, ...fullOwners])];
@@ -248,7 +248,7 @@ async function handler(m, { sock, jadibotId, isJadibot }) {
     return;
   }
 
-  if (isCpanelMode) {
+  if (isCpanelModo) {
     if (isAdd) {
       if (config.pterodactyl.ownerPanels.includes(targetNumber)) {
         return m.reply(`❌ ꕥ \`${targetNumber}\` ya es owner del panel.`);

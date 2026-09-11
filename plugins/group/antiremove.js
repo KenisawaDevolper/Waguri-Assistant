@@ -33,7 +33,7 @@ async function handler(m, { sock, db }) {
     if (action === 'on') {
         db.setGroup(m.chat, { ...group, antiremove: 'on' })
         m.react('✅')
-        await m.reply(`✅ *AntiRemove diaktifkan*\n> Pesan yang dihapus akan di-forward ulang.`)
+        await m.reply(`✅ *AntiRemove diaktifkan*\n> Mensaje yang dihapus akan di-forward ulang.`)
         return
     }
 

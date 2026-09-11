@@ -2,7 +2,7 @@ const pluginConfig = {
     name: ['hapussaluran', 'deletesaluran', 'deletenewsletter'],
     alias: [],
     category: 'owner',
-    description: 'Hapus saluran/newsletter',
+    description: 'Elimina saluran/newsletter',
     usage: '.hapussaluran <id_saluran>',
     example: '.hapussaluran 120363xxx@newsletter',
     isOwner: true,
@@ -18,10 +18,10 @@ async function handler(m, { sock }) {
     if (!targetJid) {
         return m.reply(
             '🗑️ *ʜᴀᴘᴜs sᴀʟᴜʀᴀɴ*\n\n' +
-            '> `.hapussaluran <id_saluran>` — Hapus saluran\n\n' +
+            '> `.hapussaluran <id_saluran>` — Elimina saluran\n\n' +
             '📝 Ejemplo:\n' +
             '> `.hapussaluran 120363xxx@newsletter`\n\n' +
-            '⚠️ Saluran akan eliminado secara permanen'
+            '⚠️ Saluran akan eliminado de forma permanen'
         )
     }
 

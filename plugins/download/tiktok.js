@@ -3,7 +3,7 @@ import axios from "axios";
 import {
   generateWAMessage,
   generateWAMessageFromContent,
-  jidNormalizedUser,
+  jidNormalizedUsuario,
 } from "ourin";
 import te from "../../src/lib/rimuru-error.js";
 
@@ -104,7 +104,7 @@ async function handler(m, { sock }) {
               },
             },
             {
-              userJid: jidNormalizedUser(sock.user.id),
+              userJid: jidNormalizedUsuario(sock.user.id),
               quoted: m,
               upload: sock.waUploadToServer,
             }

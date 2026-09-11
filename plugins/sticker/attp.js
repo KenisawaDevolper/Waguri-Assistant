@@ -62,13 +62,13 @@ async function handler(m, { sock }) {
         const data = await f(url)
         
         if (!data?.status || !data?.data?.url) {
-            throw new Error('API tidak mengembalikan data yang valid')
+            throw new Error('API no mengembalikan data yang valid')
         }
         
         const stickerUrl = data.data.url
         const stickerRes = await f(stickerUrl, 'buffer')
         
-        if (!stickerRes) throw new Error('Gagal mengunduh sticker dari server')
+        if (!stickerRes) throw new Error('Falló mengunduh sticker dari server')
         
         let finalSticker = stickerRes
         try {

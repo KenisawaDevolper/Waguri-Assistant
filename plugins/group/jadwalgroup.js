@@ -3,7 +3,7 @@ const pluginConfig = {
     name: 'jadwalgroup',
     alias: ['schedulegroup', 'jdwlgrup', 'autoopenclose'],
     category: 'group',
-    description: 'Jadwal buka/tutup grup otomatis',
+    description: 'Horario buka/tutup grup otomatis',
     usage: '.jadwalgroup <open/close> <HH:MM>',
     example: '.jadwalgroup open 06:00',
     isOwner: false,
@@ -88,7 +88,7 @@ async function handler(m, { sock, db }) {
             
             await m.reply(
                 `✅ *ʙᴇʀʜᴀsɪʟ*\n\n` +
-                `> Jadwal *buka grup* otomatis telah dihapus.`
+                `> Horario *buka grup* otomatis telah dihapus.`
             );
         } else {
             delete group.scheduleClose;
@@ -96,7 +96,7 @@ async function handler(m, { sock, db }) {
             
             await m.reply(
                 `✅ *ʙᴇʀʜᴀsɪʟ*\n\n` +
-                `> Jadwal *tutup grup* otomatis telah dihapus.`
+                `> Horario *tutup grup* otomatis telah dihapus.`
             );
         }
         return;
@@ -116,7 +116,7 @@ async function handler(m, { sock, db }) {
     if (!time) {
         await m.reply(
             `⚠️ *ᴠᴀʟɪᴅᴀsɪ ɢᴀɢᴀʟ*\n\n` +
-            `> Waktu harus diisi!\n\n` +
+            `> Hora harus diisi!\n\n` +
             `> *Format:* \`HH:MM\` (24 jam)\n` +
             `> *Contoh:* \`.jadwalgroup ${action} 08:00\``
         );
@@ -127,7 +127,7 @@ async function handler(m, { sock, db }) {
     if (!parsed) {
         await m.reply(
             `⚠️ *ᴠᴀʟɪᴅᴀsɪ ɢᴀɢᴀʟ*\n\n` +
-            `> Format waktu tidak valid!\n\n` +
+            `> Format waktu no valid!\n\n` +
             `> *Format:* \`HH:MM\` (24 jam)\n` +
             `> *Contoh:* \`06:00\`, \`22:30\`, \`08:15\``
         );
@@ -156,7 +156,7 @@ async function handler(m, { sock, db }) {
 ┃ ㊗ 📡 sᴛᴀᴛᴜs: *🟢 Aktif*
 ╰┈┈⬡
 
-> _Grup akan otomatis ${action === 'open' ? 'dibuka' : 'ditutup'}_
+> _Grupo akan otomatis ${action === 'open' ? 'dibuka' : 'ditutup'}_
 > _setiap hari pada jam *${formattedTime}* WIB._`;
     
     await m.reply(successMsg);

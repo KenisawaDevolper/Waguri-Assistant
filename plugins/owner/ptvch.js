@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'ptvch',
     alias: ['ptvchanel', 'ptvstory'],
     category: 'owner',
-    description: 'Kirim video sebagai PTV ke channel',
+    description: 'Envía video sebagai PTV ke channel',
     usage: '.ptvch (reply video)',
     example: '.ptvch',
     isOwner: true,
@@ -36,7 +36,7 @@ async function handler(m, { sock }) {
     if (!video) {
         return m.reply(
             `⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n` +
-            `> Kirim *video* atau *balas video* lalu ketik:\n` +
+            `> Envía *video* atau *balas video* lalu ketik:\n` +
             `> \`${m.prefix}ptvch\``
         )
     }

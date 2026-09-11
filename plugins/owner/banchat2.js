@@ -11,7 +11,7 @@ let handler = async (m, { text }) => {
 
   global.db.data.chats[id].isBanned = true
 
-  m.reply(`✅ Grup berhasil dibanned:\n${id}`)
+  m.reply(`✅ Grupo berhasil dibanned:\n${id}`)
 }
 
 handler.help = ['banchat2']

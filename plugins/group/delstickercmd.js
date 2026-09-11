@@ -3,7 +3,7 @@ const pluginConfig = {
     name: 'delstickercmd',
     alias: ['delcmdsticker', 'removesticker', 'unsticker'],
     category: 'group',
-    description: 'Hapus sticker command',
+    description: 'Elimina sticker command',
     usage: '.delstickercmd <command> atau reply sticker',
     example: '.delstickercmd menu',
     isOwner: false,
@@ -24,8 +24,8 @@ async function handler(m, { sock }) {
         if (existingCmds.length === 0) {
             return m.reply(
                 `🖼️ *sᴛɪᴄᴋᴇʀ ᴄᴏᴍᴍᴀɴᴅs*\n\n` +
-                `> Tidak ada sticker command yang terdaftar.\n` +
-                `> Tambahkan dengan \`.addcmdsticker\``
+                `> No hay sticker command yang terdaftar.\n` +
+                `> Añadekan con \`.addcmdsticker\``
             )
         }
         
@@ -37,7 +37,7 @@ async function handler(m, { sock }) {
         }
         txt += `╰┈┈┈┈┈┈┈┈⬡\n\n`
         
-        txt += `*Hapus dengan:*\n`
+        txt += `*Elimina con:*\n`
         txt += `> \`.delstickercmd <command>\`\n`
         txt += `> atau reply sticker + \`.delstickercmd\``
         
@@ -68,8 +68,8 @@ async function handler(m, { sock }) {
             }
         } else {
             return m.reply(
-                `❌ Sticker command \`${cleanCmd}\` tidak ditemukan!\n\n` +
-                `> Lihat daftar dengan \`.delstickercmd\``
+                `❌ Sticker command \`${cleanCmd}\` no ditemukan!\n\n` +
+                `> Lihat daftar con \`.delstickercmd\``
             )
         }
     }
@@ -82,7 +82,7 @@ async function handler(m, { sock }) {
         )
     } else {
         await m.reply(
-            `❌ Gagal menghapus!\n\n` +
+            `❌ Falló menghapus!\n\n` +
             `> Reply sticker yang ingin dihapus, atau\n` +
             `> Ketik nama command: \`.delstickercmd menu\``
         )

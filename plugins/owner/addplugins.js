@@ -109,7 +109,7 @@ async function handler(m, { sock }) {
     if (!document) {
       return await m.reply(
         `📦 *ADD PLUGIN*\n\n` +
-        `Kirim file *.js bersama perintah ini atau reply file *.js, lalu:\n` +
+        `Envía file *.js bersama perintah ini atau reply file *.js, lalu:\n` +
         `> ${m.prefix}addplugins ${category}`
       );
     }

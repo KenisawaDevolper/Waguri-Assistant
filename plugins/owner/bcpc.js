@@ -44,9 +44,9 @@ async function handler(m, { sock }) {
       `📱 *BROADCAST PRIVATE CHAT*\n\n` +
         `Jeda: ${jeda}ms (${(jeda / 1000).toFixed(1)}s)\n\n` +
         `*PENGGUNAAN:*\n` +
-        `• \`${m.prefix}bcpc <pesan>\` — Kirim ke semua kontak\n` +
-        `• \`${m.prefix}bcpc (reply media)\` — Kirim dengan media\n\n` +
-        `⚠️ *Peringatan:* Bot akan mengirim pesan ke semua kontak yang tersimpan!\n\n` +
+        `• \`${m.prefix}bcpc <pesan>\` — Envía ke todos kontak\n` +
+        `• \`${m.prefix}bcpc (reply media)\` — Envía con media\n\n` +
+        `⚠️ *Peringatan:* Bot akan mengirim pesan ke todos kontak yang tersimpan!\n\n` +
         `ℹ️ *Note:* Kontak hanya terdeteksi jika mereka sudah pernah mengirim pesan ke bot. Kontak yang hanya disimpan tapi belum pernah chat no akan muncul.`,
     );
   }

@@ -38,7 +38,7 @@ function handler(m) {
         db.setting('cmdVn', true)
         return m.reply(
             `✅ *ᴄᴍᴅ ᴠɴ ᴀᴋᴛɪꜰ*\n\n` +
-            `> Kirim voice note berisi nama command\n` +
+            `> Envía voice note berisi nama command\n` +
             `> Bot akan transkrip dan jalankan otomatis\n` +
             `> Ejemplo: VN "menu" → trigger .menu`
         )

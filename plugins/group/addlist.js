@@ -1,5 +1,5 @@
 let handler = async (m, { text, command }) => {
-  if (!m.isGroup) throw 'Fitur ini hanya untuk grup!'
+  if (!m.isGroup) throw 'Función ini hanya untuk grup!'
 
   let chat = global.db.data.chats[m.chat] || (global.db.data.chats[m.chat] = {})
   chat.list = chat.list || []
@@ -7,7 +7,7 @@ let handler = async (m, { text, command }) => {
   if (command === 'addlist') {
     if (!text) throw 'Contoh:\n.addlist anu'
     chat.list.push(text)
-    return m.reply(`✅ Berhasil ditambahkan ke list\n📌 Total: ${chat.list.length}`)
+    return m.reply(`✅ Éxito ditambahkan ke list\n📌 Total: ${chat.list.length}`)
   }
 
   if (command === 'list') {
@@ -19,9 +19,9 @@ let handler = async (m, { text, command }) => {
   if (command === 'dellist') {
     if (!text) throw 'Contoh:\n.dellist 1'
     let no = parseInt(text)
-    if (isNaN(no) || no < 1 || no > chat.list.length) throw 'Nomor tidak valid'
+    if (isNaN(no) || no < 1 || no > chat.list.length) throw 'Nomor no valid'
     let removed = chat.list.splice(no - 1, 1)
-    return m.reply(`🗑️ Berhasil hapus:\n${removed[0]}`)
+    return m.reply(`🗑️ Éxito hapus:\n${removed[0]}`)
   }
 }
 

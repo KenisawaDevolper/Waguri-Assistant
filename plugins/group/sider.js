@@ -51,7 +51,7 @@ async function handler(m, { sock }) {
         if (!db.data.sider.settings[groupId]) {
             db.data.sider.settings[groupId] = {
                 period: 7,
-                autoKick: false,
+                autoExpulsa: false,
                 warningMsg: true
             };
         }
@@ -64,7 +64,7 @@ async function handler(m, { sock }) {
             `      𓈒 ◌ㅤ──    *𝖢𝖮𝖭𝖥𝖨𝖦𝖴𝖱𝖠𝖢𝖨𝖀́𝖭*\n` +
             `      • Estado :: Activado con éxito ✅\n` +
             `      • Periodo :: *${db.data.sider.settings[groupId].period} días*\n` +
-            `      • Auto-kick :: *${db.data.sider.settings[groupId].autoKick ? 'Activado' : 'Desactivado'}*\n\n` +
+            `      • Auto-kick :: *${db.data.sider.settings[groupId].autoExpulsa ? 'Activado' : 'Desactivado'}*\n\n` +
             `      𓈒 ◌ㅤ──    *𝖢𝖮𝖬𝖠𝖭𝖣𝖮𝖲 𝖴́𝖳𝖨𝖫𝖤𝖲*\n` +
             `      • \`${m.prefix}sider cek\` → Ver lista actual\n` +
             `      • \`${m.prefix}sider set period 5\` → Cambiar días\n` +
@@ -194,7 +194,7 @@ async function handler(m, { sock }) {
                 `      𓈒 ◌ㅤ──    *𝖬𝖨𝖤𝖬𝖡𝖱𝖮𝖲 𝖣𝖤𝖳𝖤𝖢𝖳𝖠𝖣𝖮𝖲*\n` +
                 `${siderText}\n`;
 
-            if (db.data.sider.settings[groupId]?.autoKick) {
+            if (db.data.sider.settings[groupId]?.autoExpulsa) {
                 messageText += `⚠️ *Aviso:* El modo auto-kick está *ACTIVO*.\n\n`;
             } else {
                 messageText += `🛡️ *Nota:* Auto-kick desactivado (modo informativo).\n\n`;
@@ -235,7 +235,7 @@ async function handler(m, { sock }) {
         if (!db.data.sider.settings[groupId]) {
             db.data.sider.settings[groupId] = {
                 period: 7,
-                autoKick: false,
+                autoExpulsa: false,
                 warningMsg: true
             };
         }
@@ -264,7 +264,7 @@ async function handler(m, { sock }) {
         
         if (setting === 'autokick') {
             if (value === 'on' || value === 'true') {
-                db.data.sider.settings[groupId].autoKick = true;
+                db.data.sider.settings[groupId].autoExpulsa = true;
                 db.save();
                 try { await m.react('✅'); } catch {}
                 return m.reply(
@@ -273,7 +273,7 @@ async function handler(m, { sock }) {
                     `> 𝗐⍺𝗀𝗎ɾɩ ⍺𝗌𝗌ı𝗌ƚ⍺𝗇ƚ ツ`
                 );
             } else if (value === 'off' || value === 'false') {
-                db.data.sider.settings[groupId].autoKick = false;
+                db.data.sider.settings[groupId].autoExpulsa = false;
                 db.save();
                 try { await m.react('✅'); } catch {}
                 return m.reply(
@@ -295,7 +295,7 @@ async function handler(m, { sock }) {
             `      • \`${m.prefix}sider set period <días>\`\n` +
             `      • \`${m.prefix}sider set autokick on/off\`\n\n` +
             `      • Periodo actual :: *${db.data.sider.settings[groupId].period} días*\n` +
-            `      • Auto-kick :: *${db.data.sider.settings[groupId].autoKick ? 'ON' : 'OFF'}*\n\n` +
+            `      • Auto-kick :: *${db.data.sider.settings[groupId].autoExpulsa ? 'ON' : 'OFF'}*\n\n` +
             `> 𝗐⍺𝗀𝗎ɾɩ ⍺𝗌𝗌ı𝗌ƚ⍺𝗇ƚ ツ`
         );
     }
@@ -419,14 +419,14 @@ async function handler(m, { sock }) {
     
     // STATUS - Ver estado general
     if (sub === 'status') {
-        const settings = db.data.sider.settings[groupId] || { period: 7, autoKick: false };
+        const settings = db.data.sider.settings[groupId] || { period: 7, autoExpulsa: false };
         const activityCount = db.data.sider.lastActivity[groupId] ? Object.keys(db.data.sider.lastActivity[groupId]).length : 0;
         
         return m.reply(
             `ꕥ 𝖲𝖳𝖠𝖳𝖴𝖲 𝖲𝖨𝖣𝖤𝖱 𝖣𝖤𝖳𝖤𝖢𝖳𝖮𝖱 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
             `      • Estado :: ${isEnabled ? '✅ Activado' : '❌ Desactivado'}\n` +
             `      • Periodo :: ${settings.period} días\n` +
-            `      • Auto-kick :: ${settings.autoKick ? '✅ ON' : '❌ OFF'}\n` +
+            `      • Auto-kick :: ${settings.autoExpulsa ? '✅ ON' : '❌ OFF'}\n` +
             `      • Registrados :: ${activityCount} miembros\n\n` +
             `      𓈒 ◌ㅤ──    *𝖢𝖮𝖬𝖠𝖭𝖣𝖮𝖲 𝖣𝖨𝖲𝖯𝖮𝖭𝖨𝖡𝖫𝖤𝖲*\n` +
             `      • \`${m.prefix}sider on / off\`\n` +

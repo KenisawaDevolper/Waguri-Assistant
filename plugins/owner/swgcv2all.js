@@ -31,7 +31,7 @@ const pluginConfig = {
   category: "owner",
   description: "Post Group Status V2 ke SEMUA grup",
   usage: ".swgcv2all <teks> atau reply media",
-  example: ".swgcv2all Halo semua grup!",
+  example: ".swgcv2all Halo todos grup!",
   isOwner: true,
   isPremium: false,
   isGroup: false,
@@ -79,10 +79,10 @@ async function handler(m, { sock }) {
   } else {
     return m.reply(
       `👋 *sᴡɢᴄᴠ2 ᴀʟʟ ɢʟᴏʙᴀʟ*\n\n` +
-      `> Kirim pesan *Status Grup V2* ke SEMUA grup una vezgus.\n\n` +
+      `> Envía pesan *Status Grupo V2* ke SEMUA grup una vezgus.\n\n` +
       `╭┈┈⬡「 📋 *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ* 」\n` +
-      `┃ ${m.prefix}swgcv2all Halo semua!\n` +
-      `┃ atau reply gambar/video dengan caption ${m.prefix}swgcv2all\n` +
+      `┃ ${m.prefix}swgcv2all Halo todos!\n` +
+      `┃ atau reply gambar/video con caption ${m.prefix}swgcv2all\n` +
       `╰┈┈┈┈┈┈┈┈⬡`
     );
   }
@@ -98,7 +98,7 @@ async function handler(m, { sock }) {
       return m.reply("❌ Bot no berada di grup manapun.");
     }
 
-    await m.reply(`⏳ *Memulai Broadcast Status Grup V2 ke ${groupIds.length} Grup...*\n\n> Proses ini mungkin memakan waktu beberapa saat.`);
+    await m.reply(`⏳ *Memulai Broadcast Status Grupo V2 ke ${groupIds.length} Grupo...*\n\n> Proses ini mungkin memakan waktu beberapa saat.`);
 
     let successCount = 0;
     let failCount = 0;
@@ -172,11 +172,11 @@ async function handler(m, { sock }) {
     await m.reply(
       `✅ *sᴡɢᴄᴠ2 ᴀʟʟ sᴇʟᴇsᴀɪ*\n\n` +
       `╭┈┈⬡「 📊 *ʀᴇsᴜʟᴛ* 」\n` +
-      `┃ 🌐 Total Grup: *${groupIds.length}*\n` +
+      `┃ 🌐 Total Grupo: *${groupIds.length}*\n` +
       `┃ ✅ Éxitos: *${successCount}*\n` +
       `┃ ❌ Error: *${failCount}*\n` +
       `╰┈┈┈┈┈┈┈┈⬡\n\n` +
-      `> Broadcast Status Grup V2 (Ring Pink) berhasil dikirim ke semua grup!`
+      `> Broadcast Status Grupo V2 (Ring Pink) berhasil dikirim ke todos grup!`
     );
 
   } catch (error) {

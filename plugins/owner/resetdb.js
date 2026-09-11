@@ -88,7 +88,7 @@ async function handler(m, { sock }) {
         await m.reply(
             `✅ *ᴅᴀᴛᴀʙᴀsᴇ ᴅɪʀᴇsᴇᴛ!*\n\n` +
             `╭┈┈⬡「 📊 *ᴅᴀᴛᴀ ᴅɪʜᴀᴘᴜs* 」\n` +
-            `┃ 👤 Users: ${userCount}\n` +
+            `┃ 👤 Usuarios: ${userCount}\n` +
             `┃ 👥 Groups: ${groupCount}\n` +
             `┃ ⚔️ Clans: ${clanCount}\n` +
             `╰┈┈┈┈┈┈┈┈⬡\n\n` +

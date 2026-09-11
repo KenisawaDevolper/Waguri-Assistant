@@ -19,8 +19,8 @@ async function handler(m, { sock }) {
     .split(":")[0]
     .split("@")[0]
     .replace(/[^0-9]/g, "");
-  let bannedList = config.bannedUsers || [];
-  const savedBanned = db.setting("bannedUsers") || [];
+  let bannedList = config.bannedUsuarios || [];
+  const savedBanned = db.setting("bannedUsuarios") || [];
 
   const combined = [...new Set([...bannedList, ...savedBanned])];
 
@@ -39,7 +39,7 @@ async function handler(m, { sock }) {
   // Evaluate fully:
   const finalResult = config.isBanned(target);
 
-  let dbStatus = db.setting("bannedUsers");
+  let dbStatus = db.setting("bannedUsuarios");
 
   await m.reply(`DEBUG BAN (${target})
 cleanNumber: ${cleanNumber}

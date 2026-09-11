@@ -56,7 +56,7 @@ async function handler(m, { sock }) {
             `┃ ✅ Bot sendiri (fromMe)\n` +
             `┃ ❌ Semua user lain\n` +
             `╰┈┈⬡\n\n` +
-            `> User lain akan dapat pesan AFK\n` +
+            `> Usuario lain akan dapat pesan AFK\n` +
             `> Ketik \`${m.prefix}botafk\` untuk kembali online`
         )
     }

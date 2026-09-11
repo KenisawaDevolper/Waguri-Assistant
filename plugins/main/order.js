@@ -5,9 +5,9 @@ const orders = {
   '60': { name: '60 Días Premium', price: '$ 14.000 ARS' },
   '90': { name: '90 Días Premium', price: '$ 18.000 ARS' },
   '365': { name: '365 Días Premium', price: '$ 50.000 ARS' },
-  'G7': { name: '7 Días Bot en Grupo', price: '$ 1.200 ARS' },
-  'G30': { name: '30 Días Bot en Grupo', price: '$ 3.000 ARS' },
-  'G365': { name: '365 Días Bot en Grupo', price: '$ 35.000 ARS' }
+  'G7': { name: '7 Días Bot en Grupoo', price: '$ 1.200 ARS' },
+  'G30': { name: '30 Días Bot en Grupoo', price: '$ 3.000 ARS' },
+  'G365': { name: '365 Días Bot en Grupoo', price: '$ 35.000 ARS' }
 }
 
 let handler = async (m, { conn, text }) => {
@@ -22,9 +22,9 @@ let handler = async (m, { conn, text }) => {
       `      • 90 :: 90 Días Premium — $ 18.000 ARS\n` +
       `      • 365 :: 365 Días Premium — $ 50.000 ARS\n\n` +
       `      𓈒 ◌ㅤ──    *𝖠𝖫𝖰𝖴𝖨𝖫𝖤𝖱 𝖯𝖠𝖱𝖠 𝖦𝖱𝖴𝖯𝖮𝖲*\n` +
-      `      • G7 :: 7 Días Bot en Grupo — $ 1.200 ARS\n` +
-      `      • G30 :: 30 Días Bot en Grupo — $ 3.000 ARS\n` +
-      `      • G365 :: 365 Días Bot en Grupo — $ 35.000 ARS\n\n` +
+      `      • G7 :: 7 Días Bot en Grupoo — $ 1.200 ARS\n` +
+      `      • G30 :: 30 Días Bot en Grupoo — $ 3.000 ARS\n` +
+      `      • G365 :: 365 Días Bot en Grupoo — $ 35.000 ARS\n\n` +
       `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « Uso: *.sewa <código>* »\n` +
       `« Ejemplo: *.sewa 30* »\n\n` +
       `> 𝗐⍺𝗀𝗎ɾɩ ⍺𝗌𝗌ı𝗌ƚ⍺𝗇ƚ ツ`

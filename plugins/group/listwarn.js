@@ -22,36 +22,36 @@ async function handler(m, { sock }) {
   const db = getDatabase();
   let groupData = db.getGroup(m.chat) || {};
   let warnings = groupData.warnings || {};
-  const maxWarns = groupData.maxWarnings || 3;
+  const maxAdviertes = groupData.maxAdvierteings || 3;
 
-  let targetUser = null;
+  let targetUsuario = null;
   if (m.quoted) {
-    targetUser = m.quoted.sender;
+    targetUsuario = m.quoted.sender;
   } else if (m.mentionedJid && m.mentionedJid.length > 0) {
-    targetUser = m.mentionedJid[0];
+    targetUsuario = m.mentionedJid[0];
   }
 
-  if (targetUser) {
-    const userWarnings = warnings[targetUser] || [];
-    const targetName = targetUser.split("@")[0];
+  if (targetUsuario) {
+    const userAdvierteings = warnings[targetUsuario] || [];
+    const targetName = targetUsuario.split("@")[0];
 
-    if (userWarnings.length === 0) {
+    if (userAdvierteings.length === 0) {
       return m.reply(
         `ꕥ 𝖲𝖨𝖭 𝖠𝖣𝖵𝖤𝖱𝖳𝖤𝖭𝖢𝖨𝖠𝖲 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
         `      • Usuario :: *@${targetName}*\n` +
         `      • Estado :: *0 advertencias registradas*\n\n` +
         `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « El miembro seleccionado no posee ningún registro de warns en este chat grupal. »\n\n` +
         `> 𝗐⍺𝗀𝗎ɾɩ ⍺𝗌𝗌ı𝗌ƚ⍺𝗇ƚ ツ`,
-        { mentions: [targetUser] }
+        { mentions: [targetUsuario] }
       );
     }
 
     let txt = `ꕥ 𝖧𝖨𝖲𝖳𝖮𝖱𝖨𝖠𝖫 𝖣𝖤 𝖶𝖠𝖱𝖭𝖲 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
               `      • Objetivo :: *@${targetName}*\n` +
-              `      • Conteo actual :: *${userWarnings.length}/${maxWarns} advertencias*\n\n` +
+              `      • Conteo actual :: *${userAdvierteings.length}/${maxAdviertes} advertencias*\n\n` +
               `      𓈒 ◌ㅤ──    *📝 𝖣𝖤𝖳𝖠𝖫𝖫𝖤 𝖣𝖤 𝖨𝖭𝖥𝖱𝖠𝖢𝖢𝖨𝖮𝖭𝖤𝖲*\n`
 
-    userWarnings.forEach((w, i) => {
+    userAdvierteings.forEach((w, i) => {
       const date = timeHelper.fromTimestamp(w.time, "DD/MM/YYYY");
       txt += `      • ${i + 1}. \`${w.reason}\`\n        └ _Fecha: ${date}_\n`;
     });
@@ -59,13 +59,13 @@ async function handler(m, { sock }) {
     txt += `\nଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « Historial detallado de infracciones recopiladas del usuario. »\n\n` +
            `> 𝗐⍺𝗀𝗎ɾɩ ⍺𝗌𝗌ı𝗌ƚ⍺𝗇ƚ ツ`;
 
-    return m.reply(txt, { mentions: [targetUser] });
+    return m.reply(txt, { mentions: [targetUsuario] });
   } else {
-    const usersWithWarnings = Object.keys(warnings).filter(
+    const usersWithAdvierteings = Object.keys(warnings).filter(
       (u) => warnings[u].length > 0,
     );
 
-    if (usersWithWarnings.length === 0) {
+    if (usersWithAdvierteings.length === 0) {
       return m.reply(
         `ꕥ 𝖲𝖨𝖭 𝖨𝖭𝖥𝖱𝖠𝖢𝖢𝖨𝖮𝖭𝖤𝖲 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
         `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « Excelente noticia: No hay ningún miembro con advertencias activas en este grupo. »\n\n` +
@@ -76,16 +76,16 @@ async function handler(m, { sock }) {
     let txt = `ꕥ 𝖫𝖨𝖲𝖳𝖠 𝖦𝖤𝖭𝖤𝖱𝖠𝖫 𝖣𝖤 𝖶𝖠𝖱𝖭𝖲 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
               `      𓈒 ◌ㅤ──    *⚠️ 𝖬𝖨𝖤𝖬𝖡𝖱𝖮𝖲 𝖢𝖮𝖭 𝖶𝖠𝖱𝖭𝖲*\n`
 
-    usersWithWarnings.forEach((user, i) => {
+    usersWithAdvierteings.forEach((user, i) => {
       const count = warnings[user].length;
       const name = user.split("@")[0];
-      txt += `      • ${i + 1}. @${name} — *${count}/${maxWarns} advertencias*\n`;
+      txt += `      • ${i + 1}. @${name} — *${count}/${maxAdviertes} advertencias*\n`;
     });
 
     txt += `\nଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « Tip: Utiliza \`${m.prefix}listwarn @user\` para ver el motivo detallado de cada infracción. »\n\n` +
            `> 𝗐⍺𝗀𝗎ɾɩ ⍺𝗌𝗌ı𝗌ƚ⍺𝗇ƚ ツ`;
 
-    return m.reply(txt, { mentions: usersWithWarnings });
+    return m.reply(txt, { mentions: usersWithAdvierteings });
   }
 }
 

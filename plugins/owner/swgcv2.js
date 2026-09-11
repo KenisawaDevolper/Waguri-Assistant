@@ -34,7 +34,7 @@ const pluginConfig = {
   category: "owner",
   description: "Post Group Status V2 ke grup pilihan",
   usage: ".swgcv2 <teks> atau reply media",
-  example: ".swgcv2 Halo semua!",
+  example: ".swgcv2 Halo todos!",
   isOwner: true,
   isPremium: false,
   isGroup: false,
@@ -62,7 +62,7 @@ async function handler(m, { sock, db }) {
     }
 
     try {
-      let groupName = "Grup";
+      let groupName = "Grupo";
       try {
         const meta = await sock.groupMetadata(targetGroupId);
         groupName = meta.subject;
@@ -240,7 +240,7 @@ async function handler(m, { sock, db }) {
       `⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n` +
       `> \`${m.prefix}swgcv2 teks\` - Story teks\n` +
       `> Reply gambar/video/audio + \`${m.prefix}swgcv2\`\n` +
-      `> Kirim gambar/video + caption \`${m.prefix}swgcv2\``,
+      `> Envía gambar/video + caption \`${m.prefix}swgcv2\``,
     );
     return;
   }
@@ -288,7 +288,7 @@ async function handler(m, { sock, db }) {
       text:
         `📋 *ᴘɪʟɪʜ ɢʀᴜᴘ ᴜɴᴛᴜᴋ ᴘᴏsᴛ sᴛᴏʀʏ ᴠ2*\n\n` +
         `> Media: *${mediaType}*\n` +
-        `> Total Grup: *${groupList.length}*\n\n` +
+        `> Total Grupo: *${groupList.length}*\n\n` +
         `_Pilih grup dari daftar di bawah:_`,
       contextInfo: {
         ...saluranCtx(),
@@ -302,10 +302,10 @@ async function handler(m, { sock, db }) {
         {
           name: "single_select",
           buttonParamsJson: JSON.stringify({
-            title: "🏠 Pilih Grup",
+            title: "🏠 Pilih Grupo",
             sections: [
               {
-                title: "Daftar Grup",
+                title: "Daftar Grupo",
                 rows: groupRows,
               },
             ],

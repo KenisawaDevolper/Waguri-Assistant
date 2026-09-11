@@ -5,7 +5,7 @@ import sharp from "sharp";
 // ==========================================
 // GESTIÓN LOCAL DE USUARIOS Y COOLDOWNS
 // ==========================================
-function ensureLocalUser(userId) {
+function ensureLocalUsuario(userId) {
   if (!global.db) global.db = {};
   if (!global.db.data) global.db.data = {};
   if (!global.db.data.users) global.db.data.users = {};
@@ -23,7 +23,7 @@ function ensureLocalUser(userId) {
 // ==========================================
 // FUNCIÓN AUXILIAR PARA BOTONES E IMAGEN
 // ==========================================
-async function sendGameMsg(conn, m, text, buttons = [], imageUrl = null, title = "Waguri Arcade", desc = "Sistema de Tickets") {
+async function sendJuegoMsg(conn, m, text, buttons = [], imageUrl = null, title = "Waguri Arcade", desc = "Sistema de Tickets") {
   let thumbnailBuffer = null;
   
   if (imageUrl) {
@@ -68,7 +68,7 @@ async function sendGameMsg(conn, m, text, buttons = [], imageUrl = null, title =
 // ==========================================
 let handler = async (m, { conn, command, args, prefix }) => {
   const sender = m.sender;
-  const user = ensureLocalUser(sender);
+  const user = ensureLocalUsuario(sender);
 
   switch (command) {
     case "ticketgames":
@@ -79,7 +79,7 @@ let handler = async (m, { conn, command, args, prefix }) => {
         `      • Tickets actuales :: *${user.tickets} 🎟️*\n\n` +
         `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « Selecciona un minijuego abajo para ganar tickets gratis para tus rerolls. »`;
 
-      await sendGameMsg(conn, m, text, [
+      await sendJuegoMsg(conn, m, text, [
         { id: `#minar`, text: "⛏️ Minar Tickets" },
         { id: `#suerte`, text: "🎲 Ruleta de Suerte" },
         { id: `#adivinar 3`, text: "🔢 Adivinar (Ej: 3)" }
@@ -95,7 +95,7 @@ let handler = async (m, { conn, command, args, prefix }) => {
 
       if (now - lastMine < cooldownTime) {
         const remaining = Math.ceil((cooldownTime - (now - lastMine)) / 60000);
-        return await sendGameMsg(conn, m, `ꕥ 𝖢𝖮𝖮𝖫𝖣𝖮𝖶𝖭 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\nଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « Tus picos están cansados. Debes esperar *${remaining} minuto(s)* para volver a minar. »`, [
+        return await sendJuegoMsg(conn, m, `ꕥ 𝖢𝖮𝖮𝖫𝖣𝖮𝖶𝖭 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\nଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « Tus picos están cansados. Debes esperar *${remaining} minuto(s)* para volver a minar. »`, [
           { id: `#minijuegos`, text: "🎮 Volver al Menú" }
         ]);
       }
@@ -110,7 +110,7 @@ let handler = async (m, { conn, command, args, prefix }) => {
         `      • Recompensa :: *+${earnedTickets} Ticket(s)* 🎟️\n` +
         `      • Total actual :: *${user.tickets} 🎟️*`;
 
-      await sendGameMsg(conn, m, text, [
+      await sendJuegoMsg(conn, m, text, [
         { id: `#minar`, text: "⛏️ Minar de nuevo" },
         { id: `#minijuegos`, text: "🎮 Menú Principal" }
       ], "https://telegra.ph/file/0b2405a761ec8dbb8b6e6.jpg", "Minería Exitosa", `+${earnedTickets} Tickets Obtenidos`);
@@ -125,7 +125,7 @@ let handler = async (m, { conn, command, args, prefix }) => {
 
       if (now - lastSuerte < cooldownTime) {
         const remaining = Math.ceil((cooldownTime - (now - lastSuerte)) / 60000);
-        return await sendGameMsg(conn, m, `ꕥ 𝖢𝖮𝖮𝖫𝖣𝖮𝖶𝖭 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\nଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « La diosa de la fortuna no te atenderá tan rápido. Vuelve en *${remaining} minuto(s)*. »`, [
+        return await sendJuegoMsg(conn, m, `ꕥ 𝖢𝖮𝖮𝖫𝖣𝖮𝖶𝖭 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\nଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « La diosa de la fortuna no te atenderá tan rápido. Vuelve en *${remaining} minuto(s)*. »`, [
           { id: `#minijuegos`, text: "🎮 Volver al Menú" }
         ]);
       }
@@ -136,12 +136,12 @@ let handler = async (m, { conn, command, args, prefix }) => {
       if (won) {
         const earnedTickets = 2;
         user.tickets += earnedTickets;
-        await sendGameMsg(conn, m, `ꕥ 𝖲𝖴𝖤𝖱𝖳𝖤 𝖣𝖨𝖢𝖤 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\nଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « ¡Increíble! La ruleta giró y se detuvo en la casilla ganadora. »\n\n      • Recompensa :: *+2 Tickets* 🎟️\n      • Total actual :: *${user.tickets} 🎟️*`, [
+        await sendJuegoMsg(conn, m, `ꕥ 𝖲𝖴𝖤𝖱𝖳𝖤 𝖣𝖨𝖢𝖤 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\nଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « ¡Increíble! La ruleta giró y se detuvo en la casilla ganadora. »\n\n      • Recompensa :: *+2 Tickets* 🎟️\n      • Total actual :: *${user.tickets} 🎟️*`, [
           { id: `#suerte`, text: "🎲 Jugar otra vez" },
           { id: `#minijuegos`, text: "🎮 Menú Principal" }
         ], "https://telegra.ph/file/0b2405a761ec8dbb8b6e6.jpg", "¡Victoria en la Ruleta!", "+2 Tickets");
       } else {
-        await sendGameMsg(conn, m, `ꕥ 𝖲𝖴𝖤𝖱𝖳𝖤 𝖣𝖨𝖢𝖤 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\nଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « ¡Mala suerte! La bola cayó en zona vacía y no obtuviste nada esta vez. »\n\n      • Total actual :: *${user.tickets} 🎟️*`, [
+        await sendJuegoMsg(conn, m, `ꕥ 𝖲𝖴𝖤𝖱𝖳𝖤 𝖣𝖨𝖢𝖤 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\nଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « ¡Mala suerte! La bola cayó en zona vacía y no obtuviste nada esta vez. »\n\n      • Total actual :: *${user.tickets} 🎟️*`, [
           { id: `#minijuegos`, text: "🎮 Menú Principal" }
         ], "https://telegra.ph/file/0b2405a761ec8dbb8b6e6.jpg", "Derrota en la Ruleta", "Inténtalo más tarde");
       }
@@ -152,7 +152,7 @@ let handler = async (m, { conn, command, args, prefix }) => {
       const guess = parseInt(args[0]);
 
       if (!args[0] || isNaN(guess) || guess < 1 || guess > 5) {
-        return await sendGameMsg(conn, m, `ꕥ 𝖩𝖴𝖤𝖦𝖮 𝖠𝖣𝖨𝖵𝖨𝖭𝖠𝖱 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\nଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « Elige un número del 1 al 5. \nUso correcto: *#adivinar <número>* »`, [
+        return await sendJuegoMsg(conn, m, `ꕥ 𝖩𝖴𝖤𝖦𝖮 𝖠𝖣𝖨𝖵𝖨𝖭𝖠𝖱 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\nଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « Elige un número del 1 al 5. \nUso correcto: *#adivinar <número>* »`, [
           { id: `#minijuegos`, text: "🎮 Ver Menú" }
         ]);
       }
@@ -161,11 +161,11 @@ let handler = async (m, { conn, command, args, prefix }) => {
 
       if (guess === winningNumber) {
         user.tickets += 3;
-        await sendGameMsg(conn, m, `ꕥ 𝖩𝖴𝖦𝖮 𝖠𝖣𝖨𝖵𝖨𝖭𝖠𝖱 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\nଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « ¡Acertaste por completo! El número secreto era exactamente el *${winningNumber}*. »\n\n      • Recompensa :: *+3 Tickets* 🎟️\n      • Total actual :: *${user.tickets} 🎟️*`, [
+        await sendJuegoMsg(conn, m, `ꕥ 𝖩𝖴𝖦𝖮 𝖠𝖣𝖨𝖵𝖨𝖭𝖠𝖱 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\nଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « ¡Acertaste por completo! El número secreto era exactamente el *${winningNumber}*. »\n\n      • Recompensa :: *+3 Tickets* 🎟️\n      • Total actual :: *${user.tickets} 🎟️*`, [
           { id: `#minijuegos`, text: "🎮 Menú Principal" }
         ], "https://telegra.ph/file/0b2405a761ec8dbb8b6e6.jpg", "¡Adivinanza Correcta!", "+3 Tickets");
       } else {
-        await sendGameMsg(conn, m, `ꕥ 𝖩𝖴𝖦𝖮 𝖠𝖣𝖨𝖵𝖨𝖭𝖠𝖱 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\nଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « Fallaste. Elegiste el *${guess}*, pero el número oculto era el *${winningNumber}*. »`, [
+        await sendJuegoMsg(conn, m, `ꕥ 𝖩𝖴𝖦𝖮 𝖠𝖣𝖨𝖵𝖨𝖭𝖠𝖱 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\nଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « Fallaste. Elegiste el *${guess}*, pero el número oculto era el *${winningNumber}*. »`, [
           { id: `#adivinar 3`, text: "🔄 Intentar con 3" },
           { id: `#minijuegos`, text: "🎮 Menú Principal" }
         ], "https://telegra.ph/file/0b2405a761ec8dbb8b6e6.jpg", "Fallaste el Número", "Sigue intentando");

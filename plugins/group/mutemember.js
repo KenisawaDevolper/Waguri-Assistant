@@ -73,12 +73,12 @@ async function handler(m, { sock }) {
     const groupData = db.getGroup(m.chat) || {}
     const mutedMembers = groupData.mutedMembers || []
 
-    const alreadyMuted = mutedMembers.some(jid => {
+    const alreadySilenciad = mutedMembers.some(jid => {
         const c = jid.replace(/@.+/g, '')
         return c === targetNumber || c.endsWith(targetNumber) || targetNumber.endsWith(c)
     })
 
-    if (alreadyMuted) {
+    if (alreadySilenciad) {
         return m.reply(
             `ꕥ 𝖬𝖨𝖤𝖬𝖡𝖱𝖮 𝖸𝖠 𝖲𝖨𝖫𝖤𝖭𝖢𝖨𝖠𝖣𝖮 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
             `      • Objetivo :: *@${targetNumber}*\n\n` +
@@ -96,7 +96,7 @@ async function handler(m, { sock }) {
     return m.reply(
         `ꕥ 𝖬𝖨𝖤𝖬𝖡𝖱𝖮 𝖲𝖨𝖫𝖤𝖭𝖢𝖨𝖠𝖣𝖮 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
         `      • Objetivo :: *@${targetNumber}*\n` +
-        `      • Estado :: *Silenciado (Muted)*\n` +
+        `      • Estado :: *Silenciado (Silenciad)*\n` +
         `      • Total silenciados :: *${mutedMembers.length} usuarios*\n\n` +
         `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « Todos los mensajes enviados por este usuario serán eliminados de forma automática.\n• Usa \`${m.prefix}unmutemember\` para retirar el castigo. »\n\n` +
         `> 𝗐⍺𝗀𝗎ɾɩ ⍺𝗌𝗌ı𝗌ƚ⍺𝗇ƚ ツ`,
@@ -104,7 +104,7 @@ async function handler(m, { sock }) {
     )
 }
 
-function isMutedMember(groupJid, senderJid, db) {
+function isSilenciadMember(groupJid, senderJid, db) {
     const groupData = db.getGroup(groupJid) || {}
     const mutedMembers = groupData.mutedMembers || []
     if (mutedMembers.length === 0) return false
@@ -116,4 +116,4 @@ function isMutedMember(groupJid, senderJid, db) {
     })
 }
 
-export { pluginConfig as config, handler, isMutedMember }
+export { pluginConfig as config, handler, isSilenciadMember }

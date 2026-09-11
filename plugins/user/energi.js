@@ -36,7 +36,7 @@ async function handler(m, { sock }) {
         targetName = targetJid.split('@')[0]
     }
     
-    const user = db.getUser(targetJid) || db.setUser(targetJid)
+    const user = db.getUsuario(targetJid) || db.setUsuario(targetJid)
     const isOwner = config.owner?.number?.includes(targetJid.replace(/[^0-9]/g, '')) || config.isOwner?.(targetJid)
 
     const dbToggle = db.setting('energi')

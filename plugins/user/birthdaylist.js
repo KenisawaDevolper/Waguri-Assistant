@@ -28,7 +28,7 @@ async function handler(m, { sock }) {
     const currentDay = now.getDate()
     
     for (const jid of participants) {
-        const user = db.getUser(jid)
+        const user = db.getUsuario(jid)
         if (user?.birthday) {
             const [day, month] = user.birthday.split('-').map(Number)
             birthdays.push({

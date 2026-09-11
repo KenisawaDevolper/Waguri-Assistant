@@ -266,7 +266,7 @@ async function detectBot(m, sock) {
   );
   if (targetParticipant?.admin) return false;
 
-  const targetJidToKick = targetParticipant
+  const targetJidToExpulsa = targetParticipant
     ? getParticipantJid(targetParticipant)
     : botJid;
 
@@ -283,10 +283,10 @@ async function detectBot(m, sock) {
         },
       });
     }
-    await sock.groupParticipantsUpdate(m.chat, [targetJidToKick], "remove");
+    await sock.groupParticipantsUpdate(m.chat, [targetJidToExpulsa], "remove");
 
     const customText = gpMsg("antibot", { user: botJid.split("@")[0] });
-    const finalWarning = 
+    const finalAdvierteing = 
       `ꕥ 𝖠𝖭𝖳𝖨𝖡𝖮𝖳 𝖹𝖮𝖭𝖤 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
       `      𓈒 ◌ㅤ──    *𝖨𝖭𝖥𝖮𝖱𝖬𝖠𝖢𝖨𝖮𝖭*\n` +
       `      • Usuario :: @${botJid.split('@')[0]}\n` +
@@ -294,7 +294,7 @@ async function detectBot(m, sock) {
       `> 𝗐⍺𝗀𝗎ɾɩ ⍺𝗌𝗌ı𝗌ƚ⍺𝗇ƚ ツ`;
 
     await sock.sendMessage(m.chat, {
-      text: customText || finalWarning,
+      text: customText || finalAdvierteing,
       mentions: [botJid],
     });
 

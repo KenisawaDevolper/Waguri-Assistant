@@ -206,7 +206,7 @@ function buildSuccessRewardBlock(alreadyClaimedReward) {
   return `> [RECOMPENSAS APLICADAS]\n> - Monedas: +${rewards.koin.toLocaleString("es-ES")}\n> - Energía: +${rewards.energi}\n> - Experiencia: +${rewards.exp.toLocaleString("es-ES")} XP`;
 }
 
-function buildUserDataBlock(name, age, gender) {
+function buildUsuarioDataBlock(name, age, gender) {
   return (
     `> [DATOS DEL PERFIL]\n` +
     `> Nombre: *${name || "-"}*\n` +
@@ -215,7 +215,7 @@ function buildUserDataBlock(name, age, gender) {
   );
 }
 
-function buildWelcomeMessage(user, registrationRequired, prefix) {
+function buildBienvenidaMessage(user, registrationRequired, prefix) {
   const benefits = [
     `Los datos de tu cuenta se guardarán de forma segura.`,
     `${buildRewardPreview(user)}`,
@@ -252,7 +252,7 @@ function buildConfirmationPrompt(session, user) {
     `## ꕥ *W⍺gurı 𝖠ssı𝗌ƚ⍺nƚ* (*ᴗ͈ˬᴗ͈)ꕤ\n` +
     `> 𝖢𝖮𝖭𝖥𝖨𝖱𝖬𝖠𝖢𝖨Ó𝖭 𝖣𝖤 𝖣𝖠𝖳𝖮𝖲 (4/4)\n\n` +
     `> ¿Los siguientes datos son correctos?\n\n` +
-    `${buildUserDataBlock(session.name, session.age, session.gender)}\n\n` +
+    `${buildUsuarioDataBlock(session.name, session.age, session.gender)}\n\n` +
     `${buildConfirmationRewardBlock(user)}\n\n` +
     `> Si hay algún error, puedes modificar cada sección.\n\n` +
     `> Responde a este mensaje con:\n` +
@@ -268,7 +268,7 @@ function buildConfirmationPrompt(session, user) {
 
 async function handler(m, { sock }) {
   const db = getDatabase();
-  const user = db.getUser(m.sender);
+  const user = db.getUsuario(m.sender);
 
   if (user?.isRegistered) {
     return m.reply(
@@ -277,7 +277,7 @@ async function handler(m, { sock }) {
       `## ꕥ *W⍺gurı 𝖠ssı𝗌ƚ⍺nƚ* (*ᴗ͈ˬᴗ͈)ꕤ\n` +
       `> 𝖴𝖲𝖴𝖠𝖱𝖨𝖮 𝖸𝖠 𝖱𝖤𝖦𝖨𝖲𝖳𝖱𝖠𝖣𝖮\n\n` +
       `> ¡Ya te encuentras registrado en el sistema!\n\n` +
-      `${buildUserDataBlock(user.regName, user.regAge, user.regGender)}\n\n` +
+      `${buildUsuarioDataBlock(user.regName, user.regAge, user.regGender)}\n\n` +
       `> Para cancelar tu registro utiliza: \`${m.prefix}unreg\`\n\n` +
       `> sɪᴍᴘʟᴇ ᴡʜᴀᴛsᴀᴘᴘ ʙᴏᴛ ツ`,
     );
@@ -299,7 +299,7 @@ async function handler(m, { sock }) {
   const sent = await sendRegistrationPrompt(
     sock,
     m,
-    buildWelcomeMessage(user, getRegistrationRequired(db), m.prefix),
+    buildBienvenidaMessage(user, getRegistrationRequired(db), m.prefix),
     { useImage: true },
   );
 
@@ -433,7 +433,7 @@ async function registrationAnswerHandler(m, sock) {
     session.gender = gender;
     session.step = "confirm";
 
-    const user = db.getUser(m.sender) || {};
+    const user = db.getUsuario(m.sender) || {};
     const sent = await sendRegistrationPrompt(
       sock,
       m,
@@ -462,7 +462,7 @@ async function registrationAnswerHandler(m, sock) {
     session.name = name;
     session.step = "confirm";
 
-    const user = db.getUser(m.sender) || {};
+    const user = db.getUsuario(m.sender) || {};
     const sent = await sendRegistrationPrompt(
       sock,
       m,
@@ -491,7 +491,7 @@ async function registrationAnswerHandler(m, sock) {
     session.age = age;
     session.step = "confirm";
 
-    const user = db.getUser(m.sender) || {};
+    const user = db.getUsuario(m.sender) || {};
     const sent = await sendRegistrationPrompt(
       sock,
       m,
@@ -526,7 +526,7 @@ async function registrationAnswerHandler(m, sock) {
     session.gender = gender;
     session.step = "confirm";
 
-    const user = db.getUser(m.sender) || {};
+    const user = db.getUsuario(m.sender) || {};
     const sent = await sendRegistrationPrompt(
       sock,
       m,
@@ -628,21 +628,21 @@ async function registrationAnswerHandler(m, sock) {
       return true;
     }
 
-    const currentUser = db.getUser(m.sender) || {};
+    const currentUsuario = db.getUsuario(m.sender) || {};
     const rewards = getRegistrationRewards();
-    const alreadyClaimedReward = Boolean(currentUser.hasClaimedRegisterReward);
+    const alreadyClaimedReward = Boolean(currentUsuario.hasClaimedRegisterReward);
     const now = new Date().toISOString();
-    const registrationCount = Number(currentUser.registrationCount || 0) + 1;
+    const registrationCount = Number(currentUsuario.registrationCount || 0) + 1;
     const finalName = session.name;
     const finalAge = session.age;
     const finalGender = session.gender;
 
-    db.setUser(m.sender, {
+    db.setUsuario(m.sender, {
       isRegistered: true,
       regName: finalName,
       regAge: finalAge,
       regGender: finalGender,
-      registeredAt: currentUser.registeredAt || now,
+      registeredAt: currentUsuario.registeredAt || now,
       lastRegisteredAt: now,
       registrationCount,
       hasClaimedRegisterReward: true,
@@ -667,7 +667,7 @@ async function registrationAnswerHandler(m, sock) {
           `## ꕥ *W⍺gurı 𝖠ssı𝗌ƚ⍺nƚ* (*ᴗ͈ˬᴗ͈)ꕤ\n` +
           `> 𝖱𝖤𝖦𝖨𝖲𝖳𝖱𝖮 𝖤𝚇𝖨𝖳𝖮𝖲𝖮\n\n` +
           `> ¡Bienvenido al sistema, *${finalName}*!\n\n` +
-          `${buildUserDataBlock(finalName, finalAge, finalGender)}\n\n` +
+          `${buildUsuarioDataBlock(finalName, finalAge, finalGender)}\n\n` +
           `${buildSuccessRewardBlock(alreadyClaimedReward)}\n\n` +
           `> ¡Ya puedes disfrutar de todas las características del bot!\n\n` +
           `> sɪᴍᴘʟᴇ ᴡʜᴀᴛsᴀᴘᴘ ʙᴏᴛ ツ`,

@@ -47,7 +47,7 @@ async function handler(m, { sock }) {
                 const groupInfo = await sock.groupGetInviteInfo(linkMatch[1])
                 targetGroup = groupInfo.id
             } catch (e) {
-                return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Link grup tidak valid atau sudah expired!`)
+                return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Link grup no valid atau sudah expired!`)
             }
         } else if (arg.includes('@g.us')) {
             targetGroup = arg
@@ -63,7 +63,7 @@ async function handler(m, { sock }) {
     }
     
     if (targetNumbers.length === 0) {
-        return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Masukkan nomor yang valid!`)
+        return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Ingresa nomor yang valid!`)
     }
     
     if (!targetGroup) {
@@ -163,9 +163,9 @@ async function handler(m, { sock }) {
         m.react('❌')
         
         if (error.message?.includes('not-authorized')) {
-            await m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Bot tidak memiliki izin untuk menambah member!`)
+            await m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Bot no memiliki izin untuk menambah member!`)
         } else if (error.message?.includes('forbidden')) {
-            await m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Bot tidak memiliki akses ke grup ini!`)
+            await m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Bot no memiliki akses ke grup ini!`)
         } else {
             m.reply(te(m.prefix, m.command, m.pushName))
         }

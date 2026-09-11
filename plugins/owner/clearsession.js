@@ -4,7 +4,7 @@ let handler = async (m, {
     conn
 }) => {
     const ootaedit = await conn.sendMessage(m.chat, {
-        text: "Wait.... Sessions Mau Di Hapus!"
+        text: "Wait.... Sessions Mau Di Elimina!"
     }, {
         quoted: m
     });
@@ -35,7 +35,7 @@ let handler = async (m, {
         })
         await sleep(2000)
         await conn.sendMessage(m.chat, {
-            text: `🖐️Wait... Sessions Mau Di Hapus!!`,
+            text: `🖐️Wait... Sessions Mau Di Elimina!!`,
             edit: ootaedit.key
         }, {
             quoted: m
@@ -45,7 +45,7 @@ let handler = async (m, {
         });
         await sleep(2000)
         await conn.sendMessage(m.chat, {
-            text: `✅ Oke Sessions Udah Di Hapus!!`,
+            text: `✅ Oke Sessions Udah Di Elimina!!`,
             edit: ootaedit.key
         }, {
             quoted: m

@@ -20,14 +20,14 @@ const pluginConfig = {
 async function handler(m, { sock }) {
     const db = getDatabase()
     
-    let targetUser = null
+    let targetUsuario = null
     if (m.quoted) {
-        targetUser = m.quoted.sender
+        targetUsuario = m.quoted.sender
     } else if (m.mentionedJid && m.mentionedJid.length > 0) {
-        targetUser = m.mentionedJid[0]
+        targetUsuario = m.mentionedJid[0]
     }
     
-    if (!targetUser) {
+    if (!targetUsuario) {
         return m.reply(
             `ꕥ 𝖲𝖨𝖭 𝖮𝖡𝖩𝖤𝖳𝖨𝖵𝖮 𝖣𝖤𝖲𝖨𝖦𝖭𝖠𝖣𝖮 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
             `      • Uso correcto :: \`${m.prefix}resetwarn @user\` o responde a su mensaje\n\n` +
@@ -38,23 +38,23 @@ async function handler(m, { sock }) {
     
     let groupData = db.getGroup(m.chat) || {}
     let warnings = groupData.warnings || {}
-    const maxWarns = groupData.maxWarnings || 3
+    const maxAdviertes = groupData.maxAdvierteings || 3
     
-    const targetName = targetUser.split('@')[0]
+    const targetName = targetUsuario.split('@')[0]
     
-    if (!warnings[targetUser] || warnings[targetUser].length === 0) {
+    if (!warnings[targetUsuario] || warnings[targetUsuario].length === 0) {
         return m.reply(
             `ꕥ 𝖲𝖨𝖭 𝖠𝖣𝖵𝖤𝖱𝖳𝖤𝖭𝖢𝖨𝖠𝖲 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
             `      • Usuario :: *@${targetName}*\n` +
             `      • Estado :: *0 advertencias registradas*\n\n` +
             `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « El miembro seleccionado no cuenta con historial de warns activos en este grupo. »\n\n` +
             `> 𝗐⍺𝗀𝗎ɾɩ ⍺𝗌𝗌ı𝗌ƚ⍺𝗇ƚ ツ`,
-            { mentions: [targetUser] }
+            { mentions: [targetUsuario] }
         )
     }
     
-    const prevCount = warnings[targetUser].length
-    delete warnings[targetUser]
+    const prevCount = warnings[targetUsuario].length
+    delete warnings[targetUsuario]
     db.setGroup(m.chat, { ...groupData, warnings: warnings })
     
     try { await m.react('✅'); } catch {}
@@ -62,11 +62,11 @@ async function handler(m, { sock }) {
     return m.reply(
         `ꕥ 𝖶𝖠𝖱𝖭𝖲 𝖱𝖤𝖲𝖳𝖠𝖴𝖱𝖠𝖣𝖮𝖲 ｡ﾟ+.ღ(ゝ◡ ⚈᷀᷁ღ)\n\n` +
         `      • Objetivo :: *@${targetName}*\n` +
-        `      • Historial previo :: *${prevCount}/${maxWarns}*\n` +
-        `      • Estado actual :: *0/${maxWarns}*\n\n` +
+        `      • Historial previo :: *${prevCount}/${maxAdviertes}*\n` +
+        `      • Estado actual :: *0/${maxAdviertes}*\n\n` +
         `ଘ៸៸᳐⦁⩊⦁៸៸᳐ଓ « Se han limpiado todas las advertencias del usuario exitosamente. »\n\n` +
         `> 𝗐⍺𝗀𝗎ɾɩ ⍺𝗌𝗌ı𝗌ƚ⍺𝗇ƚ ツ`,
-        { mentions: [targetUser] }
+        { mentions: [targetUsuario] }
     )
 }
 

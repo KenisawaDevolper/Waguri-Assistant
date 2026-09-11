@@ -60,7 +60,7 @@ function saveCariñoList(characters) {
 }
 
 async function handler(m, { sock, args, prefix, command }) {
-    // 🔥 FIX: Ambil args dari m.text atau m.args
+    // 🔥 FIX: Obtiene args dari m.text atau m.args
     let commandArgs = [];
     
     // Coba ambil dari m.args dulu
@@ -69,7 +69,7 @@ async function handler(m, { sock, args, prefix, command }) {
     } 
     // Kalo gak ada, ambil dari m.text
     else if (m.text) {
-        // Hapus prefix dan command dari text
+        // Elimina prefix dan command dari text
         const textWithoutCommand = m.text.replace(new RegExp(`^${prefix}${command}`), '').trim();
         // Pisahin berdasarkan spasi tapi perhatikan kutipan
         commandArgs = textWithoutCommand.match(/(?:[^\s"']+|"[^"]*"|'[^']*')/g) || [];

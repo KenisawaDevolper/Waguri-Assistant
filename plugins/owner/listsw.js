@@ -12,7 +12,7 @@ const handler = async (m, {
 
     const list = conn.story || [];
     if (list.length === 0) {
-        return await conn.reply(m.chat, `No ada cerita yang tersedia saat ini. Silakan tambahkan cerita dengan mengirim gambar, video, atau pesan suara.`, m, {
+        return await conn.reply(m.chat, `No ada cerita yang tersedia saat ini. Silakan tambahkan cerita con mengirim gambar, video, atau pesan suara.`, m, {
             mentions: [m.sender]
         });
     }
@@ -24,8 +24,8 @@ const handler = async (m, {
             caption
         } = obj;
         const messageType = convertMessageType(type);
-        const senderUsername = sender.split('@')[0];
-        let text = `*${index + 1}.* ${messageType.toUpperCase()} - @${senderUsername}`;
+        const senderUsuarioname = sender.split('@')[0];
+        let text = `*${index + 1}.* ${messageType.toUpperCase()} - @${senderUsuarioname}`;
         if (caption) text += `\n${caption}`;
         return text + `\n`;
     };
@@ -36,7 +36,7 @@ const handler = async (m, {
         key
     } = await conn.reply(
         m.chat,
-        `👁️‍🗨️ Daftar Story:\n\n${formattedMessages}\n\nBalas pesan ini dengan nomor cerita yang ingin ditampilkan.`,
+        `👁️‍🗨️ Daftar Story:\n\n${formattedMessages}\n\nBalas pesan ini con nomor cerita yang ingin ditampilkan.`,
         m, {
             contextInfo: {
                     mentionedJid: [m.sender]

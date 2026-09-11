@@ -22,7 +22,7 @@ async function handler(m, { sock }) {
     const isVideo = m.type === 'videoMessage' || (m.quoted && m.quoted.type === 'videoMessage')
     
     if (!isVideo) {
-        return m.reply(`🎬 *ɢᴀɴᴛɪ ᴏᴜʀɪɴ.ᴍᴘ4*\n\n> Kirim/reply video untuk mengganti\n> File: assets/video/rimuru.mp4`)
+        return m.reply(`🎬 *ɢᴀɴᴛɪ ᴏᴜʀɪɴ.ᴍᴘ4*\n\n> Envía/reply video untuk mengganti\n> File: assets/video/rimuru.mp4`)
     }
     
     try {
@@ -40,7 +40,7 @@ async function handler(m, { sock }) {
         await m.reply(`⏳ Sedang mengupload gambar...`)
         try {
             const newUrl = await updateAssetUrl('rimuru-mp4', buffer, 'rimuru.mp4')
-            m.reply(`✅ *ʙᴇʀʜᴀsɪʟ*\n\n> File rimuru.mp4 telah diganti ke URL baru:\n> ${newUrl}\n> Config telah diupdate secara realtime!`)
+            m.reply(`✅ *ʙᴇʀʜᴀsɪʟ*\n\n> File rimuru.mp4 telah diganti ke URL baru:\n> ${newUrl}\n> Config telah diupdate de forma realtime!`)
         } catch (e) {
             m.reply(`❌ Error mengupload file: ${e.message}`)
         }

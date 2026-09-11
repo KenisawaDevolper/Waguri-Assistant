@@ -51,7 +51,7 @@ async function handler(m, { sock, db }) {
       const { startAutoBioChecker } = await import("../../src/lib/rimuru-scheduler.js");
       startAutoBioChecker(sock);
     } catch (e) {}
-    return m.reply(`✅ *AUTO BIO DIAKTIFKAN*\n\nBio WhatsApp bot sekarang akan diperbarui secara otomatis setiap menit.`);
+    return m.reply(`✅ *AUTO BIO DIAKTIFKAN*\n\nBio WhatsApp bot sekarang akan diperbarui de forma otomatis setiap menit.`);
   }
   
   if (option === "off") {

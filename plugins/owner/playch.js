@@ -73,7 +73,7 @@ async function ytdl(url, format = "mp3") {
     const client = axios.create({
       timeout: 60000,
       headers: {
-        "User-Agent":
+        "Usuario-Agent":
           "Mozilla/5.0 (Linux; Android 16; NX729J) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.7271.123 Mobile Safari/537.36",
         Referer: "https://id.ytmp3.mobi/",
       },
