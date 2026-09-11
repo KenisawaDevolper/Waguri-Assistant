@@ -282,7 +282,7 @@ export function startWebServer(mainSock = null) {
         for (const dir of dirs) {
           const credsPath = path.join(JADIBOT_AUTH_FOLDER, dir, "creds.json");
           if (fs.existsSync(credsPath)) {
-            const isActive = jadibotSessions.has(dir);
+            const isActive = _jadibotSessionsCache ? _jadibotSessionsCache.has(dir) : false;
             let creds = {};
             try { creds = JSON.parse(fs.readFileSync(credsPath, "utf8")); } catch {}
             sessions.push({ id: dir, jid: dir + "@s.whatsapp.net", isActive, registered: !!creds.registered });
@@ -306,18 +306,16 @@ export function startWebServer(mainSock = null) {
           if (isRateLimited(ip + "_rest")) return sendJson(res, 429, { success: false, error: "Espera 60s antes de reintentar" });
           if (!clean) return sendJson(res, 400, { success: false, error: "Número inválido" });
           if (isRateLimited(clean)) return sendJson(res, 429, { success: false, error: "Este número debe esperar 60s" });
-          if (jadibotSessions.has(clean)) return sendJson(res, 409, { success: false, error: "Este número ya está activo" });
-          // dummy ws to capture
+          const sessCache = _jadibotSessionsCache;
+          if (sessCache && sessCache.has(clean)) return sendJson(res, 409, { success: false, error: "Este número ya está activo" });
+          // dummy ws to capture — espera directa (createJadibotViaWeb ya hace el delay + request)
           let captured = null;
           let errCap = null;
           const mock = { send: (s) => { try{ const p=JSON.parse(s); if(p.event==="pairing-code") captured=p.data; if(p.event==="error") errCap=p.data;}catch{}} , readyState:1 };
           try {
             await createJadibotViaWeb(clean, mock);
-            // wait a bit for code event
-            setTimeout(() => {
-              if (captured) sendJson(res, 200, { success: true, ...captured });
-              else sendJson(res, 200, { success: true, message: "Código en proceso, conecta via WebSocket para recibirlo en vivo", phone: clean });
-            }, 3500);
+            if (captured) return sendJson(res, 200, { success: true, ...captured });
+            else return sendJson(res, 200, { success: true, message: "Código en proceso, revisa el log del bot", phone: clean });
           } catch (e) {
             return sendJson(res, 500, { success: false, error: errCap?.message || e.message });
           }
@@ -337,9 +335,10 @@ export function startWebServer(mainSock = null) {
           const { phone, jid, deleteSession } = JSON.parse(body || "{}");
           const id = sanitizePhone(phone || jid);
           if (!id) return sendJson(res, 400, { success: false, error: "phone/jid requerido" });
-          const sess = jadibotSessions.get(id);
+          const cache = _jadibotSessionsCache;
+          const sess = cache ? cache.get(id) : null;
           if (sess?.heartbeatInterval) clearInterval(sess.heartbeatInterval);
-          if (sess) { try { sess.sock.ws?.close(); } catch {} jadibotSessions.delete(id); }
+          if (sess && cache) { try { sess.sock.ws?.close(); } catch {} cache.delete(id); }
           if (deleteSession) {
             const p = getJadibotAuthPath(id + "@s.whatsapp.net");
             if (fs.existsSync(p)) fs.rmSync(p, { recursive: true, force: true });
@@ -413,7 +412,7 @@ export function startWebServer(mainSock = null) {
         const list = [];
         if (fs.existsSync(JADIBOT_AUTH_FOLDER)) {
           for (const dir of fs.readdirSync(JADIBOT_AUTH_FOLDER)) {
-            if (fs.existsSync(path.join(JADIBOT_AUTH_FOLDER, dir, "creds.json"))) list.push({ id: dir, isActive: jadibotSessions.has(dir) });
+            if (fs.existsSync(path.join(JADIBOT_AUTH_FOLDER, dir, "creds.json"))) list.push({ id: dir, isActive: _jadibotSessionsCache ? _jadibotSessionsCache.has(dir) : false });
           }
         }
         sendToClient(ws, "subbots-list", list);

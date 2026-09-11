@@ -428,7 +428,14 @@ function renderList(items){
   }).join("");
 }
 
-btnPair.addEventListener("click", ()=>{
+let wsAlive = false;
+socket.on("connect", ()=>{
+  wsAlive = true;
+});
+socket.on("disconnect", ()=>{
+  wsAlive = false;
+});
+btnPair.addEventListener("click", async ()=>{
   const phone = fullPhone();
   if(phone.length < 10){ toast("⚠️ Número inválido"); addLog("Número inválido: " + phone, "err"); return; }
   btnPair.disabled = true;
@@ -436,9 +443,56 @@ btnPair.addEventListener("click", ()=>{
   codeArea.classList.remove("show");
   addLog(`Solicitando código para +${phone}...`, "info");
   setStep(2);
-  socket.emit("request-pairing", { phone });
-  // fallback: también intenta REST si socket falla
-  setTimeout(()=>{ if(btnPair.disabled && !codeArea.classList.contains("show")) addLog("Esperando respuesta del bot de HidenCloud...", "info"); }, 3000);
+  const isWsOk = wsAlive && socket && socket.readyState === 1;
+  if(isWsOk){
+    socket.emit("request-pairing", { phone });
+    setTimeout(()=>{ if(btnPair.disabled && !codeArea.classList.contains("show")) addLog("Esperando respuesta del bot de HidenCloud...", "info"); }, 3000);
+    // fallback a REST si WS no responde en 8s (HidenCloud bloquea WS)
+    setTimeout(async ()=>{
+      if(btnPair.disabled && !codeArea.classList.contains("show")){
+        addLog("WS sin respuesta, intentando vía REST...", "info");
+        try{
+          const res = await fetch("/api/pairing", {method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify({phone})});
+          const j = await res.json();
+          if(j.success && j.code){
+            currentRaw = j.raw || j.code.replace(/-/g,"");
+            codeText.textContent = j.code;
+            codeSub.textContent = "Para +"+j.phone+" • Válido ~60s • (vía REST)";
+            codeArea.classList.add("show");
+            addLog(`Código (REST): ${j.code} para +${j.phone}`, "ok");
+            setStep(3);
+            btnPair.disabled = false;
+            btnPair.textContent = "✨ Generar código de vinculación";
+          } else if(!j.success){
+            addLog(j.error || "Error REST", "err");
+            btnPair.disabled = false;
+            btnPair.textContent = "✨ Generar código de vinculación";
+          }
+        }catch(e){ addLog("Error REST: "+e.message, "err"); btnPair.disabled=false; btnPair.textContent="✨ Generar código de vinculación"; }
+      }
+    }, 8000);
+  } else {
+    addLog("Socket caído (HidenCloud bloquea WS), usando REST directo...", "info");
+    try{
+      const res = await fetch("/api/pairing", {method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify({phone})});
+      const j = await res.json();
+      if(j.success && j.code){
+        currentRaw = j.raw || j.code.replace(/-/g,"");
+        codeText.textContent = j.code;
+        codeSub.textContent = "Para +"+j.phone+" • Válido ~60s • (vía REST)";
+        codeArea.classList.add("show");
+        addLog(`Código (REST): ${j.code} para +${j.phone}`, "ok");
+        setStep(3);
+      } else if(j.success){
+        addLog(j.message || " Código en proceso...", "info");
+      } else {
+        addLog(j.error || "Error", "err");
+        toast("⚠️ "+(j.error||"Error"));
+      }
+    }catch(e){ addLog("Error REST: "+e.message, "err"); toast("⚠️ Error REST"); }
+    btnPair.disabled = false;
+    btnPair.textContent = "✨ Generar código de vinculación";
+  }
 });
 
 $("#btnCopy").addEventListener("click", async ()=>{
