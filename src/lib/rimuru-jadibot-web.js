@@ -428,6 +428,19 @@ export function startWebServer(mainSock = null) {
   server.listen(WEB_PORT, "0.0.0.0", () => {
     logger.success("WEB", `Panel Waguri activo en http://0.0.0.0:${WEB_PORT} 🌸`);
     logger.info("WEB", `API: http://0.0.0.0:${WEB_PORT}/api/health | WebSocket ws://0.0.0.0:${WEB_PORT}/ws listo`);
+    // --- URL pública de HidenCloud para probar la web de SubBots ---
+    const publicUrl = process.env.PUBLIC_URL || process.env.SERVER_URL || process.env.EXTERNAL_URL || process.env.WEB_PUBLIC_URL || "";
+    const serverId = process.env.SERVER_ID || process.env.PTERODACTYL_UUID || process.env.HOSTNAME || "";
+    if (publicUrl) {
+      logger.success("WEB", `🌐 URL pública HidenCloud: ${publicUrl} 🌸`);
+      logger.info("WEB", `🔗 Prueba tu panel SubBots en: ${publicUrl} | WS: ${publicUrl.replace(/^http/, "ws")}/ws`);
+    } else {
+      // Fallback explicativo para HidenCloud Free Panel
+      logger.success("WEB", `🌐 Panel listo — pruébalo en HidenCloud 🌸`);
+      logger.info("WEB", `👉 En HidenCloud ve a tu servidor → "Network" / "Ports" → abre el link del puerto ${WEB_PORT}`);
+      logger.info("WEB", `👉 O usa: https://freepanel.hidencloud.com/server/${serverId || "TU_ID"} → puerto ${WEB_PORT} → http://0.0.0.0:${WEB_PORT}`);
+      logger.info("WEB", `💡 Tip: configura PUBLIC_URL en Variables (ej: https://tu-dominio.hidencloud.com) para ver la URL real aquí`);
+    }
     if (WEB_API_KEY) logger.warn("WEB", `API protegida con WEB_API_KEY`);
     if (!fs.existsSync(publicPath)) logger.warn("WEB", `Carpeta public no encontrada en ${publicPath}`);
   });
