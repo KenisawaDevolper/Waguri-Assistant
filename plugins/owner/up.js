@@ -297,9 +297,29 @@ temp/
   const upstreamCheck = await runGit(`git rev-parse --abbrev-ref --symbolic-full-name @{u}`, cwdEffective);
   const hasUpstream = upstreamCheck.ok;
 
-  const pushCmd = hasUpstream ? `git push origin ${branch}` : `git push -u origin ${branch}`;
-  const pushRes = await runGit(pushCmd, cwdEffective);
+  let pushCmd = hasUpstream ? `git push origin ${branch}` : `git push -u origin ${branch}`;
+  let pushRes = await runGit(pushCmd, cwdEffective);
   logs.push(`$ ${pushCmd}\n${sanitizeOutput(pushRes.out, 1200)}`);
+
+  // Si falla por fetch first (divergencia), hacer pull --rebase y reintentar push automáticamente
+  if (!pushRes.ok && pushRes.out.toLowerCase().includes("fetch first")) {
+    logs.push("⚠ Divergencia detectada, haciendo pull --rebase...");
+    const fetchRes = await runGit("git fetch origin", cwdEffective);
+    logs.push(`$ git fetch origin\n${sanitizeOutput(fetchRes.out, 500)}`);
+    const rebaseRes = await runGit(`git pull --rebase origin ${branch}`, cwdEffective);
+    logs.push(`$ git pull --rebase origin ${branch}\n${sanitizeOutput(rebaseRes.out, 1200)}`);
+    if (rebaseRes.ok || rebaseRes.out.includes("Already up to date") || rebaseRes.out.includes("Successfully rebased")) {
+      pushRes = await runGit(pushCmd, cwdEffective);
+      logs.push(`$ ${pushCmd} (retry)\n${sanitizeOutput(pushRes.out, 1200)}`);
+    } else {
+      // si rebase falla por conflictos, intentar abort y hacer merge
+      await runGit("git rebase --abort 2>/dev/null || true", cwdEffective);
+      const mergeRes = await runGit(`git pull origin ${branch} --no-rebase 2>&1 || git merge origin/${branch} 2>&1 || true`, cwdEffective);
+      logs.push(`$ git pull merge fallback\n${sanitizeOutput(mergeRes.out, 800)}`);
+      pushRes = await runGit(pushCmd, cwdEffective);
+      logs.push(`$ ${pushCmd} (retry2)\n${sanitizeOutput(pushRes.out, 1200)}`);
+    }
+  }
 
   if (!pushRes.ok) {
     // analizar errores comunes
@@ -308,7 +328,7 @@ temp/
     if (outLower.includes("authentication") || outLower.includes("could not read username") || outLower.includes("permission denied") || outLower.includes("403") || outLower.includes("401")) {
       hint = `\n\n💡 *Pista Auth:*\n> Usa un Personal Access Token (PAT) en la URL:\n\`https://TOKEN@github.com/USUARIO/REPO.git\`\n> O configura credential helper.\n> Ej: \`.up https://ghp_xxx@github.com/USUARIO/REPO.git\``;
     } else if (outLower.includes("failed to push") && outLower.includes("fetch first")) {
-      hint = `\n\n💡 *Pista:*\n> El remote tiene cambios que no tienes local. Haz:\n\`git pull --rebase origin ${branch}\` y luego \`.up\``;
+      hint = `\n\n💡 *Pista:*\n> Conflicto persiste. En HidenCloud Console haz:\n\`git fetch origin && git rebase origin/${branch}\` o \`git reset --hard origin/${branch}\` (perderás cambios locales no pusheados)`;
     } else if (outLower.includes("src refspec") && outLower.includes("does not match")) {
       hint = `\n\n💡 *Pista:*\n> No hay commits aún. Asegúrate de haber hecho commit.`;
     }
