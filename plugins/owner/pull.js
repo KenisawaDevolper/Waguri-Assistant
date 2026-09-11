@@ -22,9 +22,18 @@ const pluginConfig = {
   isEnabled: true,
 };
 
+function redactToken(str) {
+  if (!str) return str;
+  // Oculta https://TOKEN@github.com -> https://***@github.com y ghp_xxx
+  return String(str)
+    .replace(/https:\/\/[^@\s]+@/g, "https://***@")
+    .replace(/ghp_[A-Za-z0-9_]+/g, "***")
+    .replace(/github_pat_[A-Za-z0-9_]+/g, "***");
+}
+
 function sanitizeOutput(str, max = 3500) {
   if (!str) return "";
-  let s = String(str).trim();
+  let s = redactToken(String(str).trim());
   if (s.length > max) s = s.slice(0, max) + "\n... (truncated)";
   return s;
 }
@@ -93,7 +102,7 @@ async function handler(m, { sock }) {
   await runGit("git branch -M main 2>/dev/null || true", cwdEffective);
 
   const remoteCheck = await runGit("git remote -v", cwdEffective);
-  logs.push(`$ git remote -v\n${sanitizeOutput(remoteCheck.out, 600)}`);
+  logs.push(`$ git remote -v\n${sanitizeOutput(redactToken(remoteCheck.out), 600)}`);
   if (!remoteCheck.out.includes("origin")) {
     await m.react("⚠️");
     return m.reply(`⚠️ *Sin remote origin*\n\n> Configura:\n\`git remote add origin https://github.com/KenisawaDevolper/Waguri-Assistant.git\``);

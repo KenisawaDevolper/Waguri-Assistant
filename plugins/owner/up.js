@@ -26,9 +26,17 @@ function isGithubUrl(text) {
   return /github\.com[:\/]/i.test(text) || /^https?:\/\//i.test(text) && text.includes(".git");
 }
 
+function redactToken(str) {
+  if (!str) return str;
+  return String(str)
+    .replace(/https:\/\/[^@\s]+@/g, "https://***@")
+    .replace(/ghp_[A-Za-z0-9_]+/g, "***")
+    .replace(/github_pat_[A-Za-z0-9_]+/g, "***");
+}
+
 function sanitizeOutput(str, max = 3500) {
   if (!str) return "";
-  let s = String(str).trim();
+  let s = redactToken(String(str).trim());
   if (s.length > max) s = s.slice(0, max) + "\n... (truncated)";
   return s;
 }
@@ -351,7 +359,7 @@ temp/
   await m.react("✅");
 
   const lastLog = await runGit("git log --oneline -1", cwdEffective);
-  const remoteUrl = (await runGit("git config --get remote.origin.url", cwdEffective)).out.trim();
+  const remoteUrl = redactToken((await runGit("git config --get remote.origin.url", cwdEffective)).out.trim());
 
   // Truncar logs para mensaje final
   const shortLogs = logs.slice(-8).join("\n").slice(0, 1500);
