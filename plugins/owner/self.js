@@ -1,7 +1,7 @@
 import config from '../../config.js'
 /**
  * @file plugins/owner/self.js
- * @description Plugin untuk mengaktifkan mode self (hanya owner & bot)
+ * @description Plugin para activar el modo self (solo owner y bot)
  */
 import { getDatabase } from '../../src/lib/rimuru-database.js'
 import te from '../../src/lib/rimuru-error.js'
@@ -9,7 +9,7 @@ const pluginConfig = {
     name: 'self',
     alias: ['selfmode', 'private-mode'],
     category: 'owner',
-    description: 'Mengaktifkan mode self (hanya owner & bot yang bisa akses)',
+    description: 'Activa el modo self (solo owner y bot pueden usarlo) con la estética Waguri Assistant 🔒',
     usage: '.self',
     example: '.self',
     isOwner: true,
@@ -22,27 +22,27 @@ const pluginConfig = {
 };
 
 /**
- * Handler untuk command self
+ * Handler para el comando self
  */
 async function handler(m, { sock }) {
     try {
         const isRealOwner = validateOwner(m);
         if (!isRealOwner) {
-            return await m.reply('🚫 *ᴀᴋsᴇs ᴅɪᴛᴏʟᴀᴋ*\n\n> Hanya owner yang bisa mengubah mode bot!');
+            return await m.reply('🚫 *ᴀᴄᴄᴇsᴏ ᴅᴇɴᴇɢᴀᴅᴏ*\n\n> ¡Solo el owner puede cambiar el modo del bot!');
         }
         const currentMode = config.mode;
         if (currentMode === 'self') {
-            return await m.reply('ℹ️ Bot sudah dalam mode *self*');
+            return await m.reply('ℹ️ El bot ya está en modo *self*');
         }
         config.mode = 'self';
         const db = getDatabase();
         db.setting('botMode', 'self');
         
-        const responseText = `🔒 *ᴍᴏᴅᴇ sᴇʟꜰ ᴀᴋᴛɪꜰ*\n\n` +
-            `> Bot sekarang hanya merespon:\n` +
-            `> • Owner bot\n` +
-            `> • Bot sendiri (fromMe)\n\n` +
-            `_Gunakan .public untuk membuka akses_`;
+        const responseText = `🔒 *ᴍᴏᴅᴏ sᴇʟꜰ ᴀᴄᴛɪᴠᴏ*\n\n` +
+            `> El bot ahora solo responderá a:\n` +
+            `> • Owner del bot\n` +
+            `> • El bot mismo (fromMe)\n\n` +
+            `_Usa .public para abrir el acceso_`;
         await m.reply(responseText);
         console.log(`[Mode] Changed to SELF by ${m.pushName} (${m.sender})`);
     } catch (error) {
@@ -52,7 +52,7 @@ async function handler(m, { sock }) {
 }
 
 /**
- * Validasi owner dengan multiple checks
+ * Validación de owner con múltiples verificaciones
  */
 function validateOwner(m) {
     if (!m.isOwner) return false;

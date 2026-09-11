@@ -2,7 +2,7 @@ const pluginConfig = {
   name: ["arsip", "archive"],
   alias: [],
   category: "owner",
-  description: "Arsipkan/buka arsip chat",
+  description: "Archivar/desarchivar chats con la estética Waguri Assistant 🗂️",
   usage: ".arsip <nomor/reply> atau .arsip buka <nomor>",
   example: ".arsip 628xxx",
   isOwner: true,
@@ -42,11 +42,11 @@ async function handler(m, { sock }) {
       }
       await m.react("✅");
       return m.reply(
-        `📁 *${count} grup diarsipkan*\n\n> Private chat tidak bisa diarsipkan sekaligus (tidak ada daftar chat)`,
+        `📁 *${count} grup diarsipkan*\n\n> Private chat no bisa diarsipkan una vezgus (no ada daftar chat)`,
       );
     } catch (err) {
       global.isFetchingGroups = false;
-      return m.reply(`❌ Gagal: ${err.message}`);
+      return m.reply(`❌ Error: ${err.message}`);
     }
   } else {
     if (m.mentionedJid?.length > 0) {
@@ -64,11 +64,11 @@ async function handler(m, { sock }) {
   if (!targetJid) {
     return m.reply(
       "📁 *ᴀʀsɪᴘ ᴄʜᴀᴛ*\n\n" +
-        "> `.arsip 628xxx` — Arsipkan chat\n" +
-        "> `.arsip` (di private chat) — Arsipkan chat ini\n" +
-        "> `.arsip` (reply pesan) — Arsipkan chat pengirim\n" +
+        "> `.arsip 628xxx` — Archivar chat\n" +
+        "> `.arsip` (en chat privado) — Archivar chat ini\n" +
+        "> `.arsip` (reply pesan) — Archivar chat pengirim\n" +
         "> `.arsip buka 628xxx` — Buka arsip chat\n" +
-        "> `.arsip semua` — Arsipkan semua chat",
+        "> `.arsip semua` — Archivar todos los chats",
     );
   }
 
@@ -82,7 +82,7 @@ async function handler(m, { sock }) {
         : `📂 *ᴀʀsɪᴘ ᴅɪʙᴜᴋᴀ*\n\n> Target: ${target}`,
     );
   } catch (err) {
-    return m.reply(`❌ Gagal: ${err.message}`);
+    return m.reply(`❌ Error: ${err.message}`);
   }
 }
 

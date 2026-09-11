@@ -45,7 +45,7 @@ function extractAllInviteCodes(text) {
 async function joinGroup(sock, inviteCode) {
   try {
     const groupInfo = await sock.groupGetInviteInfo(inviteCode);
-    if (!groupInfo) return { success: false, error: "Tidak dapat mengambil info grup" };
+    if (!groupInfo) return { success: false, error: "No dapat mengambil info grup" };
 
     const botJid = sock.user?.id?.replace(/:.*@/, "@") || "";
     const isMember = groupInfo.participants?.some(
@@ -68,11 +68,11 @@ async function joinGroup(sock, inviteCode) {
       owner: groupInfo.owner?.split("@")[0] || "Unknown",
     };
   } catch (error) {
-    let errorMsg = error.message || "Link tidak valid";
-    if (errorMsg.includes("not-authorized")) errorMsg = "Link sudah tidak valid atau expired";
-    else if (errorMsg.includes("gone") || errorMsg.includes("item-not-found") || errorMsg.includes("404")) errorMsg = "Grup tidak ditemukan (link ngasal/sudah direvoke)";
+    let errorMsg = error.message || "Link no valid";
+    if (errorMsg.includes("not-authorized")) errorMsg = "Link sudah no valid atau expired";
+    else if (errorMsg.includes("gone") || errorMsg.includes("item-not-found") || errorMsg.includes("404")) errorMsg = "Grup no encontrado (link ngasal/sudah direvoke)";
     else if (errorMsg.includes("conflict")) errorMsg = "Bot sudah menjadi member";
-    else errorMsg = "Link tidak valid atau bot dilarang join";
+    else errorMsg = "Link no valid atau bot dilarang join";
     return { success: false, error: errorMsg };
   }
 }
@@ -88,7 +88,7 @@ async function handler(m, { sock }) {
   if (!sourceText) {
     return m.reply(
       `🔗 *Join Grup*\n\n` +
-        `Bot akan join ke grup berdasarkan link invite yang kamu berikan.\n\n` +
+        `El bot se unirá al grupo según el enlace de invitación que proporciones. ✨\n\n` +
         `*PENGGUNAAN:*\n` +
         `> *${m.prefix}join <link>* — Join via link langsung\n` +
         `> *${m.prefix}join* (reply pesan) — Join dari link di pesan yang di-reply\n\n` +
@@ -103,8 +103,8 @@ async function handler(m, { sock }) {
 
   if (inviteCodes.length === 0) {
     return m.reply(
-      `❌ *Tidak Ada Link Grup*\n\n` +
-        `> Bot tidak menemukan link invite grup di pesan tersebut.\n\n` +
+      `❌ *No Ada Link Grup*\n\n` +
+        `> Bot no menemukan link invite grup di pesan tersebut.\n\n` +
         `*Format link yang didukung:*\n` +
         `> *https://chat.whatsapp.com/xxx*\n` +
         `> *https://invite.whatsapp.com/xxx*`
@@ -125,13 +125,13 @@ async function handler(m, { sock }) {
 
     if (!result.success) {
       m.react("❌");
-      return m.reply(`❌ *Gagal Join*\n\n> ${result.error}`);
+      return m.reply(`❌ *Error Join*\n\n> ${result.error}`);
     }
 
     m.react("✅");
     const ctx = saluranCtx();
     return m.reply(
-      `✅ *Berhasil Join!*\n\n` +
+      `✅ *Éxito Join!*\n\n` +
         `> 🏠 Nama: *${result.subject}*\n` +
         `> 👥 Member: *${result.members}*\n` +
         `> 👤 Owner: *${result.owner}*`,
@@ -155,7 +155,7 @@ async function handler(m, { sock }) {
       resultText += `*${i + 1}.* ${result.subject} — ⚠️ Sudah member\n`;
     } else if (result.success) {
       successCount++;
-      resultText += `*${i + 1}.* ${result.subject} — ✅ Berhasil join\n`;
+      resultText += `*${i + 1}.* ${result.subject} — ✅ Éxito join\n`;
     } else {
       failedCount++;
       resultText += `*${i + 1}.* ${inviteCodes[i].substring(0, 12)}... — ❌ ${result.error}\n`;
@@ -168,9 +168,9 @@ async function handler(m, { sock }) {
 
   resultText +=
     `\n*Hasil:*\n` +
-    `> ✅ Berhasil: *${successCount}*\n` +
+    `> ✅ Éxito: *${successCount}*\n` +
     `> ⚠️ Sudah member: *${alreadyCount}*\n` +
-    `> ❌ Gagal: *${failedCount}*\n` +
+    `> ❌ Error: *${failedCount}*\n` +
     `> 📊 Total: *${inviteCodes.length}*`;
 
   m.react(successCount > 0 ? "✅" : "❌");

@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'stopdandeletejadibot',
     alias: ['deletejadibot', 'removejadibot', 'hapusjadibot'],
     category: 'owner',
-    description: 'Stop dan hapus session jadibot user secara permanen',
+    description: 'Gestiona la función stopdandeletejadibot con la estética Waguri Assistant ⚙️',
     usage: '.stopdandeletejadibot @user',
     example: '.stopdandeletejadibot @628xxx',
     isOwner: true,
@@ -32,7 +32,7 @@ async function handler(m, { sock }) {
         const sessions = getAllJadibotSessions()
 
         if (sessions.length === 0) {
-            return m.reply(`❌ Tidak ada session jadibot tersimpan`)
+            return m.reply(`❌ No ada session jadibot tersimpan`)
         }
 
         let txt = `🗑️ *sᴛᴏᴘ & ᴅᴇʟᴇᴛᴇ ᴊᴀᴅɪʙᴏᴛ*\n\n`
@@ -43,7 +43,7 @@ async function handler(m, { sock }) {
             txt += `${status} *${i + 1}.* @${s.id}\n`
         })
 
-        txt += `\n> Contoh: \`${m.prefix}stopdandeletejadibot @628xxx\``
+        txt += `\n> Ejemplo: \`${m.prefix}stopdandeletejadibot @628xxx\``
 
         return sock.sendMessage(m.chat, {
             text: txt,
@@ -56,7 +56,7 @@ async function handler(m, { sock }) {
     const session = sessions.find(s => s.id === id)
 
     if (!session) {
-        return m.reply(`❌ Session jadibot untuk *@${id}* tidak ditemukan`, { mentions: [target] })
+        return m.reply(`❌ Session jadibot untuk *@${id}* no encontrado`, { mentions: [target] })
     }
 
     await m.react('🕕')
@@ -70,7 +70,7 @@ async function handler(m, { sock }) {
             text: `🗑️ *ᴊᴀᴅɪʙᴏᴛ ᴅɪʜᴀᴘᴜs*\n\n` +
                 `> 📱 Nomor: *@${id}*\n` +
                 `> 🗑️ Status: *Deleted*\n\n` +
-                `Session telah dihapus secara permanen.\n` +
+                `Session telah eliminado secara permanen.\n` +
                 `User perlu \`.jadibot\` ulang untuk membuat session baru.`,
             mentions: [target]
         }, { quoted: m })

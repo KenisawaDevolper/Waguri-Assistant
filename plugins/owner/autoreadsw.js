@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'autoreadsw',
     alias: ['autoreadstory', 'readstory', 'bacasw'],
     category: 'owner',
-    description: 'Auto read semua status/story WA',
+    description: 'Lee automáticamente todos los estados/historias de WA con la estética Waguri Assistant 👁️',
     usage: '.autoreadsw on/off',
     example: '.autoreadsw on',
     isOwner: true,
@@ -26,8 +26,8 @@ async function handler(m) {
             `👁️ *ᴀᴜᴛᴏ ʀᴇᴀᴅ sᴛᴏʀʏ*\n\n` +
             `> Status: *${current.enabled ? '✅ ON' : '❌ OFF'}*\n\n` +
             `*ᴄᴀʀᴀ ᴘᴀᴋᴀɪ:*\n` +
-            `> \`${m.prefix}autoreadsw on\` — Aktifkan\n` +
-            `> \`${m.prefix}autoreadsw off\` — Matikan`
+            `> \`${m.prefix}autoreadsw on\` — Activar\n` +
+            `> \`${m.prefix}autoreadsw off\` — Desactivar`
         )
     }
 

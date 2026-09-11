@@ -65,8 +65,8 @@ async function handler(m) {
         return m.reply(
             `🔒 *ᴏɴʟʏᴀᴅᴍɪɴ*\n\n` +
             `> Status: ${current ? '✅ Aktif' : '❌ Nonaktif'}\n\n` +
-            `*Penggunaan:*\n` +
-            `> \`.onlyadmin on\` — Aktifkan\n` +
+            `*Uso:*\n` +
+            `> \`.onlyadmin on\` — Activar\n` +
             `> \`.onlyadmin off\` — Nonaktifkan\n\n` +
             `_Hanya admin grup, owner, dan private chat yang bisa akses bot_`
         )
@@ -96,7 +96,7 @@ async function handler(m) {
         return m.reply('❌ *ᴏɴʟʏᴀᴅᴍɪɴ ɴᴏɴᴀᴋᴛɪꜰ*\n\n> Bot bisa diakses semua orang')
     }
 
-    return m.reply('❌ Argumen tidak valid. Gunakan: `on` atau `off`')
+    return m.reply('❌ Argumen no valid. Gunakan: `on` atau `off`')
 }
 
 export { pluginConfig as config, handler }

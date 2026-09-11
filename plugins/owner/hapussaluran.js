@@ -19,9 +19,9 @@ async function handler(m, { sock }) {
         return m.reply(
             '🗑️ *ʜᴀᴘᴜs sᴀʟᴜʀᴀɴ*\n\n' +
             '> `.hapussaluran <id_saluran>` — Hapus saluran\n\n' +
-            '📝 Contoh:\n' +
+            '📝 Ejemplo:\n' +
             '> `.hapussaluran 120363xxx@newsletter`\n\n' +
-            '⚠️ Saluran akan dihapus secara permanen'
+            '⚠️ Saluran akan eliminado secara permanen'
         )
     }
 
@@ -32,9 +32,9 @@ async function handler(m, { sock }) {
     try {
         await sock.newsletterDelete(targetJid)
         await m.react('✅')
-        return m.reply(`🗑️ *Saluran dihapus*\n\n> ID: ${targetJid}`)
+        return m.reply(`🗑️ *Saluran eliminado*\n\n> ID: ${targetJid}`)
     } catch (err) {
-        return m.reply(`❌ Gagal menghapus saluran: ${err.message}`)
+        return m.reply(`❌ Error menghapus saluran: ${err.message}`)
     }
 }
 

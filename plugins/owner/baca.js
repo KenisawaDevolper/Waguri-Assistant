@@ -2,7 +2,7 @@ const pluginConfig = {
   name: ["baca", "read", "markread"],
   alias: [],
   category: "owner",
-  description: "Tandai pesan sebagai sudah dibaca",
+  description: "Marca mensajes como leídos con la estética Waguri Assistant ✅",
   usage: ".baca",
   example: ".baca",
   isOwner: true,
@@ -17,7 +17,7 @@ async function handler(m, { sock }) {
     await m.react("✅");
     return m.reply("📖 *Pesan ditandai sudah dibaca*");
   } catch (err) {
-    return m.reply(`❌ Gagal: ${err.message}`);
+    return m.reply(`❌ Error: ${err.message}`);
   }
 }
 

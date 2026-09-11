@@ -5,7 +5,7 @@ const config = {
   name: "capprem",
   alias: ["cappremium", "setprem"],
   category: "owner",
-  description: "Mengecap banyak fitur sekaligus menjadi premium",
+  description: "Marca muchas funciones como premium a la vez con la estética Waguri Assistant 💎",
   usage: ".capprem <nama_fitur1> <nama_fitur2> ...",
   example: ".capprem hd jpm warn",
   isOwner: true,
@@ -21,13 +21,13 @@ async function handler(m, { sock }) {
   if (m.args.length === 0) {
     return m.reply(
       `💎 *SISTEM CAP PREMIUM*\n\n` +
-      `Sistem eksklusif untuk mengubah status akses banyak fitur sekaligus menjadi Premium.\n\n` +
+      `Sistem eksklusif untuk mengubah status akses banyak fitur una vezgus menjadi Premium.\n\n` +
       `*PENGGUNAAN:*\n` +
-      `- *${m.prefix}capprem <nama_fitur1> <nama_fitur2> ...* — Bisa banyak sekaligus\n\n` +
+      `- *${m.prefix}capprem <nama_fitur1> <nama_fitur2> ...* — Bisa banyak una vezgus\n\n` +
       `*CONTOH PENGGUNAAN:*\n` +
       `- *${m.prefix}capprem hd jpm warn*\n\n` +
       `*PENJELASAN:*\n` +
-      `Masukkan satu atau lebih nama fitur yang ingin dijadikan Premium. Pisahkan dengan spasi.`
+      `Ingresa satu atau lebih nama fitur yang ingin dijadikan Premium. Pisahkan dengan spasi.`
     );
   }
 
@@ -55,12 +55,12 @@ async function handler(m, { sock }) {
 
   await m.react("✅");
   
-  let msg = `✅ *STATUS BERHASIL DIUBAH*\n\n`;
+  let msg = `✅ *STATUS ÉXITO DIUBAH*\n\n`;
   if (successList.length > 0) {
-    msg += `*Berhasil (PREMIUM 💎):*\n${successList.map(f => `- ${f}`).join("\n")}\n\n`;
+    msg += `*Éxito (PREMIUM 💎):*\n${successList.map(f => `- ${f}`).join("\n")}\n\n`;
   }
   if (failedList.length > 0) {
-    msg += `*Gagal (Tidak ditemukan):*\n${failedList.map(f => `- ${f}`).join("\n")}\n\n`;
+    msg += `*Error (No ditemukan):*\n${failedList.map(f => `- ${f}`).join("\n")}\n\n`;
   }
   
   msg += `_Fitur di atas (yang berhasil) sekarang hanya bisa diakses oleh member Premium._`;

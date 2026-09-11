@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "autobio",
   alias: ["autostatus"],
   category: "owner",
-  description: "Mengatur pembaruan bio WhatsApp bot secara otomatis",
+  description: "Configura la actualización automática de la biografía de WhatsApp del bot con la estética Waguri Assistant ✏️",
   usage: ".autobio on/off\n.autobio <teks>",
   example: ".autobio on\n.autobio Bot by Owner | 🕒 {clock} | ⏳ {runtime}",
   isOwner: true,
@@ -32,8 +32,8 @@ async function handler(m, { sock, db }) {
       `> Teks Bio: ${text}\n\n` +
       `*PENGGUNAAN:*\n` +
       `- *${m.prefix}autobio on/off* — Menyalakan/mematikan fitur\n` +
-      `- *${m.prefix}autobio ganti_setiap <waktu>* — Mengatur interval. Contoh: \`.autobio ganti_setiap 30 detik\` atau \`1 jam\`\n` +
-      `- *${m.prefix}autobio <teks>* — Mengatur teks bio\n\n` +
+      `- *${m.prefix}autobio ganti_setiap <waktu>* — Configurar interval. Ejemplo: \`.autobio ganti_setiap 30 detik\` atau \`1 jam\`\n` +
+      `- *${m.prefix}autobio <teks>* — Configurar teks bio\n\n` +
       `*PLACEHOLDER TERSEDIA:*\n` +
       `- \`{clock}\` — Menampilkan jam saat ini\n` +
       `- \`{runtime}\` — Menampilkan lama bot menyala\n` +
@@ -57,19 +57,19 @@ async function handler(m, { sock, db }) {
   if (option === "off") {
     db.setting("autobio_status", false);
     await m.react("❌");
-    return m.reply(`❌ *AUTO BIO DINONAKTIFKAN*\n\nBio WhatsApp bot tidak akan di-update lagi.`);
+    return m.reply(`❌ *AUTO BIO DINONAKTIFKAN*\n\nBio WhatsApp bot no akan di-update lagi.`);
   }
 
   if (option.startsWith("ganti_setiap")) {
     const timeStr = arg.replace(/ganti_setiap/i, "").trim().toLowerCase();
     if (!timeStr) {
-      return m.reply("❌ *Format Salah*\n\nContoh: `.autobio ganti_setiap 30 detik` atau `1 jam`");
+      return m.reply("❌ *Format Salah*\n\nEjemplo: `.autobio ganti_setiap 30 detik` atau `1 jam`");
     }
 
     let ms = 0;
     const value = parseInt(timeStr);
     if (isNaN(value)) {
-      return m.reply("❌ *Format Salah*\n\nMasukkan angka yang valid. Contoh: `.autobio ganti_setiap 30 detik`");
+      return m.reply("❌ *Format Salah*\n\nIngresa angka yang valid. Ejemplo: `.autobio ganti_setiap 30 detik`");
     }
 
     if (timeStr.includes("d") || timeStr.includes("detik")) ms = value * 1000;
@@ -78,7 +78,7 @@ async function handler(m, { sock, db }) {
     else ms = value * 60000; // default to minutes
 
     if (ms < 10000) {
-      return m.reply("❌ *Gagal*\n\nInterval minimal adalah 10 detik agar tidak terkena spam dari server WhatsApp.");
+      return m.reply("❌ *Error*\n\nInterval minimal adalah 10 detik agar no terkena spam dari server WhatsApp.");
     }
 
     db.setting("autobio_interval", ms);

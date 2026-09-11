@@ -27,11 +27,11 @@ async function handler(m, { sock }) {
             `┃   Reply audio dengan caption\n` +
             `┃   ${m.prefix}upaudioch <teks>\n` +
             `┃\n` +
-            `┃ ✦ *Contoh*\n` +
+            `┃ ✦ *Ejemplo*\n` +
             `┃\n` +
             `┃   ${m.prefix}upaudioch Info terbaru!\n` +
             `┃\n` +
-            `┃ 💗 *Zero Two:* Mau upload audio ke channel apa darling~?\n` +
+            `┃ 💗 *Zero Two:* Mau upload audio ke channel apa cariño~?\n` +
             `╰━━━━━━━━━━━━━━━━━━━━━⬣`
         )
     }
@@ -43,7 +43,7 @@ async function handler(m, { sock }) {
     if (!CHANNEL_ID) {
         return m.reply(
             `❌ *ᴇʀʀᴏʀ*\n\n` +
-            `> ID Saluran tidak ditemukan di config!\n` +
+            `> ID Saluran no encontrado di config!\n` +
             `> Cek bagian \`saluran.id\` di config.js`
         )
     }
@@ -51,17 +51,17 @@ async function handler(m, { sock }) {
     const mime = quoted.mimetype || quoted.msg?.mimetype || ''
     
     if (!/audio/.test(mime)) {
-        return m.reply(`❌ *ᴇʀʀᴏʀ*\n\n> Reply audio/voice note yang mau diupload darling~ 🥺`)
+        return m.reply(`❌ *ᴇʀʀᴏʀ*\n\n> Reply audio/voice note yang mau diupload cariño~ 🥺`)
     }
     
     m.react('💕')
-    await m.reply(`⏳ *ᴘʀᴏᴄᴇꜱꜱɪɴɢ...*\n\n💗 *Zero Two:* Lagi upload audio ke channel darling~ tunggu sebentar yaa 🎵`)
+    await m.reply(`⏳ *ᴘʀᴏᴄᴇꜱꜱɪɴɢ...*\n\n💗 *Zero Two:* Lagi upload audio ke channel cariño~ tunggu sebentar yaa 🎵`)
     
     try {
         const audioBuffer = await quoted.download()
         
         if (!audioBuffer) {
-            throw new Error('Gagal download audio')
+            throw new Error('Error download audio')
         }
         
         await sock.sendMessage(CHANNEL_ID, {
@@ -86,11 +86,11 @@ async function handler(m, { sock }) {
         await m.reply(
             `✅ *ᴜᴘʟᴏᴀᴅ sᴜᴄᴄᴇss*\n\n` +
             `╭━━━━━━━━━━━━━━━━━━━━━⬣\n` +
-            `┃ 🎵 *ᴀᴜᴅɪᴏ*: Berhasil dikirim\n` +
+            `┃ 🎵 *ᴀᴜᴅɪᴏ*: Éxito dikirim\n` +
             `┃ 📢 *ᴄʜᴀɴɴᴇʟ*: ${CHANNEL_ID}\n` +
             `┃ 📝 *ᴘᴇꜱᴀɴ*: ${text}\n` +
             `┃\n` +
-            `┃ 💗 *Zero Two:* Audio sudah terkirim darling~ 🎤\n` +
+            `┃ 💗 *Zero Two:* Audio sudah terkirim cariño~ 🎤\n` +
             `╰━━━━━━━━━━━━━━━━━━━━━⬣`
         )
         
@@ -100,7 +100,7 @@ async function handler(m, { sock }) {
         await m.reply(
             `💔 *ᴇʀʀᴏʀ*\n\n` +
             `> ${err.message}\n\n` +
-            `> Coba lagi ya darling~ 🥺`
+            `> Inténtalo de nuevo, cariño~ 🥺`
         )
     }
 }

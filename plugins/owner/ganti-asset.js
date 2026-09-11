@@ -6,7 +6,7 @@ const pluginConfig = {
     name: 'ganti-asset',
     alias: ['gantiasset', 'setasset'],
     category: 'owner',
-    description: 'All-in-one tools untuk ganti asset secara interaktif',
+    description: 'Herramienta todo-en-uno para cambiar assets de forma interactiva con la estética Waguri Assistant 🎨',
     usage: '.ganti-asset (reply media)',
     example: '.ganti-asset',
     isOwner: true,
@@ -45,13 +45,13 @@ async function handler(m, { sock }) {
         }
 
         if (!buffer) {
-            return m.reply('❌ Gagal mendownload media.');
+            return m.reply('❌ Error mendownload media.');
         }
 
         const assets = config.assets || {};
         const keys = Object.keys(assets);
         if (keys.length === 0) {
-            return m.reply('❌ Tidak ada asset di config.js.');
+            return m.reply('❌ No ada asset di config.js.');
         }
 
         const imageKeys = [];
@@ -149,7 +149,7 @@ async function gantiAssetAnswerHandler(m, sock) {
 
     if (num < 1 || num > session.keys.length) {
         if (m.quoted && m.quoted.fromMe) {
-            await m.reply(`❌ Nomor tidak valid. Pilih antara 1-${session.keys.length}.`);
+            await m.reply(`❌ Nomor no valid. Pilih antara 1-${session.keys.length}.`);
         }
         return false;
     }
@@ -162,19 +162,19 @@ async function gantiAssetAnswerHandler(m, sock) {
     const isFontUpload = session.isFontUpload;
 
     if (session.imageKeys && session.imageKeys.includes(selectedKey) && !isImageUpload) {
-        await m.reply(`❌ Format tidak sesuai!\n> Asset *${selectedKey}* membutuhkan file gambar (Image).`);
+        await m.reply(`❌ Format no sesuai!\n> Asset *${selectedKey}* membutuhkan file gambar (Image).`);
         return true;
     }
     if (session.videoKeys && session.videoKeys.includes(selectedKey) && !isVideoUpload) {
-        await m.reply(`❌ Format tidak sesuai!\n> Asset *${selectedKey}* membutuhkan file video.`);
+        await m.reply(`❌ Format no sesuai!\n> Asset *${selectedKey}* membutuhkan file video.`);
         return true;
     }
     if (session.audioKeys && session.audioKeys.includes(selectedKey) && !isAudioUpload) {
-        await m.reply(`❌ Format tidak sesuai!\n> Asset *${selectedKey}* membutuhkan file audio.`);
+        await m.reply(`❌ Format no sesuai!\n> Asset *${selectedKey}* membutuhkan file audio.`);
         return true;
     }
     if (session.fontKeys && session.fontKeys.includes(selectedKey) && !isFontUpload) {
-        await m.reply(`❌ Format tidak sesuai!\n> Asset *${selectedKey}* membutuhkan file dokumen font (.ttf/.otf).`);
+        await m.reply(`❌ Format no sesuai!\n> Asset *${selectedKey}* membutuhkan file dokumen font (.ttf/.otf).`);
         return true;
     }
 
@@ -189,12 +189,12 @@ async function gantiAssetAnswerHandler(m, sock) {
 
     try {
         const newPath = await updateAssetUrl(selectedKey, session.buffer, filename);
-        await m.reply(`✅ *BERHASIL*\n\n> Asset *${selectedKey}* telah diganti ke:\n> ${newPath}\n> Config telah diupdate secara realtime!`);
+        await m.reply(`✅ *ÉXITO*\n\n> Asset *${selectedKey}* telah diganti ke:\n> ${newPath}\n> Config telah diupdate secara realtime!`);
         delete global.gantiAssetSessions[m.chat];
         await m.react('✅');
     } catch (e) {
         await m.react('❌');
-        await m.reply(`❌ Gagal mengganti asset: ${e.message}`);
+        await m.reply(`❌ Error mengganti asset: ${e.message}`);
     }
 
     return true;

@@ -12,7 +12,7 @@ const handler = async (m, {
 
     const list = conn.story || [];
     if (list.length === 0) {
-        return await conn.reply(m.chat, `Tidak ada cerita yang tersedia saat ini. Silakan tambahkan cerita dengan mengirim gambar, video, atau pesan suara.`, m, {
+        return await conn.reply(m.chat, `No ada cerita yang tersedia saat ini. Silakan tambahkan cerita dengan mengirim gambar, video, atau pesan suara.`, m, {
             mentions: [m.sender]
         });
     }
@@ -70,7 +70,7 @@ handler.before = async (m, {
     const index = parseInt(m.text.trim());
 
     if (isNaN(index) || index < 1 || index > list.length) {
-        await conn.reply(m.chat, "⚠️ Masukkan nomor video yang valid.", m);
+        await conn.reply(m.chat, "⚠️ Ingresa nomor video yang valid.", m);
     } else {
         const selectedObj = list[index - 1];
         if (selectedObj.type === 'imageMessage' || selectedObj.type === 'videoMessage') {

@@ -52,8 +52,8 @@ function handler(m) {
         return m.reply(
             `📋 *DAFTAR SEWA*\n\n` +
             `Status: *${db.db.data.sewa.enabled ? '✅ AKTIF' : '❌ NONAKTIF'}*\n` +
-            `Belum ada grup terdaftar\n\n` +
-            `Tambah dengan: *${m.prefix}addsewa <link> <durasi>*`
+            `Aún no ada grup terdaftar\n\n` +
+            `Añadir dengan: *${m.prefix}addsewa <link> <durasi>*`
         )
     }
 
@@ -81,7 +81,7 @@ function handler(m) {
 
         text += `${status} *${i + 1}. ${data.name || 'Unknown'}*\n`
         text += `   ID: ${gid.split('@')[0]}\n`
-        text += `   Sisa: ${countdown}\n`
+        text += `   Restante: ${countdown}\n`
         text += `   Ditambah: ${addedDate}\n\n`
     }
 

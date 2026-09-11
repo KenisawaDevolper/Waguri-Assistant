@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'stopalljadibot',
     alias: ['stopsemuajadibot', 'killalljadibots'],
     category: 'owner',
-    description: 'Hentikan semua jadibot yang aktif',
+    description: 'Gestiona la función stopalljadibot con la estética Waguri Assistant ⚙️',
     usage: '.stopalljadibot',
     example: '.stopalljadibot',
     isOwner: true,
@@ -20,7 +20,7 @@ async function handler(m, { sock }) {
     const active = getActiveJadibots()
 
     if (active.length === 0) {
-        return m.reply(`❌ Tidak ada jadibot yang aktif`)
+        return m.reply(`❌ No ada jadibot yang aktif`)
     }
 
     await m.react('🕕')

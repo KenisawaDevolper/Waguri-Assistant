@@ -6,7 +6,7 @@ let handler = async (m) => {
     let errorList = []
 
     if (!fs.existsSync(pluginFolder)) {
-        return m.reply('❌ Folder *plugins* tidak ditemukan!')
+        return m.reply('❌ Folder *plugins* no encontrado!')
     }
 
     let files = fs.readdirSync(pluginFolder)
@@ -31,7 +31,7 @@ let handler = async (m) => {
  check error 
 
 ❏ status :
-semua fitur aman tidak ada error
+semua fitur aman no ada error
 `.trim())
     }
 

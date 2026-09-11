@@ -4,7 +4,7 @@ const pluginConfig = {
   name: "onlypc",
   alias: ["onlyprivate", "privateonly"],
   category: "owner",
-  description: "Toggle mode bot hanya di private chat",
+  description: "Alterna el modo del bot solo en chat privado con la estética Waguri Assistant 💬",
   usage: ".onlypc on/off",
   example: ".onlypc on",
   isOwner: true,
@@ -26,7 +26,7 @@ async function handler(m, { sock }) {
       `💬 *Only Private*\n\n` +
         `> Status: *${current ? "Aktif ✅" : "Nonaktif ❌"}*\n\n` +
         `*PENGGUNAAN:*\n` +
-        `> *${m.prefix}onlypc on* — Bot hanya bisa diakses di private chat\n` +
+        `> *${m.prefix}onlypc on* — Bot hanya bisa diakses en chat privado\n` +
         `> *${m.prefix}onlypc off* — Bot bisa diakses di mana saja\n\n` +
         `_Jika aktif, mode Only Group akan otomatis nonaktif_`
     );
@@ -38,7 +38,7 @@ async function handler(m, { sock }) {
     await m.react("✅");
     return m.reply(
       `💬 *Only Private Aktif*\n\n` +
-        `> Bot hanya bisa diakses di private chat\n` +
+        `> Bot hanya bisa diakses en chat privado\n` +
         `> Mode Only Group dinonaktifkan`
     );
   }
@@ -53,7 +53,7 @@ async function handler(m, { sock }) {
   }
 
   return m.reply(
-    `❌ *Opsi Tidak Valid*\n\n> Gunakan *${m.prefix}onlypc on* atau *${m.prefix}onlypc off*`
+    `❌ *Opsi No Valid*\n\n> Gunakan *${m.prefix}onlypc on* atau *${m.prefix}onlypc off*`
   );
 }
 

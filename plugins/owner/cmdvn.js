@@ -3,7 +3,7 @@ const pluginConfig = {
     name: 'cmdvn',
     alias: ['voicecommand', 'vncmd'],
     category: 'owner',
-    description: 'Aktifkan command via voice note',
+    description: 'Activa comandos por nota de voz con la estética Waguri Assistant 🎙️',
     usage: '.cmdvn <on/off>',
     example: '.cmdvn on',
     isOwner: true,
@@ -30,7 +30,7 @@ function handler(m) {
             `> \`${m.prefix}cmdvn on\` — Command via VN\n` +
             `> \`${m.prefix}cmdvn off\` — Command via text (default)\n\n` +
             `> Saat ON, kirim VN berisi nama command\n` +
-            `> Contoh: VN "menu" → trigger .menu`
+            `> Ejemplo: VN "menu" → trigger .menu`
         )
     }
 
@@ -40,7 +40,7 @@ function handler(m) {
             `✅ *ᴄᴍᴅ ᴠɴ ᴀᴋᴛɪꜰ*\n\n` +
             `> Kirim voice note berisi nama command\n` +
             `> Bot akan transkrip dan jalankan otomatis\n` +
-            `> Contoh: VN "menu" → trigger .menu`
+            `> Ejemplo: VN "menu" → trigger .menu`
         )
     }
 

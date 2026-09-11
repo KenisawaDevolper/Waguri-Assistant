@@ -33,8 +33,8 @@ async function handler(m, { sock, store }) {
     if (!code) {
         return m.reply(
             `⚙️ *ᴇᴠᴀʟ*\n\n` +
-            `> Masukkan kode JavaScript!\n\n` +
-            `*Contoh:*\n` +
+            `> Ingresa kode JavaScript!\n\n` +
+            `*Ejemplo:*\n` +
             `> .$ 1 + 1\n` +
             `> .$ m.chat\n` +
             `> .$ db.getUser(m.sender)`

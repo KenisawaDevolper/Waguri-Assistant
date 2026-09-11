@@ -10,7 +10,7 @@ const pluginConfig = {
     name: 'srt',
     alias: ['shufflereplythumb', 'shufflereply'],
     category: 'owner',
-    description: 'Sistem Shuffle Reply Thumb (SRT) untuk reply random image interaktif',
+    description: 'Gestiona la función srt con la estética Waguri Assistant ⚙️',
     usage: '.srt on',
     example: '.srt on',
     isOwner: true,
@@ -45,11 +45,11 @@ async function handler(m, { sock, args }) {
 
         if (action === 'on') {
             db.setting('srtEnabled', true);
-            await m.reply('✅ *FITUR SRT BERHASIL DIAKTIFKAN*\n\nFitur ini telah menyala secara global. Setiap balasan bot yang mendukung *thumbnail* sekarang akan menampilkan gambar secara acak dari dalam folder shuffle yang telah dikumpulkan.');
+            await m.reply('✅ *FITUR SRT ÉXITO DIAKTIFKAN*\n\nFitur ini telah menyala secara global. Setiap balasan bot yang mendukung *thumbnail* sekarang akan menampilkan gambar secara acak dari dalam folder shuffle yang telah dikumpulkan.');
         } 
         else if (action === 'off') {
             db.setting('srtEnabled', false);
-            await m.reply('❌ *FITUR SRT BERHASIL DINONAKTIFKAN*\n\nPenggunaan *thumbnail* acak telah dimatikan. Semua balasan bot akan kembali menggunakan gambar *default* bawaan sistem.');
+            await m.reply('❌ *FITUR SRT ÉXITO DINONAKTIFKAN*\n\nUso *thumbnail* acak telah dimatikan. Semua balasan bot akan kembali menggunakan gambar *default* bawaan sistem.');
         } 
         else if (action === 'c' || action === 'capture') {
             global.srtSession[m.chat] = { sender: m.sender, count: 0 };
@@ -58,7 +58,7 @@ async function handler(m, { sock, args }) {
         } 
         else if (action === 'd' || action === 'done') {
             if (!global.srtSession[m.chat] || global.srtSession[m.chat].sender !== m.sender) {
-                return m.reply('❌ Kamu sedang tidak berada di dalam sesi penangkapan gambar aktif untuk saat ini.');
+                return m.reply('❌ Kamu sedang no berada di dalam sesi penangkapan gambar aktif untuk saat ini.');
             }
             const count = global.srtSession[m.chat].count;
             delete global.srtSession[m.chat];
@@ -66,7 +66,7 @@ async function handler(m, { sock, args }) {
             await m.reply(`✅ *SESI TANGKAPAN GAMBAR SELESAI*\n\nSesi telah dihentikan dan seluruh gambar telah diproses.\n- Total gambar baru yang ditambahkan: *${count}*\n- Total keseluruhan gambar di sistem: *${totalImages}*`);
         } 
         else if (action === 'list') {
-            if (!fs.existsSync(SHUFFLE_DIR)) return m.reply('❌ Belum ada satu pun gambar yang tersimpan di dalam direktori *shuffle*. Silakan lakukan penangkapan gambar terlebih dahulu.');
+            if (!fs.existsSync(SHUFFLE_DIR)) return m.reply('❌ Aún no hay ninguna imagen guardada en el directorio *shuffle*. Por favor captura imágenes primero. 💫');
             const files = fs.readdirSync(SHUFFLE_DIR).filter(f => f.endsWith('.jpg') || f.endsWith('.png') || f.endsWith('.jpeg'));
             if (files.length === 0) return m.reply('❌ Direktori *shuffle* masih kosong. Silakan gunakan perintah tangkapan gambar untuk mulai menambahkan.');
             
@@ -133,7 +133,7 @@ async function handler(m, { sock, args }) {
                     buffer = await m.download();
                 }
             } catch (e) {
-                return m.reply('❌ Gagal mendownload gambar untuk dihapus.');
+                return m.reply('❌ Error al descargar la imagen untuk eliminado.');
             }
 
             if (buffer) {
@@ -143,15 +143,15 @@ async function handler(m, { sock, args }) {
 
                 if (fs.existsSync(filepath)) {
                     fs.unlinkSync(filepath);
-                    await m.reply(`✅ *GAMBAR BERHASIL DIHAPUS*\n\nGambar berhasil dihapus dari database shuffle.`);
+                    await m.reply(`✅ *GAMBAR ÉXITO DIHAPUS*\n\nGambar berhasil eliminado dari database shuffle.`);
                 } else {
-                    await m.reply('❌ *GAMBAR TIDAK DITEMUKAN*\n\nGambar ini tidak cocok dengan yang ada di dalam database shuffle (atau sudah dihapus sebelumnya).');
+                    await m.reply('❌ *GAMBAR TIDAK DITEMUKAN*\n\nGambar ini no cocok dengan yang ada di dalam database shuffle (atau sudah eliminado sebelumnya).');
                 }
             }
             await m.react('✅');
         }
         else {
-            await m.reply(`❌ Perintah lanjutan "${action}" tidak dapat dikenali oleh sistem.`);
+            await m.reply(`❌ Perintah lanjutan "${action}" no dapat dikenali oleh sistem.`);
         }
         
     } catch (error) {
@@ -192,7 +192,7 @@ async function srtAnswerHandler(m, sock) {
             } else {
                 fs.writeFileSync(filepath, buffer);
                 session.count++;
-                await m.reply(`✅ *GAMBAR BERHASIL DISIMPAN*\n\nGambar telah diamankan ke dalam penyimpanan lokal bot.\n- Total gambar ditambahkan pada sesi ini: *${session.count}*`);
+                await m.reply(`✅ *GAMBAR ÉXITO DISIMPAN*\n\nGambar telah diamankan ke dalam penyimpanan lokal bot.\n- Total gambar ditambahkan pada sesi ini: *${session.count}*`);
             }
         }
         await m.react('✅');

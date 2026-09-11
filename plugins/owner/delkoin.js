@@ -3,7 +3,7 @@ const pluginConfig = {
     name: 'delkoin',
     alias: ['kurangkoin', 'removekoin', 'delcoin', 'delmoney'],
     category: 'owner',
-    description: 'Kurangi koin user',
+    description: 'Reduce las monedas del usuario con la estética Waguri Assistant 💰',
     usage: '.delkoin <jumlah> @user',
     example: '.delkoin 50000 @user',
     isOwner: true,
@@ -47,18 +47,18 @@ async function handler(m, { sock }) {
             `💰 *ᴅᴇʟ ᴋᴏɪɴ*\n\n` +
             `> \`.delkoin <jumlah>\` - dari diri sendiri\n` +
             `> \`.delkoin <jumlah> @user\` - dari user\n\n` +
-            `\`Contoh: ${m.prefix}delkoin 50000\``
+            `\`Ejemplo: ${m.prefix}delkoin 50000\``
         )
     }
     
     if (amount <= 0) {
-        return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Jumlah harus lebih dari 0`)
+        return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> La cantidad debe ser mayor que 0 💫`)
     }
     
     const user = db.getUser(targetJid)
     
     if (!user) {
-        return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> User tidak ditemukan di database`)
+        return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> User no encontrado di database`)
     }
     
     const newKoin = db.updateKoin(targetJid, -amount)

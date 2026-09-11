@@ -6,9 +6,9 @@ const pluginConfig = {
     name: 'addscraper',
     alias: ['addscraper', 'newscraper', 'createscraper', 'tambahscraper'],
     category: 'owner',
-    description: 'Menambahkan scraper baru ke src/scraper/ (Owner only)',
-    usage: '.addscraper <nama>',
-    example: '.addscraper konchan\n\nReply pesan yang berisi kode scraper',
+    description: 'Añade un nuevo scraper a src/scraper/ con la estética Waguri Assistant (Solo Owner) 🔧',
+    usage: '.addscraper <nombre>',
+    example: '.addscraper konchan\n\nResponde al mensaje que contiene el código del scraper',
     isOwner: true,
     isPremium: false,
     isGroup: false,
@@ -61,7 +61,7 @@ async function handler(m, { sock }) {
             console.log('[AddScraper] Dapet file:', fileName)
             
             if (!fileName.endsWith('.js')) {
-                return m.reply(`💔 *Error!* File harus berekstensi .js darling~\n\nKamu kirim: ${fileName}`)
+                return m.reply(`💔 *Error!* El archivo debe tener extensión .js, cariño~ 💫\n\nEnviaste: ${fileName}`)
             }
             
             try {
@@ -73,16 +73,16 @@ async function handler(m, { sock }) {
                 code = buffer.toString('utf-8')
                 console.log('[AddScraper] File loaded, length:', code.length)
             } catch (err) {
-                console.error('[AddScraper] Gagal download file:', err)
-                return m.reply(`💔 *Gagal download file!*\n\n${err.message}`)
+                console.error('[AddScraper] Error download file:', err)
+                return m.reply(`💔 *¡Error al descargar el archivo!*\n\n${err.message}`)
             }
         }
         // Cek dari imageMessage (gambar) -> error
         else if (quotedMsg.imageMessage) {
-            return m.reply(`💔 *Error!* Reply harus TEXT atau FILE .js, bukan gambar darling~`)
+            return m.reply(`💔 *Error!* Debes responder con TEXTO o ARCHIVO .js, no con una imagen, cariño~ 💫`)
         }
     } else {
-        console.log('[AddScraper] Tidak ada quoted message')
+        console.log('[AddScraper] No ada quoted message')
     }
     
     // 🔥 PERBAIKAN: Kalo masih ga dapet code, cek dari command langsung
@@ -106,7 +106,7 @@ async function handler(m, { sock }) {
         const scraperDir = path.join(process.cwd(), 'src', 'scraper')
         const existingScrapers = getExistingScrapers(scraperDir)
         
-        let statusMsg = !code ? '❌ Kode scraper tidak ditemukan!' : '❌ Nama scraper tidak ditemukan!'
+        let statusMsg = !code ? '❌ Kode scraper no encontrado!' : '❌ Nombre del scraper no encontrado!'
         
         return m.reply(
 `💕 *ZERO TWO - ADD SCRAPER* 💕
@@ -130,14 +130,14 @@ async function handler(m, { sock }) {
 │
 │ 📌 *Nama Valid:*
 │ huruf, angka, _
-│ Contoh: hdvid, anime_v2
+│ Ejemplo: hdvid, anime_v2
 └────────────────────┘
 
 📁 *Scraper Aktif:*
-${existingScrapers.length > 0 ? existingScrapers.slice(0, 15).map(s => `│ • ${s}.js`).join('\n') : '│ • Belum ada'}
+${existingScrapers.length > 0 ? existingScrapers.slice(0, 15).map(s => `│ • ${s}.js`).join('\n') : '│ • Aún no ada'}
 ${existingScrapers.length > 15 ? `│ • ...dan ${existingScrapers.length - 15} lainnya` : ''}
 
-💕 *Zero Two:* Coba cara ke-2, langsung tulis kodenya setelah command darling~ 🦋`
+💕 *Zero Two:* Prueba la 2ª forma, escribe el código justo después del comando, cariño~ 🦋`
         )
     }
     
@@ -155,7 +155,7 @@ ${existingScrapers.length > 15 ? `│ • ...dan ${existingScrapers.length - 15}
 
 ❌ Nama: \`${name}\`
 
-💕 Coba lagi darling~ 🦋`
+💕 Inténtalo de nuevo, cariño~ 🦋`
         )
     }
     
@@ -165,16 +165,16 @@ ${existingScrapers.length > 15 ? `│ • ...dan ${existingScrapers.length - 15}
 `💔 *KODE TERLALU PENDEK!*
 
 ┌────────────────────┐
-│ Kode scraper kamu  │
+│ Tu código scraper  │
 │ hanya ${code.length} karakter.│
 │ Minimal 20 karakter.│
 │                    │
-│ Pastikan kamu reply│
+│ Asegúrate de responder│
 │ pesan yang berisi  │
 │ kode scraper ya    │
 └────────────────────┘
 
-💕 Coba lagi darling~ 🦋`
+💕 Inténtalo de nuevo, cariño~ 🦋`
         )
     }
     
@@ -200,7 +200,7 @@ ${existingScrapers.length > 15 ? `│ • ...dan ${existingScrapers.length - 15}
         // Format kode - pastikan ada module.exports
         let finalCode = code
         if (!code.includes('module.exports') && !code.includes('exports.')) {
-            finalCode = `// Scraper: ${name}\n// Dibuat: ${new Date().toLocaleString()}\n\n${code}\n\nmodule.exports = { ${name} }`
+            finalCode = `// Scraper: ${name}\n// Creado: ${new Date().toLocaleString()}\n\n${code}\n\nmodule.exports = { ${name} }`
         }
         
         // Tulis file
@@ -210,18 +210,18 @@ ${existingScrapers.length > 15 ? `│ • ...dan ${existingScrapers.length - 15}
         const size = (Buffer.byteLength(finalCode, 'utf-8') / 1024).toFixed(2)
         
         await m.reply(
-`✅ *SCRAPER BERHASIL!*
+`✅ *SCRAPER ÉXITO!*
 
 ┌────────────────────┐
 │ 📋 *Info:*
 │ • Nama: ${name}.js
 │ • Lokasi: src/scraper/
 │ • Baris: ${lines}
-│ • Ukuran: ${size} KB
+│ • Tamaño: ${size} KB
 │ • Status: ${exists ? 'Updated' : 'New'}
 └────────────────────┘
 
-💕 *Zero Two:* Scraper ${name} siap dipakai darling~
+💕 *Zero Two:* ¡El scraper ${name} está listo para usar, cariño~ ✨
 
 🦋 *Jangan lupa restart bot biar langsung aktif!*`
         )
@@ -232,13 +232,13 @@ ${existingScrapers.length > 15 ? `│ • ...dan ${existingScrapers.length - 15}
         console.error('[AddScraper] Error:', err)
         await m.react('💔')
         await m.reply(
-`💔 *GAGAL MENYIMPAN!*
+`💔 *ERROR MENYIMPAN!*
 
 ┌────────────────────┐
 │ ❌ ${err.message.substring(0, 60)}
 └────────────────────┘
 
-💕 Coba lagi darling~ 🦋`
+💕 Inténtalo de nuevo, cariño~ 🦋`
         )
     }
 }

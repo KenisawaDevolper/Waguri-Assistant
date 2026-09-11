@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'autoreactsw',
     alias: ['autoreaksi', 'reactsw', 'autoreactstory'],
     category: 'owner',
-    description: 'Auto react semua status/story WA',
+    description: 'Reacciona automáticamente a todos los estados/historias de WA con la estética Waguri Assistant 💫',
     usage: '.autoreactsw on/off [emoji]',
     example: '.autoreactsw on 🔥',
     isOwner: true,
@@ -30,9 +30,9 @@ async function handler(m) {
             `> Status: *${current.enabled ? '✅ ON' : '❌ OFF'}*\n` +
             `> Emoji: *${current.emoji}*\n\n` +
             `*ᴄᴀʀᴀ ᴘᴀᴋᴀɪ:*\n` +
-            `> \`${m.prefix}autoreactsw on\` — Aktifkan (emoji default 🔥)\n` +
-            `> \`${m.prefix}autoreactsw on 😍\` — Aktifkan dengan emoji\n` +
-            `> \`${m.prefix}autoreactsw off\` — Matikan`
+            `> \`${m.prefix}autoreactsw on\` — Activar (emoji default 🔥)\n` +
+            `> \`${m.prefix}autoreactsw on 😍\` — Activar dengan emoji\n` +
+            `> \`${m.prefix}autoreactsw off\` — Desactivar`
         )
     }
 

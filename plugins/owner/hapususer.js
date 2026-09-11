@@ -3,7 +3,7 @@ const pluginConfig = {
     name: 'hapususer',
     alias: ['deluser','deleteuser'],
     category: 'owner',
-    description: 'Hapus user dari database',
+    description: 'Elimina usuario de la base de datos con la estética Waguri Assistant 🗑️',
     usage: '.hapususer',
     isOwner: true,
     cooldown: 5,
@@ -22,7 +22,7 @@ async function handler(m, { sock }) {
         const user = db.data.users[target]
 
         if (!user) {
-            return m.reply(`❌ User tidak ditemukan.`)
+            return m.reply(`❌ User no encontrado.`)
         }
 
         delete db.data.users[target]
@@ -31,13 +31,13 @@ async function handler(m, { sock }) {
         return m.reply(
 `╭━━━〔 💔 ZERO TWO DELETE 💔 〕━━━⬣
 ┃
-┃ Ara ara~ user berhasil dihapus 😈
+┃ Ara ara~ user berhasil eliminado 😈
 ┃
 ┃ 👤 Target : ${target}
 ┃ 💣 Status : *Terhapus*
 ┃
-┃ Jangan nakal lagi ya darling...
-┃ atau kamu berikutnya 😏
+┃ ¡No te portes mal de nuevo, cariño... ✨
+┃ o serás el siguiente 😏
 ┃
 ╰━━━━━━━━━━━━━━━━━━⬣`
         )
@@ -47,7 +47,7 @@ async function handler(m, { sock }) {
     const users = Object.entries(db.data.users || {})
 
     if (users.length === 0) {
-        return m.reply(`❌ Tidak ada user di database.`)
+        return m.reply(`❌ No ada user di database.`)
     }
 
     // 🔽 FORMAT LIST
@@ -62,7 +62,7 @@ async function handler(m, { sock }) {
         text:
 `╭━━━〔 💗 ZERO TWO SYSTEM 💗 〕━━━⬣
 ┃
-┃ Hai ${m.pushName || 'Darling'} 😋
+┃ Hai ${m.pushName || 'Cariño'} 😋
 ┃ Mau hapus siapa nih?
 ┃
 ┃ Pilih user di bawah ya~

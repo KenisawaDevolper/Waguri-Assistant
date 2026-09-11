@@ -64,7 +64,7 @@ async function handler(m, { sock }) {
   const hasConfig = code.includes("pluginConfig") || code.includes("config");
   if (!hasExport || !hasConfig) {
     return m.reply(
-      `Maaf *${m.pushName}*, proses gagal karena kode bukan format plugin yang valid. Pastikan ada export dan config di dalamnya.`
+      `Lo siento *${m.pushName}*, proses gagal karena kode bukan format plugin yang valid. Pastikan ada export dan config di dalamnya.`
     );
   }
 
@@ -76,7 +76,7 @@ async function handler(m, { sock }) {
 
   if (!fileName) {
     return m.reply(
-      `Maaf *${m.pushName}*, aku tidak bisa mendeteksi nama pluginnya. Silakan gunakan perintah dengan format .addplugin <nama file>.`
+      `Lo siento *${m.pushName}*, no pude detectar el nombre del plugin. Por favor usa el formato .addplugin <nombre_archivo>. 💫`
     );
   }
 
@@ -86,7 +86,7 @@ async function handler(m, { sock }) {
   folderName = folderName.toLowerCase().replace(/[^a-z0-9\-_]/g, "");
 
   if (!fileName) {
-    return m.reply(`Maaf *${m.pushName}*, proses gagal karena nama file tidak valid.`);
+    return m.reply(`Lo siento *${m.pushName}*, el proceso falló porque el nombre del archivo no es válido. 💫`);
   }
 
   await m.react("🕕");
@@ -103,8 +103,8 @@ async function handler(m, { sock }) {
     if (fs.existsSync(filePath)) {
       await m.react("❌");
       return m.reply(
-        `Maaf *${m.pushName}*, file ${fileName}.js sudah ada di folder ${folderName}.\n\n` +
-        `💡 Tips: Gunakan perintah .ganticode ${fileName} ${folderName} jika kamu ingin mengganti kode plugin yang sudah ada.`
+        `Lo siento *${m.pushName}*, file ${fileName}.js sudah ada di folder ${folderName}.\n\n` +
+        `💡 Tips: Gunakan perintah .ganticode ${fileName} ${folderName} si deseas reemplazar el código de un plugin existente. ✨`
       );
     }
 
@@ -120,8 +120,8 @@ async function handler(m, { sock }) {
       `Proses selesai! Plugin berhasil ditambahkan ke dalam sistem.\n\n` +
       `- File: ${fileName}.js\n` +
       `- Folder: ${folderName}\n` +
-      `- Ukuran: ${code.length} bytes\n` +
-      `- Status Reload: ${reloadResult.success ? "Berhasil" : "Pending"}\n\n` +
+      `- Tamaño: ${code.length} bytes\n` +
+      `- Status Reload: ${reloadResult.success ? "Éxito" : "Pending"}\n\n` +
       `Plugin sudah aktif dan siap digunakan, silakan dicoba ya!`;
 
     return m.reply(replyText);

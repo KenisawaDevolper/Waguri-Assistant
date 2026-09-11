@@ -6,7 +6,7 @@ const pluginConfig = {
   name: "setreply",
   alias: ["replyvariant", "replystyle"],
   category: "owner",
-  description: "Mengatur variant tampilan reply",
+  description: "Configurar variant tampilan reply",
   usage: ".setreply <v1-v11>",
   example: ".setreply v5",
   isOwner: true,

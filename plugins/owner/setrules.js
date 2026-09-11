@@ -22,8 +22,8 @@ function handler(m) {
     if (!text) {
         return m.reply(
             `📝 *sᴇᴛ ʙᴏᴛ ʀᴜʟᴇs*\n\n` +
-            `> Masukkan teks rules yang baru\n\n` +
-            `\`Contoh:\`\n` +
+            `> Ingresa teks rules yang baru\n\n` +
+            `\`Ejemplo:\`\n` +
             `\`${m.prefix}setrules 1. Jangan spam\\n2. Hormati sesama\``
         )
     }

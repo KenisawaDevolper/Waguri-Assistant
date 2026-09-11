@@ -6,7 +6,7 @@ const pluginConfig = {
     name: 'startschedule',
     alias: ['startscheduler', 'schedstart', 'resumeschedule'],
     category: 'owner',
-    description: 'Memulai ulang scheduler tertentu atau semua',
+    description: 'Gestiona la función startschedule con la estética Waguri Assistant ⚙️',
     usage: '.startschedule <nama|all>',
     example: '.startschedule sholat',
     isOwner: true,
@@ -81,7 +81,7 @@ _Notifikasi waktu sholat akan dikirim ke grup yang mengaktifkan fitur ini_`);
 
 _Scheduler telah dimulai kembali_`);
         } else {
-            await m.reply(`❌ Scheduler tidak ditemukan atau sudah aktif
+            await m.reply(`❌ Scheduler no encontrado atau sudah aktif
 
 Gunakan \`.startschedule\` untuk melihat daftar scheduler`);
         }

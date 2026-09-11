@@ -7,7 +7,7 @@ const pluginConfig = {
     name: 'cekschedule',
     alias: ['cekscheduler', 'schedulerstatus', 'schedstatus'],
     category: 'owner',
-    description: 'Melihat status semua scheduler bot',
+    description: 'Gestiona la función cekschedule con la estética Waguri Assistant ⚙️',
     usage: '.cekschedule',
     example: '.cekschedule',
     isOwner: true,
@@ -81,7 +81,7 @@ async function handler(m, { sock }) {
 
                 text += `   └ Next: ${nextSholat} (${nextTime} WIB)\n`;
             } catch {
-                text += `   └ _Gagal memuat jadwal_\n`;
+                text += `   └ _Error memuat jadwal_\n`;
             }
         }
 

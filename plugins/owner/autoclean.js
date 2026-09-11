@@ -8,7 +8,7 @@ const pluginConfig = {
     name: 'autoclean',
     alias: ['autoclear', 'cleanstore', 'hapusstore'],
     category: 'owner',
-    description: 'Auto hapus file baileys_store.json jika ukuran > 50MB (bisa on/off)',
+    description: 'Elimina automáticamente el archivo baileys_store.json si supera 50MB (activable/desactivable) con la estética Waguri Assistant 🧹',
     usage: '.autoclean [on/off/status]',
     example: '.autoclean on\n.autoclean off\n.autoclean status',
     isOwner: true,      // Hanya owner
@@ -36,7 +36,7 @@ function getFileSizeMB(filePath) {
         const stats = fs.statSync(filePath)
         return stats.size / (1024 * 1024)
     } catch (e) {
-        console.error('[AutoClean] Gagal baca ukuran file:', e)
+        console.error('[AutoClean] Error baca ukuran file:', e)
         return 0
     }
 }
@@ -45,7 +45,7 @@ function getFileSizeMB(filePath) {
 function deleteStoreFile() {
     try {
         if (!fs.existsSync(storePath)) {
-            return { success: false, message: 'File tidak ditemukan' }
+            return { success: false, message: 'File no encontrado' }
         }
         
         const oldSize = getFileSizeMB(storePath)
@@ -56,11 +56,11 @@ function deleteStoreFile() {
         
         return { 
             success: true, 
-            message: `✅ File berhasil dihapus!\n📦 Ukuran lama: ${oldSize.toFixed(2)} MB\n📄 File baru telah dibuat.`,
+            message: `✅ File berhasil eliminado!\n📦 Ukuran lama: ${oldSize.toFixed(2)} MB\n📄 File baru telah dibuat.`,
             oldSize: oldSize
         }
     } catch (e) {
-        return { success: false, message: `❌ Gagal hapus file: ${e.message}` }
+        return { success: false, message: `❌ Error hapus file: ${e.message}` }
     }
 }
 
@@ -114,7 +114,7 @@ async function handler(m, { sock }) {
         const sizeBefore = getFileSizeMB(storePath)
         
         if (sizeBefore === 0) {
-            return m.reply(`📂 *File tidak ditemukan atau kosong*\n\nPath: ${storePath}\n\nTidak ada yang perlu dihapus darling~ 🗿`)
+            return m.reply(`📂 *Archivo no encontrado o vacío*\n\nPath: ${storePath}\n\nNo hay nada que eliminar, cariño~ 🗿`)
         }
         
         const result = deleteStoreFile()
@@ -132,13 +132,13 @@ async function handler(m, { sock }) {
     if (args === 'on') {
         autoCleanEnabled = true
         await m.react('✅')
-        return m.reply(`✅ *AUTO CLEAN AKTIF*\n\n📂 File: baileys_store.json\n📍 Lokasi: ${storePath}\n📦 Batas ukuran: ${MAX_SIZE_MB} MB\n\nFile akan otomatis dihapus jika melebihi ${MAX_SIZE_MB} MB.\n\n🦋 *Zero Two:* Udah aktif ya darling~`)
+        return m.reply(`✅ *AUTO CLEAN ACTIVADO*\n\n📂 File: baileys_store.json\n📍 Lokasi: ${storePath}\n📦 Batas ukuran: ${MAX_SIZE_MB} MB\n\nFile akan otomatis eliminado jika melebihi ${MAX_SIZE_MB} MB.\n\n🦋 *Zero Two:* ¡Ya está activado, cariño~ ✨`)
     }
     
     if (args === 'off') {
         autoCleanEnabled = false
         await m.react('✅')
-        return m.reply(`❌ *AUTO CLEAN NONAKTIF*\n\nFitur auto hapus sudah dimatikan.\n\nGunakan \`.autoclean on\` untuk mengaktifkan lagi.\n\n🦋 *Zero Two:* Siap darling~`)
+        return m.reply(`❌ *AUTO CLEAN DESACTIVADO*\n\nLa función de auto-eliminación está desactivada.\n\nGunakan \`.autoclean on\` untuk mengaktifkan lagi.\n\n🦋 *Zero Two:* ¡Listo, cariño~ ✨`)
     }
     
     // Tampilkan status (default)
@@ -147,20 +147,20 @@ async function handler(m, { sock }) {
     let statusText = `📂 *AUTO CLEAN STATUS*\n\n`
     statusText += `🔘 *Status:* ${status.enabled ? '✅ AKTIF' : '❌ NONAKTIF'}\n`
     statusText += `📦 *Ukuran file:* ${status.sizeMB} MB / ${status.maxSizeMB} MB\n`
-    statusText += `⚠️ *Melebihi batas:* ${status.isOverlimit ? 'YA 🚨' : 'Tidak ✅'}\n`
+    statusText += `⚠️ *Melebihi batas:* ${status.isOverlimit ? 'YA 🚨' : 'No ✅'}\n`
     statusText += `📁 *Lokasi:* ${status.filePath}\n`
-    statusText += `📄 *File exists:* ${status.fileExists ? '✅ Ada' : '❌ Tidak ada'}\n\n`
+    statusText += `📄 *File exists:* ${status.fileExists ? '✅ Ada' : '❌ No ada'}\n\n`
     
     if (status.isOverlimit && status.enabled) {
         statusText += `🚨 *PERINGATAN!* File melebihi batas! Bot akan segera menghapusnya.\n\n`
     }
     
     statusText += `📌 *Perintah:*\n`
-    statusText += `• \`.autoclean on\` - Aktifkan auto hapus\n`
+    statusText += `• \`.autoclean on\` - Activar auto hapus\n`
     statusText += `• \`.autoclean off\` - Nonaktifkan\n`
     statusText += `• \`.autoclean clean\` - Hapus manual sekarang\n`
     statusText += `• \`.autoclean status\` - Lihat status ini\n\n`
-    statusText += `🦋 *Zero Two:* Mau diatur gimana darling~?`
+    statusText += `🦋 *Zero Two:* ¿Cómo quieres configurarlo, cariño~? 💫`
     
     await m.reply(statusText)
 }

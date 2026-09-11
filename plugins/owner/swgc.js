@@ -109,7 +109,7 @@ async function handler(m, { sock, db }) {
 
     if (!pendingData) {
       await m.reply(
-        `⚠️ *Tidak ada data pending. Silakan kirim ulang media + .swgc*`,
+        `⚠️ *No ada data pending. Silakan kirim ulang media + .swgc*`,
       );
       return;
     }
@@ -167,7 +167,7 @@ async function handler(m, { sock, db }) {
               ? "Audio"
               : "Media";
 
-      const successMsg = `✅ Berhasil up sw ke grup ${groupName}`;
+      const successMsg = `✅ Éxito up sw ke grup ${groupName}`;
 
       await m.reply(successMsg);
       pendingSwgc.delete(m.sender);
@@ -181,7 +181,7 @@ async function handler(m, { sock, db }) {
       }
     } catch (error) {
       await m.reply(
-        `❌ *ᴇʀʀᴏʀ*\n\n` + `> Gagal posting story.\n` + `> _${error.message}_`,
+        `❌ *ᴇʀʀᴏʀ*\n\n` + `> Error posting story.\n` + `> _${error.message}_`,
       );
     }
     return;
@@ -202,7 +202,7 @@ async function handler(m, { sock, db }) {
     try {
       buffer = await m.quoted.download();
       if (!buffer) {
-        await m.reply(`❌ Gagal mengambil media.`);
+        await m.reply(`❌ Error mengambil media.`);
         return;
       }
       const fileType = await fileTypeFromBuffer(buffer);
@@ -235,7 +235,7 @@ async function handler(m, { sock, db }) {
     try {
       buffer = await m.download();
       if (!buffer) {
-        await m.reply(`❌ Gagal mengambil media.`);
+        await m.reply(`❌ Error mengambil media.`);
         return;
       }
       const fileType = await fileTypeFromBuffer(buffer);
@@ -285,7 +285,7 @@ async function handler(m, { sock, db }) {
     const groupList = Object.entries(groups);
 
     if (groupList.length === 0) {
-      await m.reply(`⚠️ *Bot tidak berada di grup manapun.*`);
+      await m.reply(`⚠️ *Bot no berada di grup manapun.*`);
       return;
     }
 
@@ -350,7 +350,7 @@ async function handler(m, { sock, db }) {
   } catch (error) {
     await m.reply(
       `❌ *ᴇʀʀᴏʀ*\n\n` +
-        `> Gagal mengambil daftar grup.\n` +
+        `> Error mengambil daftar grup.\n` +
         `> _${error.message}_`,
     );
     if (tempFile && fs.existsSync(tempFile)) {

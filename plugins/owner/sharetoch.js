@@ -3,7 +3,7 @@ const pluginConfig = {
     name: "sharetoch",
     alias: ["sharetosaluran"],
     category: "owner",
-    description: "Share ke channel tanpa watermark",
+    description: "Compartir al canal sin marca de agua con la estética Waguri Assistant 📤",
     usage: ".sharetoch (reply pesan)",
     example: ".sharetoch",
     isOwner: true,
@@ -17,7 +17,7 @@ async function handler(m, { sock }) {
 
     const CHANNEL_ID = config.saluran?.id
     if (!CHANNEL_ID) {
-        return m.reply("❌ ID Saluran tidak ditemukan di config!\n\n> Cek bagian `saluran.id` di config.js")
+        return m.reply("❌ ID Saluran no encontrado di config!\n\n> Cek bagian `saluran.id` di config.js")
     }
 
     m.react("⏳")
@@ -37,7 +37,7 @@ async function handler(m, { sock }) {
             })
         } else {
             const buffer = await quoted.download()
-            if (!buffer) return m.reply("❌ Gagal ambil media")
+            if (!buffer) return m.reply("❌ Error ambil media")
 
             let payload = {}
 
@@ -77,7 +77,7 @@ async function handler(m, { sock }) {
                     break
 
                 default:
-                    return m.reply("❌ Tipe tidak support")
+                    return m.reply("❌ Tipe no support")
             }
 
             await sock.sendMessage(CHANNEL_ID, payload)

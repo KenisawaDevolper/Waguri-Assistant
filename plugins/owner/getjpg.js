@@ -7,8 +7,8 @@ const pluginConfig = {
     name: 'getjpg',
     alias: ['lihatjpg', 'showjpg'],
     category: 'owner',
-    description: 'Ambil gambar dari folder assets/images',
-    usage: '.getjpg <nama_file.jpg>',
+    description: 'Obtiene una imagen de la carpeta assets/images con la estética Waguri Assistant 🖼️',
+    usage: '.getjpg <nombre_archivo.jpg>',
     example: '.getjpg zerotwo.jpg',
     isOwner: true,
     isPremium: false,
@@ -24,13 +24,13 @@ async function handler(m, { sock }) {
     const fileName = args[0]?.trim()
 
     if (!fileName) {
-        return m.reply(`❌ Gunakan:\n.getjpg <nama_file.jpg>\nContoh: .getjpg zerotwo.jpg`)
+        return m.reply(`❌ Gunakan:\n.getjpg <nombre_archivo.jpg>\nEjemplo: .getjpg zerotwo.jpg`)
     }
 
     const filePath = path.join(process.cwd(), 'assets', 'images', fileName)
 
     if (!fs.existsSync(filePath)) {
-        return m.reply(`❌ File tidak ditemukan!\n> Cek nama file dan pastikan sudah tersimpan di assets/images`)
+        return m.reply(`❌ File no encontrado!\n> Cek nama file dan pastikan sudah tersimpan di assets/images`)
     }
 
     try {

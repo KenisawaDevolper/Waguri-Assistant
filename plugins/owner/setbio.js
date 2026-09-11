@@ -1,8 +1,8 @@
 let handler = async (m, { conn, text }) => {
-  if (!text) throw `Masukan Text Untuk Bio Baru Bot`
+  if (!text) throw `Ingresa el texto para la nueva bio del bot ✨`
     try {
    await conn.updateProfileStatus(text).catch(_ => _)
-   conn.reply(m.chat, 'Sukses Mengganti Bio Bot', m)
+   conn.reply(m.chat, 'Bio del bot actualizada con éxito ✨', m)
 } catch {
       throw 'Yah Error.. :D'
     }

@@ -21,7 +21,7 @@ let handler = async (m, { conn, isOwner }) => {
       teks += `*${i + 1}. ${g.subject}*\n`
       teks += `🆔 ID: ${g.id}\n`
       teks += `👥 Member: ${g.participants?.length || 0}\n`
-      teks += `🕐 Dibuat: ${created}\n\n`
+      teks += `🕐 Creado: ${created}\n\n`
 
       buttons.push({
         name: 'cta_copy',
@@ -40,7 +40,7 @@ let handler = async (m, { conn, isOwner }) => {
 
   } catch (e) {
     console.error(e)
-    m.reply('❌ Gagal mengambil data grup.')
+    m.reply('❌ Error mengambil data grup.')
   }
 }
 

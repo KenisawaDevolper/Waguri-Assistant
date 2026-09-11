@@ -15,7 +15,7 @@ let handler = async (m, { conn, text }) => {
         let number = numbers[i];
 
         if (isNaN(number) || number.length > 15) {
-            conn.reply(m.chat, `*❏ DELETE USER*\n\nNomor '${number}' tidak valid!`, m);
+            conn.reply(m.chat, `*❏ DELETE USER*\n\nNomor '${number}' no valid!`, m);
             continue;
         }
 
@@ -28,12 +28,12 @@ let handler = async (m, { conn, text }) => {
             delete global.db.data.users[user];
             deletedUsers.push(`@${number}`);
         } else {
-            conn.reply(m.chat, `*❏ DELETE USER*\n\nUser dengan nomor @${number} tidak ditemukan di grup ini!`, m);
+            conn.reply(m.chat, `*❏ DELETE USER*\n\nUser dengan nomor @${number} no encontrado di grup ini!`, m);
         }
     }
 
     if (deletedUsers.length > 0) {
-        conn.reply(m.chat, `*❏ DELETE USER*\n\nBerhasil menghapus ${deletedUsers.join(', ')} dari *DATABASE*`, null, {
+        conn.reply(m.chat, `*❏ DELETE USER*\n\nÉxito menghapus ${deletedUsers.join(', ')} dari *DATABASE*`, null, {
             contextInfo: {
                 mentionedJid: deletedUsers.map(u => u + '@s.whatsapp.net')
             }

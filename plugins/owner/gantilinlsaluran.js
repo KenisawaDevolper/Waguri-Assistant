@@ -7,7 +7,7 @@ const pluginConfig = {
     name: 'gantilinksaluran',
     alias: ['setlinksaluran'],
     category: 'owner',
-    description: 'Mengganti semua link saluran di SC',
+    description: 'Gestiona la función gantilinlsaluran con la estética Waguri Assistant ⚙️',
     usage: '.gantilinksaluran|link',
     example: '.gantilinksaluran|https://whatsapp.com/channel/0029VbAh3OwGOj9nf1CHs23U',
     isOwner: true,
@@ -21,7 +21,7 @@ async function handler(m) {
     let input = msg.split("|")[1]
 
     if (!input) {
-        return m.reply(`Contoh:
+        return m.reply(`Ejemplo:
 .gantilinksaluran|https://whatsapp.com/channel/0029VbAh3OwGOj9nf1CHs23U`)
     }
 

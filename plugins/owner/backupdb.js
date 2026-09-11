@@ -3,7 +3,7 @@ const pluginConfig = {
     name: 'backupdb',
     alias: ['dbbackup', 'backupstore', 'storebackup'],
     category: 'owner',
-    description: 'Backup database/store dan kirim ke owner',
+    description: 'Respaldar base de datos/store y enviar al owner con la estética Waguri Assistant 💾',
     usage: '.backupdb',
     isOwner: true,
     isGroup: false,
@@ -31,7 +31,7 @@ async function handler(m, { sock }) {
     
     if (result.success) {
         await m.reply(
-            `✅ *Backup Berhasil!*\n\n` +
+            `✅ *Backup Éxito!*\n\n` +
             `📦 Size: ${result.size}\n` +
             `📁 Files: ${result.files}\n` +
             `🔖 Schema: v${SCHEMA_VERSION}\n\n` +

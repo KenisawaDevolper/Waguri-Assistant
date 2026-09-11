@@ -47,7 +47,7 @@ const pluginConfig = {
   name: "sistemdaftar",
   alias: ["regmode", "wajibdaftar", "togglereg"],
   category: "owner",
-  description: "Kelola sistem wajib daftar dan statistik pendaftaran",
+  description: 'Gestiona la función sistemdaftar con la estética Waguri Assistant ⚙️',
   usage: ".sistemdaftar <on/off/stats>",
   example: ".sistemdaftar stats",
   isOwner: true,
@@ -80,7 +80,7 @@ async function handler(m, { sock }) {
         `> Sesi aktif: *${stats.activeSessions}*\n\n` +
         `*Usage:*\n` +
         `> \`${m.prefix}sistemdaftar on\` - Wajibkan daftar\n` +
-        `> \`${m.prefix}sistemdaftar off\` - Matikan wajib daftar\n` +
+        `> \`${m.prefix}sistemdaftar off\` - Desactivar wajib daftar\n` +
         `> \`${m.prefix}sistemdaftar stats\` - Lihat statistik\n\n` +
         `> Jika ON, user harus \`${m.prefix}daftar\` sebelum pakai command`,
     );
@@ -145,7 +145,7 @@ async function handler(m, { sock }) {
       {
         text:
           `❌ *sɪsᴛᴇᴍ ᴅᴀꜰᴛᴀʀ ᴅɪɴᴏɴᴀᴋᴛɪꜰᴋᴀɴ!*\n\n` +
-          `User tidak perlu daftar untuk menggunakan command.`,
+          `User no perlu daftar untuk menggunakan command.`,
         contextInfo: getRegistrationContextInfo(),
       },
       { quoted: m },
@@ -156,7 +156,7 @@ async function handler(m, { sock }) {
   }
 
   return m.reply(
-    `❌ Option tidak valid!\n\n> Gunakan: \`on\`, \`off\`, atau \`stats\``,
+    `❌ Option no valid!\n\n> Gunakan: \`on\`, \`off\`, atau \`stats\``,
   );
 }
 

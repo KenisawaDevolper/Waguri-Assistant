@@ -5,7 +5,7 @@ const pluginConfig = {
     name: 'rimuru-large',
     alias: ['setrimurularge', 'gantirimurularge'],
     category: 'owner',
-    description: 'Preset: Ganti gambar rimuru.jpg, serta rimuru-v7 hingga rimuru-v11.jpg sekaligus',
+    description: 'Preset: Ganti gambar rimuru.jpg, serta rimuru-v7 hingga rimuru-v11.jpg una vezgus',
     usage: '.rimuru-large (reply/kirim gambar)',
     example: '.rimuru-large',
     isOwner: true,
@@ -21,7 +21,7 @@ async function handler(m, { sock }) {
     const isImage = m.isImage || (m.quoted && m.quoted.type === 'imageMessage')
     
     if (!isImage) {
-        return m.reply(`🖼️ *ᴏᴜʀɪɴ ʟᴀʀɢᴇ ᴘʀᴇsᴇᴛ*\n\n> Kirim/reply gambar untuk mengganti kumpulan foto besar (rimuru.jpg, rimuru-v8.jpg, rimuru-v10.jpg) sekaligus.\n> Pastikan rasio gambar sesuai dengan yang diinginkan.`)
+        return m.reply(`🖼️ *ᴏᴜʀɪɴ ʟᴀʀɢᴇ ᴘʀᴇsᴇᴛ*\n\n> Kirim/reply gambar untuk mengganti kumpulan foto besar (rimuru.jpg, rimuru-v8.jpg, rimuru-v10.jpg) una vezgus.\n> Pastikan rasio gambar sesuai dengan yang diinginkan.`)
     }
     
     await m.react('🕕')
@@ -36,7 +36,7 @@ async function handler(m, { sock }) {
         
         if (!buffer) {
             await m.react('❌')
-            return m.reply(`❌ Gagal mendownload gambar`)
+            return m.reply(`❌ Error al descargar la imagen`)
         }
         
         const targetImages = [
@@ -56,7 +56,7 @@ async function handler(m, { sock }) {
         }
         
         await m.react('✅')
-        m.reply(`✅ *ʙᴇʀʜᴀsɪʟ*\n\n> Gambar bundle *rimuru-large* berhasil diganti secara massal.\n> Mencakup: ${targetImages.join(', ')}\n> Restart bot jika gambar tidak langsung berubah.`)
+        m.reply(`✅ *ʙᴇʀʜᴀsɪʟ*\n\n> Gambar bundle *rimuru-large* cambiado masivamente con éxito. ✨\n> Incluye: ${targetImages.join(', ')}\n> Reinicia el bot si la imagen no cambia de inmediato. ✨`)
         
     } catch (error) {
         await m.react('☢')

@@ -6,7 +6,7 @@ const pluginConfig = {
   name: "setwelcometype",
   alias: ["welcometype", "welcomevariant", "welcomestyle"],
   category: "owner",
-  description: "Mengatur variant tampilan welcome message",
+  description: "Configurar variant tampilan welcome message",
   usage: ".setwelcometype",
   example: ".setwelcometype",
   isOwner: true,
@@ -79,12 +79,12 @@ async function handler(m, { sock, db }) {
     `*PENJELASAN TIPE:*\n\n` +
     `- *V1 Canvas Image* 🎨 — Bot membuat gambar canvas otomatis berisi foto profil dan nama member yang baru join, lalu dikirim sebagai gambar\n\n` +
     `- *V2 Carousel Cards* 🃏 — Menampilkan kartu carousel interaktif yang bisa di-swipe lengkap dengan tombol action, cocok untuk grup yang ingin tampilan modern\n\n` +
-    `- *V3 Text Only* 📝 — Pesan teks biasa tanpa gambar sama sekali, ringan dan minimalis\n\n` +
+    `- *V3 Text Only* 📝 — Pesan teks biasa tanpa gambar sama una vez, ringan dan minimalis\n\n` +
     `- *V4 Group* 👥 — Menggunakan contextInfo bergaya group forward, tampilan rapi dengan label newsletter\n\n` +
-    `- *V5 Simple* ✨ — Pesan teks sederhana disertai foto profile member yang join, tidak terlalu mencolok namun informatif\n\n` +
+    `- *V5 Simple* ✨ — Pesan teks sederhana disertai foto profile member yang join, no terlalu mencolok namun informatif\n\n` +
     `- *V6 Video* 🎥 — Mengirimkan video sambutan menarik dilengkapi caption selamat datang untuk member\n\n` +
     `- *V7 Interactive Quoted* 💬 — Mengirimkan pesan interaktif dan fake quoted dari orang yang join\n\n` +
-    `- *V8 Super Simple* 👋 — Pesan teks sangat singkat tanpa hiasan (Contoh: Hai @user, welcome to grup...)\n\n` +
+    `- *V8 Super Simple* 👋 — Pesan teks sangat singkat tanpa hiasan (Ejemplo: Hai @user, welcome to grup...)\n\n` +
     `> Pilih tipe welcome dari tombol di bawah 👇`;
   await sock.sendButton(
     m.chat,

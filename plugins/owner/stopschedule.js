@@ -6,7 +6,7 @@ const pluginConfig = {
     name: 'stopschedule',
     alias: ['stopscheduler', 'schedstop', 'pauseschedule'],
     category: 'owner',
-    description: 'Menghentikan scheduler tertentu atau semua',
+    description: 'Gestiona la función stopschedule con la estética Waguri Assistant ⚙️',
     usage: '.stopschedule <nama|all>',
     example: '.stopschedule sholat',
     isOwner: true,
@@ -81,7 +81,7 @@ _Gunakan \`.startschedule sholat\` untuk mengaktifkan kembali_`);
 
 _Gunakan \`.startschedule ${target}\` untuk mengaktifkan kembali_`);
         } else {
-            await m.reply(`❌ Scheduler tidak ditemukan atau sudah nonaktif
+            await m.reply(`❌ Scheduler no encontrado atau sudah nonaktif
 
 Gunakan \`.stopschedule\` untuk melihat daftar scheduler`);
         }

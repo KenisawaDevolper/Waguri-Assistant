@@ -6,7 +6,7 @@ const pluginConfig = {
   name: "autoread",
   alias: ["readchat", "autobaca"],
   category: "owner",
-  description: "Auto read pesan masuk",
+  description: "Lee automáticamente los mensajes entrantes con la estética Waguri Assistant 👁️",
   usage: ".autoread on/off",
   example: ".autoread on",
   isOwner: true,
@@ -28,7 +28,7 @@ async function handler(m, { sock }) {
       `📖 *Auto Read*\n\n` +
         `> Status: *${current ? "Aktif ✅" : "Nonaktif ❌"}*\n\n` +
         `*PENGGUNAAN:*\n` +
-        `> *${m.prefix}autoread on* — Aktifkan\n` +
+        `> *${m.prefix}autoread on* — Activar\n` +
         `> *${m.prefix}autoread off* — Nonaktifkan\n\n` +
         `_Bot akan otomatis membaca pesan masuk_`
     );
@@ -48,12 +48,12 @@ async function handler(m, { sock }) {
     db.setting("autoRead", false);
     return m.reply(
       `📖 *Auto Read Nonaktif*\n\n` +
-        `> Bot tidak akan otomatis membaca pesan`
+        `> Bot no akan otomatis membaca pesan`
     );
   }
 
   return m.reply(
-    `❌ *Opsi Tidak Valid*\n\n> Gunakan *${m.prefix}autoread on* atau *${m.prefix}autoread off*`
+    `❌ *Opsi No Valid*\n\n> Gunakan *${m.prefix}autoread on* atau *${m.prefix}autoread off*`
   );
 }
 

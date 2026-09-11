@@ -4,7 +4,7 @@ const pluginConfig = {
   name: "onlygc",
   alias: ["onlygroup", "grouponly"],
   category: "owner",
-  description: "Toggle mode bot hanya di grup",
+  description: "Alterna el modo del bot solo en grupos con la estética Waguri Assistant 👥",
   usage: ".onlygc on/off",
   example: ".onlygc on",
   isOwner: true,
@@ -53,7 +53,7 @@ async function handler(m, { sock }) {
   }
 
   return m.reply(
-    `❌ *Opsi Tidak Valid*\n\n> Gunakan *${m.prefix}onlygc on* atau *${m.prefix}onlygc off*`
+    `❌ *Opsi No Valid*\n\n> Gunakan *${m.prefix}onlygc on* atau *${m.prefix}onlygc off*`
   );
 }
 

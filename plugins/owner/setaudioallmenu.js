@@ -4,7 +4,7 @@ const pluginConfig = {
     name: "setaudioallmenu",
     alias: ["setaudioam", "audioallmenu"],
     category: "owner",
-    description: "Mengatur gaya audio untuk All Menu",
+    description: "Configurar el estilo de audio para All Menu con la estética Waguri Assistant 🎵",
     usage: ".setaudioallmenu <1-4>",
     example: ".setaudioallmenu 1",
     isOwner: true,
@@ -38,12 +38,12 @@ async function handler(m, { sock }) {
 
     const newStyle = parseInt(args);
     if (isNaN(newStyle) || newStyle < 1 || newStyle > 4) {
-        return m.reply(`❌ *GAGAL*\n\nPilihan varian audio harus berupa angka 1 sampai 4.\nContoh: *${m.prefix}setaudioallmenu 2*`);
+        return m.reply(`❌ *ERROR*\n\nPilihan varian audio harus berupa angka 1 sampai 4.\nEjemplo: *${m.prefix}setaudioallmenu 2*`);
     }
 
     await m.react("🕕");
     db.setting("allmenuAudioStyle", newStyle);
-    await m.reply(`✅ *BERHASIL*\n\nGaya audio All Menu telah sukses diubah menjadi *Varian ${newStyle}*. Silakan tes dengan mengetik *${m.prefix}allmenu*.`);
+    await m.reply(`✅ *ÉXITO*\n\nGaya audio All Menu telah sukses diubah menjadi *Varian ${newStyle}*. Silakan tes dengan mengetik *${m.prefix}allmenu*.`);
     await m.react("✅");
 }
 

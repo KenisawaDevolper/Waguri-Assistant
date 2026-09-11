@@ -5,7 +5,7 @@ const config = {
   name: "capenergi",
   alias: ["setenergi"],
   category: "owner",
-  description: "Mengubah potongan energi banyak fitur sekaligus",
+  description: "Modifica el costo de energía de muchas funciones a la vez con la estética Waguri Assistant ⚡",
   usage: ".capenergi <nama_fitur1> <nama_fitur2> ... <jumlah>",
   example: ".capenergi hd fakedev 5",
   isOwner: true,
@@ -21,14 +21,14 @@ async function handler(m, { sock }) {
   if (m.args.length < 2) {
     return m.reply(
       `⚙️ *SISTEM CAP ENERGI*\n\n` +
-      `Sistem untuk mengubah secara dinamis jumlah energi yang dipotong untuk banyak fitur sekaligus.\n\n` +
+      `Sistem untuk mengubah secara dinamis jumlah energi yang dipotong untuk banyak fitur una vezgus.\n\n` +
       `*PENGGUNAAN:*\n` +
       `- *${m.prefix}capenergi <nama_fitur1> <nama_fitur2> ... <jumlah>*\n\n` +
       `*CONTOH PENGGUNAAN:*\n` +
       `- *${m.prefix}capenergi hd jpm 5* (Fitur HD & JPM memotong 5 energi)\n` +
       `- *${m.prefix}capenergi hd 0* (Fitur HD menjadi gratis energi)\n\n` +
       `*PENJELASAN:*\n` +
-      `1. Masukkan satu atau banyak nama fitur yang ingin diubah.\n` +
+      `1. Ingresa satu atau banyak nama fitur yang ingin diubah.\n` +
       `2. Di akhiran (kata terakhir) harus berupa ANGKA (jumlah potongan energi).`
     );
   }
@@ -37,7 +37,7 @@ async function handler(m, { sock }) {
   const cost = parseInt(rawCost);
   
   if (isNaN(cost) || cost < 0) {
-    return m.reply(`❌ *GAGAL*\n\nJumlah energi (di argumen paling akhir) harus berupa angka 0 atau lebih.`);
+    return m.reply(`❌ *ERROR*\n\nJumlah energi (di argumen paling akhir) harus berupa angka 0 atau lebih.`);
   }
 
   const commands = m.args.slice(0, -1);
@@ -66,12 +66,12 @@ async function handler(m, { sock }) {
 
   await m.react("✅");
   
-  let msg = `✅ *POTONGAN ENERGI BERHASIL DIUBAH*\n\n`;
+  let msg = `✅ *POTONGAN ENERGI ÉXITO DIUBAH*\n\n`;
   if (successList.length > 0) {
-    msg += `*Berhasil diubah jadi ${cost} Energi:*\n${successList.map(f => `- ${f}`).join("\n")}\n\n`;
+    msg += `*Éxito diubah jadi ${cost} Energi:*\n${successList.map(f => `- ${f}`).join("\n")}\n\n`;
   }
   if (failedList.length > 0) {
-    msg += `*Gagal (Tidak ditemukan):*\n${failedList.map(f => `- ${f}`).join("\n")}\n\n`;
+    msg += `*Error (No ditemukan):*\n${failedList.map(f => `- ${f}`).join("\n")}\n\n`;
   }
   
   msg += `_Pengaturan tersimpan ke dalam database dan langsung berlaku._`;

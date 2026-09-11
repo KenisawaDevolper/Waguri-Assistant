@@ -5,8 +5,8 @@ const pluginConfig = {
   name: "disableplugin",
   alias: ["dplugin", "plugindisable", "offplugin"],
   category: "owner",
-  description: "Menonaktifkan plugin tertentu",
-  usage: ".disableplugin <nama_plugin>",
+  description: "Desactiva un plugin específico con la estética Waguri Assistant 🚫",
+  usage: ".disableplugin <nombre_plugin>",
   example: ".disableplugin sticker",
   isOwner: true,
   isPremium: false,
@@ -57,8 +57,8 @@ async function handler(m, { sock }) {
   if (!pluginName) {
     return m.reply(
       `🔌 *ᴅɪsᴀʙʟᴇ ᴘʟᴜɢɪɴ*\n\n` +
-        `> Masukkan nama plugin yang ingin dinonaktifkan\n\n` +
-        `*Contoh:*\n` +
+        `> Ingresa nama plugin yang ingin dinonaktifkan\n\n` +
+        `*Ejemplo:*\n` +
         `> \`${m.prefix}disableplugin sticker\`\n` +
         `> \`${m.prefix}disableplugin tiktok\``,
     );
@@ -67,7 +67,7 @@ async function handler(m, { sock }) {
   const found = await findPluginFile(pluginName);
 
   if (!found) {
-    return m.reply(`❌ Plugin *${pluginName}* tidak ditemukan!`);
+    return m.reply(`❌ Plugin *${pluginName}* no encontrado!`);
   }
 
   const { filePath, plugin, category, file } = found;

@@ -3,7 +3,7 @@ const pluginConfig = {
     name: 'hapusdata',
     alias: ['resetdata', 'cleardata', 'wipedata'],
     category: 'owner',
-    description: 'Reset semua data database ke default',
+    description: 'Gestiona la función hapusdata con la estética Waguri Assistant ⚙️',
     usage: '.hapusdata',
     example: '.hapusdata',
     isOwner: true,
@@ -24,7 +24,7 @@ async function handler(m, { sock }) {
         const pending = pendingReset.get(m.sender)
         if (!pending || Date.now() - pending > 60000) {
             pendingReset.delete(m.sender)
-            return m.reply(`❌ Tidak ada permintaan reset yang aktif.\n\n> Ketik \`${m.prefix}hapusdata\` terlebih dahulu`)
+            return m.reply(`❌ No ada permintaan reset yang aktif.\n\n> Ketik \`${m.prefix}hapusdata\` terlebih dahulu`)
         }
 
         pendingReset.delete(m.sender)
@@ -72,7 +72,7 @@ async function handler(m, { sock }) {
     }
 
     if (existing.length === 0) {
-        return m.reply(`❌ Tidak ada data database yang ditemukan`)
+        return m.reply(`❌ No ada data database yang ditemukan`)
     }
 
     pendingReset.set(m.sender, Date.now())

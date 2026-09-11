@@ -16,8 +16,7 @@ const pluginConfig = {
     "stopbroadcastgc",
   ],
   category: "owner",
-  description:
-    "Broadcast pesan ke semua grup dengan dukungan semua jenis media",
+  description: 'Gestiona la función bcgc con la estética Waguri Assistant ⚙️',
   usage: ".bcgc",
   isOwner: true,
   isPremium: false,
@@ -62,7 +61,7 @@ async function handler(m, { sock }) {
 
   if (command === "stopbcgc" || command === "stopbroadcastgc") {
     if (!global.statusBcgc) {
-      return m.reply(`❌ Tidak ada broadcast grup yang sedang berjalan.`);
+      return m.reply(`❌ No hay ningún broadcast de grupos en curso. 💫`);
     }
     global.stopBcgc = true;
     m.react("⏹️");
@@ -82,14 +81,14 @@ async function handler(m, { sock }) {
   if (input.toLowerCase() === "on") {
     db.setting("bcgcEnabled", true);
     return m.reply(
-      `✅ *Broadcast Grup Diaktifkan*\n\n> Sekarang kamu bisa mengirim broadcast ke semua grup.`,
+      `✅ *Broadcast de Grupos Activado*\n\n> Ahora puedes enviar broadcast a todos los grupos. ✨`,
     );
   }
 
   if (input.toLowerCase() === "off") {
     db.setting("bcgcEnabled", false);
     return m.reply(
-      `✅ *Broadcast Grup Dinonaktifkan*\n\n> Broadcast grup telah dimatikan.`,
+      `✅ *Broadcast Grup Desactivada*\n\n> Broadcast grup telah dimatikan.`,
     );
   }
 
@@ -98,12 +97,12 @@ async function handler(m, { sock }) {
     const jeda = db.setting("jedaBcgc") || 5000;
     return m.reply(
       `📢 *Broadcast Grup*\n\n` +
-        `Kirim pesan ke seluruh grup sekaligus dalam satu perintah.\n\n` +
+        `Kirim pesan ke seluruh grup una vezgus dalam satu perintah.\n\n` +
         `*Status saat ini:*\n` +
         `> Broadcast: *${enabled ? "✅ Aktif" : "❌ Nonaktif"}*\n` +
         `> Jeda: *${formatDelay(jeda)}* (*${jeda}ms*)\n\n` +
         `*PENGGUNAAN:*\n` +
-        `> *${m.prefix}bcgc on* — Aktifkan broadcast\n` +
+        `> *${m.prefix}bcgc on* — Activar broadcast\n` +
         `> *${m.prefix}bcgc off* — Nonaktifkan broadcast\n` +
         `> *${m.prefix}bcgc <pesan>* — Kirim broadcast teks\n` +
         `> *${m.prefix}bcgc* (reply foto/video/audio/dokumen) — Kirim dengan media\n` +
@@ -125,7 +124,7 @@ async function handler(m, { sock }) {
   const enabled = db.setting("bcgcEnabled");
   if (!enabled) {
     return m.reply(
-      `❌ *Broadcast Belum Aktif*\n\n> Ketik *${m.prefix}bcgc on* dulu untuk mengaktifkan.`,
+      `❌ *Broadcast Aún no Aktif*\n\n> Ketik *${m.prefix}bcgc on* dulu untuk mengaktifkan.`,
     );
   }
 
@@ -174,7 +173,7 @@ async function handler(m, { sock }) {
     if (!text && !mediaBuffer) {
       m.react("❌");
       return m.reply(
-        `❌ *Tidak Ada Konten*\n\n` +
+        `❌ *No Ada Konten*\n\n` +
           `Kirim pesan, foto, audio, video, atau dokumen terlebih dahulu.\n\n` +
           `*Cara yang benar:*\n` +
           `1. Kirim teks/foto/video/audio/dokumen\n` +
@@ -193,7 +192,7 @@ async function handler(m, { sock }) {
     if (groupIds.length === 0) {
       m.react("❌");
       return m.reply(
-        `❌ *Tidak Ada Grup*\n\n> Bot tidak menemukan grup yang bisa dituju${blCount > 0 ? ` (${blCount} grup di-blacklist)` : ""}`,
+        `❌ *No Ada Grup*\n\n> Bot no menemukan grup yang bisa dituju${blCount > 0 ? ` (${blCount} grup di-blacklist)` : ""}`,
       );
     }
 
@@ -203,7 +202,7 @@ async function handler(m, { sock }) {
     await m.reply(
       `📢 *Broadcast Grup Dimulai*\n\n` +
         `> 📝 Pesan: *${text.substring(0, 50)}${text.length > 50 ? "..." : ""}*\n` +
-        `> 📷 Media: *${mediaBuffer ? mediaType : "Tidak ada"}*\n` +
+        `> 📷 Media: *${mediaBuffer ? mediaType : "No ada"}*\n` +
         `> 👥 Target: *${groupIds.length}* grup\n` +
         `> ⏱️ Jeda: *${formatDelay(jeda)}*\n` +
         `> 📊 Estimasi: *${Math.ceil((groupIds.length * jeda) / 60000)} menit*\n\n` +
@@ -220,9 +219,9 @@ async function handler(m, { sock }) {
         delete global.statusBcgc;
         await m.reply(
           `⏹️ *Broadcast Grup Dihentikan*\n\n` +
-            `> ✅ Berhasil: *${success}*\n` +
-            `> ❌ Gagal: *${failed}*\n` +
-            `> ⏸️ Sisa: *${groupIds.length - success - failed}*`,
+            `> ✅ Éxito: *${success}*\n` +
+            `> ❌ Error: *${failed}*\n` +
+            `> ⏸️ Restante: *${groupIds.length - success - failed}*`,
         );
         return;
       }
@@ -286,8 +285,8 @@ async function handler(m, { sock }) {
     m.react("✅");
     await m.reply(
       `✅ *Broadcast Grup Selesai!*\n\n` +
-        `> ✅ Berhasil: *${success}*\n` +
-        `> ❌ Gagal: *${failed}*\n` +
+        `> ✅ Éxito: *${success}*\n` +
+        `> ❌ Error: *${failed}*\n` +
         `> 📊 Total: *${groupIds.length}*`,
     );
   } catch (e) {
@@ -319,7 +318,7 @@ async function handleSetDelay(m, db, input) {
 
   const ms = parseDelay(input);
   if (!ms || ms < 1000) {
-    return m.reply(`❌ Format salah. Contoh: *5s*, *2m*, *1h*, *1d*`);
+    return m.reply(`❌ Format salah. Ejemplo: *5s*, *2m*, *1h*, *1d*`);
   }
 
   db.setting("jedaBcgc", ms);

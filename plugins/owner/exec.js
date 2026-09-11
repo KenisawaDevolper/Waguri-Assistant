@@ -42,7 +42,7 @@ async function handler(m, { sock, store }) {
             `> Reply pesan berisi kode JavaScript!\n\n` +
             `*Atau:*\n` +
             `> .> <code>\n\n` +
-            `*Contoh:*\n` +
+            `*Ejemplo:*\n` +
             `> Reply pesan: \`return m.chat\`\n` +
             `> Lalu ketik: .>`
         )

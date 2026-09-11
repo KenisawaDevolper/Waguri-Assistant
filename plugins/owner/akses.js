@@ -11,7 +11,7 @@ const pluginConfig = {
     "listaccess",
   ],
   category: "owner",
-  description: "Grant temporary/permanent command access to users",
+  description: "Otorga acceso temporal/permanente a comandos a usuarios con la estética Waguri Assistant 🔑",
   usage: ".addakses <cmd> <duration> <user>",
   example: ".addakses addowner 30d @user",
   isOwner: true,
@@ -56,7 +56,7 @@ async function handler(m, { sock, plugins }) {
       return m.reply(
         `⚠️ *Format Salah*\n\n` +
           `Format: \`${m.prefix}addakses <command> <durasi> <target>\`\n\n` +
-          `*Contoh:*\n` +
+          `*Ejemplo:*\n` +
           `> \`${m.prefix}addakses addowner 30d @user\` (30 Hari)\n` +
           `> \`${m.prefix}addakses unban permanent @user\` (Selamanya)\n\n` +
           `*Durasi Support:* 1h, 1d, 30d, 1y`,
@@ -83,7 +83,7 @@ async function handler(m, { sock, plugins }) {
 
     if (activeAccess.length === 0) {
       return m.reply(
-        `📊 *ᴜsᴇʀ ᴀᴄᴄᴇss*\n\nTarget: @${target.split("@")[0]}\nStatus: *Tidak punya akses khusus*`,
+        `📊 *ᴜsᴇʀ ᴀᴄᴄᴇss*\n\nTarget: @${target.split("@")[0]}\nStatus: *No punya akses khusus*`,
         {
           mentions: sock.parseMention(`@${target.split("@")[0]}`),
         },
@@ -121,7 +121,7 @@ async function handler(m, { sock, plugins }) {
           return m.reply(`❌ Format durasi salah! Gunakan: 1h, 1d, 30d`);
         expiredTime = Date.now() + durationMs;
       } catch {
-        return m.reply(`❌ Format durasi tidak dikenali!`);
+        return m.reply(`❌ Format durasi no dikenali!`);
       }
     }
 
@@ -154,7 +154,7 @@ async function handler(m, { sock, plugins }) {
     );
   }
   if (isDel) {
-    if (!target) return m.reply(`❌ Tag user yang mau dihapus aksesnya!`);
+    if (!target) return m.reply(`❌ ¡Menciona al usuario cuyo acceso deseas eliminar! 💫`);
     const now = Date.now();
     const activeAccess = user.access.filter(
       (a) => a.expired === null || a.expired > now,
@@ -164,7 +164,7 @@ async function handler(m, { sock, plugins }) {
       specificCmd = specificCmd.toLowerCase();
       const idx = user.access.findIndex((a) => a.cmd === specificCmd);
       if (idx === -1)
-        return m.reply(`❌ User tidak punya akses command \`${specificCmd}\``);
+        return m.reply(`❌ User no punya akses command \`${specificCmd}\``);
 
       user.access.splice(idx, 1);
       db.setUser(target, user);
@@ -174,18 +174,18 @@ async function handler(m, { sock, plugins }) {
     }
 
     if (activeAccess.length === 0) {
-      return m.reply(`⚠️ User ini tidak memiliki akses command apapun.`);
+      return m.reply(`⚠️ User ini no memiliki akses command apapun.`);
     }
     const rows = activeAccess.map((acc) => {
       const exp = acc.expired ? ms(acc.expired - now) : "Permanent";
       return {
         title: `Hapus: ${acc.cmd}`,
-        description: `Sisa durasi: ${exp}`,
+        description: `Tiempo restante: ${exp}`,
         id: `${m.prefix}delakses ${acc.cmd} ${target}`,
       };
     });
     const listMessage = {
-      text: `🔓 *CABUT AKSES*\n\nPilih akses command yang ingin dihapus dari @${target.split("@")[0]}`,
+      text: `🔓 *CABUT AKSES*\n\nPilih akses command yang ingin eliminado dari @${target.split("@")[0]}`,
       title: "Manage Access",
       buttonText: "PILIH COMMAND",
       sections: [

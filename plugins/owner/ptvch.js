@@ -23,13 +23,13 @@ async function handler(m, { sock }) {
         try {
             video = await m.quoted.download()
         } catch (e) {
-            return m.reply(`❌ Gagal download video dari quoted.`)
+            return m.reply(`❌ Error download video dari quoted.`)
         }
     } else if (m.isVideo) {
         try {
             video = await m.download()
         } catch (e) {
-            return m.reply(`❌ Gagal download video.`)
+            return m.reply(`❌ Error download video.`)
         }
     }
     

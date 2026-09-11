@@ -9,7 +9,7 @@ const pluginConfig = {
     name: 'autopost',
     alias: ['apost', 'autopostchannel'],
     category: 'owner',
-    description: 'Auto post gambar random ke channel/saluran (NEWSLETTER)',
+    description: 'Publica automáticamente imágenes aleatorias en el canal con la estética Waguri Assistant 📢',
     usage: '.autopost <on/off/set>',
     example: '.autopost on',
     isOwner: true,
@@ -74,7 +74,7 @@ async function sendRandomImage(sock, channelId) {
     try {
         const image = getRandomImage()
         if (!image) {
-            console.log('[AUTOPOST] Gagal dapetin gambar')
+            console.log('[AUTOPOST] Error dapetin gambar')
             return false
         }
         
@@ -87,13 +87,13 @@ async function sendRandomImage(sock, channelId) {
             mimetype: 'image/jpeg'
         })
         
-        console.log(`[AUTOPOST] ✅ BERHASIL!`)
+        console.log(`[AUTOPOST] ✅ ÉXITO!`)
         console.log(`   📡 Channel: ${channelId}`)
         console.log(`   📷 Gambar: ${image.filename}`)
         console.log(`   💬 Caption: ${caption.substring(0, 50)}...`)
         return true
     } catch (err) {
-        console.error('[AUTOPOST] Gagal kirim:', err.message)
+        console.error('[AUTOPOST] Error kirim:', err.message)
         return false
     }
 }
@@ -167,7 +167,7 @@ async function handler(m, { sock }) {
                 `> 1. Buka saluran lo\n` +
                 `> 2. Ketik ${m.prefix}getjid\n` +
                 `> 3. Copy JID yang muncul (format @newsletter)\n\n` +
-                `🦋 *Zero Two:* "Set dulu darling~ 🎐"`
+                `🦋 *Zero Two:* "¡Configúralo primero, cariño~ 🎐"`
             )
         }
         
@@ -178,9 +178,9 @@ async function handler(m, { sock }) {
                 `📁 Folder: \`${IMAGES_FOLDER}\`\n\n` +
                 `💡 *Solusi:*\n` +
                 `> 1. Buat folder: \`assets/zerotwo-random/\`\n` +
-                `> 2. Masukkan gambar ke dalamnya\n` +
+                `> 2. Ingresa gambar ke dalamnya\n` +
                 `> 3. Coba lagi\n\n` +
-                `🦋 *Zero Two:* "Bikin dulu folder nya darling~ 🎐"`
+                `🦋 *Zero Two:* "¡Crea primero la carpeta, cariño~ 🎐"`
             )
         }
         
@@ -196,8 +196,8 @@ async function handler(m, { sock }) {
                 `📁 Folder: \`${IMAGES_FOLDER}\`\n` +
                 `📊 Total file: ${files.length} file\n` +
                 `🖼️ Gambar: 0 file\n\n` +
-                `💡 *Masukkan gambar* (jpg/png/gif/webp) ke folder tersebut.\n\n` +
-                `🦋 *Zero Two:* "Isi dulu gambarnya darling~ 🎐"`
+                `💡 *Ingresa gambar* (jpg/png/gif/webp) ke folder tersebut.\n\n` +
+                `🦋 *Zero Two:* "¡Añade primero las imágenes, cariño~ 🎐"`
             )
         }
         
@@ -212,13 +212,13 @@ async function handler(m, { sock }) {
             `✅ *AUTOPOST AKTIF*\n\n` +
             `📡 Channel: ${db.data.autopost.channelId}\n` +
             `📌 Tipe: ${channelType}\n` +
-            `⏰ Interval: ${db.data.autopost.interval} jam sekali\n` +
+            `⏰ Interval: ${db.data.autopost.interval} jam una vez\n` +
             `🖼️ Gambar: ${imageFiles.length} file ditemukan\n` +
             `📁 Folder: assets/zerotwo-random/\n` +
             `💬 Caption: ${getCaptionCount()} caption tersedia\n\n` +
             `> ${m.prefix}autopost off → matikan\n` +
             `> ${m.prefix}autopost test → kirim manual\n\n` +
-            `🦋 *Zero Two:* "Siap darling~ Saluran lo bakal rame! 🎐"`
+            `🦋 *Zero Two:* "¡Listo, cariño~ ¡Tu canal se llenará de vida! 🎐"`
         )
     }
     
@@ -233,7 +233,7 @@ async function handler(m, { sock }) {
             `❌ *AUTOPOST NONAKTIF*\n\n` +
             `> Bot berhenti kirim gambar otomatis.\n` +
             `> Ketik ${m.prefix}autopost on untuk aktifkan lagi.\n\n` +
-            `🦋 *Zero Two:* "Yaudah darling, lain kali lagi ya~ 🎐"`
+            `🦋 *Zero Two:* "Vale, cariño, será para la próxima~ 🎐"`
         )
     }
     
@@ -257,7 +257,7 @@ async function handler(m, { sock }) {
                 `📡 ID: ${value}\n` +
                 `📌 Tipe: ${channelType}\n` +
                 `> Ketik ${m.prefix}autopost on untuk memulai.\n\n` +
-                `🦋 *Zero Two:* "Oke darling, udah siap~ 🎐"`
+                `🦋 *Zero Two:* "¡Vale, cariño, ya está listo~ 🎐"`
             )
         }
         
@@ -273,9 +273,9 @@ async function handler(m, { sock }) {
             
             return m.reply(
                 `✅ *INTERVAL DIUBAH*\n\n` +
-                `⏰ Menjadi ${interval} jam sekali\n` +
+                `⏰ Menjadi ${interval} jam una vez\n` +
                 `> Akan kirim gambar setiap ${interval} jam.\n\n` +
-                `🦋 *Zero Two:* "Siap darling, gak bakal sepi lagi~ 🔥"`
+                `🦋 *Zero Two:* "¡Listo, cariño, ya no estará vacío~ 🔥"`
             )
         }
         
@@ -283,14 +283,14 @@ async function handler(m, { sock }) {
             `⚠️ *CARA SET:*\n\n` +
             `> Set channel: ${m.prefix}autopost set 120363xxxxxx@newsletter\n` +
             `> Set interval: ${m.prefix}autopost set 2 (jam)\n\n` +
-            `🦋 *Zero Two:* "Gitu darling~ 🎐"`
+            `🦋 *Zero Two:* "¡Así es, cariño~ 🎐"`
         )
     }
     
     // ========== STATUS ==========
     if (sub === 'status') {
         const enabled = db.data.autopost.enabled
-        const channelId = db.data.autopost.channelId || 'Belum diset'
+        const channelId = db.data.autopost.channelId || 'Aún no diset'
         const interval = db.data.autopost.interval || 2
         const channelType = channelId.includes('@newsletter') ? 'SALURAN' : (channelId.includes('@g.us') ? 'GRUP' : 'BELUM DISET')
         
@@ -347,16 +347,16 @@ async function handler(m, { sock }) {
         const success = await sendRandomImage(sock, channelId)
         
         if (success) {
-            return m.reply(`✅ *TEST BERHASIL*\n> Cek channel/saluran lo darling~ 🦋`)
+            return m.reply(`✅ *TEST ÉXITO*\n> Revisa tu canal, cariño~ 🦋`)
         } else {
             return m.reply(
-                `❌ *TEST GAGAL*\n\n` +
+                `❌ *TEST ERROR*\n\n` +
                 `📁 *Folder:* assets/zerotwo-random/\n\n` +
                 `💡 *Solusi:*\n` +
                 `> 1. Cek apakah folder \`assets/zerotwo-random/\` ada\n` +
                 `> 2. Cek apakah ada gambar (jpg/png/gif/webp) di dalamnya\n` +
                 `> 3. Coba upload ulang gambarnya\n\n` +
-                `🦋 *Zero Two:* "Coba cek lagi darling~ 🎐"`
+                `🦋 *Zero Two:* "Inténtalo de nuevo, cariño~ 🎐"`
             )
         }
     }
@@ -365,7 +365,7 @@ async function handler(m, { sock }) {
     if (sub === 'caption' && args[1] === 'add') {
         const newCaption = args.slice(2).join(' ')
         if (!newCaption) {
-            return m.reply(`⚠️ Masukkan caption: ${m.prefix}autopost caption add "Halo darling~"`)
+            return m.reply(`⚠️ Ingresa caption: ${m.prefix}autopost caption add "¡Hola, cariño~ ✨"`)
         }
         
         addCaption(newCaption)
@@ -402,7 +402,7 @@ async function handler(m, { sock }) {
         `> ${m.prefix}autopost caption list → lihat caption\n\n` +
         `📁 *Folder gambar:*\n` +
         `> assets/zerotwo-random/\n\n` +
-        `💫 *Zero Two:* "Saluran lo bakal rame darling~ 🎐"`
+        `💫 *Zero Two:* "¡Tu canal se llenará de vida, cariño~ 🎐"`
     )
 }
 

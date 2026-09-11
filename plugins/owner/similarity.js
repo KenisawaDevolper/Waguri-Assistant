@@ -3,7 +3,7 @@ const pluginConfig = {
     name: 'similarity',
     alias: ['setsimilarity', 'sim'],
     category: 'owner',
-    description: 'Mengaktifkan/menonaktifkan fitur similarity (saran typo)',
+    description: 'Activa/desactiva la función de similitud (sugerencia por error tipográfico) con la estética Waguri Assistant 🔍',
     usage: '.similarity <on/off>',
     example: '.similarity on',
     isOwner: true,
@@ -20,7 +20,7 @@ async function handler(m, { sock }) {
     const args = m.args
     
     if (!args[0]) {
-        return m.reply(`⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n> \`.similarity on\` - Aktifkan\n> \`.similarity off\` - Matikan`)
+        return m.reply(`⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n> \`.similarity on\` - Activar\n> \`.similarity off\` - Desactivar`)
     }
     
     const mode = args[0].toLowerCase()
@@ -34,7 +34,7 @@ async function handler(m, { sock }) {
         await m.react('✅')
         await m.reply(`✅ *sᴜᴋsᴇs*\n\n> Fitur similarity command *DIMATIKAN*`)
     } else {
-        return m.reply(`⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n> \`.similarity on\` - Aktifkan\n> \`.similarity off\` - Matikan`)
+        return m.reply(`⚠️ *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ*\n\n> \`.similarity on\` - Activar\n> \`.similarity off\` - Desactivar`)
     }
     
     await db.save()

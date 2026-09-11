@@ -34,7 +34,7 @@ async function handler(m, { sock }) {
         }
         
         if (!buffer) {
-            return m.reply(`❌ Gagal mendownload gambar`)
+            return m.reply(`❌ Error al descargar la imagen`)
         }
         
         await m.reply(`⏳ Sedang mengupload gambar...`)
@@ -42,7 +42,7 @@ async function handler(m, { sock }) {
             const newUrl = await updateAssetUrl('rimuru-store', buffer, 'rimuru-store.jpg')
             m.reply(`✅ *ʙᴇʀʜᴀsɪʟ*\n\n> Gambar rimuru-store.jpg telah diganti ke URL baru:\n> ${newUrl}\n> Config telah diupdate secara realtime!`)
         } catch (e) {
-            m.reply(`❌ Gagal mengupload gambar: ${e.message}`)
+            m.reply(`❌ Error mengupload gambar: ${e.message}`)
         }
     } catch (error) {
         await m.reply(te(m.prefix, m.command, m.pushName))

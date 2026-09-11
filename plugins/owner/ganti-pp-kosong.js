@@ -23,13 +23,13 @@ async function handler(m, { sock }) {
     if (!isImage) return m.reply(`🖼️ *ɢᴀɴᴛɪ PP-KOSONG.JPG*\n\n> Kirim/reply gambar untuk mengganti\n> File: assets/images/pp-kosong.jpg`)
     try {
         let buffer = m.quoted && m.quoted.isMedia ? await m.quoted.download() : await m.download()
-        if (!buffer) return m.reply('❌ Gagal mendownload gambar')
+        if (!buffer) return m.reply('❌ Error al descargar la imagen')
         await m.reply(`⏳ Sedang mengupload gambar...`)
         try {
             const newUrl = await updateAssetUrl('pp-kosong', buffer, 'pp-kosong.jpg')
             m.reply(`✅ *ʙᴇʀʜᴀsɪʟ*\n\n> Gambar pp-kosong.jpg telah diganti ke URL baru:\n> ${newUrl}\n> Config telah diupdate secara realtime!`)
         } catch (e) {
-            m.reply(`❌ Gagal mengupload gambar: ${e.message}`)
+            m.reply(`❌ Error mengupload gambar: ${e.message}`)
         }
     } catch (error) {
         await m.reply(te(m.prefix, m.command, m.pushName))

@@ -15,7 +15,7 @@ const pluginConfig = {
 
 async function handler(m) {
   if (!global.statusBcpc) {
-    return m.reply('❌ Tidak ada broadcast private yang sedang berjalan.')
+    return m.reply('❌ No ada broadcast private yang sedang berjalan.')
   }
   global.stopBcpc = true
   return m.reply('⏹️ Menghentikan broadcast private...')

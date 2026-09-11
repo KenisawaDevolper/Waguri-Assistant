@@ -3,7 +3,7 @@ const pluginConfig = {
     name: 'listjadibotaktif',
     alias: ['jadibotaktif', 'activejadibots'],
     category: 'owner',
-    description: 'Lihat jadibot yang sedang aktif dengan detail',
+    description: 'Gestiona la función listjadibotaktif con la estética Waguri Assistant ⚙️',
     usage: '.listjadibotaktif',
     example: '.listjadibotaktif',
     isOwner: true,
@@ -28,7 +28,7 @@ async function handler(m, { sock }) {
     const active = getActiveJadibots()
 
     if (active.length === 0) {
-        return m.reply(`❌ Tidak ada jadibot yang aktif saat ini`)
+        return m.reply(`❌ No ada jadibot yang aktif saat ini`)
     }
 
     let txt = `🟢 *ᴊᴀᴅɪʙᴏᴛ ᴀᴋᴛɪꜰ*\n\n`

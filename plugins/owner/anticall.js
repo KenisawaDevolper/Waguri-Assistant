@@ -6,7 +6,7 @@ const pluginConfig = {
   name: "anticall",
   alias: ["antitelpon", "antitelp", "rejectcall"],
   category: "owner",
-  description: "Auto tolak panggilan masuk",
+  description: "Rechaza automáticamente las llamadas entrantes con la estética Waguri Assistant 📵",
   usage: ".anticall on/off",
   example: ".anticall on",
   isOwner: true,
@@ -28,7 +28,7 @@ async function handler(m, { sock }) {
       `📞 *Anti Call*\n\n` +
         `> Status: *${current ? "Aktif ✅" : "Nonaktif ❌"}*\n\n` +
         `*PENGGUNAAN:*\n` +
-        `> *${m.prefix}anticall on* — Aktifkan\n` +
+        `> *${m.prefix}anticall on* — Activar\n` +
         `> *${m.prefix}anticall off* — Nonaktifkan\n\n` +
         `_Bot akan otomatis menolak panggilan masuk_`
     );
@@ -48,12 +48,12 @@ async function handler(m, { sock }) {
     db.setting("antiCall", false);
     return m.reply(
       `📞 *Anti Call Nonaktif*\n\n` +
-        `> Bot tidak akan menolak panggilan masuk`
+        `> Bot no akan menolak panggilan masuk`
     );
   }
 
   return m.reply(
-    `❌ *Opsi Tidak Valid*\n\n> Gunakan *${m.prefix}anticall on* atau *${m.prefix}anticall off*`
+    `❌ *Opsi No Valid*\n\n> Gunakan *${m.prefix}anticall on* atau *${m.prefix}anticall off*`
   );
 }
 

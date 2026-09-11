@@ -8,7 +8,7 @@ const pluginConfig = {
   name: "backupsc",
   alias: ["backup", "backupscript", "backupsource"],
   category: "owner",
-  description: "Backup script bot dalam bentuk zip",
+  description: "Respaldar el script del bot en formato zip con la estética Waguri Assistant 📦",
   usage: ".backupsc",
   example: ".backupsc",
   isOwner: true,
@@ -134,7 +134,7 @@ async function handler(m, { sock }) {
       output.on("close", () => {
         try {
           if (!fs.existsSync(zipFilePath)) {
-            fail(new Error("File backup tidak ditemukan setelah proses zip"));
+            fail(new Error("File backup no encontrado setelah proses zip"));
             return;
           }
           const stats = fs.statSync(zipFilePath);
@@ -175,7 +175,7 @@ async function handler(m, { sock }) {
 
       addDirectory(projectRoot);
       if (fileCount === 0) {
-        fail(new Error("Tidak ada file yang masuk ke backup script"));
+        fail(new Error("No ada file yang masuk ke backup script"));
         return;
       }
       archive.finalize();

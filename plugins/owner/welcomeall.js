@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'welcomeall',
     alias: ['wcall', 'globalwelcome'],
     category: 'owner',
-    description: 'Aktifkan/nonaktifkan welcome di semua grup',
+    description: 'Activa/desactiva la bienvenida en todos los grupos con la estética Waguri Assistant 🌸',
     usage: '.welcomeall <on/off>',
     example: '.welcomeall on',
     isOwner: true,
@@ -24,7 +24,7 @@ async function handler(m, { sock }) {
     if (!action || !['on', 'off'].includes(action)) {
         return m.reply(
             `👋 *ᴡᴇʟᴄᴏᴍᴇ ɢʟᴏʙᴀʟ*\n\n` +
-            `> Aktifkan/nonaktifkan welcome di SEMUA grup sekaligus\n\n` +
+            `> Activar/nonaktifkan welcome di SEMUA grup una vezgus\n\n` +
             `╭┈┈⬡「 📋 *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ* 」\n` +
             `┃ ${m.prefix}welcomeall on\n` +
             `┃ ${m.prefix}welcomeall off\n` +

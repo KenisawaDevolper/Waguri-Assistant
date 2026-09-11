@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'setlimitdefault',
     alias: ['setdefaultlimit', 'limitdefault'],
     category: 'owner',
-    description: 'Set default limit untuk user baru',
+    description: 'Gestiona la función setlimitdefault con la estética Waguri Assistant ⚙️',
     usage: '.setlimitdefault <jumlah>',
     example: '.setlimitdefault 50',
     isOwner: true,
@@ -29,7 +29,7 @@ async function handler(m, { sock }) {
             `> Limit default saat ini: \`${currentDefault}\`\n\n` +
             `*Cara pakai:*\n` +
             `> \`${m.prefix}setlimitdefault <jumlah>\`\n\n` +
-            `*Contoh:*\n` +
+            `*Ejemplo:*\n` +
             `> \`${m.prefix}setlimitdefault 50\``
         )
     }

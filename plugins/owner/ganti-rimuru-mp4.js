@@ -34,7 +34,7 @@ async function handler(m, { sock }) {
         }
         
         if (!buffer) {
-            return m.reply(`❌ Gagal mendownload video`)
+            return m.reply(`❌ Error al descargar el video`)
         }
         
         await m.reply(`⏳ Sedang mengupload gambar...`)
@@ -42,7 +42,7 @@ async function handler(m, { sock }) {
             const newUrl = await updateAssetUrl('rimuru-mp4', buffer, 'rimuru.mp4')
             m.reply(`✅ *ʙᴇʀʜᴀsɪʟ*\n\n> File rimuru.mp4 telah diganti ke URL baru:\n> ${newUrl}\n> Config telah diupdate secara realtime!`)
         } catch (e) {
-            m.reply(`❌ Gagal mengupload file: ${e.message}`)
+            m.reply(`❌ Error mengupload file: ${e.message}`)
         }
     } catch (error) {
         await m.reply(te(m.prefix, m.command, m.pushName))

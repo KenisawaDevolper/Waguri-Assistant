@@ -4,8 +4,8 @@ const pluginConfig = {
   name: 'bcpcjeda',
   alias: ['delaybcpc', 'jedabcpc', 'setjedabcpc'],
   category: 'owner',
-  description: 'Atur jeda broadcast private chat',
-  usage: '.bcpcjeda <waktu> (contoh: 5s, 2m, 1h)',
+  description: 'Configura el intervalo del broadcast privado con la estética Waguri Assistant ⏱️',
+  usage: '.bcpcjeda <tiempo> (ej: 5s, 2m, 1h)',
   isOwner: true,
   isPremium: false,
   isGroup: false,
@@ -59,7 +59,7 @@ async function handler(m) {
 
   const ms = parseDelay(input)
   if (!ms || ms < 1000) {
-    return m.reply('❌ Format salah. Contoh: `5s`, `2m`, `1h`, `1d`')
+    return m.reply('❌ Format salah. Ejemplo: `5s`, `2m`, `1h`, `1d`')
   }
 
   const prev = current

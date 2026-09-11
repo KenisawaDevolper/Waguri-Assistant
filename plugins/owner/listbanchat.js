@@ -6,7 +6,7 @@ let handler = async (m, { conn }) => {
     .filter(([jid, data]) => jid.endsWith('@g.us') && data?.isBanned)
 
   if (!banned.length)
-    return m.reply('✅ Tidak ada grup yang sedang dibanned.')
+    return m.reply('✅ No ada grup yang sedang dibanned.')
 
   let teks = '📛 *DAFTAR GRUP KEBANNED*\n\n'
   let flows = []

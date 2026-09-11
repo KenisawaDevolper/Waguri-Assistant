@@ -8,7 +8,7 @@ const pluginConfig = {
   name: "colongpp",
   alias: ["stealpp", "malingpp", "ambilpp"],
   category: "owner",
-  description: "Ambil & pakai foto profil target sebagai PP bot",
+  description: "Toma la foto de perfil del objetivo y úsala como PP del bot con la estética Waguri Assistant 🖼️",
   usage: ".colongpp (reply pesan target)",
   example: ".colongpp",
   isOwner: true,
@@ -57,7 +57,7 @@ async function handler(m, { sock }) {
         timeout: 15000,
       });
       ppBuffer = Buffer.from(res.data);
-      source = "default (target tidak punya PP)";
+      source = "default (target no punya PP)";
     }
     const processed = await resizeForPP(ppBuffer);
     const botJid = sock.user?.id;

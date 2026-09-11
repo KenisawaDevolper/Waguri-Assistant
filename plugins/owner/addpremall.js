@@ -5,7 +5,7 @@ const pluginConfig = {
     name: 'addpremall',
     alias: ['addpremiumall', 'setpremall'],
     category: 'owner',
-    description: 'Menambahkan semua member grup ke premium',
+    description: 'Añade a todos los miembros del grupo a premium con la estética Waguri Assistant 💎',
     usage: '.addprem all',
     example: '.addprem all',
     isOwner: true,
@@ -23,7 +23,7 @@ async function handler(m, { sock }) {
         const participants = groupMeta.participants || []
         
         if (participants.length === 0) {
-            return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Tidak ada member di grup ini`)
+            return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> No hay miembros en este grupo`)
         }
         
         await m.react('🕕')

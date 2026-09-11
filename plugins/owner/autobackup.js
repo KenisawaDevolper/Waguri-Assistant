@@ -6,7 +6,7 @@ const pluginConfig = {
   name: "autobackup",
   alias: ["backup", "ab"],
   category: "owner",
-  description: "Kelola sistem auto backup",
+  description: "Gestiona el sistema de respaldo automático con la estética Waguri Assistant 💾",
   usage: ".autobackup <on/off/status/now> [interval]",
   example: ".autobackup on 5h",
   isOwner: true,
@@ -24,7 +24,7 @@ async function handler(m, { sock }) {
 
   if (!action) {
     const status = getBackupStatus();
-    const ownerNum = config.owner?.number?.[0] || "Tidak diset";
+    const ownerNum = config.owner?.number?.[0] || "No diset";
 
     let txt = `🗂️ *ᴀᴜᴛᴏ ʙᴀᴄᴋᴜᴘ sʏsᴛᴇᴍ*\n\n`;
     txt += `╭┈┈⬡「 📊 *sᴛᴀᴛᴜs* 」\n`;
@@ -106,13 +106,13 @@ async function handler(m, { sock }) {
     case "status":
     case "info": {
       const status = getBackupStatus();
-      const ownerNum = config.owner?.number?.[0] || "Tidak diset";
+      const ownerNum = config.owner?.number?.[0] || "No diset";
 
       let txt = `🗂️ *sᴛᴀᴛᴜs ᴀᴜᴛᴏ ʙᴀᴄᴋᴜᴘ*\n\n`;
       txt += `╭┈┈⬡「 📊 *ɪɴꜰᴏ* 」\n`;
-      txt += `┃ 🔘 Enabled: ${status.enabled ? "✅ Ya" : "❌ Tidak"}\n`;
+      txt += `┃ 🔘 Enabled: ${status.enabled ? "✅ Ya" : "❌ No"}\n`;
       txt += `┃ ⏱️ Interval: ${status.interval}\n`;
-      txt += `┃ 🔄 Running: ${status.isRunning ? "✅ Ya" : "❌ Tidak"}\n`;
+      txt += `┃ 🔄 Running: ${status.isRunning ? "✅ Ya" : "❌ No"}\n`;
       txt += `┃ 📅 Last: ${status.lastBackup ? timeHelper.fromTimestamp(status.lastBackup, "DD MMMM YYYY HH:mm:ss") : "-"}\n`;
       txt += `┃ #️⃣ Total: ${status.backupCount} backup\n`;
       txt += `┃ 📤 Target: ${ownerNum}\n`;
@@ -145,7 +145,7 @@ async function handler(m, { sock }) {
       return m.reply(
         `⚠️ *ᴀᴄᴛɪᴏɴ ᴛɪᴅᴀᴋ ᴠᴀʟɪᴅ*\n\n` +
           `> Pilih: \`on\`, \`off\`, \`status\`, atau \`now\`\n` +
-          `> Contoh: \`${m.prefix}autobackup on 6h\``,
+          `> Ejemplo: \`${m.prefix}autobackup on 6h\``,
       );
   }
 }

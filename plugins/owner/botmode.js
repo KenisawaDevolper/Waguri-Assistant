@@ -5,7 +5,7 @@ const pluginConfig = {
     name: 'botmode',
     alias: ['setmode', 'mode'],
     category: 'owner',
-    description: 'Mengatur mode bot (md/cpanel/store/pushkontak/all)',
+    description: 'Configura el modo del bot (md/cpanel/store/pushkontak/all) con la estética Waguri Assistant ⚙️',
     usage: '.botmode <mode>',
     example: '.botmode store',
     isOwner: true,

@@ -4,7 +4,7 @@ const pluginConfig = {
   name: "delsewa",
   alias: ["sewadel", "hapussewa", "removesewa"],
   category: "owner",
-  description: "Hapus grup dari whitelist sewa",
+  description: "Elimina un grupo de la lista de alquiler con la estética Waguri Assistant 🗑️",
   usage: ".delsewa <link/id grup>",
   example: ".delsewa https://chat.whatsapp.com/xxx",
   isOwner: true,
@@ -46,27 +46,27 @@ async function handler(m, { sock }) {
         `📝 *HAPUS SEWA*\n\n` +
           `Dari private: *${m.prefix}delsewa <link/id>*\n` +
           `Dari grup: ketik *${m.prefix}delsewa* langsung di grup\n\n` +
-          `Contoh:\n` +
+          `Ejemplo:\n` +
           `• ${m.prefix}delsewa https://chat.whatsapp.com/xxx\n` +
           `• ${m.prefix}delsewa 120363xxx\n\n` +
-          `⚠️ Jika sewabot aktif, bot akan otomatis keluar dari grup yang dihapus`,
+          `⚠️ Jika sewabot aktif, bot akan otomatis keluar dari grup yang eliminado`,
       );
     }
     groupId = m.chat;
   } else {
     const result = await resolveGroupId(sock, input);
     if (!result)
-      return m.reply(`❌ Link tidak valid atau grup tidak ditemukan`);
+      return m.reply(`❌ Link no valid atau grup no encontrado`);
     groupId = result.id;
     groupName = result.name;
   }
 
-  if (!groupId) return m.reply(`❌ Tidak dapat menentukan grup`);
+  if (!groupId) return m.reply(`❌ No dapat menentukan grup`);
 
   const sewaData = db.db.data.sewa.groups[groupId];
   if (!sewaData)
     return m.reply(
-      `❌ Grup tidak terdaftar dalam sistem sewa\n\nLihat daftar: *${m.prefix}listsewa*`,
+      `❌ Grup no terdaftar dalam sistem sewa\n\nLihat daftar: *${m.prefix}listsewa*`,
     );
 
   groupName = groupName || sewaData.name || groupId.split("@")[0];
@@ -83,7 +83,7 @@ async function handler(m, { sock }) {
     try {
       await sock.sendText(
         groupId,
-        `⛔ Grup ini telah dihapus dari whitelist sewa.\nBot akan meninggalkan grup.\n\nHubungi owner untuk sewa ulang.`,
+        `⛔ Grup ini telah eliminado dari whitelist sewa.\nBot akan meninggalkan grup.\n\nHubungi owner untuk sewa ulang.`,
         null,
         {
           contextInfo: saluranCtx(),

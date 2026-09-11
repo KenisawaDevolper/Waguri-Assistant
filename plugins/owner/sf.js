@@ -6,12 +6,12 @@ const _fs = fs.promises
 
 let handler = async (m, { conn, text, usedPrefix, command, __dirname }) => {
   if (!text) throw `
-Penggunaan: ${usedPrefix}${command} <name file>
-Contoh: ${usedPrefix}savefile main.js
+Uso: ${usedPrefix}${command} <name file>
+Ejemplo: ${usedPrefix}savefile main.js
         ${usedPrefix}saveplugin owner
 `.trim()
 
-  if (!m.quoted) throw 'Reply Kodenya'
+  if (!m.quoted) throw 'Responde al código que deseas guardar 💫'
 
   if (/p(lugin)?/i.test(command)) {
     let filename = text.replace(/plugin(s)\//i, '') + (/\.js$/i.test(text) ? '' : '.js')
@@ -28,7 +28,7 @@ Contoh: ${usedPrefix}savefile main.js
 
     await conn.sendMessage(
       m.chat,
-      { text: `Sukses Menyimpan Di *${filename}*` },
+      { text: `Guardado con éxito en *${filename}*` },
       { quoted: m }
     )
 
@@ -47,7 +47,7 @@ Contoh: ${usedPrefix}savefile main.js
 
       await conn.sendMessage(
         m.chat,
-        { text: `Sukses Menyimpan Di *${text}*` },
+        { text: `Guardado con éxito en *${text}*` },
         { quoted: m }
       )
 
@@ -57,12 +57,12 @@ Contoh: ${usedPrefix}savefile main.js
 
       await conn.sendMessage(
         m.chat,
-        { text: `Sukses Menyimpan Di *${text}*` },
+        { text: `Guardado con éxito en *${text}*` },
         { quoted: m }
       )
 
     } else {
-      throw 'Tidak Support!!'
+      throw '¡Formato no compatible! 💫'
     }
   }
 }

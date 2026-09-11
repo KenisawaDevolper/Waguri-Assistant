@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'antipm',
     alias: ['apm', 'nopm'],
     category: 'owner',
-    description: 'Anti PM - cuma nomor tertentu yang bisa chat ke bot (BLOKIR ASLI)',
+    description: 'Anti PM - solo ciertos números pueden escribir al bot (BLOQUEO REAL) con la estética Waguri Assistant 📵',
     usage: '.antipm <on/off/status>',
     example: '.antipm on',
     isOwner: true,
@@ -72,11 +72,11 @@ async function handler(m, { sock }) {
         
         return m.reply(
             `🦋 *ANTI PM AKTIF* 🦋\n\n` +
-            `> Zero Two: "Siap darling~ Sekarang cuma ${allowedNumbers.length} orang yang bisa chat ke aku!\n\n` +
+            `> Zero Two: "¡Listo, cariño~ Ahora solo ${allowedNumbers.length} personas pueden escribirme! ✨\n\n` +
             `📋 *Daftar yang boleh chat:*\n${daftarAllowed}\n` +
             `💀 *Siapapun selain itu bakal diblokir ASLI di WhatsApp!*\n` +
             `⚠️ *Peringatan 3x chat → BLOKIR PERMANEN!*\n\n` +
-            `💫 *Yosh!* Awas ya darling~ 🎐`
+            `💫 *Yosh!* ¡Ten cuidado, cariño~ 🎐`
         )
     }
     
@@ -86,7 +86,7 @@ async function handler(m, { sock }) {
         
         return m.reply(
             `❌ *ANTI PM NONAKTIF* ❌\n\n` +
-            `> Zero Two: "Hmph~ Yaudah, sekarang semua orang bisa chat ke aku. Tapi jangan aneh-aneh ya darling~ 🦋"`
+            `> Zero Two: "Hmph~ Vale, ahora todos pueden escribirme. ¡Pero no hagas cosas raras, cariño~ 🦋"`
         )
     }
     
@@ -115,7 +115,7 @@ async function handler(m, { sock }) {
         const blockedList = db.data.antipm.blockedUsers || []
         
         if (blockedList.length === 0) {
-            return m.reply(`📋 *DAFTAR BLOKIR*\n\n> Belum ada nomor yang diblokir darling~ 🦋`)
+            return m.reply(`📋 *DAFTAR BLOKIR*\n\n> Aún no hay números bloqueados cariño~ 🦋`)
         }
         
         let text = `🚫 *DAFTAR NOMOR DIBLOKIR* 🚫\n\n`
@@ -135,7 +135,7 @@ async function handler(m, { sock }) {
         let target = mention || (targetNumber ? `${targetNumber}@s.whatsapp.net` : null)
         
         if (!target) {
-            return m.reply(`⚠️ Tag user yang mau diunblock: ${m.prefix}antipm unblock @user\nAtau: ${m.prefix}antipm unblock 628xxxxxx`)
+            return m.reply(`⚠️ ¡Menciona al usuario que deseas desbloquear: ${m.prefix}antipm unblock @user\nAtau: ${m.prefix}antipm unblock 628xxxxxx`)
         }
         
         const blockedList = db.data.antipm.blockedUsers || []
@@ -153,10 +153,10 @@ async function handler(m, { sock }) {
             await sock.updateBlockStatus(target, 'unblock')
             console.log(`✅ AntiPM: ${target} berhasil diunblock`)
             
-            return m.reply(`✅ *UNBLOCK BERHASIL*\n\n> @${target.split('@')[0]} sekarang bisa chat lagi~\n> Blokir WhatsApp telah dibuka! 🦋`, { mentions: [target] })
+            return m.reply(`✅ *UNBLOCK ÉXITO*\n\n> @${target.split('@')[0]} sekarang bisa chat lagi~\n> Blokir WhatsApp telah dibuka! 🦋`, { mentions: [target] })
         } catch (err) {
             console.error('Unblock error:', err)
-            return m.reply(`⚠️ *UNBLOCK GAGAL*\n\n> Error: ${err.message}\n> Coba manual di WhatsApp darling~ 🦋`)
+            return m.reply(`⚠️ *UNBLOCK ERROR*\n\n> Error: ${err.message}\n> Inténtalo manualmente en WhatsApp, cariño~ 🦋`)
         }
     }
     
@@ -175,7 +175,7 @@ async function handler(m, { sock }) {
         `> ${m.prefix}antipm unblock @user → buka blokir\n\n` +
         `📌 *Yang boleh chat:*\n${daftarAllowed}\n` +
         `🚫 *Sanksi:* Peringatan 3x → BLOKIR ASLI WhatsApp!\n\n` +
-        `💫 *Zero Two:* "Yang lain jangan coba-coba ya darling~ 🎐"`
+        `💫 *Zero Two:* "Los demás no lo intenten, ¿vale, cariño~? 🎐"`
     )
 }
 
@@ -220,7 +220,7 @@ async function setupAntiPMListener(sock) {
             
             if (isAlreadyBlocked) {
                 await sock.sendMessage(sender, {
-                    text: `🦋 *ZERO TWO*: "Heh! ${senderNumber} kamu udah aku *BLOKIR ASLI* di WhatsApp! 🗿\n\nGak usah coba-coba chat lagi, pesanmu gak bakal sampe ke aku~\n\n💀 *KALO MAU DIBUKA, CHAT NOMOR YANG BOLEH AJA!* 🎐"`
+                    text: `🦋 *ZERO TWO*: "Heh! ${senderNumber} ¡te he *BLOQUEADO DE VERDAD* en WhatsApp! 🗿\n\nNo intentes escribirme de nuevo, tu mensaje no me llegará~\n\n💀 *¡SI QUIERES QUE TE DESBLOQUEE, ESCRIBE AL NÚMERO AUTORIZADO!* 🎐"`
                 })
                 return
             }
@@ -252,12 +252,12 @@ async function setupAntiPMListener(sock) {
                 
                 await sock.sendMessage(sender, {
                     text: `🦋 *ZERO TWO SAYS* 🦋\n\n` +
-                          `"Heh! ${senderNumber} jangan chat aku dong~ 🗿\n\n` +
-                          `Aku lagi *ANTI PM MODE* nih!\n` +
-                          `Cuma ${allowedNumbers.length} orang yang bisa chat ke aku!\n` +
+                          `"Heh! ${senderNumber} no me escribas~ 🗿\n\n` +
+                          `¡Estoy en *MODO ANTI-MP*! ✨\n` +
+                          `¡Solo ${allowedNumbers.length} personas pueden escribirme!\n` +
                           `Yaitu: ${daftarAllowed}\n\n` +
                           `⚠️ *PERINGATAN 1/3*\n` +
-                          `Kalau masih chat 2 kali lagi, nomormu bakal aku *BLOKIR ASLI* di WhatsApp!\n\n` +
+                          `¡Si me escribes 2 veces más, tu número será *BLOQUEADO DE VERDAD* en WhatsApp!\n\n` +
                           `💀 *INI PERINGATAN TERAKHIR!* 🎐`
                 })
                 
@@ -287,11 +287,11 @@ async function setupAntiPMListener(sock) {
                 await sock.sendMessage(sender, {
                     text: `💀 *ZERO TWO - KAMU DIBLOKIR ASLI!* 💀\n\n` +
                           `"SUDAH GW BILANG JANGAN CHAT!! 🗿\n\n` +
-                          `Kamu udah chat *${violation.count} kali* padahal udah aku peringatin 2x!\n` +
-                          `Cuma ${allowedNumbers.length} nomor yang boleh chat ke aku, dan kamu BUKAN salah satunya!\n\n` +
+                          `¡Ya me has escrito *${violation.count} veces* aunque te avisé 2 veces!\n` +
+                          `¡Solo ${allowedNumbers.length} números pueden escribirme, y tú NO eres uno de ellos!\n\n` +
                           `🚫 *NOMORMU SEKARANG DIBLOKIR ASLI DI WHATSAPP!*\n` +
                           `💀 *KAMU GAK BISA CHAT KE BOT LAGI SELAMANYA!*\n\n` +
-                          `Bye bye~ Jangan balik lagi ya darling~ 🦋`
+                          `¡Bye bye~ No vuelvas, cariño~ 🦋`
                 })
                 
                 if (!db.data.antipm.blockedUsers) db.data.antipm.blockedUsers = []
@@ -302,7 +302,7 @@ async function setupAntiPMListener(sock) {
                 
                 try {
                     await sock.updateBlockStatus(sender, 'block')
-                    console.log(`🚫 AntiPM: ${senderNumber} BERHASIL DIBLOKIR ASLI di WhatsApp!`)
+                    console.log(`🚫 AntiPM: ${senderNumber} ÉXITO DIBLOKIR ASLI di WhatsApp!`)
                     
                     for (const allowedNum of allowedNumbers) {
                         try {
@@ -314,23 +314,23 @@ async function setupAntiPMListener(sock) {
                                       `📝 *Pesan terakhir:* ${text.slice(0, 100)}\n` +
                                       `⏰ *Waktu:* ${new Date().toLocaleString()}\n\n` +
                                       `🔒 *Status:* BLOKIR ASLI WhatsApp!\n` +
-                                      `💀 *User tidak bisa chat ke bot lagi!*\n\n` +
-                                      `🦋 *Zero Two:* "Beres darling! Gak bakal ganggu lagi~ 🗿🔥"`
+                                      `💀 *User no bisa chat ke bot lagi!*\n\n` +
+                                      `🦋 *Zero Two:* "¡Listo, cariño! Ya no molestará más~ 🗿🔥"`
                             })
                         } catch (err) {}
                     }
                     
                 } catch (err) {
-                    console.error(`Gagal blokir asli ${senderNumber}:`, err)
+                    console.error(`Error blokir asli ${senderNumber}:`, err)
                     
                     for (const allowedNum of allowedNumbers) {
                         try {
                             const allowedJid = `${allowedNum}@s.whatsapp.net`
                             await sock.sendMessage(allowedJid, {
-                                text: `⚠️ *GAGAL BLOKIR ASLI* ⚠️\n\n` +
+                                text: `⚠️ *ERROR BLOKIR ASLI* ⚠️\n\n` +
                                       `> User: ${senderNumber}\n` +
                                       `> Error: ${err.message}\n\n` +
-                                      `> Mungkin perlu blokir manual darling~ 🦋`
+                                      `> Quizás necesites bloquear manualmente, cariño~ 🦋`
                             })
                         } catch (err) {}
                     }

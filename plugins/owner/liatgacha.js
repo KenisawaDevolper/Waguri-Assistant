@@ -8,7 +8,7 @@ const pluginConfig = {
     name: 'liatgacha',
     alias: ['lihat-gacha', 'listgacha', 'daftargacha', 'lg'],
     category: 'owner',
-    description: 'Melihat semua karakter yang tersedia di database gacha',
+    description: 'Gestiona la función liatgacha con la estética Waguri Assistant ⚙️',
     usage: '.liat-gacha',
     example: '.liat-gacha',
     isOwner: true,
@@ -26,7 +26,7 @@ const DARLING_JSON_PATH = path.join(
     'darling.json'
 )
 
-function getDarlingList() {
+function getCariñoList() {
     try {
         if (!fs.existsSync(DARLING_JSON_PATH)) {
             return []
@@ -75,13 +75,13 @@ function formatDate(dateString) {
 
 async function handler(m, { args = [], prefix = '.' }) {
 
-    const characters = getDarlingList()
+    const characters = getCariñoList()
 
     if (!characters.length) {
         return m.reply(
 `╭━━〔 🎀 *LIST GACHA DARLING* 〕━━⬣
 │
-│ ❌ *Belum ada karakter!*
+│ ❌ *Aún no ada karakter!*
 │
 │ 💡 *Cara tambah:*
 │    \`${prefix}add-gacha Nama | https://url.mp4\`

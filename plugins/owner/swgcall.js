@@ -12,9 +12,9 @@ const pluginConfig = {
   name: "swgcall",
   alias: ["swgcsemua", "swgcbroadcast", "swgcbc", "groupstoryall"],
   category: "owner",
-  description: "Post Group Status/Story ke SEMUA grup sekaligus (border hijau)",
+  description: "Post Group Status/Story ke SEMUA grup una vezgus (border hijau)",
   usage: ".swgcall <teks> atau reply media",
-  example: ".swgcall Pengumuman penting!",
+  example: ".swgcall Penggeneralan penting!",
   isOwner: true,
   isPremium: false,
   isGroup: false,
@@ -36,7 +36,7 @@ async function handler(m, { sock, db }) {
     const pending = global._swgcallPending?.get(m.sender);
     if (!pending) {
       return m.reply(
-        `⚠️ *Tidak ada data pending. Kirim ulang media + .swgcall*`,
+        `⚠️ *No ada data pending. Kirim ulang media + .swgcall*`,
       );
     }
 
@@ -90,8 +90,8 @@ async function handler(m, { sock, db }) {
     let report =
       `✅ *ʙʀᴏᴀᴅᴄᴀsᴛ sᴡɢᴄ sᴇʟᴇsᴀɪ*\n\n` +
       `> Total: *${total}* grup\n` +
-      `> Berhasil: *${success}* ✅\n` +
-      `> Gagal: *${failed}* ❌`;
+      `> Éxito: *${success}* ✅\n` +
+      `> Error: *${failed}* ❌`;
 
     if (failedGroups.length > 0) {
       report +=
@@ -122,7 +122,7 @@ async function handler(m, { sock, db }) {
   if (source) {
     try {
       buffer = await source.download();
-      if (!buffer) return m.reply(`❌ Gagal mengambil media.`);
+      if (!buffer) return m.reply(`❌ Error mengambil media.`);
 
       const fileType = await fileTypeFromBuffer(buffer);
       ext = fileType?.ext || "bin";
@@ -171,7 +171,7 @@ async function handler(m, { sock, db }) {
     const groupList = Object.entries(groups);
 
     if (groupList.length === 0) {
-      return m.reply(`⚠️ *Bot tidak berada di grup manapun.*`);
+      return m.reply(`⚠️ *Bot no berada di grup manapun.*`);
     }
 
     if (!global._swgcallPending) global._swgcallPending = new Map();
@@ -236,7 +236,7 @@ async function handler(m, { sock, db }) {
     });
   } catch (error) {
     await m.reply(
-      `❌ *ᴇʀʀᴏʀ*\n\n> Gagal mengambil daftar grup.\n> _${error.message}_`,
+      `❌ *ᴇʀʀᴏʀ*\n\n> Error mengambil daftar grup.\n> _${error.message}_`,
     );
     if (tempFile && fs.existsSync(tempFile)) {
       try {

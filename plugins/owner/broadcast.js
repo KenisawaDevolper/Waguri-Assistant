@@ -1,5 +1,5 @@
 const handler = async (m, { conn, text, quoted, mime, prefix, command }) => {
-  if (!text) throw `*Penggunaan salah!*\nGunakan: .bcgc teks\n\ untuk broadcast.`;
+  if (!text) throw `*Uso salah!*\nGunakan: .bcgc teks\n\ untuk broadcast.`;
 
   let getGroups = await conn.groupFetchAllParticipating();
   let groups = Object.entries(getGroups).map(entry => entry[1]);
@@ -33,7 +33,7 @@ const handler = async (m, { conn, text, quoted, mime, prefix, command }) => {
     }
   }
 
-  m.reply('✅ Berhasil broadcast ke semua grup!');
+  m.reply('✅ Éxito broadcast ke semua grup!');
 };
 
 handler.help = ['broadcast <teks>'];

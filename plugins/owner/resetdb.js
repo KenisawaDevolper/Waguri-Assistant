@@ -7,7 +7,7 @@ const pluginConfig = {
     name: 'resetdb',
     alias: ['cleardb', 'wipedb'],
     category: 'owner',
-    description: 'Reset semua data database',
+    description: 'Gestiona la función resetdb con la estética Waguri Assistant ⚙️',
     usage: '.resetdb [confirm]',
     example: '.resetdb confirm',
     isOwner: true,

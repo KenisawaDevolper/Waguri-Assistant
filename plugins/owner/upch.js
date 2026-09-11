@@ -13,7 +13,7 @@ const pluginConfig = {
     name: "upch",
     alias: ["uploadch", "uploadsaluran", "uch"],
     category: "owner",
-    description: "Upload gambar, audio, video, atau teks ke saluran",
+    description: "Subir imagen, audio, video o texto al canal con la estética Waguri Assistant 📤",
     usage: ".upch <id saluran> <teks opsional>",
     example: ".upch 12xxx@newsletter Halo!",
     cooldown: 10,
@@ -120,7 +120,7 @@ async function handler(m, { sock }) {
             return m.reply("✅ Audio berhasil dikirim ke saluran")
         }
 
-        m.reply("❌ Tipe media tidak didukung")
+        m.reply("❌ Tipe media no didukung")
     } catch (e) {
         console.error("[UpCh]", e)
         await m.react("☢")

@@ -24,9 +24,9 @@ async function handler(m) {
         return m.reply(
 `╭━━〔 💗 ZERO TWO API SYSTEM 💗 〕━━⬣
 ┃
-┃ Darling, formatnya salah 😖
+┃ Cariño, formatnya salah 😖
 ┃
-┃ Contoh :
+┃ Ejemplo :
 ┃ .gantiapi tomediafire sk-xxxx
 ┃
 ╰━━━━━━━━━━━━━━━━⬣`)
@@ -40,7 +40,7 @@ async function handler(m) {
     if (!fs.existsSync(pluginPath)) {
         return m.reply(
 `╭━━〔 ❌ ZERO TWO SYSTEM 〕━━⬣
-┃ Plugin *${pluginName}* tidak ditemukan
+┃ Plugin *${pluginName}* no encontrado
 ╰━━━━━━━━━━━━━━━━⬣`)
     }
 
@@ -53,7 +53,7 @@ async function handler(m) {
         if (!apiRegex.test(file)) {
             return m.reply(
 `╭━━〔 ⚠️ ZERO TWO SYSTEM 〕━━⬣
-┃ API tidak ditemukan di plugin
+┃ API no encontrado di plugin
 ┃ *${pluginName}*
 ╰━━━━━━━━━━━━━━━━⬣`)
         }
@@ -68,7 +68,7 @@ async function handler(m) {
 ┃ Plugin : *${pluginName}*
 ┃ API baru : *${newApi}*
 ┃
-┃ API berhasil diganti darling 😋
+┃ ¡API cambiada con éxito, cariño~ 😋✨
 ┃ Jangan lupa restart bot ya
 ┃
 ╰━━━━━━━━━━━━━━━━⬣`

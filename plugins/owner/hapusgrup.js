@@ -42,7 +42,7 @@ async function handler(m, { sock }) {
             `> ID: ${targetJid}`
         )
     } catch (err) {
-        return m.reply(`❌ Gagal keluar dari grup: ${err.message}`)
+        return m.reply(`❌ Error keluar dari grup: ${err.message}`)
     }
 }
 

@@ -5,12 +5,12 @@ import path from 'path'
 const dir = '../../src/lib/megami/scrape'
 
 let handler = async (m, { text, __dirname }) => {
-if (!text) throw 'Nama file?\nContoh:\n.savescrape y2mate'
+if (!text) throw 'Nama file?\nEjemplo:\n.savescrape y2mate'
 
 if (!m.quoted) throw 'Reply kode scrape'
 
 const code = m.quoted.text
-if (!code) throw 'Kode tidak terbaca'
+if (!code) throw 'Kode no terbaca'
 
 const filename = text.replace(/[^a-z0-9]/gi, '').toLowerCase() + '.js'
 const filepath = path.join(dir, filename)

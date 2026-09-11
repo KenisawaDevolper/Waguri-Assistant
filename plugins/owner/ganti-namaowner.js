@@ -7,8 +7,8 @@ const pluginConfig = {
   name: "ganti-namaowner",
   alias: ["setnamaowner", "setnameowner", "setownername"],
   category: "owner",
-  description: "Ganti nama owner (utama atau tambahan)",
-  usage: ".ganti-namaowner <nomor> <nama baru>",
+  description: "Cambia el nombre del owner (principal o adicional) con la estética Waguri Assistant 👑",
+  usage: ".ganti-namaowner <número> <nuevo_nombre>",
   example: ".ganti-namaowner 628xxx Fauzan",
   isOwner: true,
   isPremium: false,
@@ -35,9 +35,9 @@ async function handler(m, { sock, config }) {
         list += `👤 ${num}: *${name}*\n`;
       });
     } else {
-      list += `\n> Belum ada nama custom untuk owner tambahan`;
+      list += `\n> Aún no ada nama custom untuk owner tambahan`;
     }
-    list += `\n\n*Penggunaan:*\n`;
+    list += `\n\n*Uso:*\n`;
     list += `\`${m.prefix}ganti-namaowner <nomor> <nama>\`\n`;
     list += `\`${m.prefix}ganti-namaowner main <nama>\` — ganti nama owner utama`;
     return m.reply(list);
@@ -75,7 +75,7 @@ async function handler(m, { sock, config }) {
 
   if (!targetNumber || targetNumber.length < 10) {
     return m.reply(
-      `❌ *ɢᴀɢᴀʟ*\n\n> Nomor tidak valid\n\n\`${m.prefix}ganti-namaowner 628xxx NamaOwner\``,
+      `❌ *ɢᴀɢᴀʟ*\n\n> Nomor no valid\n\n\`${m.prefix}ganti-namaowner 628xxx NamaOwner\``,
     );
   }
 

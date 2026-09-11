@@ -7,7 +7,7 @@ const pluginConfig = {
     name: 'gantiidsaluran',
     alias: ['setidsaluran'],
     category: 'owner',
-    description: 'Mengganti semua ID saluran di SC',
+    description: 'Gestiona la función gantiidsaluran con la estética Waguri Assistant ⚙️',
     usage: '.gantiidsaluran|id',
     example: '.gantiidsaluran|120363xxxx@newsletter',
     isOwner: true,
@@ -25,7 +25,7 @@ async function handler(m) {
     let input = msg.split("|")[1]
 
     if (!input) {
-        return m.reply("Contoh:\n.gantiidsaluran|120363xxxx@newsletter")
+        return m.reply("Ejemplo:\n.gantiidsaluran|120363xxxx@newsletter")
     }
 
     const newId = input.trim()

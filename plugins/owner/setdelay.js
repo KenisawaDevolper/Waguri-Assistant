@@ -3,7 +3,7 @@ const pluginConfig = {
     name: 'setdelay',
     alias: ['delay', 'setdelaybot', 'botdelay'],
     category: 'owner',
-    description: 'Mengatur delay respon bot (cooldown global)',
+    description: 'Configurar delay respon bot (cooldown global)',
     usage: '.setdelay <detik>',
     example: '.setdelay 3',
     isOwner: true,
@@ -25,7 +25,7 @@ async function handler(m, { db }) {
 │
 │  𖦹 .setdelay <detik>
 │
-│ ✦ *Contoh*
+│ ✦ *Ejemplo*
 │
 │  𖦹 .setdelay 3  (delay 3 detik)
 │  𖦹 .setdelay 0  (tanpa delay)

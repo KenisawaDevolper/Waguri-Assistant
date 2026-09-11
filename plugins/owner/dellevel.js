@@ -7,7 +7,7 @@ const pluginConfig = {
   name: "dellevel",
   alias: ["kuranglevel", "removelevel", "dellvl"],
   category: "owner",
-  description: "Kurangi level user (via exp)",
+  description: "Reduce el nivel del usuario (vía EXP) con la estética Waguri Assistant 📉",
   usage: ".dellevel <jumlah> @user",
   example: ".dellevel 5 @user",
   isOwner: true,
@@ -45,7 +45,7 @@ async function handler(m, { sock }) {
         `┃ > \`.dellevel <jumlah>\` - ke diri sendiri\n` +
         `┃ > \`.dellevel <jumlah> @user\` - ke orang lain\n` +
         `╰┈┈┈┈┈┈┈┈⬡\n\n` +
-        `> Contoh: \`${m.prefix}dellevel 5\``,
+        `> Ejemplo: \`${m.prefix}dellevel 5\``,
     );
   }
 

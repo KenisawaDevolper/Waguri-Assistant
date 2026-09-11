@@ -7,8 +7,8 @@ const pluginConfig = {
     name: 'addjpg',
     alias: ['addimage', 'tambahjpg', 'setjpg'],
     category: 'owner',
-    description: 'Tambah gambar baru ke folder assets/images',
-    usage: '.addjpg <nama_file.jpg> (reply gambar)',
+    description: 'Añade una nueva imagen a la carpeta assets/images con la estética Waguri Assistant 🖼️',
+    usage: '.addjpg <nombre_archivo.jpg> (responde a una imagen)',
     example: '.addjpg zerotwo.jpg',
     isOwner: true,
     isPremium: false,
@@ -24,13 +24,13 @@ async function handler(m, { sock }) {
     const fileName = args[0]?.trim()
     
     if (!fileName || !fileName.toLowerCase().endsWith('.jpg')) {
-        return m.reply(`❌ Gunakan: .addjpg <nama_file.jpg>\nContoh: .addjpg zerotwo.jpg`)
+        return m.reply(`❌ Usa: .addjpg <nombre_archivo.jpg>\nEjemplo: .addjpg zerotwo.jpg`)
     }
     
     const isImage = m.isImage || (m.quoted && m.quoted.type === 'imageMessage')
     
     if (!isImage) {
-        return m.reply(`🖼️ Reply gambar yang ingin ditambahkan.`)
+        return m.reply(`🖼️ Responde a la imagen que deseas añadir. 💫`)
     }
     
     try {
@@ -42,7 +42,7 @@ async function handler(m, { sock }) {
         }
         
         if (!buffer) {
-            return m.reply(`❌ Gagal mendownload gambar`)
+            return m.reply(`❌ Error al descargar la imagen`)
         }
         
         const targetPath = path.join(process.cwd(), 'assets', 'images', fileName)
@@ -51,7 +51,7 @@ async function handler(m, { sock }) {
         
         fs.writeFileSync(targetPath, buffer)
         
-        m.reply(`✅ *ʙᴇʀʜᴀsɪʟ*\n> Gambar telah tersimpan sebagai assets/images/${fileName}\n> Restart bot untuk melihat perubahan jika perlu.`)
+        m.reply(`✅ *ʙᴇʀʜᴀsɪʟ*\n> Imagen guardada como assets/images/${fileName}\n> Reinicia el bot si necesitas ver los cambios. ✨`)
         
     } catch (err) {
         m.reply(`❌ *ᴇʀʀᴏʀ*\n> ${err.message}`)

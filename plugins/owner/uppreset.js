@@ -30,7 +30,7 @@ return m.reply(
 ┃
 ┃ .uppreset link5mb | xml | caption
 ┃
-┃ *Contoh :*
+┃ *Ejemplo :*
 ┃ .uppreset https://5mb.link | https://xml.link | preset jj anime
 ┃
 ╰━━━━━━━━━━━━━━━━⬣`
@@ -60,7 +60,7 @@ const caption =
 ┃ ⏰ *Waktu*
 ┃ ${time}
 ┃
-┃ 💌 *Ara Ara Darling~*
+┃ 💌 *Ara Ara Cariño~*
 ┃ *Preset baru sudah rilis ❤️*
 ┃
 ╰━━━━━━━━━━━━━━━━⬣`

@@ -6,7 +6,7 @@ const pluginConfig = {
     name: 'setownertype',
     alias: ['ownertype', 'ownervariant', 'ownerstyle'],
     category: 'owner',
-    description: 'Mengatur variant tampilan owner message',
+    description: 'Configurar variant tampilan owner message',
     usage: '.setownertype',
     example: '.setownertype',
     isOwner: true,

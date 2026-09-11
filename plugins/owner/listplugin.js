@@ -5,7 +5,7 @@ global.listedPlugins = [] // simpan di global
 let handler = async (m, { conn }) => {
   try {
     const files = fs.readdirSync('./plugins').filter(file => file.endsWith('.js'))
-    if (!files.length) return m.reply('❌ Tidak ada plugin ditemukan.')
+    if (!files.length) return m.reply('❌ No ada plugin ditemukan.')
 
     global.listedPlugins = files // simpan ke global
 
@@ -17,7 +17,7 @@ let handler = async (m, { conn }) => {
     m.reply(list)
   } catch (e) {
     console.error(e)
-    m.reply('❌ Gagal membaca folder plugins.')
+    m.reply('❌ Error membaca folder plugins.')
   }
 }
 

@@ -5,7 +5,7 @@ const pluginConfig = {
     name: 'clearsessions',
     alias: ['clearsession', 'delsession', 'delsessions'],
     category: 'owner',
-    description: 'Menghapus semua session di storage/sessions/',
+    description: 'Gestiona la función clearsessions con la estética Waguri Assistant ⚙️',
     usage: '.clearsessions',
     example: '.clearsessions',
     isOwner: true,
@@ -21,7 +21,7 @@ async function handler(m)  {
     const sessionsPath = path.join(process.cwd(), 'storage', 'sessions')
     
     if (!fs.existsSync(sessionsPath)) {
-        return m.reply(`❌ Folder sessions tidak ditemukan!`)
+        return m.reply(`❌ Folder sessions no encontrado!`)
     }
     
     await m.react('🗑️')
@@ -60,7 +60,7 @@ async function handler(m)  {
 ┃
 ┃ ㊗ ᴅᴇʟᴇᴛᴇᴅ: *${deleted}* file
 ┃ ㊗ sᴋɪᴘᴘᴇᴅ: *${skipped}* file
-┃ ㊗ ɴᴏᴛᴇ: creds.json tidak dihapus
+┃ ㊗ ɴᴏᴛᴇ: creds.json no eliminado
 ┃
 ╰┈┈⬡
 

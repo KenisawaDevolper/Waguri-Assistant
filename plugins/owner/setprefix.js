@@ -1,6 +1,6 @@
 let handler = async (m, { text }) => {
 
-  if (!text) throw `Contoh penggunaan:
+  if (!text) throw `Ejemplo penggunaan:
 .setprefix .
 .setprefix !
 .setprefix . / #

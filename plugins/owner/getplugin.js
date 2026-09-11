@@ -103,10 +103,10 @@ async function handler(m, { sock }) {
 
   if (!pluginName) {
     return m.reply(
-      `Halo *${m.pushName}*, sepertinya kamu lupa memasukkan nama plugin yang ingin dicari.\n\n` +
+      `Halo *${m.pushName}*, parece que olvidaste ingresar el nombre del plugin que deseas buscar. 💫\n\n` +
       `Silakan gunakan format berikut:\n` +
       `- .getplugin <nama plugin>\n\n` +
-      `Contoh penggunaan:\n` +
+      `Ejemplo penggunaan:\n` +
       `- .getplugin menu\n` +
       `- .getplugin sticker\n` +
       `- .getplugin game/tebakgambar`
@@ -137,10 +137,10 @@ async function handler(m, { sock }) {
 
   if (!pluginInfo) {
     const similar = getSimilarPlugins(pluginName, pluginsDir);
-    let text = `Maaf ya *${m.pushName}*, plugin dengan nama *${pluginName}* tidak dapat ditemukan.\n\n`;
+    let text = `Maaf ya *${m.pushName}*, plugin dengan nama *${pluginName}* no dapat ditemukan.\n\n`;
 
     if (similar.length > 0) {
-      text += `Mungkin maksud kamu salah satu dari plugin ini:\n`;
+      text += `Quizás te refieres a uno de estos plugins: ✨\n`;
       similar.forEach((s) => {
         text += `- ${s}\n`;
       });

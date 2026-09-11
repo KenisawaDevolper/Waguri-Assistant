@@ -5,8 +5,8 @@ const pluginConfig = {
   name: "enableplugin",
   alias: ["eplugin", "pluginenable", "onplugin"],
   category: "owner",
-  description: "Mengaktifkan kembali plugin yang dinonaktifkan",
-  usage: ".enableplugin <nama_plugin>",
+  description: "Reactiva un plugin desactivado con la estética Waguri Assistant ✅",
+  usage: ".enableplugin <nombre_plugin>",
   example: ".enableplugin sticker",
   isOwner: true,
   isPremium: false,
@@ -57,8 +57,8 @@ async function handler(m, { sock }) {
   if (!pluginName) {
     return m.reply(
       `🔌 *ᴇɴᴀʙʟᴇ ᴘʟᴜɢɪɴ*\n\n` +
-        `> Masukkan nama plugin yang ingin diaktifkan\n\n` +
-        `*Contoh:*\n` +
+        `> Ingresa nama plugin yang ingin diaktifkan\n\n` +
+        `*Ejemplo:*\n` +
         `> \`${m.prefix}enableplugin sticker\`\n` +
         `> \`${m.prefix}enableplugin tiktok\``,
     );
@@ -67,7 +67,7 @@ async function handler(m, { sock }) {
   const found = await findPluginFile(pluginName);
 
   if (!found) {
-    return m.reply(`❌ Plugin *${pluginName}* tidak ditemukan!`);
+    return m.reply(`❌ Plugin *${pluginName}* no encontrado!`);
   }
 
   const { filePath, plugin, category, file } = found;

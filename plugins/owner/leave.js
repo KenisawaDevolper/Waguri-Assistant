@@ -48,7 +48,7 @@ async function handler(m, { sock }) {
     const inviteCode = await extractInviteCode(input);
 
     if (!inviteCode) {
-      return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Link invite tidak valid`);
+      return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Link invite no valid`);
     }
 
     try {
@@ -57,7 +57,7 @@ async function handler(m, { sock }) {
       groupName = groupInfo.subject || "Unknown";
     } catch (error) {
       return m.reply(
-        `❌ *ɢᴀɢᴀʟ*\n\n> Tidak dapat mengambil info grup dari link`,
+        `❌ *ɢᴀɢᴀʟ*\n\n> No dapat mengambil info grup dari link`,
       );
     }
   } else {
@@ -67,12 +67,12 @@ async function handler(m, { sock }) {
         `┃ ◦ Di grup: \`.leave\`\n` +
         `┃ ◦ Via link: \`.leave <link>\`\n` +
         `╰┈┈⬡\n\n` +
-        `\`Contoh: ${m.prefix}leave https://chat.whatsapp.com/xxx\``,
+        `\`Ejemplo: ${m.prefix}leave https://chat.whatsapp.com/xxx\``,
     );
   }
 
   if (!targetGroupJid) {
-    return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Grup tidak ditemukan`);
+    return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Grup no encontrado`);
   }
 
   await m.react("🕕");

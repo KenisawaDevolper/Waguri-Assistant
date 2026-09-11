@@ -6,7 +6,7 @@ const pluginConfig = {
   name: "autotyping",
   alias: ["typing", "autoketik"],
   category: "owner",
-  description: "Auto typing indicator saat menerima pesan",
+  description: "Muestra el indicador de escritura automáticamente al recibir mensajes con la estética Waguri Assistant ⌨️",
   usage: ".autotyping on/off",
   example: ".autotyping on",
   isOwner: true,
@@ -28,7 +28,7 @@ async function handler(m, { sock }) {
       `⌨️ *Auto Typing*\n\n` +
         `> Status: *${current ? "Aktif ✅" : "Nonaktif ❌"}*\n\n` +
         `*PENGGUNAAN:*\n` +
-        `> *${m.prefix}autotyping on* — Aktifkan\n` +
+        `> *${m.prefix}autotyping on* — Activar\n` +
         `> *${m.prefix}autotyping off* — Nonaktifkan\n\n` +
         `_Bot akan menampilkan indikator typing saat menerima pesan_`
     );
@@ -48,12 +48,12 @@ async function handler(m, { sock }) {
     db.setting("autoTyping", false);
     return m.reply(
       `⌨️ *Auto Typing Nonaktif*\n\n` +
-        `> Bot tidak akan menampilkan indikator typing`
+        `> Bot no akan menampilkan indikator typing`
     );
   }
 
   return m.reply(
-    `❌ *Opsi Tidak Valid*\n\n> Gunakan *${m.prefix}autotyping on* atau *${m.prefix}autotyping off*`
+    `❌ *Opsi No Valid*\n\n> Gunakan *${m.prefix}autotyping on* atau *${m.prefix}autotyping off*`
   );
 }
 

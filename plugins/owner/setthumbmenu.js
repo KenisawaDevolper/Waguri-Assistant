@@ -6,7 +6,7 @@ let handler = async (m, { usedPrefix, command }) => {
     const mime = quoted?.mimetype || ''
 
     if (!mime.startsWith('image/')) {
-      return m.reply(`Reply gambar dulu!\nContoh: reply foto lalu ketik *${usedPrefix + command}*`)
+      return m.reply(`Reply gambar dulu!\nEjemplo: reply foto lalu ketik *${usedPrefix + command}*`)
     }
 
     const buffer = await quoted.download()

@@ -5,7 +5,7 @@ const pluginConfig = {
   name: "autojoingc",
   alias: ["autojoin", "autojoingroup"],
   category: "owner",
-  description: "Auto join grup dari link yang terdeteksi di chat",
+  description: "Se une automáticamente a grupos desde enlaces detectados en el chat con la estética Waguri Assistant 🔗",
   usage: ".autojoingc on/off",
   example: ".autojoingc on",
   isOwner: true,

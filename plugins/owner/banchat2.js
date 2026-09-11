@@ -1,10 +1,10 @@
 let handler = async (m, { text }) => {
-  if (!text) return m.reply('Masukkan ID grup.\nContoh:\n.banchat2 1203630xxxxx@g.us')
+  if (!text) return m.reply('Ingresa ID grup.\nEjemplo:\n.banchat2 1203630xxxxx@g.us')
 
   let id = text.trim()
 
   if (!id.endsWith('@g.us'))
-    return m.reply('ID grup tidak valid.\nFormat: 12036xxxxx@g.us')
+    return m.reply('ID grup no valid.\nFormat: 12036xxxxx@g.us')
 
   if (!global.db.data.chats[id])
     global.db.data.chats[id] = {}

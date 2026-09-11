@@ -3,7 +3,7 @@ const pluginConfig = {
     name: 'delenergi',
     alias: ['kurangenergi', 'removeenergi', 'hapusenergi', 'delenergy'],
     category: 'owner',
-    description: 'Kurangi energi user',
+    description: 'Reduce la energía del usuario con la estética Waguri Assistant ⚡',
     usage: '.delenergi <jumlah> @user',
     example: '.delenergi 50 @user',
     isOwner: true,
@@ -44,18 +44,18 @@ async function handler(m, { sock }) {
             `⚡ *ᴅᴇʟ ᴇɴᴇʀɢɪ*\n\n` +
             `> \`.delenergi <jumlah>\` - dari diri sendiri\n` +
             `> \`.delenergi <jumlah> @user\` - dari user\n\n` +
-            `\`Contoh: ${m.prefix}delenergi 50\``
+            `\`Ejemplo: ${m.prefix}delenergi 50\``
         )
     }
     
     if (amount <= 0) {
-        return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> Jumlah harus lebih dari 0`)
+        return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> La cantidad debe ser mayor que 0 💫`)
     }
     
     const user = db.getUser(targetJid)
     
     if (!user) {
-        return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> User tidak ditemukan di database`)
+        return m.reply(`❌ *ɢᴀɢᴀʟ*\n\n> User no encontrado di database`)
     }
     
     if (user.energi === -1) {

@@ -44,7 +44,7 @@ ${id}
 
   } catch (e) {
     console.log(e)
-    m.reply('❌ Gagal mengambil ID grup.')
+    m.reply('❌ Error mengambil ID grup.')
   }
 }
 

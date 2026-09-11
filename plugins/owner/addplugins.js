@@ -9,8 +9,8 @@ const pluginConfig = {
   name: 'addplugins',
   alias: ['addplugin', 'installplugin'],
   category: 'owner',
-  description: 'Menambahkan plugin JS ke kategori plugins secara langsung',
-  usage: '.addplugins <kategori>',
+  description: 'Añade un plugin JS directamente a la categoría plugins con la estética Waguri Assistant ✨',
+  usage: '.addplugins <categoría>',
   example: '.addplugins tools',
   isOwner: true,
   isPremium: false,
@@ -78,11 +78,11 @@ async function validatePluginSource(source, filename) {
   const hasLegacy = /(?:command|help|tags)\s*[:=]/m.test(source);
 
   if (!hasConfig && !hasLegacy) {
-    return { ok: false, reason: `Struktur plugin ${filename} tidak dikenali (config/legacy metadata tidak ditemukan).` };
+    return { ok: false, reason: `Struktur plugin ${filename} no dikenali (config/legacy metadata no encontrado).` };
   }
 
   if (!hasHandler && !hasLegacy) {
-    return { ok: false, reason: `Handler plugin ${filename} tidak ditemukan.` };
+    return { ok: false, reason: `Handler plugin ${filename} no encontrado.` };
   }
 
   return { ok: true };
@@ -92,16 +92,16 @@ async function validatePluginSource(source, filename) {
 async function handler(m, { sock }) {
   try {
     if (!m.isOwner && !m.fromMe) {
-      return await m.reply('🚫 *AKSES DITOLAK*\n\nPerintah ini hanya bisa digunakan owner bot.');
+      return await m.reply('🚫 *ACCESO DENEGADO*\n\nEste comando solo puede usarlo el owner del bot. ✨');
     }
 
     const category = cleanCategory(m.text || m.args?.[0]);
     if (!category) {
       return await m.reply(
         `❌ *Format salah*\n\n` +
-        `Kirim/reply file plugin *.js lalu gunakan:\n` +
+        `Envía/responde con el archivo plugin *.js y luego usa:\n` +
         `> ${m.prefix}addplugins tools\n\n` +
-        `Contoh kategori: tools, anime, image, owner, fun`
+        `Ejemplo kategori: tools, anime, image, owner, fun`
       );
     }
 
@@ -116,37 +116,37 @@ async function handler(m, { sock }) {
 
     const filename = cleanFilename(getFileName(document));
     if (!filename) {
-      return await m.reply('❌ File harus berupa JavaScript dengan nama file yang aman, contoh: `hd.js`');
+      return await m.reply('❌ El archivo debe ser JavaScript con un nombre seguro, ejemplo: `hd.js`');
     }
 
     const mime = String(document.mimetype || '').toLowerCase();
     if (mime && mime !== 'application/javascript' && mime !== 'text/javascript' && mime !== 'application/x-javascript' && !filename.endsWith('.js')) {
-      return await m.reply('❌ File tersebut bukan plugin JavaScript.');
+      return await m.reply('❌ Ese archivo no es un plugin JavaScript.');
     }
 
     if (filename === 'addplugins.js') {
-      return await m.reply('❌ Plugin sistem `.addplugins` tidak boleh ditimpa melalui command ini.');
+      return await m.reply('❌ El plugin del sistema `.addplugins` no puede ser sobrescrito con este comando. ✨');
     }
 
     const buffer = await document.download();
     if (!Buffer.isBuffer(buffer) || buffer.length === 0) {
-      return await m.reply('❌ Gagal mengunduh file plugin dari pesan.');
+      return await m.reply('❌ Error al descargar el archivo plugin del mensaje.');
     }
 
     if (buffer.length > MAX_PLUGIN_SIZE) {
-      return await m.reply('❌ Ukuran plugin terlalu besar. Maksimal 1 MB.');
+      return await m.reply('❌ El tamaño del plugin es demasiado grande. Máximo 1 MB.');
     }
 
     const source = buffer.toString('utf8');
     const validation = await validatePluginSource(source, filename);
     if (!validation.ok) {
-      return await m.reply(`❌ *PLUGIN DITOLAK*\n\n> ${validation.reason}`);
+      return await m.reply(`❌ *PLUGIN RECHAZADO*\n\n> ${validation.reason}`);
     }
 
     const categoryDir = path.resolve(PLUGINS_DIR, category);
     const targetPath = path.resolve(categoryDir, filename);
     if (!targetPath.startsWith(categoryDir + path.sep)) {
-      return await m.reply('❌ Lokasi plugin tidak valid.');
+      return await m.reply('❌ Ubicación del plugin no válida.');
     }
 
     fs.mkdirSync(categoryDir, { recursive: true });
@@ -154,7 +154,7 @@ async function handler(m, { sock }) {
     if (fs.existsSync(targetPath)) {
       return await m.reply(
         `⚠️ Plugin *${filename}* sudah ada di kategori *${category}*.\n\n` +
-        `Tidak ditimpa otomatis untuk mencegah plugin lama hilang.`
+        `No ditimpa otomatis untuk mencegah plugin lama hilang.`
       );
     }
 
@@ -165,7 +165,7 @@ async function handler(m, { sock }) {
     const preflight = await loadPlugin(targetPath, true);
     if (!preflight) {
       fs.rmSync(targetPath, { force: true });
-      return await m.reply('❌ *PLUGIN DITOLAK*\n\n> Plugin gagal di-load oleh Rimuru. Pastikan format `config` + `handler` (atau format legacy) benar.');
+      return await m.reply('❌ *PLUGIN RECHAZADO*\n\n> El plugin no pudo ser cargado por Rimuru. Asegúrate de que el formato `config` + `handler` (o legacy) sea correcto.');
     }
 
     const primaryName = Array.isArray(preflight.config?.name)
@@ -174,7 +174,7 @@ async function handler(m, { sock }) {
     const existing = primaryName ? getPlugin(primaryName) : null;
     if (existing && path.resolve(existing.filePath || '') !== path.resolve(targetPath)) {
       fs.rmSync(targetPath, { force: true });
-      return await m.reply(`⚠️ *COMMAND SUDAH TERDAFTAR*\n\n> \`${primaryName}\` sudah digunakan oleh plugin lain.\n> Plugin baru tidak dipasang agar plugin lama tetap aman.`);
+      return await m.reply(`⚠️ *COMANDO YA REGISTRADO*\n\n> \`${primaryName}\` ya está en uso por otro plugin.\n> El nuevo plugin no se instaló para mantener seguro el anterior.`);
     }
 
     const result = await hotReloadPlugin(targetPath, category);
@@ -182,11 +182,11 @@ async function handler(m, { sock }) {
       fs.rmSync(targetPath, { force: true });
       // If this was an attempted new plugin, no old plugin should be removed.
       await hotReloadPlugin(targetPath).catch(() => {});
-      return await m.reply(`❌ *PLUGIN GAGAL DIAKTIFKAN*\n\n> ${result.error || 'Unknown error'}\n\nFile tidak dipertahankan karena gagal dimuat.`);
+      return await m.reply(`❌ *PLUGIN NO SE PUDO ACTIVAR*\n\n> ${result.error || 'Unknown error'}\n\nEl archivo no se conservó porque no se pudo cargar.`);
     }
 
     return await m.reply(
-      `✅ *PLUGIN BERHASIL DITAMBAHKAN*\n\n` +
+      `✅ *PLUGIN ÉXITO DITAMBAHKAN*\n\n` +
       `╭─「 PLUGIN 」\n` +
       `│ 📄 File: *${filename}*\n` +
       `│ 📁 Folder: *plugins/${category}/*\n` +

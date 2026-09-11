@@ -7,8 +7,8 @@ const pluginConfig = {
     name: 'addmp3',
     alias: ['addaudio', 'tambahmp3', 'setmp3', 'addmusik'],
     category: 'owner',
-    description: 'Tambah file MP3/Audio ke folder assets/audio',
-    usage: '.addmp3 <nama_file.mp3> (reply audio)',
+    description: 'Añade un archivo MP3/Audio a la carpeta assets/audio con la estética Waguri Assistant 🎵',
+    usage: '.addmp3 <nombre_archivo.mp3> (responde a un audio)',
     example: '.addmp3 zerotwo.mp3',
     isOwner: true,
     isPremium: false,
@@ -35,14 +35,14 @@ async function handler(m, { sock }) {
             `┃   ${m.prefix}addmp3 <nama_file.mp3>\n` +
             `┃   (sambil reply audio)\n` +
             `┃\n` +
-            `┃ ✦ *Contoh*\n` +
+            `┃ ✦ *Ejemplo*\n` +
             `┃\n` +
             `┃   ${m.prefix}addmp3 zerotwo.mp3\n` +
             `┃\n` +
             `┃ ✦ *Ekstensi yang didukung*\n` +
             `┃   ${validExtensions.join(', ')}\n` +
             `╰━━━━━━━━━━━━━━━━━━━━━⬣\n\n` +
-            `💗 *Zero Two:* Kirim audionya darling~`
+            `💗 *Zero Two:* Envíame el audio, cariño~ 💫`
         )
     }
     
@@ -51,7 +51,7 @@ async function handler(m, { sock }) {
     if (!isAudio) {
         return m.reply(
             `💔 *ᴇʀʀᴏʀ*\n\n` +
-            `> Reply audio/voice note yang mau ditambahkan darling~ 🥺`
+            `> Responde al audio/nota de voz que deseas añadir, cariño~ 🥺`
         )
     }
     
@@ -68,7 +68,7 @@ async function handler(m, { sock }) {
         if (!buffer) {
             return m.reply(
                 `💔 *ɢᴀɢᴀʟ*\n\n` +
-                `> Audio nya gak bisa di download darling~ 🥺`
+                `> No pude descargar el audio, cariño~ 🥺`
             )
         }
         
@@ -90,7 +90,7 @@ async function handler(m, { sock }) {
             `┃ 📁 *ʟᴏᴋᴀꜱɪ*: assets/audio/${fileName}\n` +
             `┃ 📦 *ᴜᴋᴜʀᴀɴ*: ${fileSizeMB} MB\n` +
             `┃\n` +
-            `┃ 💗 *Zero Two:* Audio nya udah tersimpan darling~\n` +
+            `┃ 💗 *Zero Two:* ¡El audio ya está guardado, cariño~ ✨\n` +
             `╰━━━━━━━━━━━━━━━━━━━━━⬣`
         )
         
@@ -100,7 +100,7 @@ async function handler(m, { sock }) {
         return m.reply(
             `💔 *ᴇʀʀᴏʀ*\n\n` +
             `> ${err.message}\n\n` +
-            `> Coba lagi ya darling~ 🥺`
+            `> Inténtalo de nuevo, cariño~ 🥺`
         )
     }
 }

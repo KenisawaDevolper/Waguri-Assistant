@@ -24,8 +24,8 @@ let handler = async (m, { args, text, usedPrefix, command }) => {
 ➞ ${usedPrefix + command} inv | rpg-inv
 
 • Note:
-Harap tidak memakai kata .js diakhir kalimat
-harap tidak menggunakan spasi diantar nama file, seperti "rpg- inv"`
+Harap no memakai kata .js diakhir kalimat
+harap no menggunakan spasi diantar nama file, seperti "rpg- inv"`
 if (!args[0]) throw info
 if (!args[1] == "|") throw `• example:
 ➞ ${usedPrefix + command} inv | rpg-inv`

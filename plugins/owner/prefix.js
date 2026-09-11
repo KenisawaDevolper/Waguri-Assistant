@@ -61,10 +61,10 @@ function handler(m, { sock }) {
             if (args.length === 0) {
                 return m.reply(
                     `✏️ *ᴀᴅᴅ ᴘʀᴇғɪx*\n\n` +
-                    `> Tambah prefix baru untuk bot\n\n` +
+                    `> Añadir prefix baru untuk bot\n\n` +
                     `*Format:*\n` +
                     `> \`${m.prefix}addprefix <prefix1> <prefix2> ...\`\n\n` +
-                    `*Contoh:*\n` +
+                    `*Ejemplo:*\n` +
                     `> \`${m.prefix}addprefix ! # $ 😚\`\n\n` +
                     `*Special:*\n` +
                     `> \`${m.prefix}addprefix <noprefix>\` - Tanpa prefix`
@@ -88,7 +88,7 @@ function handler(m, { sock }) {
             })
             
             if (newPrefixes.length === 0) {
-                return m.reply(`❌ Tidak ada prefix baru yang valid!`)
+                return m.reply(`❌ No ada prefix baru yang valid!`)
             }
             
             data.prefixes = [...new Set([...data.prefixes, ...newPrefixes])]
@@ -112,7 +112,7 @@ function handler(m, { sock }) {
                     `> Ganti semua prefix dengan yang baru\n\n` +
                     `*Format:*\n` +
                     `> \`${m.prefix}${cmd} <prefix1> <prefix2> ...\`\n\n` +
-                    `*Contoh:*\n` +
+                    `*Ejemplo:*\n` +
                     `> \`${m.prefix}${cmd} ! G #\`\n\n` +
                     `*Special:*\n` +
                     `> \`${m.prefix}${cmd} <noprefix>\` - Tanpa prefix saja\n` +
@@ -157,7 +157,7 @@ function handler(m, { sock }) {
                     `> Hapus prefix dari database\n\n` +
                     `*Format:*\n` +
                     `> \`${m.prefix}delprefix <prefix1> <prefix2> ...\`\n\n` +
-                    `*Contoh:*\n` +
+                    `*Ejemplo:*\n` +
                     `> \`${m.prefix}delprefix ! $\`\n` +
                     `> \`${m.prefix}delprefix <noprefix>\` - Nonaktifkan noprefix`
                 )
@@ -225,7 +225,7 @@ function handler(m, { sock }) {
             
             m.reply(
                 `✅ *ᴘʀᴇғɪx ᴅɪʀᴇsᴇᴛ*\n\n` +
-                `> Semua prefix di database dihapus!\n` +
+                `> Semua prefix di database eliminado!\n` +
                 `> Noprefix dinonaktifkan!\n` +
                 `> Hanya tersisa prefix dari config.js\n\n` +
                 `*Prefix aktif:* \`${config.command?.prefix || '.'}\``

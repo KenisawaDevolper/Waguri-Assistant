@@ -14,7 +14,7 @@ let handler = async (m, { conn, isROwner, usedPrefix, command, text }) => {
   if (!ar1.includes(text)) {
     let list = ar1.map(v => `• ${v}`).join('\n')
     return m.reply(
-      `❌ *Plugin Tidak Ditemukan*\n\n` +
+      `❌ *Plugin No Ditemukan*\n\n` +
       `📦 *Daftar Plugin:*\n${list}`
     )
   }

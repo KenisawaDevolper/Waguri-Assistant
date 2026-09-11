@@ -3,7 +3,7 @@ const pluginConfig = {
     name: 'aktifaudiomenu',
     alias: ['audiomenu', 'setaudiomenu', 'toggleaudiomenu'],
     category: 'owner',
-    description: 'Toggle audio saat menampilkan menu',
+    description: 'Activa/desactiva el audio al mostrar el menú con la estética Waguri Assistant 🎵',
     usage: '.aktifaudiomenu ya/gak',
     example: '.aktifaudiomenu ya',
     isOwner: true,
@@ -26,7 +26,7 @@ async function handler(m, { sock, db }) {
             `🔊 *ᴀᴜᴅɪᴏ ᴍᴇɴᴜ sᴇᴛᴛɪɴɢ*\n\n` +
             `> Status: *${current ? '✅ Aktif' : '❌ Nonaktif'}*\n\n` +
             `*Cara pakai:*\n` +
-            `> \`${m.prefix}aktifaudiomenu ya\` - Aktifkan audio\n` +
+            `> \`${m.prefix}aktifaudiomenu ya\` - Activar audio\n` +
             `> \`${m.prefix}aktifaudiomenu gak\` - Nonaktifkan audio`
         )
     }
@@ -48,10 +48,10 @@ async function handler(m, { sock, db }) {
         db.setting('audioMenu', false)
         await db.save()
         await m.react('✅')
-        return m.reply(`❌ Audio menu *dinonaktifkan*!\n\n> Sekarang \`.menu\` tidak akan ada audio.`)
+        return m.reply(`❌ Audio menu *dinonaktifkan*!\n\n> Sekarang \`.menu\` no akan ada audio.`)
     }
 
-    return m.reply(`❌ Opsi tidak valid!\n\nGunakan: \`ya\` atau \`gak\``)
+    return m.reply(`❌ Opsi no valid!\n\nGunakan: \`ya\` atau \`gak\``)
 }
 
 export { pluginConfig as config, handler }

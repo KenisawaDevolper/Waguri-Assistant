@@ -6,7 +6,7 @@ const pluginConfig = {
   name: "setmenucat",
   alias: ["menucatvariant", "menucatstyle"],
   category: "owner",
-  description: "Mengatur variant tampilan menucat",
+  description: "Configurar variant tampilan menucat",
   usage: ".setmenucat <v1-v2, v5>",
   example: ".setmenucat v2",
   isOwner: true,
@@ -22,7 +22,7 @@ const VARIANTS = {
   v1: {
     id: 1,
     name: "Plain Text",
-    desc: "Tampilan teks biasa tanpa media, cocok untuk koneksi lambat atau device yang tidak support interactive message",
+    desc: "Tampilan teks biasa tanpa media, cocok untuk koneksi lambat atau device yang no support interactive message",
     emoji: "📝",
   },
   v2: {

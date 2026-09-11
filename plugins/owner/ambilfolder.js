@@ -8,8 +8,8 @@ const pluginConfig = {
     name: "ambilfolder",
     alias: ["ambifolde","getfolder"],
     category: "owner",
-    description: "Ambil folder dan kirim sebagai zip",
-    usage: ".ambilfolder path/folder",
+    description: "Obtiene una carpeta y la envía como zip con la estética Waguri Assistant 📦",
+    usage: ".ambilfolder ruta/carpeta",
     example: ".ambilfolder plugins/fun",
     isOwner: true,
     cooldown: 5,
@@ -25,9 +25,9 @@ async function handler(m, { sock }) {
 `╭━━〔 💖 ZERO TWO FOLDER GETTER 〕━━⬣
 ┃
 ┃ Gunakan:
-┃ .ambilfolder path/folder
+┃ .ambilfolder ruta/carpeta
 ┃
-┃ Contoh:
+┃ Ejemplo:
 ┃ .ambilfolder plugins/fun
 ╰━━━━━━━━━━━━━━━━⬣`)
     }
@@ -42,7 +42,7 @@ async function handler(m, { sock }) {
         }
 
         if (!fs.existsSync(fullPath)) {
-            return m.reply("❌ Folder tidak ditemukan")
+            return m.reply("❌ Folder no encontrado")
         }
 
         const zipName = `backup_${Date.now()}.zip`

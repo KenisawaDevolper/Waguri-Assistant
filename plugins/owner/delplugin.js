@@ -7,7 +7,7 @@ const pluginConfig = {
   name: "delplugin",
   alias: ["delpl", "hapusplugin", "removeplugin"],
   category: "owner",
-  description: "Hapus plugin berdasarkan nama",
+  description: "Elimina un plugin por nombre con la estética Waguri Assistant 🗑️",
   usage: ".delplugin <nama>",
   example: ".delplugin bliblidl",
   isOwner: true,
@@ -45,10 +45,10 @@ async function handler(m, { sock }) {
 
   if (!name) {
     return m.reply(
-      `Halo *${m.pushName}*, sepertinya kamu lupa memasukkan nama plugin yang ingin dihapus.\n\n` +
+      `Halo *${m.pushName}*, parece que olvidaste ingresar el nombre del plugin que deseas eliminar. 💫\n\n` +
       `Silakan gunakan format perintah berikut:\n` +
       `- .delplugin <nama plugin>\n\n` +
-      `Contoh penggunaan:\n` +
+      `Ejemplo penggunaan:\n` +
       `- .delplugin bliblidl`
     );
   }
@@ -61,7 +61,7 @@ async function handler(m, { sock }) {
 
     if (!found) {
       await m.react("❌");
-      return m.reply(`Maaf *${m.pushName}*, plugin dengan nama ${name} tidak dapat ditemukan.`);
+      return m.reply(`Lo siento *${m.pushName}*, plugin dengan nama ${name} no dapat ditemukan.`);
     }
 
     let unloadResult = { success: false };
@@ -73,11 +73,11 @@ async function handler(m, { sock }) {
 
     await m.react("✅");
     let replyText =
-      `Proses selesai! Plugin berhasil dihapus dari sistem.\n\n` +
+      `Proses selesai! Plugin berhasil eliminado dari sistem.\n\n` +
       `- File: ${found.file}\n` +
       `- Folder: ${found.folder}\n` +
-      `- Status Unload: ${unloadResult.success ? "Berhasil" : "Pending"}\n\n` +
-      `Plugin tersebut sudah dihapus dan tidak aktif lagi.`;
+      `- Status Unload: ${unloadResult.success ? "Éxito" : "Pending"}\n\n` +
+      `Plugin tersebut sudah eliminado dan no aktif lagi.`;
 
     return m.reply(replyText);
   } catch (error) {

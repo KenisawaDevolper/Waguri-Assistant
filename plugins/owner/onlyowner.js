@@ -7,7 +7,7 @@ const pluginConfig = {
     name: 'onlyowner',
     alias: ['onlyownerbot', 'modeowner', 'owneronly'],
     category: 'owner',
-    description: 'Atur mode hanya owner yang bisa pakai bot (owner utama + owner tambahan + creator)',
+    description: 'Configura el modo solo-owner para el uso del bot con la estética Waguri Assistant 👑',
     usage: '.onlyowner on/off',
     example: '.onlyowner on',
     isOwner: true,
@@ -29,8 +29,8 @@ async function handler(m, { sock, db }) {
 │
 │ ✦ *Cara Pakai*
 │
-│  𖦹 .onlyowner on  = Aktifkan mode owner only
-│  𖦹 .onlyowner off = Matikan mode owner only
+│  𖦹 .onlyowner on  = Activar mode owner only
+│  𖦹 .onlyowner off = Desactivar mode owner only
 │
 │ ✦ *Fungsi*
 │
@@ -38,7 +38,7 @@ async function handler(m, { sock, db }) {
 │  𖦹 owner tambahan, dan creator
 │  𖦹 yang bisa menggunakan bot
 │
-│ ✦ *Contoh*
+│ ✦ *Ejemplo*
 │
 │  𖦹 .onlyowner on
 │

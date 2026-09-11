@@ -35,7 +35,7 @@ async function handler(m, { sock }) {
         }
         
         if (!buffer) {
-            return m.reply(`❌ Gagal mendownload gambar`)
+            return m.reply(`❌ Error al descargar la imagen`)
         }
         
         const targetPath = path.join(process.cwd(), 'assets', 'images', 'Zann.jpg')

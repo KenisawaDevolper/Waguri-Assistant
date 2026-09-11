@@ -32,9 +32,9 @@ let handler = async (m, {
 
     let pp = await conn.profilePictureUrl(pc[i].id, 'image')
     let str = `*Information about ${await conn.getName(pc[i].id)}*\n\n`
-    str += `*Name:* ${pc[i].name || 'Tidak diketahui'}\n`
+    str += `*Name:* ${pc[i].name || 'No diketahui'}\n`
     str += `*ID:* @${pc[i].id.replace('@s.whatsapp.net', '')}\n`
-    str += `*Presences:* ${pc[i].presences || 'Tidak diketahui'}\n`
+    str += `*Presences:* ${pc[i].presences || 'No diketahui'}\n`
 
     await conn.sendFile(m.chat, pp, 'profile.jpg', str, m, null, {
         mentions: [pc[i].id]

@@ -7,8 +7,8 @@ const pluginConfig = {
     name: 'addmp4',
     alias: ['addvideo', 'tambahmp4', 'setmp4', 'addvid'],
     category: 'owner',
-    description: 'Tambah video baru ke folder assets/video',
-    usage: '.addmp4 <nama_file.mp4> (reply video)',
+    description: 'Añade un nuevo video a la carpeta assets/video con la estética Waguri Assistant 🎬',
+    usage: '.addmp4 <nombre_archivo.mp4> (responde a un video)',
     example: '.addmp4 opening.mp4',
     isOwner: true,
     isPremium: false,
@@ -28,13 +28,13 @@ async function handler(m, { sock }) {
     const isValidExt = validExtensions.some(ext => fileName?.toLowerCase().endsWith(ext))
     
     if (!fileName || !isValidExt) {
-        return m.reply(`❌ Gunakan: .addmp4 <nama_file.mp4>\nContoh: .addmp4 opening.mp4\n\n📌 *Ekstensi yang didukung:* ${validExtensions.join(', ')}`)
+        return m.reply(`❌ Usa: .addmp4 <nombre_archivo.mp4>\nEjemplo: .addmp4 opening.mp4\n\n📌 *Extensiones compatibles:* ${validExtensions.join(', ')}`)
     }
     
     const isVideo = m.isVideo || (m.quoted && m.quoted.type === 'videoMessage')
     
     if (!isVideo) {
-        return m.reply(`🎥 Reply video yang ingin ditambahkan.`)
+        return m.reply(`🎥 Responde al video que deseas añadir. 💫`)
     }
     
     try {
@@ -46,7 +46,7 @@ async function handler(m, { sock }) {
         }
         
         if (!buffer) {
-            return m.reply(`❌ Gagal mendownload video`)
+            return m.reply(`❌ Error al descargar el video`)
         }
         
         const targetPath = path.join(process.cwd(), 'assets', 'video', fileName)
@@ -58,7 +58,7 @@ async function handler(m, { sock }) {
         // Dapatkan ukuran file
         const fileSizeMB = (buffer.length / (1024 * 1024)).toFixed(2)
         
-        m.reply(`✅ *ʙᴇʀʜᴀsɪʟ*\n> Video telah tersimpan sebagai assets/video/${fileName}\n> 📦 Ukuran: ${fileSizeMB} MB\n> Restart bot untuk melihat perubahan jika perlu.`)
+        m.reply(`✅ *ʙᴇʀʜᴀsɪʟ*\n> Video guardado como assets/video/${fileName}\n> 📦 Tamaño: ${fileSizeMB} MB\n> Reinicia el bot si necesitas ver los cambios. ✨`)
         
     } catch (err) {
         m.reply(`❌ *ᴇʀʀᴏʀ*\n> ${err.message}`)

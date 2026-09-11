@@ -2,8 +2,8 @@ const pluginConfig = {
     name: "savekontak",
     alias: ["sv", "svkontak"],
     category: "owner",
-    description: "Menyimpan kontak dari grup menjadi file VCF",
-    usage: ".savekontak <nama>",
+    description: "Guarda los contactos del grupo en un archivo VCF con la estética Waguri Assistant 📇",
+    usage: ".savekontak <nombre>",
     example: ".savekontak Fulan",
     isOwner: true,
     isPremium: false,
@@ -27,12 +27,12 @@ async function handler(m, { sock, args }) {
             if (chats[target]) {
                 groups.push(chats[target]);
             } else {
-                return m.reply("❌ Grup tidak ditemukan.");
+                return m.reply("❌ Grup no encontrado.");
             }
         }
 
         if (groups.length === 0) {
-            return m.reply("❌ Bot tidak berada di grup mana pun.");
+            return m.reply("❌ Bot no berada di grup mana pun.");
         }
 
         m.reply(`⏳ Sedang mengekstrak kontak dari ${groups.length} grup...`);
@@ -59,14 +59,14 @@ async function handler(m, { sock, args }) {
         }
 
         if (count === 0) {
-            return m.reply("❌ Tidak ada kontak yang bisa diekstrak.");
+            return m.reply("❌ No ada kontak yang bisa diekstrak.");
         }
 
         await sock.sendMessage(m.chat, {
             document: Buffer.from(vcards, "utf8"),
             fileName: `${baseName}_${count}_Kontak.vcf`,
             mimetype: "text/vcard",
-            caption: `✅ *Berhasil mengekstrak ${count} kontak ke dalam VCF.*`
+            caption: `✅ *Éxito mengekstrak ${count} kontak ke dalam VCF.*`
         }, { quoted: m });
 
         await sock.sendMessage(m.chat, {
@@ -84,7 +84,7 @@ async function handler(m, { sock, args }) {
     const groupList = Object.values(chats);
 
     if (groupList.length === 0) {
-        return m.reply("❌ Bot tidak berada di grup mana pun.");
+        return m.reply("❌ Bot no berada di grup mana pun.");
     }
 
     const sections = [

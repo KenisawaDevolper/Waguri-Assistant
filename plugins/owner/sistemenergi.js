@@ -4,7 +4,7 @@ const config = {
   name: "sistemenergi",
   alias: ["sistemlimit", "energimode", "limitmode"],
   category: "owner",
-  description: "Mengecek, menghidupkan, atau mematikan sistem energi secara global",
+  description: 'Gestiona la función sistemenergi con la estética Waguri Assistant ⚙️',
   usage: ".sistemenergi [on / off]",
   example: ".sistemenergi on",
   isOwner: true,
@@ -45,7 +45,7 @@ async function handler(m, { sock }) {
 
   await m.react("✅");
   return m.reply(
-    `✅ *STATUS SISTEM ENERGI BERHASIL DIUBAH*\n\n` +
+    `✅ *STATUS SISTEM ENERGI ÉXITO DIUBAH*\n\n` +
     `Sistem Energi kini telah berhasil di-*${isEnabled ? "HIDUPKAN" : "MATIKAN"}*.\n\n` +
     `*Status Terkini:*\n` +
     `- Mode: *${isEnabled ? "AKTIF 🔋" : "NONAKTIF (UNLIMITED) ♾️"}*\n\n` +

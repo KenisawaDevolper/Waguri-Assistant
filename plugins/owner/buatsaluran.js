@@ -2,7 +2,7 @@ const pluginConfig = {
   name: ["buatsaluran", "createsaluran", "createnewsletter"],
   alias: [],
   category: "owner",
-  description: "Buat saluran/newsletter baru",
+  description: "Crear nuevo canal/newsletter con la estética Waguri Assistant 📢",
   usage: ".buatsaluran <nama>|<deskripsi>",
   example: ".buatsaluran Info Bot|Update terbaru bot kami",
   isOwner: true,
@@ -29,7 +29,7 @@ async function handler(m, { sock }) {
       "📢 *ʙᴜᴀᴛ sᴀʟᴜʀᴀɴ*\n\n" +
         "> `.buatsaluran Nama Saluran`\n" +
         "> `.buatsaluran Nama|Deskripsi`\n\n" +
-        "📝 Contoh:\n" +
+        "📝 Ejemplo:\n" +
         "> `.buatsaluran Info Bot`\n" +
         "> `.buatsaluran Info Bot|Update terbaru bot kami`",
     );
@@ -49,7 +49,7 @@ async function handler(m, { sock }) {
         `_Saluran ini bisa dikonfigurasi di config.saluran.id_`,
     );
   } catch (err) {
-    return m.reply(`❌ Gagal membuat saluran: ${err.message}`);
+    return m.reply(`❌ Error membuat saluran: ${err.message}`);
   }
 }
 

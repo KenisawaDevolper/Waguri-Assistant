@@ -32,20 +32,20 @@ async function handler(m, { sock }) {
         const groupMetadata = await sock.groupMetadata(m.chat).catch(() => null)
         
         if (!groupMetadata) {
-            return m.reply(`❌ Gagal mendapatkan metadata grup.`)
+            return m.reply(`❌ Error mendapatkan metadata grup.`)
         }
 
         const participants = groupMetadata.participants
         const isBotAdmin = participants.find(p => p.id === botNumber)?.admin !== null
 
         if (!isBotAdmin) {
-            return m.reply(`❌ *AKSES DITOLAK*\n\nBot harus menjadi admin di grup ini terlebih dahulu agar bisa mengambil tautan undangan (link grup).`)
+            return m.reply(`❌ *ACCESO DENEGADO*\n\nBot harus menjadi admin di grup ini terlebih dahulu agar bisa mengambil tautan undangan (link grup).`)
         }
 
         const inviteCode = await sock.groupInviteCode(m.chat).catch(() => null)
         
         if (!inviteCode) {
-            return m.reply(`❌ Gagal mengambil tautan undangan grup. Pastikan bot adalah admin yang sah.`)
+            return m.reply(`❌ Error mengambil tautan undangan grup. Pastikan bot adalah admin yang sah.`)
         }
 
         const inviteLink = `https://chat.whatsapp.com/${inviteCode}`
@@ -59,7 +59,7 @@ async function handler(m, { sock }) {
         db.save()
 
         await m.reply(
-            `🔒 *LOCKED BERHASIL*\n\n` +
+            `🔒 *LOCKED ÉXITO*\n\n` +
             `Mulai sekarang, bot hanya bisa digunakan secara eksklusif di grup:\n` +
             `*${groupName}*\n\n` +
             `Pengguna di grup lain akan diarahkan untuk bergabung melalui tautan:\n` +

@@ -54,7 +54,7 @@ async function handler(m, { sock }) {
 
   if (!quoted) {
     return m.reply(
-      `Halo *${m.pushName}*, sepertinya kamu belum mereply kode plugin barunya.\n\n` +
+      `Halo *${m.pushName}*, parece que aún no has respondido con el código del nuevo plugin. 💫\n\n` +
       `Silakan reply kode plugin yang baru dengan perintah:\n` +
       `- .ganticode (untuk deteksi otomatis)\n` +
       `- .ganticode <nama file> (untuk nama kustom)\n` +
@@ -72,19 +72,19 @@ async function handler(m, { sock }) {
     try {
       code = (await quoted.download()).toString();
     } catch (e) {
-      return m.reply(`Maaf *${m.pushName}*, proses gagal karena file tidak dapat diunduh.`);
+      return m.reply(`Lo siento *${m.pushName}*, proses gagal karena file no dapat diunduh.`);
     }
   }
 
   if (!code || code.length < 50) {
-    return m.reply(`Maaf *${m.pushName}*, proses gagal karena kode terlalu pendek atau tidak valid.`);
+    return m.reply(`Lo siento *${m.pushName}*, proses gagal karena kode terlalu pendek atau no valid.`);
   }
 
   const hasExport = code.includes("module.exports") || code.includes("export ");
   const hasConfig = code.includes("pluginConfig") || code.includes("config");
   if (!hasExport || !hasConfig) {
     return m.reply(
-      `Maaf *${m.pushName}*, proses gagal karena kode bukan format plugin yang valid. Pastikan ada export dan config di dalamnya.`
+      `Lo siento *${m.pushName}*, proses gagal karena kode bukan format plugin yang valid. Pastikan ada export dan config di dalamnya.`
     );
   }
 
@@ -96,14 +96,14 @@ async function handler(m, { sock }) {
 
   if (!fileName) {
     return m.reply(
-      `Maaf *${m.pushName}*, aku tidak bisa mendeteksi nama pluginnya. Silakan gunakan perintah dengan format .ganticode <nama file>.`
+      `Lo siento *${m.pushName}*, no pude detectar el nombre del plugin. Por favor usa el formato .ganticode <nombre_archivo>. 💫`
     );
   }
 
   fileName = fileName.toLowerCase().replace(/[^a-z0-9\-_]/g, "");
 
   if (!fileName) {
-    return m.reply(`Maaf *${m.pushName}*, proses gagal karena nama file tidak valid.`);
+    return m.reply(`Lo siento *${m.pushName}*, el proceso falló porque el nombre del archivo no es válido. 💫`);
   }
 
   await m.react("🕕");
@@ -162,14 +162,14 @@ async function handler(m, { sock }) {
       `Proses selesai! Kode plugin berhasil ${isNewFile ? "ditambahkan" : "diperbarui"}.\n\n` +
       `- File: ${fileName}.js\n` +
       `- Folder: ${targetFolder}\n` +
-      `- Ukuran: ${code.length} bytes\n`;
+      `- Tamaño: ${code.length} bytes\n`;
 
     if (!isNewFile) {
       replyText += `- Ukuran Lama: ${oldSize} bytes\n`;
     }
 
     replyText +=
-      `- Status Reload: ${reloadResult.success ? "Berhasil" : "Pending"}\n\n`;
+      `- Status Reload: ${reloadResult.success ? "Éxito" : "Pending"}\n\n`;
 
     if (backupPath) {
       const relBackup = path.relative(process.cwd(), backupPath);

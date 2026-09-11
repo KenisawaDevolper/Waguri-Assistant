@@ -5,7 +5,7 @@ const config = {
   name: "capfree",
   alias: ["capgratis", "setfree"],
   category: "owner",
-  description: "Mengecap banyak fitur sekaligus menjadi gratis",
+  description: "Marca muchas funciones como gratuitas a la vez con la estética Waguri Assistant 🆓",
   usage: ".capfree <nama_fitur1> <nama_fitur2> ...",
   example: ".capfree hd jpm warn",
   isOwner: true,
@@ -21,13 +21,13 @@ async function handler(m, { sock }) {
   if (m.args.length === 0) {
     return m.reply(
       `🆓 *SISTEM CAP FREE*\n\n` +
-      `Sistem untuk mengembalikan status akses banyak fitur sekaligus menjadi gratis secara publik.\n\n` +
+      `Sistem untuk mengembalikan status akses banyak fitur una vezgus menjadi gratis secara publik.\n\n` +
       `*PENGGUNAAN:*\n` +
-      `- *${m.prefix}capfree <nama_fitur1> <nama_fitur2> ...* — Bisa banyak sekaligus\n\n` +
+      `- *${m.prefix}capfree <nama_fitur1> <nama_fitur2> ...* — Bisa banyak una vezgus\n\n` +
       `*CONTOH PENGGUNAAN:*\n` +
       `- *${m.prefix}capfree hd jpm warn*\n\n` +
       `*PENJELASAN:*\n` +
-      `Masukkan satu atau lebih nama fitur yang ingin digratiskan. Pisahkan dengan spasi.`
+      `Ingresa satu atau lebih nama fitur yang ingin digratiskan. Pisahkan dengan spasi.`
     );
   }
 
@@ -55,12 +55,12 @@ async function handler(m, { sock }) {
 
   await m.react("✅");
   
-  let msg = `✅ *STATUS BERHASIL DIUBAH*\n\n`;
+  let msg = `✅ *STATUS ÉXITO DIUBAH*\n\n`;
   if (successList.length > 0) {
-    msg += `*Berhasil (FREE 🆓):*\n${successList.map(f => `- ${f}`).join("\n")}\n\n`;
+    msg += `*Éxito (FREE 🆓):*\n${successList.map(f => `- ${f}`).join("\n")}\n\n`;
   }
   if (failedList.length > 0) {
-    msg += `*Gagal (Tidak ditemukan):*\n${failedList.map(f => `- ${f}`).join("\n")}\n\n`;
+    msg += `*Error (No ditemukan):*\n${failedList.map(f => `- ${f}`).join("\n")}\n\n`;
   }
   
   msg += `_Fitur di atas (yang berhasil) sekarang sudah bebas diakses semua member._`;

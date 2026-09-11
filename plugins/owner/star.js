@@ -34,11 +34,11 @@ async function handler(m, { sock }) {
         await m.react('⭐')
         return m.reply(
             unstar
-                ? '❌ *Bintang dihapus dari pesan*'
+                ? '❌ *Bintang eliminado dari pesan*'
                 : '⭐ *Pesan ditandai bintang*'
         )
     } catch (err) {
-        return m.reply(`❌ Gagal: ${err.message}`)
+        return m.reply(`❌ Error: ${err.message}`)
     }
 }
 

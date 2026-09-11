@@ -3,7 +3,7 @@ const pluginConfig = {
     name: 'listjadibot',
     alias: ['jadibotlist', 'alljadibot'],
     category: 'owner',
-    description: 'Lihat semua session jadibot yang tersimpan',
+    description: 'Gestiona la función listjadibot con la estética Waguri Assistant ⚙️',
     usage: '.listjadibot',
     example: '.listjadibot',
     isOwner: true,
@@ -20,7 +20,7 @@ async function handler(m, { sock }) {
     const active = getActiveJadibots()
 
     if (sessions.length === 0) {
-        return m.reply(`❌ Tidak ada session jadibot tersimpan`)
+        return m.reply(`❌ No ada session jadibot tersimpan`)
     }
 
     let txt = `🤖 *ᴅᴀꜰᴛᴀʀ ᴊᴀᴅɪʙᴏᴛ*\n\n`

@@ -7,8 +7,8 @@ const pluginConfig = {
     name: "ambilfile",
     alias: ["getfile","downloadfile"],
     category: "owner",
-    description: "Ambil file dari project bot tanpa perlu .js",
-    usage: ".ambilfile <nama file>",
+    description: "Obtiene un archivo del proyecto del bot sin necesidad de .js con la estética Waguri Assistant 📁",
+    usage: ".ambilfile <nombre_archivo>",
     example: ".ambilfile config",
     isOwner: true,
     cooldown: 5,
@@ -47,9 +47,9 @@ async function handler(m,{ sock }){
     if(!input){
         return m.reply(
 `╭━━〔 💖 ZERO TWO AMBIL FILE 💖 〕━━⬣
-┃ Darling masukkan nama file~
+┃ Cariño masukkan nama file~
 ┃
-┃ Contoh:
+┃ Ejemplo:
 ┃ .ambilfile config
 ┃ .ambilfile handler
 ┃ .ambilfile gpt
@@ -67,7 +67,7 @@ async function handler(m,{ sock }){
 
         if(!found){
             m.react("❌")
-            return m.reply(`❌ File *${input}* tidak ditemukan 🗿`)
+            return m.reply(`❌ File *${input}* no encontrado 🗿`)
         }
 
         const fileName = path.basename(found)
@@ -75,7 +75,7 @@ async function handler(m,{ sock }){
 
         const ui =
 `╭━━〔 💖 ZERO TWO DOWNLOAD FILE 💖 〕━━⬣
-┃ Darling aku temukan filenya~
+┃ ¡Cariño, encontré el archivo~ ✨
 ┃
 ┃ 📦 Nama : ${fileName}
 ┃ 📂 Path : ${found.replace(root,"")}

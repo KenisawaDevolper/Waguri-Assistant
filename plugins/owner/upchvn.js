@@ -44,7 +44,7 @@ let handler = async (m, { conn, isOwner }) => {
     await m.reply('VN terkirim ke channel')
   } catch (e) {
     console.error(e)
-    m.reply('Gagal kirim VN ke channel')
+    m.reply('Error kirim VN ke channel')
   }
 }
 

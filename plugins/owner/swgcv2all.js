@@ -55,7 +55,7 @@ async function handler(m, { sock }) {
     }
 
     if (!buffer) {
-      return m.reply("❌ Gagal mengunduh media. Silakan coba lagi.");
+      return m.reply("❌ Error mengunduh media. Silakan coba lagi.");
     }
 
     const fileType = await fileTypeFromBuffer(buffer);
@@ -72,14 +72,14 @@ async function handler(m, { sock }) {
         ptt: m.quoted?.ptt || m.ptt || false,
       };
     } else {
-      return m.reply("❌ Format media tidak didukung untuk SW GC.");
+      return m.reply("❌ Format media no didukung untuk SW GC.");
     }
   } else if (text) {
     rawContent = { text: text };
   } else {
     return m.reply(
       `👋 *sᴡɢᴄᴠ2 ᴀʟʟ ɢʟᴏʙᴀʟ*\n\n` +
-      `> Kirim pesan *Status Grup V2* ke SEMUA grup sekaligus.\n\n` +
+      `> Kirim pesan *Status Grup V2* ke SEMUA grup una vezgus.\n\n` +
       `╭┈┈⬡「 📋 *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ* 」\n` +
       `┃ ${m.prefix}swgcv2all Halo semua!\n` +
       `┃ atau reply gambar/video dengan caption ${m.prefix}swgcv2all\n` +
@@ -95,7 +95,7 @@ async function handler(m, { sock }) {
 
     if (groupIds.length === 0) {
       await m.react("❌");
-      return m.reply("❌ Bot tidak berada di grup manapun.");
+      return m.reply("❌ Bot no berada di grup manapun.");
     }
 
     await m.reply(`⏳ *Memulai Broadcast Status Grup V2 ke ${groupIds.length} Grup...*\n\n> Proses ini mungkin memakan waktu beberapa saat.`);
@@ -173,8 +173,8 @@ async function handler(m, { sock }) {
       `✅ *sᴡɢᴄᴠ2 ᴀʟʟ sᴇʟᴇsᴀɪ*\n\n` +
       `╭┈┈⬡「 📊 *ʀᴇsᴜʟᴛ* 」\n` +
       `┃ 🌐 Total Grup: *${groupIds.length}*\n` +
-      `┃ ✅ Sukses: *${successCount}*\n` +
-      `┃ ❌ Gagal: *${failCount}*\n` +
+      `┃ ✅ Éxitos: *${successCount}*\n` +
+      `┃ ❌ Error: *${failCount}*\n` +
       `╰┈┈┈┈┈┈┈┈⬡\n\n` +
       `> Broadcast Status Grup V2 (Ring Pink) berhasil dikirim ke semua grup!`
     );

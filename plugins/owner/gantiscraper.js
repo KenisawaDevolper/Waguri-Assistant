@@ -147,12 +147,12 @@ async function handler(m, { sock }) {
     try {
       code = (await quoted.download()).toString();
     } catch (e) {
-      return m.reply(`❌ *GAGAL*\n\nGagal download file`);
+      return m.reply(`❌ *ERROR*\n\nError download file`);
     }
   }
 
   if (!code || code.length < 30) {
-    return m.reply(`❌ *GAGAL*\n\nCode terlalu pendek atau tidak valid`);
+    return m.reply(`❌ *ERROR*\n\nCode terlalu pendek atau no valid`);
   }
 
   const hasExport =
@@ -163,7 +163,7 @@ async function handler(m, { sock }) {
 
   if (!hasExport) {
     return m.reply(
-      `❌ *GAGAL*\n\nCode bukan format scraper yang valid\nHarus ada export`,
+      `❌ *ERROR*\n\nCode bukan format scraper yang valid\nHarus ada export`,
     );
   }
 
@@ -187,14 +187,14 @@ async function handler(m, { sock }) {
 
   if (!fileName) {
     return m.reply(
-      `❌ *GAGAL*\n\nTidak bisa mendeteksi nama scraper\nGunakan \`${m.prefix}gantiscraper <namafile>\``,
+      `❌ *ERROR*\n\nNo bisa mendeteksi nama scraper\nGunakan \`${m.prefix}gantiscraper <namafile>\``,
     );
   }
 
   fileName = fileName.toLowerCase().replace(/[^a-z0-9\-_]/g, "");
 
   if (!fileName) {
-    return m.reply(`❌ *GAGAL*\n\nNama file tidak valid`);
+    return m.reply(`❌ *ERROR*\n\nNama file no valid`);
   }
 
   await m.react("🕕");
@@ -269,10 +269,10 @@ async function handler(m, { sock }) {
 
     replyText +=
       `🔄 *Hot Reload:*\n` +
-      `- Scraper: ${scraperReload.success ? "✅ Sukses" : "⚠️ Pending"}\n` +
+      `- Scraper: ${scraperReload.success ? "✅ Éxito" : "⚠️ Pending"}\n` +
       `- Plugin Terdeteksi: ${pluginReloads.length}\n` +
-      `- Plugin Berhasil Reload: ${reloadSuccess.length}\n` +
-      `- Plugin Gagal Reload: ${reloadFailed.length}\n\n`;
+      `- Plugin Éxito Reload: ${reloadSuccess.length}\n` +
+      `- Plugin Error Reload: ${reloadFailed.length}\n\n`;
 
     if (reloadSuccess.length) {
       replyText += `✅ *Plugin Reloaded:*\n`;
@@ -284,7 +284,7 @@ async function handler(m, { sock }) {
     }
 
     if (reloadFailed.length) {
-      replyText += `⚠️ *Plugin Gagal Reload:*\n`;
+      replyText += `⚠️ *Plugin Error Reload:*\n`;
       replyText += reloadFailed
         .slice(0, 10)
         .map(
@@ -295,7 +295,7 @@ async function handler(m, { sock }) {
     }
 
     if (!pluginReloads.length) {
-      replyText += `ℹ️ Tidak ada plugin yang langsung mengimpor scraper ini.\n\n`;
+      replyText += `ℹ️ No ada plugin yang langsung mengimpor scraper ini.\n\n`;
     }
 
     if (reloadFailed.length > 0) {

@@ -30,7 +30,7 @@ async function handler(m) {
 │
 │  𖦹 .setversi <versi_baru>
 │
-│ ✦ *Contoh*
+│ ✦ *Ejemplo*
 │
 │  𖦹 .setversi 2.5.1
 │  𖦹 .setversi 3.0.0
@@ -49,7 +49,7 @@ async function handler(m) {
         const configPath = path.join(process.cwd(), 'config.js')
         
         if (!fs.existsSync(configPath)) {
-            throw new Error('File config.js tidak ditemukan!')
+            throw new Error('File config.js no encontrado!')
         }
         
         // Baca file config.js
@@ -57,7 +57,7 @@ async function handler(m) {
         
         // Cari versi lama
         const oldVersionMatch = configContent.match(/version:\s*['"`]([^'"`]+)['"`]/)
-        const oldVersion = oldVersionMatch ? oldVersionMatch[1] : 'tidak diketahui'
+        const oldVersion = oldVersionMatch ? oldVersionMatch[1] : 'no diketahui'
         
         // Ganti versi dengan regex
         const newConfigContent = configContent.replace(

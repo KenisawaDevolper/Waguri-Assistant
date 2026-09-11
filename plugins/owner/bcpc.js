@@ -6,7 +6,7 @@ const pluginConfig = {
   name: "bcpc",
   alias: ["broadcastpc", "bcprivate"],
   category: "owner",
-  description: "Broadcast pesan ke semua kontak private chat",
+  description: "Transmitir mensaje a todos los contactos privados con la estética Waguri Assistant 📢",
   usage: ".bcpc <pesan>",
   isOwner: true,
   isPremium: false,
@@ -47,7 +47,7 @@ async function handler(m, { sock }) {
         `• \`${m.prefix}bcpc <pesan>\` — Kirim ke semua kontak\n` +
         `• \`${m.prefix}bcpc (reply media)\` — Kirim dengan media\n\n` +
         `⚠️ *Peringatan:* Bot akan mengirim pesan ke semua kontak yang tersimpan!\n\n` +
-        `ℹ️ *Note:* Kontak hanya terdeteksi jika mereka sudah pernah mengirim pesan ke bot. Kontak yang hanya disimpan tapi belum pernah chat tidak akan muncul.`,
+        `ℹ️ *Note:* Kontak hanya terdeteksi jika mereka sudah pernah mengirim pesan ke bot. Kontak yang hanya disimpan tapi belum pernah chat no akan muncul.`,
     );
   }
 
@@ -115,7 +115,7 @@ async function handler(m, { sock }) {
     if (privateJids.size === 0) {
       m.react("❌");
       return m.reply(
-        "❌ Tidak ada kontak ditemukan.\n\nPastikan bot sudah pernah menerima pesan dari kontak tersebut.",
+        "❌ No ada kontak ditemukan.\n\nPastikan bot sudah pernah menerima pesan dari kontak tersebut.",
       );
     }
 
@@ -131,7 +131,7 @@ async function handler(m, { sock }) {
           `📱 *ʙʀᴏᴀᴅᴄᴀsᴛ ᴘʀɪᴠᴀᴛᴇ*\n\n` +
           `╭┈┈⬡「 📋 *ᴅᴇᴛᴀɪʟ* 」\n` +
           `┃ 📝 ᴘᴇsᴀɴ: \`${input.substring(0, 50)}${input.length > 50 ? "..." : ""}\`\n` +
-          `┃ 📷 ᴍᴇᴅɪᴀ: \`${mediaBuffer ? mediaType : "Tidak"}\`\n` +
+          `┃ 📷 ᴍᴇᴅɪᴀ: \`${mediaBuffer ? mediaType : "No"}\`\n` +
           `┃ 👥 ᴛᴀʀɢᴇᴛ: \`${filtered.length}\` kontak\n` +
           `┃ ⏱️ ᴊᴇᴅᴀ: \`${jeda}ms\`\n` +
           `┃ 📊 ᴇsᴛɪᴍᴀsɪ: \`${Math.ceil((filtered.length * jeda) / 60000)} menit\`\n` +
@@ -187,7 +187,7 @@ async function handler(m, { sock }) {
   } catch (e) {
     delete global.statusBcpc;
     m.react("❌");
-    m.reply("Gagal: " + e.message);
+    m.reply("Error: " + e.message);
   }
 }
 

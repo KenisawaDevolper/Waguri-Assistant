@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 
 const handler = async (m, { text }) => {
-  if (!text) throw 'Masukin keyword\nContoh: .grepplugin conn.'
+  if (!text) throw 'Masukin keyword\nEjemplo: .grepplugin conn.'
 
   const dir = './plugins'
   let results = []
@@ -31,7 +31,7 @@ const handler = async (m, { text }) => {
   scan(dir)
 
   if (!results.length) {
-    return m.reply(`Tidak ditemukan keyword: ${text}`)
+    return m.reply(`No ditemukan keyword: ${text}`)
   }
 
   let res = `📦 Hasil grep plugin\nKeyword: ${text}\n\n`

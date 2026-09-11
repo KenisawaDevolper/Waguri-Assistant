@@ -39,7 +39,7 @@ async function handler(m, { sock }) {
         return m.reply(
             '🔇 *ᴍᴜᴛᴇ ᴄʜᴀᴛ*\n\n' +
             '> `.mutechat 628xxx` — Mute chat\n' +
-            '> `.mutechat` (di private chat) — Mute chat ini\n' +
+            '> `.mutechat` (en chat privado) — Mute chat ini\n' +
             '> `.mutechat buka 628xxx` — Unmute chat'
         )
     }
@@ -54,7 +54,7 @@ async function handler(m, { sock }) {
                 : `🔊 *ᴄʜᴀᴛ ᴅɪᴜɴᴍᴜᴛᴇ*\n\n> Target: ${target}`
         )
     } catch (err) {
-        return m.reply(`❌ Gagal: ${err.message}`)
+        return m.reply(`❌ Error: ${err.message}`)
     }
 }
 

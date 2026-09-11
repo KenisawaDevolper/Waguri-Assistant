@@ -6,7 +6,7 @@ const pluginConfig = {
     name: "setppsaluran",
     alias: ["setppchannel","ppchannel"],
     category: "owner",
-    description: "Ganti PP channel dan kirim notifikasi ke channel",
+    description: "Cambiar foto de perfil del canal y notificar con la estética Waguri Assistant 📢",
     usage: ".setppsaluran (reply gambar)",
     example: ".setppsaluran",
     isOwner: true,
@@ -55,7 +55,7 @@ async function handler(m,{ sock }){
         const infoMsg =
 `╭─〔 💖 ZERO TWO CHANNEL UPDATE 💖 〕
 │
-│ Darling, ada PP baru nih 😋
+│ Cariño, ada PP baru nih 😋
 │
 │ 👑 Dari : ${m.pushName}
 │ ⏰ Waktu : ${time}
@@ -73,7 +73,7 @@ async function handler(m,{ sock }){
         return m.reply(
 `╭━━〔 *❤️ ZERO TWO SYSTEM* 〕━━⬣
 ┃ ✅ PP Channel berhasil diupdate!
-┃ Darling, channel sudah dikasih info 😋
+┃ Cariño, channel sudah dikasih info 😋
 ╰━━━━━━━━━━━━━━━━⬣`
         )
 

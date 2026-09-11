@@ -8,8 +8,8 @@ const pluginConfig = {
     name: 'addgacha',
     alias: ['add-gacha', 'tambahgacha', 'adddarling'],
     category: 'owner',
-    description: 'Tambah karakter ke database gacha darling',
-    usage: '.add-gacha Nama Karakter | https://url.mp4',
+    description: 'Añade un personaje a la base de datos gacha darling con la estética Waguri Assistant ✨',
+    usage: '.addgacha Nombre Personaje | https://url.mp4',
     example: '.add-gacha Zero Two | https://example.com/video.mp4',
     isOwner: true,
     isPremium: false,
@@ -36,7 +36,7 @@ function ensureDatabase() {
 ensureDatabase();
 
 // Fungsi baca JSON
-function getDarlingList() {
+function getCariñoList() {
     try {
         const data = fs.readFileSync(DARLING_JSON_PATH, 'utf-8');
         const json = JSON.parse(data);
@@ -48,7 +48,7 @@ function getDarlingList() {
 }
 
 // Fungsi simpan JSON
-function saveDarlingList(characters) {
+function saveCariñoList(characters) {
     try {
         const data = JSON.stringify({ characters }, null, 2);
         fs.writeFileSync(DARLING_JSON_PATH, data, 'utf-8');
@@ -85,13 +85,13 @@ async function handler(m, { sock, args, prefix, command }) {
     // Cek format: NAMA | URL
     if (!fullText || !fullText.includes('|')) {
         return m.reply(
-            `❌ *Format salah!*\n\n` +
-            `> Gunakan format:\n` +
+            `❌ *¡Formato incorrecto!*\n\n` +
+            `> Usa el formato:\n` +
             `> \`${prefix}add-gacha Nama Karakter | https://url-video.mp4\`\n\n` +
-            `> Contoh:\n` +
+            `> Ejemplo:\n` +
             `> \`${prefix}add-gacha Zero Two | https://example.com/zerotwo.mp4\`\n` +
             `> \`${prefix}add-gacha Ichigo | https://cdn.com/ichigo.mp4\`\n\n` +
-            `> Contoh multi URL:\n` +
+            `> Ejemplo multi URL:\n` +
             `> \`${prefix}add-gacha Zero Two | https://url1.mp4,https://url2.mp4\``
         );
     }
@@ -103,9 +103,9 @@ async function handler(m, { sock, args, prefix, command }) {
 
     if (!name || !urlPart) {
         return m.reply(
-            `❌ *Nama atau URL tidak boleh kosong!*\n\n` +
+            `❌ *¡El nombre o la URL no puede estar vacío!*\n\n` +
             `> Format: \`Nama | URL\`\n` +
-            `> Contoh: \`Zero Two | https://example.com/video.mp4\``
+            `> Ejemplo: \`Zero Two | https://example.com/video.mp4\``
         );
     }
 
@@ -122,14 +122,14 @@ async function handler(m, { sock, args, prefix, command }) {
     
     if (urls.length === 0) {
         return m.reply(
-            `❌ *URL tidak valid!*\n\n` +
-            `> Pastikan URL dimulai dengan http:// atau https://\n` +
+            `❌ *¡URL no válida!*\n\n` +
+            `> Asegúrate de que la URL comience con http:// o https://\n` +
             `> URL: \`${urlPart}\``
         );
     }
 
     // Baca data yang sudah ada
-    let characters = getDarlingList();
+    let characters = getCariñoList();
     
     // Cek apakah nama sudah ada
     const existingIndex = characters.findIndex(
@@ -152,18 +152,18 @@ async function handler(m, { sock, args, prefix, command }) {
         };
         action = `🔄 *UPDATE* (+${urls.length} video baru)`;
     } else {
-        // Tambah karakter baru
+        // Añadir karakter baru
         newList.push({
             name: name,
             urls: urls,
             added_at: new Date().toISOString(),
             added_by: m.pushName || m.sender.split('@')[0]
         });
-        action = `✨ *TAMBAH BARU* (${urls.length} video)`;
+        action = `✨ *NUEVO AÑADIDO* (${urls.length} video)`;
     }
 
     // Simpan ke file
-    if (saveDarlingList(newList)) {
+    if (saveCariñoList(newList)) {
         m.react('✅');
         
         const totalChars = newList.length;
@@ -188,14 +188,14 @@ async function handler(m, { sock, args, prefix, command }) {
             `│ 📊 *Total karakter:* ${totalChars}\n` +
             `│ 🎥 *Total video:* ${totalVideos}\n` +
             `│\n` +
-            `│ 💕 *Sekarang bisa di-gacha dengan:*\n` +
+            `│ 💕 *Ahora puedes obtenerlo con:*\n` +
             `│    \`${prefix}gacha-zero\`\n` +
             `│\n` +
             `╰━━━━━━━━━━━━━━━━━⬣`
         );
     } else {
         m.react('❌');
-        return m.reply(`❌ *Gagal menyimpan!* Coba lagi nanti.\n\n> Cek permission folder database.`);
+        return m.reply(`❌ *¡Error al guardar!* Inténtalo de nuevo más tarde.\n\n> Verifica los permisos de la carpeta database.`);
     }
 }
 

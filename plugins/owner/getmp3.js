@@ -7,8 +7,8 @@ const pluginConfig = {
     name: 'getmp3',
     alias: ['getaudio', 'ambilmp3', 'ambilaudio'],
     category: 'owner',
-    description: 'Ambil file MP3/Audio dari folder assets/audio',
-    usage: '.getmp3 <nama_file.mp3>',
+    description: 'Obtiene un archivo MP3/Audio de la carpeta assets/audio con la estética Waguri Assistant 🎵',
+    usage: '.getmp3 <nombre_archivo.mp3>',
     example: '.getmp3 zerotwo.mp3',
     isOwner: true,
     isPremium: false,
@@ -31,14 +31,14 @@ async function handler(m, { sock }) {
             `┃\n` +
             `┃   ${m.prefix}getmp3 <nama_file.mp3>\n` +
             `┃\n` +
-            `┃ ✦ *Contoh*\n` +
+            `┃ ✦ *Ejemplo*\n` +
             `┃\n` +
             `┃   ${m.prefix}getmp3 zerotwo.mp3\n` +
             `┃\n` +
             `┃ ✦ *Lihat daftar file*\n` +
             `┃   ${m.prefix}listmp3\n` +
             `╰━━━━━━━━━━━━━━━━━━━━━⬣\n\n` +
-            `💗 *Zero Two:* Mau ambil audio apa darling~?`
+            `💗 *Zero Two:* ¿Qué audio quieres obtener, cariño~? 💫`
         )
     }
     
@@ -51,7 +51,7 @@ async function handler(m, { sock }) {
             m.react('💔')
             return m.reply(
                 `💔 *ᴇʀʀᴏʀ*\n\n` +
-                `> File *${fileName}* tidak ditemukan di folder assets/audio darling~\n\n` +
+                `> File *${fileName}* no encontrado di folder assets/audio cariño~\n\n` +
                 `> Ketik *${m.prefix}listmp3* untuk lihat daftar file yang tersedia 🥺`
             )
         }
@@ -76,7 +76,7 @@ async function handler(m, { sock }) {
             `┃ 🎵 *ɴᴀᴍᴇ*: ${fileName}\n` +
             `┃ 📦 *ᴜᴋᴜʀᴀɴ*: ${fileSizeMB} MB\n` +
             `┃\n` +
-            `┃ 💗 *Zero Two:* Ini dia audio nya darling~ 🎶\n` +
+            `┃ 💗 *Zero Two:* Ini dia audio nya cariño~ 🎶\n` +
             `╰━━━━━━━━━━━━━━━━━━━━━⬣`
         )
         
@@ -86,7 +86,7 @@ async function handler(m, { sock }) {
         return m.reply(
             `💔 *ᴇʀʀᴏʀ*\n\n` +
             `> ${err.message}\n\n` +
-            `> Coba lagi ya darling~ 🥺`
+            `> Inténtalo de nuevo, cariño~ 🥺`
         )
     }
 }

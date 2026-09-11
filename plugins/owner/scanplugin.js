@@ -8,7 +8,7 @@ const pluginConfig = {
 name: "scanplugin",
 alias: ["checkplugin"],
 category: "owner",
-description: "Scan plugin error dan API mati",
+description: 'Gestiona la función scanplugin con la estética Waguri Assistant ⚙️',
 usage: ".scanplugin",
 isOwner: true,
 cooldown: 5,

@@ -26,7 +26,7 @@ function buildPaymentText(paymentCfg, customText, botName, ownerName) {
       .replace(/\{owner\}/gi, ownerName)
       .replace(/\{methods\}/gi, methods.map(m => `• *${m.name}*: ${m.number} (${m.holder || m.name})`).join('\n'))
       .replace(/\{banks\}/gi, banks.map(b => `• *${b.name}*: ${b.number} (${b.holder || b.name})`).join('\n'))
-      .replace(/\{qris\}/gi, paymentCfg.qrisUrl ? '✅ Tersedia' : '❌ Belum diatur')
+      .replace(/\{qris\}/gi, paymentCfg.qrisUrl ? '✅ Tersedia' : '❌ Aún no diatur')
   }
 
   let text = `💳 *P A Y M E N T*\n`

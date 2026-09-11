@@ -4,7 +4,7 @@ const pluginConfig = {
     name: 'goodbyeall',
     alias: ['gball', 'globalgoodbye', 'leaveall'],
     category: 'owner',
-    description: 'Aktifkan/nonaktifkan goodbye di semua grup',
+    description: 'Activa/desactiva la despedida en todos los grupos con la estética Waguri Assistant 👋',
     usage: '.goodbyeall <on/off>',
     example: '.goodbyeall on',
     isOwner: true,
@@ -24,7 +24,7 @@ async function handler(m, { sock }) {
     if (!action || !['on', 'off'].includes(action)) {
         return m.reply(
             `👋 *ɢᴏᴏᴅʙʏᴇ ɢʟᴏʙᴀʟ*\n\n` +
-            `> Aktifkan/nonaktifkan goodbye di SEMUA grup sekaligus\n\n` +
+            `> Activar/nonaktifkan goodbye di SEMUA grup una vezgus\n\n` +
             `╭┈┈⬡「 📋 *ᴄᴀʀᴀ ᴘᴀᴋᴀɪ* 」\n` +
             `┃ ${m.prefix}goodbyeall on\n` +
             `┃ ${m.prefix}goodbyeall off\n` +
