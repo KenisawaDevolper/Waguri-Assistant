@@ -268,7 +268,7 @@ function printPluginTable(plugins) {
 
   console.log("");
   console.log(
-    `  ${theme.pill("plugins", "primary")} ${theme.rainbow(String(plugins.length))} ${theme.dim("total")} ${theme.border("│")} ${chalk.whiteBright(`${catCount} kategori`)}`,
+    `  ${theme.pill("plugins", "primary")} ${theme.rainbow(String(plugins.length))} ${theme.dim("total")} ${theme.border("│")} ${chalk.whiteBright(`${catCount} categorías`)}`,
   );
   console.log(`  ${theme.borderFx("─".repeat(58))}`);
 
@@ -281,7 +281,7 @@ function printPluginTable(plugins) {
 
   if (rest.length > 0) {
     console.log(
-      `  ${theme.dim(`+${rest.length} lainnya`.padEnd(14))}${theme.pill(String(restTotal), "system")}`,
+      `  ${theme.dim(`+${rest.length} otros`.padEnd(14))}${theme.pill(String(restTotal), "system")}`,
     );
   }
 
