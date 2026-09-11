@@ -88,9 +88,27 @@ async function createJadibotViaWeb(phone, ws) {
 
   const userJid = id + "@s.whatsapp.net";
   const authPath = getJadibotAuthPath(userJid);
-  if (!fs.existsSync(authPath)) fs.mkdirSync(authPath, { recursive: true });
-
-  const { state, saveCreds } = await useMultiFileAuthState(authPath);
+  try {
+    const baseJadibot = path.join(process.cwd(), "session", "jadibot");
+    if (!fs.existsSync(baseJadibot)) fs.mkdirSync(baseJadibot, { recursive: true });
+    if (!fs.existsSync(authPath)) fs.mkdirSync(authPath, { recursive: true });
+    // verifica que se creó
+    if (!fs.existsSync(authPath)) throw new Error(`No se pudo crear ${authPath} (permisos)`);
+  } catch (e) {
+    throw new Error(`Error creando sesión: ${e.message} — ejecuta "mkdir -p session/jadibot" en la consola`);
+  }
+  let state, saveCreds;
+  try {
+    const auth = await useMultiFileAuthState(authPath);
+    state = auth.state; saveCreds = auth.saveCreds;
+  } catch (e) {
+    if (e.code === 'ENOENT' || e.message.includes('ENOENT')) {
+      // reintenta creando dir y reintentando
+      try { fs.mkdirSync(authPath, { recursive: true }); } catch {}
+      const auth = await useMultiFileAuthState(authPath);
+      state = auth.state; saveCreds = auth.saveCreds;
+    } else throw e;
+  }
   const { default: makeWASocket, fetchLatestBaileysVersion, makeCacheableSignalKeyStore } = await import("ourin");
   const { version } = await fetchLatestBaileysVersion();
   let pinoLogger;
