@@ -160,7 +160,7 @@ let srcWatcher = null;
 function startSrcWatcher(srcPath) {
   if (srcWatcher) srcWatcher.close();
 
-  logger.system("dev", "Pantauan hot-reload buat src udah jalan bosku");
+  logger.system("dev", "Vigilancia hot-reload para src activa con éxito 🌸");
 
   srcWatcher = fs.watch(srcPath, { recursive: true }, (eventType, filename) => {
     if (!filename || !filename.endsWith(".js")) return;
@@ -236,7 +236,7 @@ function setupAntiCrash() {
     process.exit(0);
   });
 
-  logger.success("system", "Sistem anti-crash nyala, aman terkendali 😎");
+  logger.success("system", "Sistema anti-crash activado, estable y seguro 🌸");
 }
 
 async function main() {
@@ -255,7 +255,7 @@ async function main() {
   await initDatabase(dbPath);
   const db = getDatabase();
 
-  await spinText("system", "Lagi muat aset lokal bentar...", { tone: "accent" });
+  await spinText("system", "Cargando assets locales, un momento por favor 🌸", { tone: "accent" });
   await preloadAssets(config.assets);
 
   const savedMode = db.setting("botMode");
@@ -270,12 +270,12 @@ async function main() {
   const bCount = Array.isArray(savedBanned) ? savedBanned.length : 0;
   logger.success(
     "database",
-    `Database sukses ke-load | Mode: ${config.mode} | Premium: ${pCount} | Banned: ${bCount}`,
+    `Base de datos cargada con éxito | Modo: ${config.mode} | Premium: ${pCount} | Baneados: ${bCount} 🌸`,
   );
 
   const pluginsPath = path.join(process.cwd(), "plugins");
   const pluginCount = await loadPlugins(pluginsPath);
-  logger.success("plugin", `Sukses muat ${pluginCount} plugin!`);
+  logger.success("plugin", `¡Se han cargado ${pluginCount} plugins con éxito! ✨`);
 
   // Hot-reload siempre activo (fix: no requiere reiniciar para aplicar comandos)
   startDevWatcher(pluginsPath);
@@ -287,13 +287,13 @@ async function main() {
   initScheduler(config);
 
   const bootTime = Date.now() - startTime;
-  logger.success("boot", `Bot nyala mantap dalam ${bootTime}ms 🚀`);
+  logger.success("boot", `Waguri Assistant iniciada con éxito en ${bootTime}ms 🌸🚀`);
   divider();
-  await spinText("network", "Opening WhatsApp connection tunnel...", {
+  await spinText("network", "Abriendo túnel de conexión con WhatsApp...", {
     duration: 900,
     tone: "accent",
   });
-  logConnection("connecting", "Lagi nyambungin ke WhatsApp nih...");
+  logConnection("connecting", "Conectando con WhatsApp, un momento por favor 🌸");
   console.log("");
 
   await startConnection({
@@ -405,8 +405,8 @@ async function main() {
         startMemoryMonitor();
         startTempCleaner();
         startDailyPruner();
-        logger.success("YEYYYY", `Semua sistem udah jalan mantap, langsug saja🚀`);
-        logger.success("NOTE", `Kalau ada error. mohon dimaklumi, soalnnya bukan bot bagus :)`);
+        logger.success("WAGURI", `Todos los sistemas operativos, lista para comenzar 🌸🚀`);
+        logger.success("NOTE", `Si ocurre algún error, agradecemos tu paciencia — Waguri Assistant te atiende con cariño 🌸`);
         divider();
       }
     },

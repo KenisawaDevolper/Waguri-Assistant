@@ -141,10 +141,10 @@ async function playBootSequence(info = {}) {
          ╚██████╔╝╚██████╔╝██║  ██║██║██║ ╚████║
           ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝
 `));
-  console.log(`         ${chalk.magenta.bold("►")} ${chalk.white("rimuru MULTI-DEVICE BOT")} ${chalk.gray(`v${version}`)}`);
+  console.log(`         ${chalk.magenta.bold("►")} ${chalk.white("WAGURI ASSISTANT • MULTI-DEVICE BOT")} ${chalk.gray(`v${version}`)}`);
   console.log(`         ${chalk.magenta("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")}`);
   console.log("");
-  console.log(`${makeTag("BOOT", true)} ${cWhite(`Memulai Sistem Utama...`)}`);
+  console.log(`${makeTag("BOOT", true)} ${cWhite(`Iniciando sistema principal... 🌸`)}`);
   console.log(`${makeTag("INFO")} ${cWhite(`Mode: ${chalk.cyan(mode)}`)}`);
 }
 
@@ -177,7 +177,7 @@ function logMessage(info) {
       sender,
       message,
       pushName: sender,
-      groupName: chatType === "group" ? "Unknown" : "Private",
+      groupName: chatType === "group" ? "Unknown" : "Privado",
     };
   }
 
@@ -201,11 +201,11 @@ function logMessage(info) {
   const date = timeHelper.formatTime("DD/MM/YYYY");
   const typeTag = getTypeTag(messageType, isNewsletter || chatType === "newsletter");
 
-  const location = chatType === "group" || chatType === "newsletter" ? (groupName || "Group") : "Private";
+  const location = chatType === "group" || chatType === "newsletter" ? (groupName || "Group") : "Privado";
   const senderName = pushName || num;
 
   console.log("");
-  console.log(`  ${cWhite("╭─")} ${chalk.bgWhiteBright("Hey, ada pesan masuk nih :3")} ${cGray("•")} ${chatType === "private" ? chalk.yellow("Private") : chalk.whiteBright("Dari Grup") + " " + chalk.bgCyanBright(location)}`);
+  console.log(`  ${cWhite("╭─")} ${chalk.bgWhiteBright("Hola, nuevo mensaje recibido 🌸")} ${cGray("•")} ${chatType === "private" ? chalk.yellow("Privado") : chalk.whiteBright("Desde el grupo") + " " + chalk.bgCyanBright(location)}`);
   console.log(`  ${cWhite("│")}  👤 ${chalk.greenBright(senderName)} ${cGray(`(${num})`)}`);
   console.log(`  ${cWhite("│")}  📱 ${chalk.yellowBright(info.device || "Unknown")} ${chalk.red(`• ${time} • ${typeTag}`)}`);
   const maxWidth = 55;
