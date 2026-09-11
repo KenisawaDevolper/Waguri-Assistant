@@ -1,0 +1,24 @@
+let handler = async (m, { text }) => {
+
+  if (!text) throw `Contoh penggunaan:
+.setprefix .
+.setprefix !
+.setprefix . / #
+
+Gunakan spasi untuk multi prefix`
+
+  let prefixes = text.split(' ').map(p => p.trim()).filter(p => p)
+
+  global.prefix = new RegExp(
+    '^(' + prefixes.map(p => p.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|') + ')'
+  )
+
+  await m.reply(`✅ Prefix berhasil diubah menjadi: *${prefixes.join(' , ')}*`)
+}
+
+handler.tags = ['owner']
+handler.help = ['setprefix']
+handler.command = /^(setprefix|setpref)$/i
+handler.rowner = true
+
+export default handler

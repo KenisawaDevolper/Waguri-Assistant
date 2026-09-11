@@ -1,0 +1,15 @@
+node_modules/
+session/
+sessions/
+auth_info/
+*.session
+.env
+database/*.json
+database/main/*
+!database/main/.gitkeep
+backups/
+tmp/
+temp/
+*.log
+.DS_Store
+creds.json

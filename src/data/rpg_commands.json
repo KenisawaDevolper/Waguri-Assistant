@@ -1,0 +1,67 @@
+[
+  {
+    "id": "perfil",
+    "command": "perfilgacha",
+    "name": "Perfil",
+    "icon": "👤",
+    "desc": "Ver tu nivel, HP y harem",
+    "level": 1,
+    "cooldown": 0,
+    "goldCost": 0
+  },
+  {
+    "id": "diario",
+    "command": "diariogacha",
+    "name": "Diario",
+    "icon": "🎁",
+    "desc": "Reclama 5 tickets + 250 🪙",
+    "level": 1,
+    "cooldown": 86400,
+    "goldCost": 0,
+    "reward": { "tickets": 5, "gold": 250, "exp": 100 }
+  },
+  {
+    "id": "mision",
+    "command": "mision",
+    "name": "Misión",
+    "icon": "⚔️",
+    "desc": "Explora mazmorras (1h)",
+    "level": 1,
+    "cooldown": 3600,
+    "hpMin": 20,
+    "goldCost": 0,
+    "reward": { "exp": "30-90", "gold": "50-150" },
+    "damage": "5-20"
+  },
+  {
+    "id": "curar",
+    "command": "curar",
+    "name": "Hospital",
+    "icon": "🏥",
+    "desc": "Cura HP al máximo",
+    "level": 1,
+    "cooldown": 0,
+    "goldCost": 50
+  },
+  {
+    "id": "batalla",
+    "command": "batalla",
+    "name": "PvP",
+    "icon": "🗡️",
+    "desc": "Desafía a un rival",
+    "level": 5,
+    "cooldown": 900,
+    "hpMin": 10,
+    "goldCost": 0
+  },
+  {
+    "id": "tienda",
+    "command": "tiendarpg",
+    "name": "Tienda",
+    "icon": "🏪",
+    "desc": "Compra pociones y tickets",
+    "level": 1,
+    "cooldown": 0,
+    "goldCost": 0
+  }
+]
