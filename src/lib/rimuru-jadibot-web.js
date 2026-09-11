@@ -10,7 +10,7 @@ const logger = {
 };
 
 const JADIBOT_AUTH_FOLDER = path.join(process.cwd(), "session", "jadibot");
-const WEB_PORT = parseInt(process.env.WEB_PORT || process.env.PORT || "3000", 10);
+const WEB_PORT = parseInt(process.env.WEB_PORT || process.env.PORT || process.env.SERVER_PORT || "24596", 10);
 const WEB_API_KEY = process.env.WEB_API_KEY || "";
 
 let httpServer = null;

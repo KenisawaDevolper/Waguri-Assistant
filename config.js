@@ -180,7 +180,7 @@ const config = {
   },
 
   web: {
-    port: parseInt(process.env.WEB_PORT || process.env.PORT || "3000", 10),
+    port: parseInt(process.env.WEB_PORT || process.env.PORT || process.env.SERVER_PORT || "24596", 10),
     apiKey: process.env.WEB_API_KEY || "",
   },
 
