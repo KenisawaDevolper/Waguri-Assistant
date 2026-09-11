@@ -13,3 +13,6 @@ temp/
 *.log
 .DS_Store
 creds.json
+.npm/
+.cache/
+.gitconfig
