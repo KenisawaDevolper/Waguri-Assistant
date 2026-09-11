@@ -1,6 +1,6 @@
 import axios from 'axios'
 import crypto from 'crypto'
-import { generateWAMessage, generateWAMessageFromContent, jidNormalizedUsuario } from 'ourin'
+import { generateWAMessage, generateWAMessageFromContent, jidNormalizedUser } from 'ourin'
 import config from '../../config.js'
 import te from '../../src/lib/rimuru-error.js'
 
@@ -140,7 +140,7 @@ async function handler(m, { sock }) {
                     }
                 },
                 {
-                    userJid: jidNormalizedUsuario(sock.user.id),
+                    userJid: jidNormalizedUser(sock.user.id),
                     quoted: m,
                     upload: sock.waUploadToServer
                 }

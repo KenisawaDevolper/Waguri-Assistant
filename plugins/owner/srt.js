@@ -4,7 +4,7 @@ import crypto from 'crypto';
 import config from '../../config.js';
 import { getDatabase } from '../../src/lib/rimuru-database.js';
 import te from '../../src/lib/rimuru-error.js';
-import { prepareWAMessageMedia, generateWAMessageFromContent, generateWAMessage, jidNormalizedUsuario } from 'ourin';
+import { prepareWAMessageMedia, generateWAMessageFromContent, generateWAMessage, jidNormalizedUser } from 'ourin';
 
 const pluginConfig = {
     name: 'srt',
@@ -83,7 +83,7 @@ async function handler(m, { sock, args }) {
                         },
                     },
                     {
-                        userJid: jidNormalizedUsuario(sock.user.id),
+                        userJid: jidNormalizedUser(sock.user.id),
                         quoted: m,
                         upload: sock.waUploadToServer,
                     }

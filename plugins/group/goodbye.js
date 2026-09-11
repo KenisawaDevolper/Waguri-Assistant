@@ -9,7 +9,7 @@ import moment from "moment-timezone";
 import config from "../../config.js";
 import { getDatabase } from "../../src/lib/rimuru-database.js";
 import { saluranCtx } from "../../src/lib/rimuru-context.js";
-import { createDespedidaCard } from "../../src/lib/rimuru-welcome-card.js";
+import { createGoodbyeCard } from "../../src/lib/rimuru-welcome-card.js";
 import { resolveAnyLidToJid } from "../../src/lib/rimuru-lid.js";
 import path from "path";
 import fs from "fs";
@@ -376,7 +376,7 @@ async function sendDespedidaMessage(sock, groupJid, participant, groupMeta) {
     } else {
       let canvasBuffer = null;
       try {
-        canvasBuffer = await createDespedidaCard(
+        canvasBuffer = await createGoodbyeCard(
           userName,
           ppUrl,
           groupName,
