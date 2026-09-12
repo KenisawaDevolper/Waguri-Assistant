@@ -289,8 +289,17 @@ function createSocket(){
   ws._emit = (event, data) => {
     if(ws.readyState === 1) ws.send(JSON.stringify({ event, data }));
   };
-  ws.onopen = () => { (listeners["connect"]||[]).forEach(fn=>fn()); };
-  ws.onclose = () => { (listeners["disconnect"]||[]).forEach(fn=>fn()); setTimeout(()=>{ addLog("Reconectando WebSocket...", "info"); socket = createSocket(); }, 2500); };
+  let reconnectAttempts = 0;
+  ws.onopen = () => { reconnectAttempts = 0; (listeners["connect"]||[]).forEach(fn=>fn()); };
+  ws.onclose = (e) => {
+    (listeners["disconnect"]||[]).forEach(fn=>fn());
+    // Evita bucle si el cierre fue limpio y rápido (proxy HidenCloud)
+    const delay = Math.min(5000 + reconnectAttempts * 2000, 15000);
+    reconnectAttempts++;
+    // Throttle log: solo muestra cada 2 intentos
+    if (reconnectAttempts % 2 === 1) addLog("Reconectando WebSocket... (" + Math.round(delay/1000) + "s)", "info");
+    setTimeout(()=>{ socket = createSocket(); }, delay);
+  };
   ws.onmessage = (e) => {
     try{
       const { event, data } = JSON.parse(e.data);

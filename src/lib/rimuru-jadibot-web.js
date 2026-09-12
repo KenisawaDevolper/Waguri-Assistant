@@ -423,8 +423,19 @@ export function startWebServer(mainSock = null) {
     ws.isAlive = true;
     ws.on('pong', () => { ws.isAlive = true; });
     ws.on('error', (e) => { logger.warn("WEB-SOCKET", `WS error: ${e.message}`); });
+    // Heartbeat para evitar cierre por proxies de HidenCloud/Cloudflare (cada 25s)
+    const pingInterval = setInterval(() => {
+      if (ws.readyState !== 1) { clearInterval(pingInterval); return; }
+      if (ws.isAlive === false) { ws.terminate(); clearInterval(pingInterval); return; }
+      ws.isAlive = false;
+      try { ws.ping(); } catch {}
+    }, 25000);
+    ws.on('close', () => { clearInterval(pingInterval); });
     const ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress || req.connection?.remoteAddress || "unknown";
-    logger.info("WEB-SOCKET", `Cliente conectado: ${ip} total=${wsClients.size}`);
+    // Throttle log: solo muestra si no es reconexión rápida (<2s)
+    const now = Date.now();
+    ws._connectTime = now;
+    logger.debug("WEB-SOCKET", `Cliente conectado: ${ip} total=${wsClients.size}`);
     try {
       sendToClient(ws, "stats-update", getStats());
       sendToClient(ws, "welcome", { message: "Conectado a Waguri Assistant 🌸", bot: mainSockRef?.user?.id || null });
@@ -462,7 +473,9 @@ export function startWebServer(mainSock = null) {
     });
     ws.on("close", () => {
       wsClients.delete(ws);
-      logger.info("WEB-SOCKET", `Cliente desconectado total=${wsClients.size}`);
+      // Solo loguea desconexión si duró >3s (evita spam de reconexiones rápidas)
+      const dur = Date.now() - (ws._connectTime || Date.now());
+      if (dur > 3000) logger.debug("WEB-SOCKET", `Cliente desconectado total=${wsClients.size} (duró ${Math.round(dur/1000)}s)`);
     });
   }
 
