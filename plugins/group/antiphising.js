@@ -40,35 +40,35 @@ function handler(m) {
 
     if (option === 'on') {
         db.setGroup(m.chat, { antiphising: 'on' })
-        return m.reply('✅ *AntiPhising diaktifkan*')
+        return m.reply('✅ *AntiPhishing activado*')
     }
 
     if (option === 'off') {
         db.setGroup(m.chat, { antiphising: 'off' })
-        return m.reply('❌ *AntiPhising dinonaktifkan*')
+        return m.reply('❌ *AntiPhishing desactivado*')
     }
 
     if (option.startsWith('metode')) {
         const method = m.args?.[1]?.toLowerCase()
         if (method === 'kick') {
             db.setGroup(m.chat, { antiphising: 'on', antiphisingModo: 'kick' })
-            return m.reply('✅ *AntiPhising mode KICK diaktifkan*')
+            return m.reply('✅ *Modo KICK de AntiPhishing activado*')
         }
         if (method === 'remove' || method === 'delete') {
             db.setGroup(m.chat, { antiphising: 'on', antiphisingModo: 'remove' })
-            return m.reply('✅ *AntiPhising mode DELETE diaktifkan*')
+            return m.reply('✅ *Modo DELETE de AntiPhishing activado*')
         }
         return m.reply('❌ Metode no valid! Gunakan: `kick` atau `remove`')
     }
 
     if (option === 'kick') {
         db.setGroup(m.chat, { antiphising: 'on', antiphisingModo: 'kick' })
-        return m.reply('✅ *AntiPhising mode KICK diaktifkan*')
+            return m.reply('✅ *Modo KICK de AntiPhishing activado*')
     }
 
     if (option === 'remove' || option === 'delete') {
         db.setGroup(m.chat, { antiphising: 'on', antiphisingModo: 'remove' })
-        return m.reply('✅ *AntiPhising mode DELETE diaktifkan*')
+            return m.reply('✅ *Modo DELETE de AntiPhishing activado*')
     }
 
     return m.reply('❌ Opsi no valid! Gunakan: `on`, `off`, `metode kick`, `metode remove`')

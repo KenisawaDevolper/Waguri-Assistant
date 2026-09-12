@@ -124,7 +124,7 @@ function checkPermission(m, pluginConfig) {
         if (!m.isAdmin && !m.isOwner && !hasAccess) {
           return {
             allowed: false,
-            reason: "🎮 Fitur Game sedang dinonaktifkan di grup ini oleh Admin!",
+            reason: "🎮 La función de juegos está desactivada en este grupo por un administrador.",
           };
         }
       }
@@ -132,7 +132,7 @@ function checkPermission(m, pluginConfig) {
         if (!m.isAdmin && !m.isOwner && !hasAccess) {
           return {
             allowed: false,
-            reason: "⚔️ Fitur RPG sedang dinonaktifkan di grup ini oleh Admin!",
+            reason: "⚔️ La función RPG está desactivada en este grupo por un administrador.",
           };
         }
       }

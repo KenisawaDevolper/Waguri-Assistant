@@ -1,7 +1,7 @@
 let handler = async (m, { conn, args, isBotAdmin, isAdmin }) => {
-  if (!m.isGroup) return m.reply('Función ini hanya untuk grup!');
-  if (!isAdmin) return m.reply('Función ini hanya bisa digunakan oleh admin grup.');
-  if (!isBotAdmin) return m.reply('Bot harus menjadi admin di grup!');
+  if (!m.isGroup) return m.reply('¡Esta función solo puede usarse en grupos!');
+  if (!isAdmin) return m.reply('Esta función solo puede ser usada por administradores del grupo.');
+  if (!isBotAdmin) return m.reply('¡El bot debe ser administrador del grupo!');
 
   let time = parseInt(args[0]);
   let unit = args[1];

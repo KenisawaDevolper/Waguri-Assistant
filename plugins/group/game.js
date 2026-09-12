@@ -36,7 +36,7 @@ async function handler(m, { sock }) {
   const isEnable = args === "on";
 
   if (group.game === isEnable) {
-    return m.reply(`🎮 Función game sudah *${isEnable ? "AKTIF" : "NONAKTIF"}* di grup ini.`);
+    return m.reply(`🎮 La función de juegos está *${isEnable ? "ACTIVADA" : "DESACTIVADA"}* en este grupo.`);
   }
 
   group.game = isEnable;

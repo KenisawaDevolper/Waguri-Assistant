@@ -38,13 +38,13 @@ function handler(m) {
     }
 
     if (!db.db.data.sewa.enabled) {
-        return m.reply(`ℹ️ Sistem sewa no aktif\n\nBot ini bisa digunakan di todos grup.`)
+        return m.reply(`ℹ️ El sistema de alquiler no está activo.\n\nEste bot puede usarse en cualquier grupo.`)
     }
 
     const sewaData = db.db.data.sewa.groups[m.chat]
 
     if (!sewaData) {
-        return m.reply(`❌ Este grupo no terdaftar dalam sistem sewa\n\nHubungi owner bot untuk info sewa.`)
+        return m.reply(`❌ Este grupo no está registrado en el sistema de alquiler.\n\nContacta con el propietario del bot para obtener información.`)
     }
 
     const groupName = sewaData.name || m.chat.split('@')[0]

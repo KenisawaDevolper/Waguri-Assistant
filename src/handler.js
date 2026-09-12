@@ -838,7 +838,7 @@ async function messageHandler(msg, sock, options = {}) {
         await m
           .reply(
             config.messages?.banned ||
-            "🚫 *Kamu dibanned dari menggunakan bot ini.*",
+            "🚫 *Has sido expulsado y no puedes usar este bot.*",
           )
           .catch(() => { });
       }
@@ -1707,7 +1707,7 @@ async function messageHandler(msg, sock, options = {}) {
 
         if (pluginCat === "game" && grpData.game === false) {
           await m.reply(
-            `🎮 *FITUR GAME NONAKTIF*\n\nFitur game sedang dinonaktifkan di grup ini oleh admin.\nMinta admin untuk mengaktifkannya kembali dengan perintah *${m.prefix}game on*`
+            `🎮 *FUNCIÓN DE JUEGOS DESACTIVADA*\n\nLa función de juegos está desactivada en este grupo por un administrador.\nPídele a un administrador que la active de nuevo con el comando *${m.prefix}game on*`
           );
           return;
         }
@@ -1878,7 +1878,7 @@ async function messageHandler(msg, sock, options = {}) {
     try {
       const m = await serialize(sock, msg);
       if (m) {
-        await m.reply(`Sepertinya ada kendala, coba hubungi owner`);
+        await m.reply(`Parece que hubo un problema. Intenta contactar con el propietario.`);
       }
     } catch {
       logger.error("Failed to send error message");

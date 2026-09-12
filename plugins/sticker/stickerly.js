@@ -32,7 +32,7 @@ async function handler(m, { sock, text }) {
 
         if (!data || !data.status || !data.result || data.result.length === 0) {
             await m.react("❌");
-            return m.reply(`Maaf, sticker pack untuk "${text}" no ditemukan. Coba kata kunci lain.`);
+            return m.reply(`El paquete de stickers para "${text}" no fue encontrado. Prueba con otra palabra clave.`);
         }
 
         const maxResults = Math.min(data.result.length, 10);
@@ -51,7 +51,7 @@ async function handler(m, { sock, text }) {
             listTxt += `*${i + 1}.* ${item.name} by ${item.authorName}\n`;
         }
 
-        listTxt += `\n> 💡 *Envía angka (contoh: 1)* untuk mendownload pack, atau ketik \`batal\` untuk membatalkan pencarian.`;
+            listTxt += `\n> 💡 *Envía un número (por ejemplo: 1)* para descargar el paquete, o escribe \`cancelar\` para cancelar la búsqueda.`;
         
         const db = getDatabase();
         const user = db.getUsuario(m.sender);
@@ -85,7 +85,7 @@ async function stickerlyAnswerHandler(m, sock) {
     if (Date.now() - session.time > SESSION_TIMEOUT) {
         delete user.stickerly_session;
         db.save();
-        await m.reply(`⏰ *SESI KEDALUWARSA*\n\nSesi pencarian stickerly sudah berakhir karena lebih dari 5 menit. Silakan ulangi perintah.`);
+        await m.reply(`⏰ *SESIÓN EXPIRADA*\n\nLa sesión de búsqueda de Sticker.ly terminó porque pasaron más de 5 minutos. Repite el comando.`);
         return true;
     }
 

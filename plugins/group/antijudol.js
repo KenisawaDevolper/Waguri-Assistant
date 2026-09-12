@@ -40,35 +40,35 @@ function handler(m) {
 
     if (option === 'on') {
         db.setGroup(m.chat, { antijudol: 'on' })
-        return m.reply('✅ *AntiJudol diaktifkan*')
+        return m.reply('✅ *AntiApuestas activado*')
     }
 
     if (option === 'off') {
         db.setGroup(m.chat, { antijudol: 'off' })
-        return m.reply('❌ *AntiJudol dinonaktifkan*')
+        return m.reply('❌ *AntiApuestas desactivado*')
     }
 
     if (option.startsWith('metode')) {
         const method = m.args?.[1]?.toLowerCase()
         if (method === 'kick') {
             db.setGroup(m.chat, { antijudol: 'on', antijudolModo: 'kick' })
-            return m.reply('✅ *AntiJudol mode KICK diaktifkan*')
+            return m.reply('✅ *Modo KICK de AntiApuestas activado*')
         }
         if (method === 'remove' || method === 'delete') {
             db.setGroup(m.chat, { antijudol: 'on', antijudolModo: 'remove' })
-            return m.reply('✅ *AntiJudol mode DELETE diaktifkan*')
+            return m.reply('✅ *Modo DELETE de AntiApuestas activado*')
         }
         return m.reply(`❌ Metode no valid! Gunakan: \`kick\` atau \`remove\``)
     }
 
     if (option === 'kick') {
         db.setGroup(m.chat, { antijudol: 'on', antijudolModo: 'kick' })
-        return m.reply('✅ *AntiJudol mode KICK diaktifkan*')
+            return m.reply('✅ *Modo KICK de AntiApuestas activado*')
     }
 
     if (option === 'remove' || option === 'delete') {
         db.setGroup(m.chat, { antijudol: 'on', antijudolModo: 'remove' })
-        return m.reply('✅ *AntiJudol mode DELETE diaktifkan*')
+            return m.reply('✅ *Modo DELETE de AntiApuestas activado*')
     }
 
     return m.reply('❌ Opsi no valid! Gunakan: `on`, `off`, `metode kick`, `metode remove`')

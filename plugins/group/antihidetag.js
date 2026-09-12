@@ -1,5 +1,5 @@
 let handler = async (m, { conn, args, usedPrefix, command, isAdmin }) => {
-    if (!m.isGroup) return m.reply('Hanya bisa di grup!')
+    if (!m.isGroup) return m.reply('¡Esta función solo puede usarse en grupos!')
     if (!isAdmin) return m.reply('Solo admins yang bisa pakai!')
 
     let chat = global.db.data.chats[m.chat]
@@ -9,7 +9,7 @@ let handler = async (m, { conn, args, usedPrefix, command, isAdmin }) => {
 
     if (args[0] === 'on') {
         chat.antiHidetag = true
-        m.reply('✅ Anti-Hidetag aktif!')
+        m.reply('✅ ¡Anti-Hidetag activado!')
     } else if (args[0] === 'off') {
         chat.antiHidetag = false
         m.reply('❌ Anti-Hidetag mati!')

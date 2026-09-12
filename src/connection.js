@@ -625,9 +625,9 @@ setTimeout(async () => {
               await sock.sendMessage(event.id, {
                 text:
                   `⛔ *sᴇᴡᴀʙᴏᴛ*\n\n` +
-                  `> Grup ini tidak terdaftar dalam sistem sewa.\n` +
-                  `> Bot akan meninggalkan grup ini.\n\n` +
-                  `_Hubungi ${ownerContact} untuk sewa bot._`,
+                  `> Este grupo no está registrado en el sistema de alquiler.\n` +
+                  `> El bot abandonará este grupo.\n\n` +
+                  `_Contacta con ${ownerContact} para alquilar el bot._`,
               });
               await new Promise((r) => setTimeout(r, 2000));
               await sock.groupLeave(event.id);
@@ -642,13 +642,13 @@ setTimeout(async () => {
           const inviter = event.author || "";
           const inviterMention = inviter
             ? `@${inviter.split("@")[0]}`
-            : "seseorang";
+            : "alguien";
           const prefix = config.command?.prefix || ".";
 
-          let groupName = "grup ini";
+          let groupName = "este grupo";
           try {
             const meta = await sock.groupMetadata(event.id);
-            groupName = meta.subject || "grup ini";
+            groupName = meta.subject || "este grupo";
           } catch { }
 
           const saluranId =
@@ -659,15 +659,15 @@ setTimeout(async () => {
           const welcomeText =
             `👋 *ʜᴀɪ, sᴀʟᴀᴍ ᴋᴇɴᴀʟ!*\n\n` +
             `Aku *${config.bot?.name || "rimuru-AI"}* 🤖\n\n` +
-            `Terima kasih sudah mengundang aku ke *${groupName}*!\n` +
-            `Aku diundang oleh ${inviterMention} ✨\n\n` +
+            `¡Gracias por invitarme a *${groupName}*!\n` +
+            `Me invitó ${inviterMention} ✨\n\n` +
             `╭┈┈⬡「 📋 *ɪɴꜰᴏ* 」\n` +
             `┃ 🔧 Developer: *${config.bot?.developer || "Lucky Archz"}*\n` +
             `┃ 📢 Prefix: \`${prefix}\`\n` +
             `┃ 📩 Support: ${config.bot?.support || "-"}\n` +
             `╰┈┈⬡\n\n` +
-            `> Ketik \`${prefix}menu\` untuk melihat daftar fitur\n` +
-            `> Ketik \`${prefix}help\` untuk bantuan`;
+            `> Escribe \`${prefix}menu\` para ver la lista de funciones\n` +
+            `> Escribe \`${prefix}help\` para obtener ayuda`;
 
           await sock.sendMessage(event.id, {
             text: welcomeText,

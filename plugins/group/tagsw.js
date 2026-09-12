@@ -24,7 +24,7 @@ let handler = async (m, { conn, text }) => {
         let info = await conn.groupGetInviteInfo(code);
         id = info.id;
       } catch {
-        return m.reply('⚠️ Link grup no valid / bot belum join');
+        return m.reply('⚠️ El enlace del grupo no es válido o el bot aún no se ha unido.');
       }
     } else {
       if (/^\d+$/.test(target)) target += '@g.us';
@@ -88,7 +88,7 @@ biru hijau kuning merah ungu hitam putih cyan`);
     }
 
     await groupStatus(conn, id, content);
-    return m.reply(`✅ Media jadi status grup:\n${id}`);
+    return m.reply(`✅ Multimedia publicada como estado del grupo:\n${id}`);
   }
 
   let content = bgColor
@@ -96,7 +96,7 @@ biru hijau kuning merah ungu hitam putih cyan`);
     : { text: caption };
 
   await groupStatus(conn, id, content);
-  return m.reply(`✅ Status grup terkirim ke:\n${id}`);
+  return m.reply(`✅ Estado del grupo enviado a:\n${id}`);
 };
 
 async function groupStatus(conn, jid, content) {

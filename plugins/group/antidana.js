@@ -1,6 +1,6 @@
 let handler = async (m, { args, isAdmin, isOwner }) => {
-  if (!m.isGroup) return m.reply("Función ini hanya dapat digunakan dalam grup.")
-  if (!(isAdmin || isOwner)) return m.reply("Maaf, fitur ini hanya dapat digunakan oleh admin grup.")
+  if (!m.isGroup) return m.reply("Esta función solo puede usarse en grupos.")
+  if (!(isAdmin || isOwner)) return m.reply("Esta función solo puede ser usada por administradores del grupo.")
 
   global.db.data.chats = global.db.data.chats || {}
   global.db.data.chats[m.chat] = global.db.data.chats[m.chat] || {}
@@ -11,20 +11,20 @@ let handler = async (m, { args, isAdmin, isOwner }) => {
 
   if (args[0] === "on") {
     if (global.db.data.chats[m.chat].antidana) {
-      return m.reply("Antidana sudah aktif.")
+      return m.reply("Antidana ya está activado.")
     }
 
     global.db.data.chats[m.chat].antidana = true
-    return m.reply("✅ Antidana berhasil diaktifkan.")
+    return m.reply("✅ Antidana activado correctamente.")
   }
 
   if (args[0] === "off") {
     if (!global.db.data.chats[m.chat].antidana) {
-      return m.reply("Antidana sudah nonaktif.")
+      return m.reply("Antidana ya está desactivado.")
     }
 
     global.db.data.chats[m.chat].antidana = false
-    return m.reply("❌ Antidana berhasil dinonaktifkan.")
+    return m.reply("❌ Antidana desactivado correctamente.")
   }
 
   return m.reply("Opsi no valid.\nGunakan:\n.antidana on / off")
