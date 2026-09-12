@@ -183,6 +183,23 @@ async function createJadibotViaWeb(phone, ws) {
       if (sess) sess.heartbeatInterval = heartbeat;
       try { await childSock.sendPresenceUpdate("available"); } catch {}
 
+      // Mensaje de bienvenida al privado del SubBot (usa el socket hijo, y el principal como respaldo)
+      try {
+        const welcome = `✨ *¡Tu SubBot Waguri Assistant se conectó con éxito!* 🌸\n\n` +
+          `> Número: \`+${id}\`\n` +
+          `> Ya puedes usar el bot en este WhatsApp\n` +
+          `> Escribe \`.menu\` para ver los comandos\n\n` +
+          `> Gestiona tus SubBots en el panel web 🌸`;
+        await childSock.sendMessage(userJid, { text: welcome });
+        logger.success("WEB-JADIBOT", `Mensaje de bienvenida enviado a +${id} vía socket hijo 🌸`);
+        // Respaldo vía socket principal (si está disponible, para asegurar entrega)
+        if (mainSockRef && mainSockRef.user?.id) {
+          try { await mainSockRef.sendMessage(userJid, { text: welcome }); } catch {}
+        }
+      } catch (e) {
+        logger.warn("WEB-JADIBOT", `No se pudo enviar bienvenida a +${id}: ${e.message}`);
+      }
+
       client.emit("paired", { phone: id, jid: userJid, status: "connected", message: "¡Subbot conectado con éxito! 🌸" });
       broadcast("subbot-connected", { phone: id, jid: userJid });
       broadcast("stats-update", getStats());
