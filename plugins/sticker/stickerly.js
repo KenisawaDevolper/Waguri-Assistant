@@ -54,7 +54,7 @@ async function handler(m, { sock, text }) {
             listTxt += `\n> 💡 *Envía un número (por ejemplo: 1)* para descargar el paquete, o escribe \`cancelar\` para cancelar la búsqueda.`;
         
         const db = getDatabase();
-        const user = db.getUsuario(m.sender);
+        const user = db.getUser(m.sender);
 
         user.stickerly_session = {
             results: searchResults,
@@ -75,7 +75,7 @@ async function stickerlyAnswerHandler(m, sock) {
     if (!m.body || m.isCommand) return false;
     
     const db = getDatabase();
-    const user = db.getUsuario(m.sender);
+    const user = db.getUser(m.sender);
     
     if (!user || !user.stickerly_session) return false;
 

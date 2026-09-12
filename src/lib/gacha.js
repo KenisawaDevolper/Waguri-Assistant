@@ -167,7 +167,7 @@ export async function rerollGacha(userId) {
 // 3. COLECCIONES E INVENTARIO
 // ==========================================
 
-export async function getUserHarem(userId) {
+export async function getUsuarioHarem(userId) {
   const localUser = ensureLocalUser(userId);
   const collection = (localUser.waifuCollection || []).map((c) => c.waifu || c).filter(Boolean);
 
