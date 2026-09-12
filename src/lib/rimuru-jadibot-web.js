@@ -224,19 +224,26 @@ async function createJadibotViaWeb(phone, ws) {
 
   if (!state.creds.registered) {
     try {
-      client.emit("status", { step: "generating", message: "Generando código de vinculación..." });
-      await delay(2500);
+      client.emit("status", { step: "generating", message: "Generando código de vinculación... (HidenCloud puede tardar 5s) 🌸" });
+      // Esperar a que el socket hijo esté listo (evita "Se produjo un error" por socket no conectado)
+      let readyWait = 0;
+      while (readyWait < 4000 && (!childSock.ws || childSock.ws.readyState !== 1)) {
+        await delay(500);
+        readyWait += 500;
+      }
+      await delay(800);
       let code = await childSock.requestPairingCode(id);
       code = code.match(/.{1,4}/g)?.join("-") || code;
-      logger.success("WEB-JADIBOT", `Pairing code para ${id}: ${code}`);
+      logger.success("WEB-JADIBOT", `Pairing code para ${id}: ${code} (válido 60s, ingrésalo rápido 🌸)`);
       client.emit("pairing-code", { code, phone: id, formatted: code, raw: code.replace(/-/g, "") });
-      client.emit("status", { step: "waiting", message: "Código generado. Ingresa en WhatsApp > Dispositivos vinculados > Vincular con número de teléfono", code });
+      client.emit("status", { step: "waiting", message: "Código generado. Ingresa RÁPIDO en WhatsApp > Dispositivos vinculados > Vincular con número de teléfono (tienes 60s) 🌸", code });
       setTimeout(() => {
         if (!jadibotSessions.has(id)) {
+          logger.warn("WEB-JADIBOT", `Timeout pairing ${id} - código expiró, cerrando socket`);
           try { childSock.ws?.close(); } catch {}
-          client.emit("error", { message: "Tiempo agotado. Genera un nuevo código." });
+          client.emit("error", { message: "Tiempo agotado (60s). Genera un nuevo código y pégalo en <15s." });
         }
-      }, 90000);
+      }, 95000);
     } catch (e) {
       let msg = e.message || "Error al generar código";
       if (msg.includes("428") || msg.includes("rate")) msg = "Límite de solicitudes alcanzado. Espera 5-10 minutos.";
